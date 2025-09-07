@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moe Community Cloud — News</title>
+  <meta name="description" content="MBCC News and updates.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  
+<header class="header">
+  <div class="container header-row">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+    </div>
+    <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class=''>Apps</a>
+<a href='news.html' class='active'>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+  </div>
+</header>
+
+  <main class="container">
+    <h2>News</h2>
+    <div class="grid cols-2">
+      <article class="card">
+        <span class="badge">Update</span>
+        <h3>Launching MBCC Home</h3>
+        <p>The new home for Moe Community Cloud is live with newsletter signup, sponsor placement, and a clean nav to Apps, News, Sports, and more.</p>
+        <div class="kicker">Posted <span id="n1"></span></div>
+      </article>
+      <article class="card">
+        <span class="badge">Sports</span>
+        <h3>Sports AI Suite v1</h3>
+        <p>We’re shipping a unified UI for lineups, Pick 6 predictions, and DvP insights. MLB focus leading into the new season.</p>
+        <div class="kicker">Posted <span id="n2"></span></div>
+      </article>
+    </div>
+  </main>
+  
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+  <script>
+    document.getElementById('n1').textContent = new Date().toDateString();
+    document.getElementById('n2').textContent = new Date().toDateString();
+  </script>
+</body>
+</html>

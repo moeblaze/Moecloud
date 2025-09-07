@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moe Community Cloud — Newsletter</title>
+  <meta name="description" content="Subscribe and browse past MBCC newsletters.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  
+<header class="header">
+  <div class="container header-row">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+    </div>
+    <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class=''>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class='active'>Newsletter</a></nav>
+  </div>
+</header>
+
+  <main class="container">
+    <h2>Newsletter</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Subscribe</h3>
+        <form onsubmit="return MBCC.handleSignup(event)">
+          <div class="field"><label>Name</label><input class="input" name="name" required></div>
+          <div class="field"><label>Email</label><input class="input" type="email" name="email" required></div>
+          <div class="field"><label>Interest</label>
+            <select name="interest" class="input">
+              <option>AI Tools & Apps</option>
+              <option>Sports Analytics</option>
+              <option>News & Content</option>
+              <option>All of the above</option>
+            </select>
+          </div>
+          <button class="btn">Subscribe</button>
+        </form>
+        <p class="kicker">We’ll integrate with your ESP (Mailchimp, Brevo, ConvertKit) or Azure Functions.</p>
+      </div>
+      <div class="card">
+        <h3>Recent Issues</h3>
+        <ul id="issues" style="margin:0;padding-left:18px">
+          <li>Welcome to MBCC — Platform Launch</li>
+          <li>Sports AI Suite — Season Kickoff</li>
+          <li>MOE Learning — Corporate Training Pilot</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>Local Signups (Demo)</h3>
+      <p class="kicker">This table shows signups saved on your browser (for demo only).</p>
+      <div style="overflow:auto">
+        <table id="signupTable" style="width:100%;border-collapse:collapse">
+          <thead><tr><th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.2)">Name</th><th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.2)">Email</th><th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.2)">Interest</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

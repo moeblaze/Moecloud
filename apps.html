@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moe Community Cloud — Apps</title>
+  <meta name="description" content="Explore MBCC apps and tools.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  
+<header class="header">
+  <div class="container header-row">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+    </div>
+    <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class='active'>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+  </div>
+</header>
+
+  <main class="container">
+    <h2>Apps & Tools</h2>
+    <p class="kicker">All apps follow our responsive, card-based UI with animations.</p>
+    <div class="grid cols-4">
+      <div class="card" id="sports"><h3>Sports AI Suite</h3><p>Live scores and sports updates (optimizer coming later).</p><a class="btn" href="#">Launch</a></div>
+      <div class="card" id="learning"><h3>MOE Learning</h3><p>Corporate training, quizzes, AI mentorship.</p><a class="btn" href="#">Launch</a></div>
+      <div class="card" id="studio"><h3>Image Studio</h3><p>AI image generation & editing workflows.</p><a class="btn" href="#">Launch</a></div>
+      <div class="card" id="smarthome"><h3>Smart Home Automation</h3><p>Cloud-based automation dashboard.</p><a class="btn" href="#">Launch</a></div>
+    </div>
+  </main>
+  
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

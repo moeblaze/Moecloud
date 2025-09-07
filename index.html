@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moe Community Cloud — Home</title>
+  <meta name="description" content="Moe Community Cloud — AI tools, sports analytics, news, and community.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  
+<header class="header">
+  <div class="container header-row">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+    </div>
+    <nav class="nav"><a href='index.html' class='active'>Home</a>
+<a href='apps.html' class=''>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+  </div>
+</header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="card animate">
+        <span class="badge">Welcome to MBCC</span>
+        <h2>Build, learn, and win with <span class="gold">Moe Community Cloud</span></h2>
+        <p>Sign up to our newsletter and services for early access to AI tools, sports insights, product drops, and community updates.</p>
+        <form id="signupForm" class="animate" onsubmit="return MBCC.handleSignup(event)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input class="input" id="name" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" placeholder="you@domain.com" required>
+          </div>
+          <div class="field">
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest" class="input">
+              <option>AI Tools & Apps</option>
+              <option>Sports Analytics</option>
+              <option>News & Content</option>
+              <option>All of the above</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px">
+            <button class="btn" type="submit">Join the Newsletter</button>
+            <a class="btn alt" href="newsletter.html">View past newsletters</a>
+          </div>
+          <p id="signupMsg" style="margin-top:10px;"></p>
+        </form>
+      </div>
+      <aside class="card animate">
+        <span class="badge">Sponsor</span>
+        <img src="assets/sponsor-placeholder.png" alt="Sponsor Ad" style="width:100%;border-radius:12px;margin:8px 0">
+        <h3>Prime Digital Real Estate</h3>
+        <p>Feature your brand in our <span class="gold">front‑page sponsor</span> spot: logo, short bio, and link. Reach a fast‑growing community of AI builders and sports fans.</p>
+        <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=MBCC%20Sponsorship">Advertise here</a>
+      </aside>
+    </div>
+  </section>
+  <section class="container">
+    <h2 style="margin-bottom:10px">Featured Apps</h2>
+    <div class="grid cols-4">
+      <div class="card"><h3>Sports AI Suite</h3><p>Fantasy optimizer, Pick 6, live insights.</p><a class="btn" href="apps.html#sports">Open</a></div>
+      <div class="card"><h3>MOE Learning</h3><p>AI study assistant, quizzes, job matching.</p><a class="btn" href="apps.html#learning">Open</a></div>
+      <div class="card"><h3>Image Studio</h3><p>Generate & edit images with AI.</p><a class="btn" href="apps.html#studio">Open</a></div>
+      <div class="card"><h3>Smart Home</h3><p>Automation dashboard & workflows.</p><a class="btn" href="apps.html#smarthome">Open</a></div>
+    </div>
+  </section>
+  
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

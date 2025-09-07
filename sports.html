@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moe Community Cloud — Sports</title>
+  <meta name="description" content="Sports hub: updates, features, and AI analytics.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  
+<header class="header">
+  <div class="container header-row">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+    </div>
+    <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class=''>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class='active'>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+  </div>
+</header>
+
+  <main class="container">
+    <h2>Sports Hub</h2>
+    <p class="kicker">Live scores and optimizer integrations plug in here. This page is ready for your APIs.</p>
+    <div class="grid cols-3"><div class="card"><h3>Live Scores</h3><p>Slot for real-time updates (WebSockets/API).</p><a class="btn" href="#">Connect</a></div></div>
+      <div class="card"><h3>Fantasy Optimizer</h3><p>Render optimized lineups for NBA, NFL, MLB, more.</p><a class="btn" href="#">Open</a></div>
+      <div class="card"><h3>Pick 6</h3><p>PrizePicks-style over/under projections.</p><a class="btn" href="#">Open</a></div>
+    </div>
+  </main>
+  
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
