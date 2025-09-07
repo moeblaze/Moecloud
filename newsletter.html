@@ -3,77 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moe Community Cloud — Newsletter</title>
-  <meta name="description" content="Subscribe and browse past MBCC newsletters.">
+  <title>Newsletter — Moe Community Cloud</title>
+  <meta name="description" content="Simple playbooks, product drops, and QSM micro-trainings.">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/consent.js"></script>
 </head>
 <body>
-  
-<header class="header">
-  <div class="container header-row">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand"><div class="logo"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="news.html">News</a>
+        <a href="sports.html">Sports</a>
+        <a href="newsletter.html" class="active">Newsletter</a>
+      </nav>
     </div>
-    <nav class="nav"><a href='index.html' class=''>Home</a>
-<a href='apps.html' class=''>Apps</a>
-<a href='news.html' class=''>News</a>
-<a href='sports.html' class=''>Sports</a>
-<a href='newsletter.html' class='active'>Newsletter</a></nav>
-  </div>
-</header>
+  </header>
 
   <main class="container">
-    <h2>Newsletter</h2>
-    <div class="grid cols-2">
-      <div class="card">
-        <h3>Subscribe</h3>
-        <form onsubmit="return MBCC.handleSignup(event)">
-          <div class="field"><label>Name</label><input class="input" name="name" required></div>
-          <div class="field"><label>Email</label><input class="input" type="email" name="email" required></div>
-          <div class="field"><label>Interest</label>
-            <select name="interest" class="input">
-              <option>AI Tools & Apps</option>
-              <option>Sports Analytics</option>
-              <option>News & Content</option>
-              <option>All of the above</option>
-            </select>
-          </div>
-          <button class="btn">Subscribe</button>
-        </form>
-        <p class="kicker">We’ll integrate with your ESP (Mailchimp, Brevo, ConvertKit) or Azure Functions.</p>
-      </div>
-      <div class="card">
-        <h3>Recent Issues</h3>
-        <ul id="issues" style="margin:0;padding-left:18px">
-          <li>Welcome to MBCC — Platform Launch</li>
-          <li>Sports AI Suite — Season Kickoff</li>
-          <li>MOE Learning — Corporate Training Pilot</li>
-        </ul>
-      </div>
-    </div>
-    <div class="card" style="margin-top:18px">
-      <h3>Local Signups (Demo)</h3>
-      <p class="kicker">This table shows signups saved on your browser (for demo only).</p>
-      <div style="overflow:auto">
-        <table id="signupTable" style="width:100%;border-collapse:collapse">
-          <thead><tr><th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.2)">Name</th><th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.2)">Email</th><th style="text-align:left;padding:10px;border-bottom:1px solid rgba(255,255,255,.2)">Interest</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-  
-<footer class="footer">
-  <div class="container">
-    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-  </div>
-</footer>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <!-- Ad block (Top) -->
+    <section aria-label="sponsored">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </section>
 
-  <script src="assets/script.js"></script>
+    <section class="card">
+      <div class="badge">Newsletter</div>
+      <h2>Get the MBCC Newsletter</h2>
+      <p class="kicker">One tight email each week: tools, playbooks, and community highlights.</p>
+      <p><a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=Subscribe%20MBCC">Subscribe via email</a></p>
+      <p class="tiny">We value privacy. See our <a href="privacy.html">Privacy Policy</a>.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

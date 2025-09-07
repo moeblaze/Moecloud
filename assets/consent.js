@@ -1,7 +1,6 @@
 
 (function(){
   const PUB_ID = "ca-pub-8387411349417007";
-
   function loadAdSense(){
     if (window._adsLoaded) return;
     window._adsLoaded = true;
@@ -15,7 +14,6 @@
     };
     document.head.appendChild(s);
   }
-
   function setConsent(val){ try{ localStorage.setItem('mbccConsent', JSON.stringify(val)); }catch(e){} }
   function getConsent(){ try{ return JSON.parse(localStorage.getItem('mbccConsent')||'null'); }catch(e){ return null; } }
   function renderBanner(){
@@ -38,12 +36,10 @@
     document.getElementById('mbcc-decline').onclick = function(){ setConsent({ads:false, ts: new Date().toISOString()}); hideBanner(); };
   }
   function hideBanner(){ const el = document.getElementById('mbcc-consent'); if (el) el.remove(); }
-
   document.addEventListener('DOMContentLoaded', function(){
     const c = getConsent();
     if (!c) renderBanner();
     else if (c.ads) loadAdSense();
   });
-
   window.MBCCConsent = { loadAdSense, getConsent, setConsent };
 })();

@@ -8,14 +8,32 @@
         {
           "date": "2025-09-07",
           "title": "AdSense + Consent Banner Live",
-          "summary": "Home page updated with consent-based AdSense loading and sponsor spotlight.",
+          "summary": "Home now uses consent-based AdSense loading with two placements.",
           "link": "https://www.moecommunitycloud.com/"
         },
         {
           "date": "2025-09-07",
-          "title": "New Tools Toolbar",
-          "summary": "Concise/Friendlier/Exec Summary/Expand/Translate/Redact/Extract Actions added across tools.",
+          "title": "QSM Page Launched",
+          "summary": "Quantum Spiral Man one-page training is live with ad support.",
+          "link": "https://www.moecommunitycloud.com/qsm.html"
+        },
+        {
+          "date": "2025-09-07",
+          "title": "News Page Upgrade",
+          "summary": "New filters, search, and JSON-powered updates so we can post fast.",
+          "link": "https://www.moecommunitycloud.com/news.html"
+        },
+        {
+          "date": "2025-09-12",
+          "title": "Apps Hub Refresh (Coming)",
+          "summary": "Fresh icons and cleaner cards as we relaunch the tools catalog.",
           "link": "https://www.moecommunitycloud.com/apps.html"
+        },
+        {
+          "date": "2025-09-15",
+          "title": "Newsletter Relaunch (Coming)",
+          "summary": "Short weekly drops: product updates, playbooks, and QSM micro-trainings.",
+          "link": "https://www.moecommunitycloud.com/newsletter.html"
         }
       ]
     },
@@ -34,6 +52,12 @@
           "title": "Sponsor Applications Open",
           "summary": "Apply for a sponsor spotlight on the home page or apps hub.",
           "link": "mailto:moeknowmoe24@gmail.com"
+        },
+        {
+          "date": "2025-09-14",
+          "title": "Open Office Hours (Sign Up)",
+          "summary": "Bring your ops bottlenecks; we\u2019ll show quick-win workflows.",
+          "link": "mailto:moeknowmoe24@gmail.com?subject=Office%20Hours"
         }
       ]
     },
@@ -44,7 +68,7 @@
         {
           "date": "2025-08-10",
           "title": "Proposal/Quote Builder \u2014 Fast Start",
-          "summary": "A 5\u2011minute recipe to turn notes into a clean client proposal.",
+          "summary": "A 5-minute recipe to turn notes into a clean client proposal.",
           "link": "https://www.moecommunitycloud.com/proposal-builder.html"
         },
         {
@@ -52,6 +76,12 @@
           "title": "Newsletter Builder Tips",
           "summary": "Subject lines, structure, and CTAs that get replies.",
           "link": "https://www.moecommunitycloud.com/newsletter-builder.html"
+        },
+        {
+          "date": "2025-09-09",
+          "title": "Meeting Automator Cheat Sheet",
+          "summary": "Turn messy notes into clean action items with one click.",
+          "link": "https://www.moecommunitycloud.com/meeting-automator.html"
         }
       ]
     }

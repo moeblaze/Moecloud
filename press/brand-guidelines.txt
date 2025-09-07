@@ -1,0 +1,6 @@
+MBCC Brand Guidelines (Quick)
+- Colors: Gold #D4AF37, Black #0E0E0E, Dark Red #7D0A0A
+- Font: System UI / Sans (web-safe)
+- Logo Clear Space: 16px around wordmark
+- Backgrounds: Prefer dark or plaid accent on hero
+- Do not skew, rotate, or recolor the wordmark outside the palette
