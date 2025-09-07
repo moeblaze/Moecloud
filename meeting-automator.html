@@ -33,6 +33,25 @@
 <div class="field"><label>Attendees</label><input class="input" id="mt_people" placeholder="Alex, Jordan, Sam"></div>
 <div class="field"><label>Agenda (one per line)</label><textarea class="input" id="mt_agenda" rows="5"></textarea></div>
 <div class="field"><label>Notes / Transcript</label><textarea class="input" id="mt_notes" rows="10"></textarea></div>
+<script>
+async function handleGen(e){{
+  e.preventDefault();
+  const body = {{
+    tool: 'meeting-automator',
+    prompt: `Create concise meeting minutes with decisions and action items.
+Title: ${{document.getElementById('mt_title').value}}
+Date: ${{document.getElementById('mt_date').value}}
+People: ${{document.getElementById('mt_people').value}}
+Agenda:
+${{document.getElementById('mt_agenda').value}}
+Notes:
+${{document.getElementById('mt_notes').value}}`
+  }};
+  const res = await mbccGenerate(body);
+  document.getElementById('mt_out').innerText = res?.text || '—';
+  return false;
+}}
+</script>
 
         <button class="btn">Generate</button>
       </form>
@@ -40,7 +59,9 @@
         <div class="badge">Output</div>
         <div id="mt_out" style="white-space:pre-wrap"></div>
         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-          <button class="btn" onclick="mbccSaveDraft({ tool: 'meeting-automator', input: collectInput(), output: document.getElementById('mt_out').innerText, ts: new Date().toISOString() })">Save Draft</button>
+          <button class="btn" onclick="copyText('mt_out')">Copy</button>
+          <button class="btn alt" onclick="printSection('mt_out')">Print / PDF</button>
+          <button class="btn" onclick="mbccSaveDraft({ tool:'meeting-automator', input: collectInput(), output: document.getElementById('mt_out').innerText, ts:new Date().toISOString() })">Save Draft</button>
         </div>
       </section>
     </div>
@@ -53,34 +74,20 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/tools.js"></script>
   <script src="assets/api.js"></script>
+  <script src="assets/tools.js"></script>
+  <script type="module">
+    import { attachTransformToolbar } from './assets/transforms.js';
+    function getText(){ return document.getElementById('mt_out').innerText; }
+    function setText(t){ document.getElementById('mt_out').innerText = t; }
+    attachTransformToolbar('mt_out', getText, setText, {});
+  </script>
   <script>
-  function collectInput(){
-    const data = {}
-    ;[...document.querySelectorAll('input, textarea, select')].forEach(el=>data[el.id||el.name||el.placeholder||el.type]=el.value);
-    return data;
-  }
-  
-async function handleGen(e){
-  e.preventDefault();
-  const body = {
-    tool: 'meeting-automator',
-    prompt: `Create concise meeting minutes and action items.
-Title: ${document.getElementById('mt_title').value}
-Date: ${document.getElementById('mt_date').value}
-People: ${document.getElementById('mt_people').value}
-Agenda:
-${document.getElementById('mt_agenda').value}
-Notes:
-${document.getElementById('mt_notes').value}`
-  };
-  const res = await mbccGenerate(body);
-  const text = res?.text || "—";
-  document.getElementById('mt_out').textContent = text;
-  return false;
-}
-
+    function collectInput(){
+      const data={};
+      document.querySelectorAll('input,textarea,select').forEach(el=>data[el.id||el.name||'field']=el.value);
+      return data;
+    }
   </script>
 </body>
 </html>

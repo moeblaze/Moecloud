@@ -32,6 +32,23 @@
 <div class="field"><label>Audience</label><input class="input" id="nl_aud" placeholder="Founders & operators"></div>
 <div class="field"><label>3 Key points (one per line)</label><textarea class="input" id="nl_points" rows="5"></textarea></div>
 <div class="field"><label>Primary CTA link</label><input class="input" id="nl_link" placeholder="https://www.moecommunitycloud.com"></div>
+<script>
+async function handleGen(e){{
+  e.preventDefault();
+  const body = {{
+    tool: 'newsletter-builder',
+    prompt: `Draft subject ideas, outline, opener, and 3 blocks + CTA HTML for a newsletter.
+Topic: ${{document.getElementById('nl_topic').value}}
+Audience: ${{document.getElementById('nl_aud').value}}
+Points:
+${{document.getElementById('nl_points').value}}
+CTA: ${{document.getElementById('nl_link').value}}`
+  }};
+  const res = await mbccGenerate(body);
+  document.getElementById('nl_out').innerText = res?.text || '—';
+  return false;
+}}
+</script>
 
         <button class="btn">Generate</button>
       </form>
@@ -39,7 +56,9 @@
         <div class="badge">Output</div>
         <div id="nl_out" style="white-space:pre-wrap"></div>
         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-          <button class="btn" onclick="mbccSaveDraft({ tool: 'newsletter-builder', input: collectInput(), output: document.getElementById('nl_out').innerText, ts: new Date().toISOString() })">Save Draft</button>
+          <button class="btn" onclick="copyText('nl_out')">Copy</button>
+          <button class="btn alt" onclick="printSection('nl_out')">Print / PDF</button>
+          <button class="btn" onclick="mbccSaveDraft({ tool:'newsletter-builder', input: collectInput(), output: document.getElementById('nl_out').innerText, ts:new Date().toISOString() })">Save Draft</button>
         </div>
       </section>
     </div>
@@ -52,31 +71,20 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/tools.js"></script>
   <script src="assets/api.js"></script>
+  <script src="assets/tools.js"></script>
+  <script type="module">
+    import { attachTransformToolbar } from './assets/transforms.js';
+    function getText(){ return document.getElementById('nl_out').innerText; }
+    function setText(t){ document.getElementById('nl_out').innerText = t; }
+    attachTransformToolbar('nl_out', getText, setText, {});
+  </script>
   <script>
-  function collectInput(){
-    const data = {}
-    ;[...document.querySelectorAll('input, textarea, select')].forEach(el=>data[el.id||el.name||el.placeholder||el.type]=el.value);
-    return data;
-  }
-  
-async function handleGen(e){
-  e.preventDefault();
-  const body = {
-    tool: 'newsletter-builder',
-    prompt: `Draft subject ideas, outline, opener, and 3 blocks + CTA HTML for a newsletter.
-Topic: ${document.getElementById('nl_topic').value}
-Audience: ${document.getElementById('nl_aud').value}
-Points:
-${document.getElementById('nl_points').value}
-CTA: ${document.getElementById('nl_link').value}`
-  };
-  const res = await mbccGenerate(body);
-  document.getElementById('nl_out').textContent = res?.text || '—';
-  return false;
-}
-
+    function collectInput(){
+      const data={};
+      document.querySelectorAll('input,textarea,select').forEach(el=>data[el.id||el.name||'field']=el.value);
+      return data;
+    }
   </script>
 </body>
 </html>

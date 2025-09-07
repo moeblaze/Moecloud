@@ -36,6 +36,26 @@
 Build|5500
 Launch|1000"></textarea></div>
 <div class="field"><label>Timeline</label><input class="input" id="pb_timeline" placeholder="4–6 weeks"></div>
+<script>
+async function handleGen(e){{
+  e.preventDefault();
+  const body = {{
+    tool: 'proposal-builder',
+    prompt: `Create a one-page proposal with pricing total.
+Client: ${{document.getElementById('pb_client').value}}
+Project: ${{document.getElementById('pb_title').value}}
+Problem: ${{document.getElementById('pb_problem').value}}
+Deliverables:
+${{document.getElementById('pb_delivs').value}}
+Prices:
+${{document.getElementById('pb_prices').value}}
+Timeline: ${{document.getElementById('pb_timeline').value}}`
+  }};
+  const res = await mbccGenerate(body);
+  document.getElementById('pb_out').innerText = res?.text || '—';
+  return false;
+}}
+</script>
 
         <button class="btn">Generate</button>
       </form>
@@ -43,7 +63,9 @@ Launch|1000"></textarea></div>
         <div class="badge">Output</div>
         <div id="pb_out" style="white-space:pre-wrap"></div>
         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-          <button class="btn" onclick="mbccSaveDraft({ tool: 'proposal-builder', input: collectInput(), output: document.getElementById('pb_out').innerText, ts: new Date().toISOString() })">Save Draft</button>
+          <button class="btn" onclick="copyText('pb_out')">Copy</button>
+          <button class="btn alt" onclick="printSection('pb_out')">Print / PDF</button>
+          <button class="btn" onclick="mbccSaveDraft({ tool:'proposal-builder', input: collectInput(), output: document.getElementById('pb_out').innerText, ts:new Date().toISOString() })">Save Draft</button>
         </div>
       </section>
     </div>
@@ -56,34 +78,20 @@ Launch|1000"></textarea></div>
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/tools.js"></script>
   <script src="assets/api.js"></script>
+  <script src="assets/tools.js"></script>
+  <script type="module">
+    import { attachTransformToolbar } from './assets/transforms.js';
+    function getText(){ return document.getElementById('pb_out').innerText; }
+    function setText(t){ document.getElementById('pb_out').innerText = t; }
+    attachTransformToolbar('pb_out', getText, setText, {});
+  </script>
   <script>
-  function collectInput(){
-    const data = {}
-    ;[...document.querySelectorAll('input, textarea, select')].forEach(el=>data[el.id||el.name||el.placeholder||el.type]=el.value);
-    return data;
-  }
-  
-async function handleGen(e){
-  e.preventDefault();
-  const body = {
-    tool: 'proposal-builder',
-    prompt: `Create a one-page proposal with pricing total.
-Client: ${document.getElementById('pb_client').value}
-Project: ${document.getElementById('pb_title').value}
-Problem: ${document.getElementById('pb_problem').value}
-Deliverables:
-${document.getElementById('pb_delivs').value}
-Prices:
-${document.getElementById('pb_prices').value}
-Timeline: ${document.getElementById('pb_timeline').value}`
-  };
-  const res = await mbccGenerate(body);
-  document.getElementById('pb_out').textContent = res?.text || '—';
-  return false;
-}
-
+    function collectInput(){
+      const data={};
+      document.querySelectorAll('input,textarea,select').forEach(el=>data[el.id||el.name||'field']=el.value);
+      return data;
+    }
   </script>
 </body>
 </html>

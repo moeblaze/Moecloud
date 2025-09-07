@@ -1,6 +1,6 @@
 
-// MBCC client API helpers
-const MBCC_SAVE_ENDPOINT = "https://<YOUR-FUNCTION-APP>.azurewebsites.net/api/save-draft?code=<FUNCTION_KEY>";
+// MBCC client API helpers (set these to your real Function URLs with ?code=...)
+const MBCC_SAVE_ENDPOINT     = "https://<YOUR-FUNCTION-APP>.azurewebsites.net/api/save-draft?code=<FUNCTION_KEY>";
 const MBCC_GENERATE_ENDPOINT = "https://<YOUR-FUNCTION-APP>.azurewebsites.net/api/generate?code=<FUNCTION_KEY>";
 
 async function mbccSaveDraft(payload){

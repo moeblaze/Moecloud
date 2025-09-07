@@ -38,6 +38,23 @@
     <option value="concise">Concise</option>
   </select>
 </div>
+<script>
+async function handleGen(e){{
+  e.preventDefault();
+  const tone = document.getElementById('em_tone').value;
+  const raw = document.getElementById('em_in').value;
+  const body = {{
+    tool: 'email-polisher',
+    prompt: `Rewrite the following inbound email into 3 reply drafts in a ${{tone}} tone with subject lines. Keep replies short but clear.
+
+INBOUND:
+${{raw}}`
+  }};
+  const res = await mbccGenerate(body);
+  document.getElementById('em_out').innerText = res?.text || '—';
+  return false;
+}}
+</script>
 
         <button class="btn">Generate</button>
       </form>
@@ -45,7 +62,9 @@
         <div class="badge">Output</div>
         <div id="em_out" style="white-space:pre-wrap"></div>
         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-          <button class="btn" onclick="mbccSaveDraft({ tool: 'email-polisher', input: collectInput(), output: document.getElementById('em_out').innerText, ts: new Date().toISOString() })">Save Draft</button>
+          <button class="btn" onclick="copyText('em_out')">Copy</button>
+          <button class="btn alt" onclick="printSection('em_out')">Print / PDF</button>
+          <button class="btn" onclick="mbccSaveDraft({ tool:'email-polisher', input: collectInput(), output: document.getElementById('em_out').innerText, ts:new Date().toISOString() })">Save Draft</button>
         </div>
       </section>
     </div>
@@ -58,31 +77,20 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/tools.js"></script>
   <script src="assets/api.js"></script>
+  <script src="assets/tools.js"></script>
+  <script type="module">
+    import { attachTransformToolbar } from './assets/transforms.js';
+    function getText(){ return document.getElementById('em_out').innerText; }
+    function setText(t){ document.getElementById('em_out').innerText = t; }
+    attachTransformToolbar('em_out', getText, setText, {});
+  </script>
   <script>
-  function collectInput(){
-    const data = {}
-    ;[...document.querySelectorAll('input, textarea, select')].forEach(el=>data[el.id||el.name||el.placeholder||el.type]=el.value);
-    return data;
-  }
-  
-async function handleGen(e){
-  e.preventDefault();
-  const tone = document.getElementById('em_tone').value;
-  const raw = document.getElementById('em_in').value;
-  const body = {
-    tool: 'email-polisher',
-    prompt: `Rewrite the following inbound email into 3 reply drafts in a ${tone} tone with subject lines. Keep replies short but clear.
-
-INBOUND:
-${raw}`
-  };
-  const res = await mbccGenerate(body);
-  document.getElementById('em_out').textContent = res?.text || '—';
-  return false;
-}
-
+    function collectInput(){
+      const data={};
+      document.querySelectorAll('input,textarea,select').forEach(el=>data[el.id||el.name||'field']=el.value);
+      return data;
+    }
   </script>
 </body>
 </html>
