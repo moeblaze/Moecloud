@@ -1,94 +1,164 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Newsletter — Moe Community Cloud</title>
-  <meta name="description" content="Join the Moe Community Cloud newsletter for new apps, services, giveaways, and valuable insights.">
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="assets/newsletter.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MBCC Newsletter — Moe Community Cloud</title>
+  <meta name="description" content="Fresh AI + tech news, sports, health, and funnies curated by Moe Community Cloud."/>
+  <link rel="stylesheet" href="assets/newsletter.css"/>
 </head>
-<body data-page="newsletter">
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="apps.html">Apps</a>
-        <a href="news.html">News</a>
-        <a href="sports.html">Sports</a>
-        <a href="newsletter.html" class="active">Newsletter</a>
+<body>
+  <header>
+    <div class="container navrow">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>MBCC Newsletter</h1>
+      </div>
+      <nav>
+        <a href="#ai-tech">AI & Tech</a>
+        <a href="#sports">Sports</a>
+        <a href="#health">Health</a>
+        <a href="#funnies">Funnies</a>
+        <div class="dropdown">
+          <button aria-haspopup="true" aria-expanded="false">More</button>
+          <div class="menu" role="menu">
+            <a href="#mcc-updates" role="menuitem">MCC Updates</a>
+            <a href="https://www.moecommunitycloud.com/" role="menuitem" target="_blank" rel="noopener">Home</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero reveal">
-      <div class="card glow">
-        <div class="badge gold">MBCC Newsletter</div>
-        <h2 style="margin:6px 0">Welcome to MoeCommunityCloud.com</h2>
-        <p class="kicker">Get exclusive access to new apps, services, giveaways, and valuable information.</p>
-        <form data-newsletter style="margin-top:10px">
-          <div class="row">
-            <input class="input" type="email" name="email" placeholder="you@example.com" required>
-            <input class="input" type="text"  name="name"  placeholder="Your name (optional)">
-          </div>
-          <div class="row">
-            <label class="small"><input type="checkbox" name="ai" value="1"> AI & Apps</label>
-            <label class="small"><input type="checkbox" name="tech" value="1"> Tech</label>
-            <label class="small"><input type="checkbox" name="sports" value="1"> Sports</label>
-            <label class="small"><input type="checkbox" name="health" value="1"> Health/Lifestyle</label>
-          </div>
-          <div class="cta-row" style="margin-top:8px">
-            <button class="btn">Join the newsletter</button>
-            <a class="btn alt" href="#" data-open="#privacy">Privacy</a>
-          </div>
-          <div class="tiny" data-msg style="margin-top:6px"></div>
-        </form>
-        <div style="margin-top:12px" class="small">No spam. Unsubscribe anytime.</div>
-      </div>
-      <aside class="card glow sponsor">
-        <div class="badge gold">Prime Sponsor</div>
-        <div class="imgwrap" style="margin-top:6px">
-          <img src="assets/img/darwynn.jpg" alt="Darwynn McPherson" onerror="this.style.display='none'">
-        </div>
-        <h3>Darwynn McPherson</h3>
-        <div class="tiny">Mating Market Consultant • Husband • Father • Veteran • Athlete</div>
-        <p style="margin-top:8px">
-          Darwynn champions self‑improvement and better relationships for men. He also gave Moe his first YouTube donation—salute!
-        </p>
-        <a class="readmore" href="https://www.youtube.com/@darwynnmcpherson" target="_blank" rel="noopener">Watch his channel →</a>
-      </aside>
-    </section>
-
-    <section class="reveal" style="margin-top:16px">
-      <div class="card glow">
-        <h3>What’s inside (preview)</h3>
-        <div class="article-list"></div>
-      </div>
-    </section>
-
-    <section aria-label="sponsored" style="margin-top:16px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </section>
-  </main>
-
-  <footer class="footer">
+  <div class="hero">
     <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-    </div>
-  </footer>
-
-  <div class="modal" id="privacy" aria-hidden="true">
-    <div class="box">
-      <div style="display:flex;justify-content:space-between;align-items:center"><h3>Privacy</h3><a href="#" data-close>&times;</a></div>
-      <p class="small">We collect your email (and optional fields) solely to send the MBCC newsletter. We never sell your data. Unsubscribe anytime via the link in each email.</p>
+      <h2>Fresh stories for Sep 07, 2025</h2>
+      <p>Quick, credible, and clean. Curated AI + tech updates, sports highlights, health pointers, and a little fun — all in Moe Community Cloud style.</p>
     </div>
   </div>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script defer src="assets/newsletter.js"></script>
+  <section id="ai-tech" class="container">
+    <h2>AI &amp; Tech</h2>
+    <div class="grid">
+      
+    <article class="card" id="openai-unveils-gpt‑5:-a-major-step-up-in-reasoning,-coding-and-multimodal-ai">
+      <span class="badge ">AI / Tech</span>
+      <h3>OpenAI unveils GPT‑5: a major step up in reasoning, coding and multimodal AI</h3>
+      <div class="meta">Aug 7, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>OpenAI announced GPT‑5, describing significant gains in complex reasoning, coding, math and multimodal perception. The company frames GPT‑5 as a unified system that adjusts how “fast” or “deliberate” it thinks, with improved reliability across enterprise and consumer use cases.</p>
+      <div class="source">Source: <a href="https://openai.com/index/introducing-gpt-5/" target="_blank" rel="noopener">OpenAI</a></div>
+    </article>
+    
+      
+    <article class="card" id="google-clarifies-gemini-usage-limits-across-free,-pro-and-ultra-tiers">
+      <span class="badge ">AI / Tech</span>
+      <h3>Google clarifies Gemini usage limits across free, Pro and Ultra tiers</h3>
+      <div class="meta">Sep 7, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>Google published detailed daily caps for Gemini: free accounts get limited prompts with Gemini 2.5 Pro and image generation, while AI Pro and Ultra subscriptions raise both prompt and image limits substantially. It’s the clearest breakdown of Gemini access so far.</p>
+      <div class="source">Source: <a href="https://www.theverge.com/news/773496/google-gemini-usage-limits" target="_blank" rel="noopener">The Verge</a></div>
+    </article>
+    
+      
+    <article class="card" id="despite-pressure,-chinese-firms-still-seek-nvidia-chips">
+      <span class="badge ">AI / Tech</span>
+      <h3>Despite pressure, Chinese firms still seek Nvidia chips</h3>
+      <div class="meta">Sep 4, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>Reuters reports many Chinese companies continue pursuing Nvidia accelerators despite government pressure, underscoring ongoing demand for high‑end AI hardware and the global complexity of chip supply and policy.</p>
+      <div class="source">Source: <a href="https://www.reuters.com/world/china/chinese-firms-still-want-nvidia-chips-despite-government-pressure-not-buy-2025-09-04/" target="_blank" rel="noopener">Reuters</a></div>
+    </article>
+    
+    </div>
+  </section>
+
+  <section id="sports" class="container">
+    <h2>Sports</h2>
+    <div class="grid">
+      
+    <article class="card" id="nfl-is-back:-chargers-beat-chiefs-27–21-in-brazil-season-opener">
+      <span class="badge sports">Sports</span>
+      <h3>NFL is back: Chargers beat Chiefs 27–21 in Brazil season opener</h3>
+      <div class="meta">Sep 6, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>Justin Herbert threw for 318 yards and 3 TDs as the Chargers edged the Chiefs 27–21 in São Paulo. Coverage notes the late first‑down scramble that sealed it and the international fanfare around the matchup.</p>
+      <div class="source">Source: <a href="https://www.espn.com/nfl/recap?gameId=401772714" target="_blank" rel="noopener">ESPN / Reuters</a></div>
+    </article>
+    
+      
+    <article class="card" id="week-1-continues-today-—-full-slate-and-tv-listings">
+      <span class="badge sports">Sports</span>
+      <h3>Week 1 continues today — full slate and TV listings</h3>
+      <div class="meta">Sep 7, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>Week 1 features a packed Sunday slate across the early and late windows and a primetime cap, with streaming and broadcast options by region.</p>
+      <div class="source">Source: <a href="https://www.nfl.com/schedules/2025/reg1/" target="_blank" rel="noopener">NFL.com</a></div>
+    </article>
+    
+      
+    <article class="card" id="track-worlds-start-sep-13-in-tokyo-—-melissa-jefferson‑wooden-enters-as-100m-favorite">
+      <span class="badge sports">Sports</span>
+      <h3>Track Worlds start Sep 13 in Tokyo — Melissa Jefferson‑Wooden enters as 100m favorite</h3>
+      <div class="meta">Sep 7, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>The World Athletics Championships run Sep 13–21 in Tokyo. After a 10.65 at US nationals and more Diamond League wins, Melissa Jefferson‑Wooden is widely tipped in the women’s 100m. USATF has named her to the Worlds roster.</p>
+      <div class="source">Source: <a href="https://worldathletics.org/en/competitions/world-athletics-championships/tokyo25/timetable" target="_blank" rel="noopener">World Athletics / Reuters / USATF / Olympics.com</a></div>
+    </article>
+    
+    </div>
+  </section>
+
+  <section id="health" class="container">
+    <h2>Health &amp; Lifestyle</h2>
+    <div class="grid">
+      
+    <article class="card" id="cdc:-everyone-6-months+-should-get-a-2025‑26-flu-shot,-ideally-in-september–october">
+      <span class="badge health">Health & Lifestyle</span>
+      <h3>CDC: Everyone 6 months+ should get a 2025‑26 flu shot, ideally in September–October</h3>
+      <div class="meta">Aug 6 & Aug 28, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>CDC published its seasonal guidance for 2025–26: annual vaccination is recommended for nearly all people 6 months and older. ACIP notes September or October is an ideal window for most groups.</p>
+      <div class="source">Source: <a href="https://www.cdc.gov/flu/season/2025-2026.html" target="_blank" rel="noopener">CDC</a></div>
+    </article>
+    
+      
+    <article class="card" id="aha-acc-issue-first-new-blood-pressure-guideline-since-2017">
+      <span class="badge health">Health & Lifestyle</span>
+      <h3>AHA/ACC issue first new blood pressure guideline since 2017</h3>
+      <div class="meta">Aug 14, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>The 2025 hypertension guideline emphasizes prevention and earlier, personalized treatment, introduces the PREVENT risk calculator, and reinforces lifestyle therapy as first‑line care, with clear treatment targets and standardized measurement protocols.</p>
+      <div class="source">Source: <a href="https://newsroom.heart.org/news/new-high-blood-pressure-guideline-emphasizes-prevention-early-treatment-to-reduce-cvd-risk" target="_blank" rel="noopener">American Heart Association / ACC</a></div>
+    </article>
+    
+    </div>
+  </section>
+
+  <section id="funnies" class="container">
+    <h2>Funnies</h2>
+    <div class="grid">
+      
+    <article class="card" id="1,700‑pound-horse-rescued-from-muddy-field-by-firefighters">
+      <span class="badge fun">Funnies / Oddities</span>
+      <h3>1,700‑pound horse rescued from muddy field by firefighters</h3>
+      <div class="meta">Sep 4, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>In Britain, firefighters helped free a 1,700‑pound Belgian draft horse after it sank into mud behind an electric fence — the latest animal rescue to capture the internet’s heart.</p>
+      <div class="source">Source: <a href="https://www.upi.com/Odd_News/" target="_blank" rel="noopener">UPI Odd News</a></div>
+    </article>
+    
+    </div>
+  </section>
+
+  <section id="mcc-updates" class="container">
+    <h2>MCC Updates</h2>
+    <div class="grid">
+      
+    <article class="card" id="what’s-new-at-moe-community-cloud">
+      <span class="badge ">MCC Updates</span>
+      <h3>What’s new at Moe Community Cloud</h3>
+      <div class="meta">Sep 7, 2025 • <span class="kicker">~2 min read</span></div>
+      <p>Coming up: expanded MCC Sports AI Suite (Pick‑6 PrizePicks‑style, MLB focus), new AI image studio, and a revamped newsletter hub. Join the community to test early features and get monetization guides.</p>
+      <div class="source">Source: <a href="https://www.moecommunitycloud.com/" target="_blank" rel="noopener">MCC</a></div>
+    </article>
+    
+    </div>
+  </section>
+
+  <div class="footer">
+    © 2025 Moe Community Cloud — MBCC A.I. Suite • <a href="assets/feed.json" target="_blank" rel="noopener">Feed JSON</a>
+  </div>
 </body>
 </html>

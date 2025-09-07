@@ -1,0 +1,95 @@
+{
+  "generated_on": "2025-09-07",
+  "articles": [
+    {
+      "category": "AI / Tech",
+      "badge_class": "",
+      "title": "OpenAI unveils GPT\u20115: a major step up in reasoning, coding and multimodal AI",
+      "date": "Aug 7, 2025",
+      "source": "OpenAI",
+      "url": "https://openai.com/index/introducing-gpt-5/",
+      "summary": "OpenAI announced GPT\u20115, describing significant gains in complex reasoning, coding, math and multimodal perception. The company frames GPT\u20115 as a unified system that adjusts how \u201cfast\u201d or \u201cdeliberate\u201d it thinks, with improved reliability across enterprise and consumer use cases."
+    },
+    {
+      "category": "AI / Tech",
+      "badge_class": "",
+      "title": "Google clarifies Gemini usage limits across free, Pro and Ultra tiers",
+      "date": "Sep 7, 2025",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/news/773496/google-gemini-usage-limits",
+      "summary": "Google published detailed daily caps for Gemini: free accounts get limited prompts with Gemini 2.5 Pro and image generation, while AI Pro and Ultra subscriptions raise both prompt and image limits substantially. It\u2019s the clearest breakdown of Gemini access so far."
+    },
+    {
+      "category": "AI / Tech",
+      "badge_class": "",
+      "title": "Despite pressure, Chinese firms still seek Nvidia chips",
+      "date": "Sep 4, 2025",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/china/chinese-firms-still-want-nvidia-chips-despite-government-pressure-not-buy-2025-09-04/",
+      "summary": "Reuters reports many Chinese companies continue pursuing Nvidia accelerators despite government pressure, underscoring ongoing demand for high\u2011end AI hardware and the global complexity of chip supply and policy."
+    },
+    {
+      "category": "Sports",
+      "badge_class": "sports",
+      "title": "NFL is back: Chargers beat Chiefs 27\u201321 in Brazil season opener",
+      "date": "Sep 6, 2025",
+      "source": "ESPN / Reuters",
+      "url": "https://www.espn.com/nfl/recap?gameId=401772714",
+      "summary": "Justin Herbert threw for 318 yards and 3 TDs as the Chargers edged the Chiefs 27\u201321 in S\u00e3o Paulo. Coverage notes the late first\u2011down scramble that sealed it and the international fanfare around the matchup."
+    },
+    {
+      "category": "Sports",
+      "badge_class": "sports",
+      "title": "Week 1 continues today \u2014 full slate and TV listings",
+      "date": "Sep 7, 2025",
+      "source": "NFL.com",
+      "url": "https://www.nfl.com/schedules/2025/reg1/",
+      "summary": "Week 1 features a packed Sunday slate across the early and late windows and a primetime cap, with streaming and broadcast options by region."
+    },
+    {
+      "category": "Sports",
+      "badge_class": "sports",
+      "title": "Track Worlds start Sep 13 in Tokyo \u2014 Melissa Jefferson\u2011Wooden enters as 100m favorite",
+      "date": "Sep 7, 2025",
+      "source": "World Athletics / Reuters / USATF / Olympics.com",
+      "url": "https://worldathletics.org/en/competitions/world-athletics-championships/tokyo25/timetable",
+      "summary": "The World Athletics Championships run Sep 13\u201321 in Tokyo. After a 10.65 at US nationals and more Diamond League wins, Melissa Jefferson\u2011Wooden is widely tipped in the women\u2019s 100m. USATF has named her to the Worlds roster."
+    },
+    {
+      "category": "Health & Lifestyle",
+      "badge_class": "health",
+      "title": "CDC: Everyone 6 months+ should get a 2025\u201126 flu shot, ideally in September\u2013October",
+      "date": "Aug 6 & Aug 28, 2025",
+      "source": "CDC",
+      "url": "https://www.cdc.gov/flu/season/2025-2026.html",
+      "summary": "CDC published its seasonal guidance for 2025\u201326: annual vaccination is recommended for nearly all people 6 months and older. ACIP notes September or October is an ideal window for most groups."
+    },
+    {
+      "category": "Health & Lifestyle",
+      "badge_class": "health",
+      "title": "AHA/ACC issue first new blood pressure guideline since 2017",
+      "date": "Aug 14, 2025",
+      "source": "American Heart Association / ACC",
+      "url": "https://newsroom.heart.org/news/new-high-blood-pressure-guideline-emphasizes-prevention-early-treatment-to-reduce-cvd-risk",
+      "summary": "The 2025 hypertension guideline emphasizes prevention and earlier, personalized treatment, introduces the PREVENT risk calculator, and reinforces lifestyle therapy as first\u2011line care, with clear treatment targets and standardized measurement protocols."
+    },
+    {
+      "category": "Funnies / Oddities",
+      "badge_class": "fun",
+      "title": "1,700\u2011pound horse rescued from muddy field by firefighters",
+      "date": "Sep 4, 2025",
+      "source": "UPI Odd News",
+      "url": "https://www.upi.com/Odd_News/",
+      "summary": "In Britain, firefighters helped free a 1,700\u2011pound Belgian draft horse after it sank into mud behind an electric fence \u2014 the latest animal rescue to capture the internet\u2019s heart."
+    },
+    {
+      "category": "MCC Updates",
+      "badge_class": "",
+      "title": "What\u2019s new at Moe Community Cloud",
+      "date": "Sep 7, 2025",
+      "source": "MCC",
+      "url": "https://www.moecommunitycloud.com/",
+      "summary": "Coming up: expanded MCC Sports AI Suite (Pick\u20116 PrizePicks\u2011style, MLB focus), new AI image studio, and a revamped newsletter hub. Join the community to test early features and get monetization guides."
+    }
+  ]
+}
