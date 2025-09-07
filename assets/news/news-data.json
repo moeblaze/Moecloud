@@ -1,0 +1,73 @@
+{
+  "ai": {
+    "headlines": [
+      {
+        "title": "Reuters AI news \u2014 latest",
+        "url": "https://www.reuters.com/technology/artificial-intelligence/",
+        "source": "Reuters"
+      },
+      {
+        "title": "TechCrunch \u2014 AI",
+        "url": "https://techcrunch.com/category/artificial-intelligence/",
+        "source": "TechCrunch"
+      },
+      {
+        "title": "OpenAI Blog",
+        "url": "https://openai.com/blog",
+        "source": "OpenAI"
+      }
+    ]
+  },
+  "tech": {
+    "headlines": [
+      {
+        "title": "The Verge \u2014 Tech",
+        "url": "https://www.theverge.com/tech",
+        "source": "The Verge"
+      },
+      {
+        "title": "Ars Technica \u2014 Main",
+        "url": "https://arstechnica.com/",
+        "source": "Ars Technica"
+      },
+      {
+        "title": "Engadget \u2014 Latest",
+        "url": "https://www.engadget.com/latest/",
+        "source": "Engadget"
+      }
+    ]
+  },
+  "funny": {
+    "headlines": [
+      {
+        "title": "UPI Odd News",
+        "url": "https://www.upi.com/Odd_News/",
+        "source": "UPI Odd News"
+      },
+      {
+        "title": "The Onion (satire)",
+        "url": "https://www.theonion.com/",
+        "source": "The Onion"
+      }
+    ]
+  },
+  "health": {
+    "headlines": [
+      {
+        "title": "WHO \u2014 Newsroom",
+        "url": "https://www.who.int/news",
+        "source": "WHO"
+      },
+      {
+        "title": "Reuters \u2014 Health",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/",
+        "source": "Reuters"
+      },
+      {
+        "title": "CDC \u2014 Newsroom",
+        "url": "https://www.cdc.gov/media/index.html",
+        "source": "CDC"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+
+/* Cards & grid */
+.grid.responsive{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px }
+.card.glow{ position:relative; background:#0e0e0e; color:#fff; border-radius:16px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.28); }
+.card.glow::before{ content:""; position:absolute; inset:-2px; border-radius:18px; padding:2px; background:linear-gradient(135deg,#d4af37,#a8841d,#ffd700);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; animation: shine 4s linear infinite; }
+@keyframes shine{ 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
+.badge.news{ background:#7d0a0a; color:#fff }
+.kicker{ opacity:.9 }
+.reveal{opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease;}
+.reveal.in-view{opacity:1; transform:none;}
+
+.headlines{ overflow:hidden; border-radius:12px; border:1px solid #333; background:#0e0e0e; margin-top:8px }
+.headlines .track{ display:flex; gap:22px; padding:10px 14px; animation: slide 28s linear infinite; }
+.headlines .item{ white-space:nowrap; }
+.headlines .item a{ color:#d4af37; text-decoration:none; }
+.headlines:hover .track{ animation-play-state: paused; }
+@keyframes slide{ 0%{ transform: translateX(0);} 100%{ transform: translateX(-50%);} }
+
+.article-list{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:12px; margin-top:12px }
+.article{ background:#0e0e0e; border:1px solid #333; border-radius:12px; padding:12px }
+.article a{ color:#d4af37; text-decoration:none }
+.article .src{ font-size:.85rem; opacity:.75 }
+
+/* Dropdown for News */
+.nav .dropdown{ position:relative }
+.nav .dropdown > a::after{ content:"▾"; margin-left:6px; font-size:.8em }
+.nav .menu{ position:absolute; left:0; top:100%; background:#0e0e0e; border:1px solid #333; border-radius:12px; padding:8px; display:none; min-width:210px; box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.nav .menu a{ display:block; padding:8px 10px; border-radius:8px; }
+.nav .menu a:hover{ background:#1a1a1a }
+.nav .dropdown:hover .menu, .nav .dropdown:focus-within .menu{ display:block }
+@media (max-width: 900px){ .nav .menu{ position:static; display:block; border:0; box-shadow:none; padding:0; } .nav .dropdown > a::after{ display:none } }
