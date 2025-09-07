@@ -1,0 +1,3 @@
+/* No-bleed for prime sponsor hero image */
+.prime-logo.lg { background:#000; }
+.prime-logo.lg img { object-fit: contain !important; }
