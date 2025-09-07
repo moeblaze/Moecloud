@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletter Issue Builder — MBCC</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+      </div>
+      <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class='active'>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+    </div>
+  </header>
+<main class="container">
+  <h2>Newsletter Issue Builder</h2>
+  <p class="kicker">Draft subject lines, outline, opener, blocks, and CTA. Copy as plain text or HTML fragment for your ESP.</p>
+  <div class="grid cols-2">
+    <form class="card" onsubmit="return buildIssue(event)">
+      <div class="field"><label>Topic</label><input class="input" id="nl_topic" placeholder="September product update"></div>
+      <div class="field"><label>Audience</label><input class="input" id="nl_aud" placeholder="Founders & operators"></div>
+      <div class="field"><label>3 Key points (one per line)</label><textarea class="input" id="nl_points" rows="5" placeholder="Faster load times
+New dashboard
+Referral rewards"></textarea></div>
+      <div class="field"><label>Primary CTA link</label><input class="input" id="nl_link" placeholder="https://www.moecommunitycloud.com"></div>
+      <button class="btn">Generate Draft</button>
+    </form>
+
+    <section class="card">
+      <div class="badge">Draft</div>
+      <div id="nl_text" style="white-space:pre-wrap; margin-bottom:10px"></div>
+      <div class="badge">HTML Fragment</div>
+      <pre id="nl_html" class="card" style="white-space:pre-wrap; overflow:auto"></pre>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn" onclick="copyText('nl_text')">Copy Text</button>
+        <button class="btn" onclick="copyText('nl_html')">Copy HTML</button>
+        <button class="btn alt" onclick="printSection('nl_text')">Print / Save PDF</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script src="assets/tools.js"></script>
+<script>
+function buildIssue(e){
+  e.preventDefault();
+  const topic = document.getElementById('nl_topic').value || 'Update';
+  const aud   = document.getElementById('nl_aud').value || 'Customers';
+  const pts   = lines(document.getElementById('nl_points').value);
+  const link  = document.getElementById('nl_link').value || '#';
+
+  const subs = [
+    topic + ': what’s new',
+    topic + ' — quick tour',
+    topic + ' for ' + aud
+  ];
+  const opener = 'Hey ' + aud + ',\n\nHere’s what’s new in ' + topic + '. We focused on clarity, speed, and value. Quick highlights below—then dive in.';
+  const bullets = pts.map(p=>'• '+sanitize(p)).join('\n');
+
+  const text = 'Subject ideas:\n- ' + subs.join('\n- ') + '\n\n' +
+               'Outline:\n• Opener\n• 3 highlights\n• CTA\n• Footer\n\n' +
+               'Opener:\n' + opener + '\n\n' +
+               'Highlights:\n' + bullets + '\n\n' +
+               'CTA:\nRead more → ' + link + '\n\n' +
+               'Preview text:\n' + topic + ' — highlights inside.';
+
+  const html = '<h2>'+sanitize(topic)+'</h2>\n' +
+               '<p>Hey '+sanitize(aud)+',</p>\n' +
+               '<p>Here’s what’s new in <strong>'+sanitize(topic)+'</strong>. We focused on clarity, speed, and value.</p>\n' +
+               '<ul>\n  ' + pts.map(p=>'<li>'+sanitize(p)+'</li>').join('\n  ') + '\n</ul>\n' +
+               '<p><a href="'+sanitize(link)+'" target="_blank" rel="noopener">Read more →</a></p>\n' +
+               '<hr>\n' +
+               '<p style="font-size:12px;color:#888">You’re receiving this because you joined Moe Community Cloud.</p>';
+
+  document.getElementById('nl_text').textContent = text;
+  document.getElementById('nl_html').textContent = html;
+  return false;
+}
+</script>
+</body>
+</html>

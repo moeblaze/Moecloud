@@ -8,41 +8,58 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  
-<header class="header">
-  <div class="container header-row">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
-    </div>
-    <nav class="nav"><a href='index.html' class=''>Home</a>
+
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+      </div>
+      <nav class="nav"><a href='index.html' class=''>Home</a>
 <a href='apps.html' class='active'>Apps</a>
 <a href='news.html' class=''>News</a>
 <a href='sports.html' class=''>Sports</a>
 <a href='newsletter.html' class=''>Newsletter</a></nav>
-  </div>
-</header>
-
+    </div>
+  </header>
   <main class="container">
     <h2>Apps & Tools</h2>
-    <p class="kicker">All apps follow our responsive, card-based UI with animations.</p>
+    <p class="kicker">Quick wins. No heavy integrations. Ship value fast.</p>
     <div class="grid cols-4">
-      <div class="card" id="sports"><h3>Sports AI Suite</h3><p>Live scores and sports updates (optimizer coming later).</p><a class="btn" href="#">Launch</a></div>
-      <div class="card" id="learning"><h3>MOE Learning</h3><p>Corporate training, quizzes, AI mentorship.</p><a class="btn" href="#">Launch</a></div>
-      <div class="card" id="studio"><h3>Image Studio</h3><p>AI image generation & editing workflows.</p><a class="btn" href="#">Launch</a></div>
-      <div class="card" id="smarthome"><h3>Smart Home Automation</h3><p>Cloud-based automation dashboard.</p><a class="btn" href="#">Launch</a></div>
+      <div class="card">
+        <span class="badge">New</span>
+        <h3>Meeting & Workflow Automator</h3>
+        <p>Paste agenda/notes → get minutes, action items, and a follow‑up email draft.</p>
+        <a class="btn" href="meeting-automator.html">Open</a>
+      </div>
+      <div class="card">
+        <span class="badge">New</span>
+        <h3>Email Reply & Tone Polisher</h3>
+        <p>Turn a messy inbound email into 3 clean, on‑tone replies + subjects.</p>
+        <a class="btn" href="email-polisher.html">Open</a>
+      </div>
+      <div class="card">
+        <span class="badge">New</span>
+        <h3>Proposal / Quote Builder</h3>
+        <p>Generate a clean one‑page proposal with pricing table and total.</p>
+        <a class="btn" href="proposal-builder.html">Open</a>
+      </div>
+      <div class="card">
+        <span class="badge">New</span>
+        <h3>Newsletter Issue Builder</h3>
+        <p>Subject lines, outline, opener, content blocks, CTA — ready for your ESP.</p>
+        <a class="btn" href="newsletter-builder.html">Open</a>
+      </div>
     </div>
   </main>
-  
-<footer class="footer">
-  <div class="container">
-    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-  </div>
-</footer>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 </body>
 </html>

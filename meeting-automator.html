@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meeting & Workflow Automator — MBCC</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+      </div>
+      <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class='active'>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+    </div>
+  </header>
+<main class="container">
+  <h2>Meeting & Workflow Automator</h2>
+  <p class="kicker">Paste agenda/notes. Get minutes, action items, decisions, and a follow‑up email draft — ready to print or copy.</p>
+  <div class="grid cols-2">
+    <form class="card" onsubmit="return generateMeeting(event)">
+      <div class="field"><label>Meeting title</label><input class="input" id="mt_title" placeholder="Weekly Ops Sync"></div>
+      <div class="field"><label>Date</label><input class="input" id="mt_date" type="date"></div>
+      <div class="field"><label>Attendees (comma‑separated)</label><input class="input" id="mt_people" placeholder="Alex, Jordan, Sam"></div>
+      <div class="field"><label>Agenda (optional)</label><textarea class="input" id="mt_agenda" rows="5" placeholder="- Q3 goals
+- Hiring plan
+- Risks"></textarea></div>
+      <div class="field"><label>Notes / Transcript (optional)</label><textarea class="input" id="mt_notes" rows="10" placeholder="Paste rough notes or transcript..."></textarea></div>
+      <button class="btn">Generate Minutes</button>
+    </form>
+
+    <section class="card" id="mt_output">
+      <div class="badge">Output</div>
+      <div id="mt_render" style="white-space:pre-wrap"></div>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn" onclick="copyText('mt_render')">Copy</button>
+        <button class="btn alt" onclick="printSection('mt_render')">Print / Save PDF</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script src="assets/tools.js"></script>
+<script>
+function parseActionItems(text){
+  const items = [];
+  lines(text).forEach(l=>{ 
+    if (/^(-|\*|\d+\.)\s+/i.test(l) || /action|todo/i.test(l)){
+      const m = l.match(/(?<who>[A-Z][a-zA-Z]+)?:?\s*(?<task>.+?)(?:\s+by\s+(?<due>\d{1,2}[\/\-]\d{1,2}(?:[\/\-]\d{2,4})?))/);
+      items.push({
+        raw:l,
+        who: (m?.groups?.who||'Owner TBD').trim(),
+        task: (m?.groups?.task||l).trim(),
+        due: (m?.groups?.due||'TBD').trim()
+      });
+    }
+  });
+  return items;
+}
+function generateMeeting(e){
+  e.preventDefault();
+  const title = document.getElementById('mt_title').value || 'Meeting';
+  const date  = document.getElementById('mt_date').value || new Date().toISOString().slice(0,10);
+  const ppl   = lines(document.getElementById('mt_people').value).join(', ');
+  const agenda= document.getElementById('mt_agenda').value;
+  const notes = document.getElementById('mt_notes').value;
+
+  const actions = parseActionItems(notes);
+  const decisions = lines(notes).filter(l=>/decided|decision|agreed/i.test(l));
+  const bullets = lines(agenda).map(s=>'• '+s).join('\n');
+
+  let out = '# ' + sanitize(title) + '\n' +
+            'Date: ' + sanitize(date) + '\n' +
+            'Attendees: ' + (sanitize(ppl)||'—') + '\n\n' +
+            '## Agenda\n' + (bullets||'—') + '\n\n' +
+            '## Summary\n' + (notes? sanitize(notes)+'\n\n' : '—\n\n') +
+            '## Decisions\n' + (decisions.length? decisions.map(d=>'• '+sanitize(d)).join('\n') : '—') + '\n\n' +
+            '## Action Items\n' + (actions.length? actions.map(a=>'• '+sanitize(a.task)+' — '+sanitize(a.who)+' (Due: '+sanitize(a.due)+')').join('\n') : '—') + '\n\n' +
+            '## Follow‑up Email Draft\n' +
+            'Subject: Follow‑up — ' + sanitize(title) + ' (' + sanitize(date) + ')\n\n' +
+            'Hi team,\n\nHere are the notes and action items from ' + sanitize(title) + ' (' + sanitize(date) + ').\n\n' +
+            'Decisions:\n' + (decisions.length? decisions.map(d=>'• '+sanitize(d)).join('\n') : '• (none)') + '\n\n' +
+            'Action items:\n' + (actions.length? actions.map(a=>'• '+sanitize(a.task)+' — '+sanitize(a.who)+' (Due: '+sanitize(a.due)+')').join('\n') : '• (none)') + '\n\n' +
+            'Best,\n';
+  document.getElementById('mt_render').textContent = out;
+  return false;
+}
+</script>
+</body>
+</html>

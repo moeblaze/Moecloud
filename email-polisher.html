@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email Reply & Tone Polisher — MBCC</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+      </div>
+      <nav class="nav"><a href='index.html' class=''>Home</a>
+<a href='apps.html' class='active'>Apps</a>
+<a href='news.html' class=''>News</a>
+<a href='sports.html' class=''>Sports</a>
+<a href='newsletter.html' class=''>Newsletter</a></nav>
+    </div>
+  </header>
+<main class="container">
+  <h2>Email Reply & Tone Polisher</h2>
+  <p class="kicker">Paste an inbound email and choose a tone. Get three reply options + subjects.</p>
+  <div class="grid cols-2">
+    <form class="card" onsubmit="return polishEmail(event)">
+      <div class="field"><label>Inbound email</label><textarea class="input" id="em_in" rows="12" placeholder="Paste the email you received..."></textarea></div>
+      <div class="field"><label>Tone</label>
+        <select class="input" id="em_tone">
+          <option value="professional">Professional</option>
+          <option value="friendly">Friendly</option>
+          <option value="firm">Firm</option>
+          <option value="apologetic">Apologetic</option>
+          <option value="concise">Extra concise</option>
+        </select>
+      </div>
+      <button class="btn">Generate Replies</button>
+    </form>
+    <section class="card">
+      <div class="badge">Replies</div>
+      <div id="em_out" style="white-space:pre-wrap"></div>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn" onclick="copyText('em_out')">Copy</button>
+        <button class="btn alt" onclick="printSection('em_out')">Print / Save PDF</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script src="assets/tools.js"></script>
+<script>
+function makeSubjects(summary){
+  return [
+    'Re: ' + summary,
+    summary + ' — quick follow‑up',
+    summary + ' — next steps'
+  ];
+}
+function summarizeEmail(txt){
+  const first = (txt||'').split(/\n+/).map(s=>s.trim()).filter(Boolean)[0] || 'your message';
+  return first.slice(0, 80);
+}
+function polishEmail(e){
+  e.preventDefault();
+  const raw = document.getElementById('em_in').value || '';
+  const tone = document.getElementById('em_tone').value;
+  const brief = summarizeEmail(raw);
+  const subjects = makeSubjects(brief);
+
+  const base = 'Thanks for reaching out. ' + (tone==='apologetic'?'We’re sorry for the inconvenience. ':'') + 'I’ve reviewed your message below.';
+  const closer = (tone==='firm') ? 'Regards,' : 'Best,';
+  const sign = '— MBCC Team';
+
+  const variants = [
+'Subject: ' + subjects[0] + '\n\nHi there,\n\n' + base + ' Here’s the plan to resolve this:\n• Clarify the goal/outcome\n• Confirm owner and timeline\n• Share the next check‑in\n\n' + closer + '\n' + sign,
+'Subject: ' + subjects[1] + '\n\nHello,\n\n' + base + ' Here are your options:\n1) Option A — recommended\n2) Option B — alternate\n3) Option C — defer\n\n' + closer + '\n' + sign,
+'Subject: ' + subjects[2] + '\n\nHi,\n\n' + (tone==='concise'?'Thanks — see answers below.':'Thanks for your note. Here are next steps:') + '\n• We’ll confirm details\n• We’ll propose a timeline\n• We’ll share updates\n\n' + closer + '\n' + sign
+  ];
+
+  document.getElementById('em_out').textContent = variants.join('\n\n---\n\n') + '\n\nOriginal message:\n' + raw;
+  return false;
+}
+</script>
+</body>
+</html>
