@@ -1,0 +1,43 @@
+
+/* Prime Sponsor Ribbon (sitewide) */
+.prime-ribbon { margin: 20px auto; }
+.prime-ribbon-card {
+  position: relative;
+  background: #0e0e0e;
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.28);
+}
+.prime-ribbon-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg,#d4af37,#a8841d,#ffd700);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: ribbonShine 4s linear infinite;
+}
+@keyframes ribbonShine { 0% { filter:hue-rotate(0deg) } 100% { filter:hue-rotate(360deg) } }
+
+.prime-ribbon-card .logo {
+  width: 72px; height: 72px; border-radius: 12px;
+  border: 2px solid #d4af37; overflow: hidden; background:#111;
+  display:flex; align-items:center; justify-content:center;
+}
+.prime-ribbon-card .logo img { width:100%; height:100%; object-fit:cover; }
+
+.prime-ribbon-card .meta .label { font-size: 0.9rem; color:#d4af37; margin:0; }
+.prime-ribbon-card .meta .text { margin: 2px 0 0; opacity: .9; }
+.prime-ribbon-card .cta .btn { white-space: nowrap; }
+
+@media (max-width: 720px) {
+  .prime-ribbon-card { grid-template-columns: 56px 1fr; gap: 10px; }
+  .prime-ribbon-card .cta { grid-column: 1 / -1; }
+}

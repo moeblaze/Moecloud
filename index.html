@@ -6,50 +6,8 @@
   <title>Moe Community Cloud — MBCC</title>
   <meta name="description" content="Moe Community Cloud (MBCC): community-built tools and services for founders & operators.">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/sponsor.css">
   <script defer src="assets/consent.js"></script>
-  <style>
-    .reveal {opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease;}
-    .reveal.in-view {opacity:1; transform:none;}
-    .hero.plaid {
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,.7)),
-        repeating-linear-gradient(45deg, #2b2b2b, #2b2b2b 12px, #1a1a1a 12px, #1a1a1a 24px),
-        repeating-linear-gradient(-45deg, #7d0a0a, #7d0a0a 12px, #5c0808 12px, #5c0808 24px);
-      background-blend-mode: overlay, multiply, normal;
-      color:#fff;
-    }
-    .gold{color:#d4af37}
-    .hero .cta-row{display:flex; gap:12px; flex-wrap:wrap}
-    .pillars{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
-    .pillar{padding:18px; border-radius:16px; background:#0e0e0e; color:#fff; box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .pillar h3{margin-top:0}
-
-    /* Lead + Prime right under hero */
-    .lead-sponsor{display:grid; grid-template-columns:1.2fr 1fr; gap:18px; align-items:stretch}
-    @media (max-width: 980px) { .lead-sponsor{grid-template-columns:1fr} }
-    .lead.card{height:100%}
-
-    .prime-card{
-      position:relative; background:#0e0e0e; border-radius:22px; padding:16px;
-      color:#fff; box-shadow:0 12px 34px rgba(0,0,0,.35);
-    }
-    .prime-card::before{
-      content:""; position:absolute; inset:-2px; border-radius:24px; padding:2px;
-      background:linear-gradient(135deg,#d4af37, #a8841d, #ffd700);
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      animation: shine 3s linear infinite;
-    }
-    @keyframes shine{ 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
-    .prime-logo.lg{width:100%; height: 340px; border-radius:18px; border:3px solid #d4af37; background:#111; overflow:hidden; display:flex; align-items:center; justify-content:center}
-    .prime-logo.lg img{width:100%; height:100%; object-fit:cover}
-    @media (max-width: 980px) { .prime-logo.lg{height:240px} }
-
-    .prime-meta .title{font-size:1.2rem;font-weight:700;margin:12px 0 6px}
-    .prime-meta .bio{opacity:.9;margin:0 0 10px}
-    .prime-meta .tag{display:inline-block;background:#1a1a1a;border:1px solid #333;padding:4px 8px;border-radius:999px;font-size:12px;margin-right:6px}
-    .prime-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  </style>
 </head>
 <body>
   <header class="header">
@@ -68,114 +26,38 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero plaid">
-      <div class="container reveal">
-        <h2>Tools & Services for Builders</h2>
-        <p class="kicker">We craft fast, useful web tools and community programs for founders, creators, and operators.</p>
-        <div class="cta-row">
-          <a class="btn" href="apps.html">Explore Apps</a>
-          <a class="btn alt" href="newsletter.html">Join the Newsletter</a>
-        </div>
+  <main class="container">
+    <section class="card">
+      <div class="badge">Welcome</div>
+      <h2>Tools & Services for Builders</h2>
+      <p class="kicker">We craft fast, useful web tools and community programs for founders, creators, and operators.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn" href="apps.html">Explore Apps</a>
+        <a class="btn alt" href="newsletter.html">Join the Newsletter</a>
       </div>
     </section>
 
-    <!-- Lead + Prime Sponsor (right) under hero -->
-    <section class="container reveal lead-sponsor">
-      <!-- Newsletter & Services -->
-      <div class="card lead">
-        <div class="badge">Stay in the Loop</div>
-        <h3>Newsletter & Services</h3>
-        <form onsubmit="return mbccLead(event)">
-          <div class="row">
-            <input class="input" id="lead_name" placeholder="Your name">
-            <input class="input" id="lead_email" type="email" placeholder="you@example.com" required>
-          </div>
-          <div class="row">
-            <select class="input" id="lead_interest">
-              <option value="">I'm interested in…</option>
-              <option>Web tools</option>
-              <option>Training & playbooks</option>
-              <option>Sponsorship</option>
-              <option>Consulting</option>
-            </select>
-            <input class="input" id="lead_company" placeholder="Company (optional)">
-          </div>
-          <textarea class="input" id="lead_notes" rows="4" placeholder="What are you building? (optional)"></textarea>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn">Send</button>
-            <a class="btn alt" href="newsletter.html">Just the newsletter</a>
-          </div>
-          <div id="lead_msg" class="tiny"></div>
-        </form>
-      </div>
-
-      <!-- Prime Sponsor (bigger image, right) -->
-      <aside class="prime-card">
-        <div class="badge">Prime Sponsor</div>
-        <div class="prime-logo lg">
-          <img src="assets/prime-sponsor-placeholder.svg" alt="Prime sponsor logo (replace this image)">
-        </div>
-        <div class="prime-meta">
-          <p class="title">Your Brand — Home Page Prime</p>
-          <p class="bio">Premium placement on the MBCC home page with a short bio and a link to your site. Monthly slot, first come, first served.</p>
-          <div class="tags">
-            <span class="tag">1 spot / month</span>
-            <span class="tag">High visibility</span>
-            <span class="tag">Community builders</span>
-            <!-- Optional pricing -->
-            <!-- <span class="tag">$XXX / month</span> -->
-          </div>
-          <div class="prime-cta">
-            <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=Prime%20Sponsor%20Inquiry">Apply for the spot</a>
-            <a class="btn alt" href="news.html#sponsor">See sponsor stories</a>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Ad (Top, after lead+sponsor) -->
-    <section class="container" aria-label="sponsored">
+    <section aria-label="sponsored">
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </section>
 
-    <!-- About MBCC -->
-    <section class="container reveal">
-      <div class="card">
-        <div class="badge">About</div>
-        <h3>What is Moe Community Cloud?</h3>
-        <p>MBCC is a community-driven studio focused on practical problem-solving. We ship <strong>quick-win tools</strong>, publish <strong>how-to playbooks</strong>, and run <strong>training</strong> that helps small teams move faster.</p>
-        <ul>
-          <li>Lightweight tools that run in the browser</li>
-          <li>Actionable guides for sales, ops, and content</li>
-          <li>Calm, supportive community and partners</li>
-        </ul>
-      </div>
-    </section>
+    
+<!-- Prime Sponsor Ribbon (sitewide) -->
+<section class="container prime-ribbon" aria-label="Prime Sponsor">
+  <div class="prime-ribbon-card">
+    <div class="logo">
+      <img src="assets/prime-sponsor-placeholder.svg" alt="Prime sponsor logo">
+    </div>
+    <div class="meta">
+      <div class="label">Prime Sponsor</div>
+      <p class="text">Premium placement available. Showcase your brand to our builder community each month.</p>
+    </div>
+    <div class="cta">
+      <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=Prime%20Sponsor%20Inquiry">Apply</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Three pillars -->
-    <section class="container pillars reveal">
-      <div class="pillar">
-        <h3>Build</h3>
-        <p>Launch pages, proposals, emails, and docs in minutes. Our tools favor clarity and speed over complexity.</p>
-        <a class="btn" href="apps.html">Open the toolbox</a>
-      </div>
-      <div class="pillar">
-        <h3>Train</h3>
-        <p>Short, focused playbooks and practice drills to improve communication, operations, and delivery.</p>
-        <a class="btn" href="newsletter.html">Get updates</a>
-      </div>
-      <div class="pillar">
-        <h3>Partner</h3>
-        <p>We collaborate with sponsors and local businesses. Prime digital real estate is available on featured pages.</p>
-        <a class="btn" href="mailto:moeknowmoe24@gmail.com">Sponsor inquiry</a>
-      </div>
-    </section>
-
-    <!-- Mid Ad -->
-    <section class="container" aria-label="sponsored">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </section>
   </main>
 
   <footer class="footer">
@@ -184,31 +66,6 @@
       <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
     </div>
   </footer>
-
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script>
-    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); }); }, {threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-    async function mbccLead(e){
-      e.preventDefault();
-      const payload = {
-        tool: 'lead',
-        ts: new Date().toISOString(),
-        input: {
-          name: document.getElementById('lead_name').value,
-          email: document.getElementById('lead_email').value,
-          interest: document.getElementById('lead_interest').value,
-          company: document.getElementById('lead_company').value,
-          notes: document.getElementById('lead_notes').value
-        }
-      };
-      const msg = document.getElementById('lead_msg'); msg.textContent='Sending…';
-      try { if (typeof mbccSaveDraft === 'function') { await mbccSaveDraft(payload); msg.textContent='Thanks! We got it.'; e.target.reset(); }
-             else { const a = JSON.parse(localStorage.getItem('mbccLeads')||'[]'); a.push(payload); localStorage.setItem('mbccLeads', JSON.stringify(a)); msg.textContent='Saved locally (offline mode).'; } }
-      catch(err) { console.error(err); msg.textContent='Something went wrong.'; }
-      return false;
-    }
-  </script>
-  <script src="assets/api.js"></script>
 </body>
 </html>

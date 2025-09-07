@@ -4,23 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>News & Updates — Moe Community Cloud</title>
-  <meta name="description" content="MBCC News: product updates, community spotlights, and resources.">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/sponsor.css">
   <script defer src="assets/consent.js"></script>
-  <script defer src="assets/news.js"></script>
-  <style>
-    .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;align-items:center}
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
-    .reveal.in-view{opacity:1;transform:none}
-  </style>
 </head>
 <body>
   <header class="header">
     <div class="container header-row">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
-      </div>
+      <div class="brand"><div class="logo"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="apps.html">Apps</a>
@@ -36,56 +27,31 @@
       <div class="badge">News</div>
       <h2>MBCC News & Community Updates</h2>
       <p class="kicker">Product launches, community spotlights, and practical resources — updated as we ship.</p>
-      <div class="filters">
-        <select class="input" id="news-filter">
-          <option>Loading…</option>
-        </select>
-        <input id="news-q" class="input" placeholder="Search titles & summaries">
-        <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=News%20Tip">Submit a tip</a>
-      </div>
     </section>
 
-    <!-- Ad block (Top) -->
     <section aria-label="sponsored">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-8387411349417007"
-           data-ad-slot="6461821120"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </section>
 
-    <section id="news-container" class="grid cols-3" style="margin-top:12px"></section>
+    <!-- Your existing news cards (if using news.js) would render here -->
 
-    <!-- Two-up: Sponsor card + Ad -->
-    <section class="grid cols-2" style="margin-top:20px">
-      <div class="card">
-        <div class="badge">Sponsor Spotlight</div>
-        <p>Promote your brand to our community of builders and operators.</p>
-        <a class="btn" href="mailto:moeknowmoe24@gmail.com">Get featured</a>
-      </div>
-      <div>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8387411349417007"
-             data-ad-slot="6461821120"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      </div>
-    </section>
+    
+<!-- Prime Sponsor Ribbon (sitewide) -->
+<section class="container prime-ribbon" aria-label="Prime Sponsor">
+  <div class="prime-ribbon-card">
+    <div class="logo">
+      <img src="assets/prime-sponsor-placeholder.svg" alt="Prime sponsor logo">
+    </div>
+    <div class="meta">
+      <div class="label">Prime Sponsor</div>
+      <p class="text">Premium placement available. Showcase your brand to our builder community each month.</p>
+    </div>
+    <div class="cta">
+      <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=Prime%20Sponsor%20Inquiry">Apply</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Press & Media card -->
-    <section class="card" style="margin-top:20px">
-      <div class="badge">Press & Media</div>
-      <p>Covering MBCC? Grab our boilerplate and logos, or reach out for quotes and demos.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="press/press-kit.zip" download>Download Press Kit</a>
-        <a class="btn alt" href="press/mbcc-boilerplate.txt" target="_blank">Boilerplate</a>
-        <a class="btn" href="press/mbcc-logo-dark.svg" target="_blank">Logo (Dark)</a>
-        <a class="btn" href="press/mbcc-logo-light.svg" target="_blank">Logo (Light)</a>
-      </div>
-      <p class="tiny">Media inquiries: <a href="mailto:moeknowmoe24@gmail.com">moeknowmoe24@gmail.com</a></p>
-    </section>
   </main>
 
   <footer class="footer">

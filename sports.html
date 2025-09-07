@@ -3,44 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moe Community Cloud — Sports</title>
-  <meta name="description" content="Sports hub: updates, features, and AI analytics.">
+  <title>Sports — Moe Community Cloud</title>
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/sponsor.css">
+  <script defer src="assets/consent.js"></script>
 </head>
 <body>
-  
-<header class="header">
-  <div class="container header-row">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand"><div class="logo"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="news.html">News</a>
+        <a href="sports.html" class="active">Sports</a>
+        <a href="newsletter.html">Newsletter</a>
+      </nav>
     </div>
-    <nav class="nav"><a href='index.html' class=''>Home</a>
-<a href='apps.html' class=''>Apps</a>
-<a href='news.html' class=''>News</a>
-<a href='sports.html' class='active'>Sports</a>
-<a href='newsletter.html' class=''>Newsletter</a></nav>
-  </div>
-</header>
+  </header>
 
   <main class="container">
-    <h2>Sports Hub</h2>
-    <p class="kicker">Live scores and optimizer integrations plug in here. This page is ready for your APIs.</p>
-    <div class="grid cols-3"><div class="card"><h3>Live Scores</h3><p>Slot for real-time updates (WebSockets/API).</p><a class="btn" href="#">Connect</a></div></div>
-      <div class="card"><h3>Fantasy Optimizer</h3><p>Render optimized lineups for NBA, NFL, MLB, more.</p><a class="btn" href="#">Open</a></div>
-      <div class="card"><h3>Pick 6</h3><p>PrizePicks-style over/under projections.</p><a class="btn" href="#">Open</a></div>
-    </div>
-  </main>
-  
-<footer class="footer">
-  <div class="container">
-    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-  </div>
-</footer>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <section class="card">
+      <div class="badge">Sports</div>
+      <h2>Sports</h2>
+      <p class="kicker">This section is being refreshed. Check back soon.</p>
+    </section>
 
+    <section aria-label="sponsored">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </section>
+
+    
+<!-- Prime Sponsor Ribbon (sitewide) -->
+<section class="container prime-ribbon" aria-label="Prime Sponsor">
+  <div class="prime-ribbon-card">
+    <div class="logo">
+      <img src="assets/prime-sponsor-placeholder.svg" alt="Prime sponsor logo">
+    </div>
+    <div class="meta">
+      <div class="label">Prime Sponsor</div>
+      <p class="text">Premium placement available. Showcase your brand to our builder community each month.</p>
+    </div>
+    <div class="cta">
+      <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=Prime%20Sponsor%20Inquiry">Apply</a>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
