@@ -1,13 +1,35 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moe Community Cloud — Home</title>
-  <meta name="description" content="Moe Community Cloud (MBCC): tools, training, and thought science for builders.">
+  <title>Moe Community Cloud — MBCC</title>
+  <meta name="description" content="Moe Community Cloud (MBCC): community-built tools and services for founders & operators.">
   <link rel="stylesheet" href="assets/style.css">
-  <!-- Google AdSense: replace ca-pub-XXXXXXXXXXXX with your Publisher ID -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script defer src="assets/consent.js"></script>
+  <style>
+    .reveal {opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease;}
+    .reveal.in-view {opacity:1; transform:none;}
+    .hero.plaid {
+      background-image:
+        linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,.7)),
+        repeating-linear-gradient(45deg, #2b2b2b, #2b2b2b 12px, #1a1a1a 12px, #1a1a1a 24px),
+        repeating-linear-gradient(-45deg, #7d0a0a, #7d0a0a 12px, #5c0808 12px, #5c0808 24px);
+      background-blend-mode: overlay, multiply, normal;
+      color:#fff;
+    }
+    .gold{color:#d4af37}
+    .hero .cta-row{display:flex; gap:12px; flex-wrap:wrap}
+    .pillars{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+    .pillar{padding:18px; border-radius:16px; background:#0e0e0e; color:#fff; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .pillar h3{margin-top:0}
+    .sponsor-spot{display:flex; gap:14px; align-items:center}
+    .sponsor-spot img{width:72px; height:72px; object-fit:cover; border-radius:12px; border:2px solid #d4af37}
+    .lead form{display:grid; gap:8px}
+    .lead .row{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px}
+    .tiny{font-size:12px; opacity:.75}
+  </style>
 </head>
 <body>
   <header class="header">
@@ -27,84 +49,95 @@
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <h2>Build. Train. Spiral Up.</h2>
-        <p class="kicker">MBCC ships practical tools for founders & operators — plus original Thought Science to train disciplined minds.</p>
+    <section class="hero plaid">
+      <div class="container reveal">
+        <h2>Tools & Services for Builders</h2>
+        <p class="kicker">We craft fast, useful web tools and community programs for founders, creators, and operators.</p>
         <div class="cta-row">
           <a class="btn" href="apps.html">Explore Apps</a>
-          <a class="btn alt" href="qsm.html">Learn QSM</a>
+          <a class="btn alt" href="newsletter.html">Join the Newsletter</a>
         </div>
       </div>
     </section>
 
-    <!-- Top Ad unit (responsive) -->
+    <!-- Moecommunitycloud Ad (Top) -->
     <section class="container" aria-label="sponsored">
       <ins class="adsbygoogle"
            style="display:block"
-           data-ad-client="ca-pub-XXXXXXXXXXXX"
-           data-ad-slot="0000000000"
+           data-ad-client="ca-pub-8387411349417007"
+           data-ad-slot="6461821120"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </section>
 
-    <!-- About MBCC -->
-    <section class="container grid cols-2">
+    <section class="container reveal">
       <div class="card">
         <div class="badge">About</div>
         <h3>What is Moe Community Cloud?</h3>
-        <p>We’re a community-driven studio focused on fast, useful tools and training. Our approach blends business execution with <em>Thought Science</em> — frameworks for clarity, discipline, and service.</p>
+        <p>MBCC is a community-driven studio focused on practical problem-solving. We ship <strong>quick-win tools</strong>, publish <strong>how-to playbooks</strong>, and run <strong>training</strong> that helps small teams move faster.</p>
         <ul>
-          <li>Quick-win web tools for everyday ops</li>
-          <li>Newsletter & training drops</li>
-          <li>Sponsor-friendly placements & AdSense support</li>
+          <li>Lightweight tools that run in the browser</li>
+          <li>Actionable guides for sales, ops, and content</li>
+          <li>Calm, supportive community and partners</li>
         </ul>
       </div>
-      <div class="card">
-        <div class="badge">New</div>
-        <h3>Thought Science: QSM</h3>
-        <p><strong>Quantum Spiral Man (QSM)</strong> is our original framework that teaches how your Thought Observer shapes outcomes — creating upward or downward spirals in life and business.</p>
-        <p><a class="btn" href="qsm.html">Read the 1‑page training →</a></p>
+    </section>
+
+    <section class="container pillars reveal">
+      <div class="pillar">
+        <h3>Build</h3>
+        <p>Launch pages, proposals, emails, and docs in minutes. Our tools favor clarity and speed over complexity.</p>
+        <a class="btn" href="apps.html">Open the toolbox</a>
+      </div>
+      <div class="pillar">
+        <h3>Train</h3>
+        <p>Short, focused playbooks and practice drills to improve communication, operations, and delivery.</p>
+        <a class="btn" href="newsletter.html">Get updates</a>
+      </div>
+      <div class="pillar">
+        <h3>Partner</h3>
+        <p>We collaborate with sponsors and local businesses. Prime digital real estate is available on featured pages.</p>
+        <a class="btn" href="mailto:moeknowmoe24@gmail.com">Sponsor inquiry</a>
       </div>
     </section>
 
-    <!-- In-content Ad unit -->
+    <!-- Moecommunitycloud Ad (In-content) -->
     <section class="container" aria-label="sponsored">
       <ins class="adsbygoogle"
-           style="display:block; text-align:center;"
-           data-ad-client="ca-pub-XXXXXXXXXXXX"
-           data-ad-slot="1111111111"
+           style="display:block"
+           data-ad-client="ca-pub-8387411349417007"
+           data-ad-slot="6461821120"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </section>
 
-    <!-- Training teaser -->
-    <section class="container grid cols-3">
+    <section class="container lead reveal">
       <div class="card">
-        <h3>QSM Axioms</h3>
-        <p>All Thought is God. The Thought Observer collapses the wave field. Collapse creates the spiral. Spiral is Law. Man is Co‑Creator.</p>
-        <a class="btn" href="qsm.html#axioms">Axioms →</a>
+        <div class="badge">Stay in the Loop</div>
+        <h3>Newsletter & Services</h3>
+        <form onsubmit="return mbccLead(event)">
+          <div class="row">
+            <input class="input" id="lead_name" placeholder="Your name">
+            <input class="input" id="lead_email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="row">
+            <select class="input" id="lead_interest">
+              <option value="">I'm interested in…</option>
+              <option>Web tools</option>
+              <option>Training & playbooks</option>
+              <option>Sponsorship</option>
+              <option>Consulting</option>
+            </select>
+            <input class="input" id="lead_company" placeholder="Company (optional)">
+          </div>
+          <textarea class="input" id="lead_notes" rows="4" placeholder="What are you building? (optional)"></textarea>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn">Send</button>
+            <a class="btn alt" href="newsletter.html">Just the newsletter</a>
+          </div>
+          <div id="lead_msg" class="tiny"></div>
+        </form>
       </div>
-      <div class="card">
-        <h3>Seven Theories</h3>
-        <p>From Observer Collapse Theory to Fractal Ascension Theory — a practical map for discipline, coherence, and service.</p>
-        <a class="btn" href="qsm.html#theories">Theories →</a>
-      </div>
-      <div class="card">
-        <h3>Negative Systems Training</h3>
-        <p>Spot toxic inputs, reframe beliefs, and replace with constructive spirals. Ownership first, excuses last.</p>
-        <a class="btn" href="qsm.html#training">Training →</a>
-      </div>
-    </section>
-
-    <!-- Newsletter CTA -->
-    <section class="cta container">
-      <h3>Get the MBCC Newsletter</h3>
-      <p>Simple playbooks, product drops, and QSM micro‑trainings.</p>
-      <a class="btn" href="newsletter.html">Subscribe</a>
     </section>
   </main>
 
@@ -114,6 +147,40 @@
       <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
     </div>
   </footer>
+
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); }); }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    async function mbccLead(e){
+      e.preventDefault();
+      const payload = {
+        tool: 'lead',
+        ts: new Date().toISOString(),
+        input: {
+          name: document.getElementById('lead_name').value,
+          email: document.getElementById('lead_email').value,
+          interest: document.getElementById('lead_interest').value,
+          company: document.getElementById('lead_company').value,
+          notes: document.getElementById('lead_notes').value
+        }
+      };
+      const msg = document.getElementById('lead_msg');
+      msg.textContent = 'Sending…';
+      try {
+        if (typeof mbccSaveDraft === 'function') {
+          await mbccSaveDraft(payload);
+          msg.textContent = 'Thanks! We got it.';
+          e.target.reset();
+        } else {
+          const arr = JSON.parse(localStorage.getItem('mbccLeads')||'[]'); arr.push(payload);
+          localStorage.setItem('mbccLeads', JSON.stringify(arr));
+          msg.textContent = 'Saved locally (offline mode).';
+        }
+      } catch(err) { console.error(err); msg.textContent = 'Something went wrong.'; }
+      return false;
+    }
+  </script>
+  <script src="assets/api.js"></script>
 </body>
 </html>
