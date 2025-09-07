@@ -2,71 +2,180 @@
   "ai": {
     "headlines": [
       {
-        "title": "Reuters AI news \u2014 latest",
-        "url": "https://www.reuters.com/technology/artificial-intelligence/",
-        "source": "Reuters"
+        "title": "OpenAI reportedly partners with Broadcom to mass\u2011produce custom AI chips",
+        "url": "https://www.reuters.com/business/openai-set-start-mass-production-its-own-ai-chips-with-broadcom-ft-reports-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025"
       },
       {
-        "title": "TechCrunch \u2014 AI",
-        "url": "https://techcrunch.com/category/artificial-intelligence/",
-        "source": "TechCrunch"
+        "title": "OpenAI eyes a 1\u2011gigawatt data center footprint in India",
+        "url": "https://www.reuters.com/world/india/openai-plans-india-data-center-with-least-1-gigawatt-capacity-bloomberg-news-2025-09-01/",
+        "source": "Reuters",
+        "date": "Sep 1, 2025"
       },
       {
-        "title": "OpenAI Blog",
-        "url": "https://openai.com/blog",
-        "source": "OpenAI"
+        "title": "Greece inks deal with OpenAI to bring AI to schools and SMEs",
+        "url": "https://www.reuters.com/technology/greece-openai-agree-deal-boost-innovation-schools-small-businesses-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025"
+      }
+    ],
+    "stories": [
+      {
+        "title": "OpenAI reportedly partners with Broadcom to mass\u2011produce custom AI chips",
+        "url": "https://www.reuters.com/business/openai-set-start-mass-production-its-own-ai-chips-with-broadcom-ft-reports-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025",
+        "body": "OpenAI is moving toward mass production of its own AI accelerators with Broadcom, according to the\nFinancial         Times. The goal: secure long\u2011term compute at lower cost and reduce reliance on\nNvidia while tuning hardware         tightly to OpenAI\u2019s model workloads. A custom silicon push\nwould echo strategies at Google and Amazon, and         could alter cloud economics if yields and\nsoftware stacks mature.                  The near\u2011term impact is strategic\u2014preparing capacity for\nthe next generation of multimodal and agent models.         For enterprises, a diversified AI\u2011chip\nmarket could mean more pricing power and availability across providers."
+      },
+      {
+        "title": "OpenAI eyes a 1\u2011gigawatt data center footprint in India",
+        "url": "https://www.reuters.com/world/india/openai-plans-india-data-center-with-least-1-gigawatt-capacity-bloomberg-news-2025-09-01/",
+        "source": "Reuters",
+        "date": "Sep 1, 2025",
+        "body": "OpenAI is reportedly planning a data\u2011center buildout in India with at least 1 gigawatt of power\u2014an\nenormous         footprint aimed at training and serving next\u2011gen models. The project would tap\nIndia\u2019s growing role in global         cloud infrastructure and align with the country\u2019s push to\nhost more AI workloads domestically.                  Big picture: hyperscale AI now hinges on\npower, cooling, and supply chains. If sited well, a 1\u2011GW campus         could accelerate OpenAI\u2019s\ncapacity and boost India\u2019s AI ecosystem from chips to talent."
+      },
+      {
+        "title": "Greece inks deal with OpenAI to bring AI to schools and SMEs",
+        "url": "https://www.reuters.com/technology/greece-openai-agree-deal-boost-innovation-schools-small-businesses-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025",
+        "body": "Greece and OpenAI agreed to collaborate on AI tools for education and small businesses, with pilots\nplanned         for classrooms and digitization projects for SMEs. Officials say the partnership\nwill focus on safe use,         teacher training, and practical tools that raise productivity in the\npublic and private sectors.                  Why it matters: Europe\u2019s AI landscape will be shaped as\nmuch by local deployments as by flagship models.         Greece\u2019s move could become a template for\nrolling out classroom\u2011ready AI under EU rules."
       }
     ]
   },
   "tech": {
     "headlines": [
       {
-        "title": "The Verge \u2014 Tech",
-        "url": "https://www.theverge.com/tech",
-        "source": "The Verge"
+        "title": "EU hits Google with \u20ac2.95B ad\u2011tech fine: what changes now",
+        "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1992",
+        "source": "European Commission",
+        "date": "Sep 4, 2025"
       },
       {
-        "title": "Ars Technica \u2014 Main",
-        "url": "https://arstechnica.com/",
-        "source": "Ars Technica"
+        "title": "Apple\u2019s Sept 9 \u2018Awe dropping\u2019 iPhone 17 event: what to expect",
+        "url": "https://www.theverge.com/apple/766062/apple-iphone-17-launch-event-awe-dropping",
+        "source": "The Verge",
+        "date": "Aug 26, 2025"
       },
       {
-        "title": "Engadget \u2014 Latest",
-        "url": "https://www.engadget.com/latest/",
-        "source": "Engadget"
+        "title": "Dyson\u2019s Spot+Scrub Ai robot vacuum debuts with stain\u2011seeking mop",
+        "url": "https://www.theverge.com/ifa-berlin/772423/dyson-spot-scrub-ai-robot-vacuum-mop-multifunction-dock-first-look",
+        "source": "The Verge",
+        "date": "Sep 6, 2025"
+      }
+    ],
+    "stories": [
+      {
+        "title": "EU hits Google with \u20ac2.95B ad\u2011tech fine: what changes now",
+        "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1992",
+        "source": "European Commission",
+        "date": "Sep 4, 2025",
+        "body": "European regulators have fined Google \u20ac2.95 billion ($3.5B) for abusing dominance in\nad\u2011tech\u2014accusing it of         steering advertisers and publishers toward its own tools. Brussels\u2019\ndecision could force structural remedies         if Google\u2019s proposed fixes fall short, including a\npotential spin\u2011out of parts of its ad stack. Google says it         will appeal.\nWhy it matters: ads fund much of the free web. If Google must open access or divest, competitors\ncould win         share in ad exchanges, while publishers might see improved yield from a more\nneutral auction. In the near         term, marketers should plan for data\u2011sharing changes, auction\ntransparency requirements, and new policies that         reduce self\u2011preferencing\u2014shifts likely to\nripple across analytics and attribution stacks."
+      },
+      {
+        "title": "Apple\u2019s Sept 9 \u2018Awe dropping\u2019 iPhone 17 event: what to expect",
+        "url": "https://www.theverge.com/apple/766062/apple-iphone-17-launch-event-awe-dropping",
+        "source": "The Verge",
+        "date": "Aug 26, 2025",
+        "body": "Apple\u2019s next keynote is set for September 9 (1 p.m. ET) with \u2018Awe dropping\u2019 branding\u2014and all signs\npoint to         the iPhone 17 line and new Apple Watches. Expect Pro\u2011class camera updates\n(telephoto moves on Pro/Max),         A\u2011series chip gains, and iOS refinements tuned for on\u2011device\nAI features. Case makers are already showing         dummy units at IFA, and the rumor mill suggests\nat least one watch with satellite messaging for off\u2011grid         texts. Pricing and availability\nshould lock the same day.                  For buyers, the calculus is simple: if you skipped iPhone\n15/16, the 17\u2019s camera and battery bumps (plus         smarter photo/video pipelines) could be the\nnudge. We\u2019ll update this story with confirmed specs after the         event."
+      },
+      {
+        "title": "Dyson\u2019s Spot+Scrub Ai robot vacuum debuts with stain\u2011seeking mop",
+        "url": "https://www.theverge.com/ifa-berlin/772423/dyson-spot-scrub-ai-robot-vacuum-mop-multifunction-dock-first-look",
+        "source": "The Verge",
+        "date": "Sep 6, 2025",
+        "body": "Dyson unveiled the Spot+Scrub Ai, its first combo vacuum\u2011mop robot, at IFA Berlin. The round\u2011body\nbot adds a         self\u2011cleaning wet roller, lidar navigation, object recognition, and a\nmultifunction \u201cCyclonic Dock\u201d that         empties, washes, dries and refills\u2014aiming to compete with\nRoborock and Ecovacs at the premium tier. Dyson         touts stain detection and before/after\nverification to prove it actually scrubbed the spot.                  Why it\u2019s interesting: the\ndock\u2011centric design reduces weekly maintenance, and the verification snaps could         help\nconsumers trust \u201cAI cleaning\u201d claims. If Dyson sticks the software and price, this could be the\nbrand\u2019s         first true hit in robot cleaning hardware."
       }
     ]
   },
   "funny": {
     "headlines": [
       {
-        "title": "UPI Odd News",
-        "url": "https://www.upi.com/Odd_News/",
-        "source": "UPI Odd News"
+        "title": "Kangaroos stage a jailbreak in Waco\u2014police lend a hand",
+        "url": "https://www.upi.com/Odd_News/2025/09/03/escaped-kangaroos-Waco-Texas/2801756913591/",
+        "source": "UPI Odd News",
+        "date": "Sep 3, 2025"
       },
       {
-        "title": "The Onion (satire)",
-        "url": "https://www.theonion.com/",
-        "source": "The Onion"
+        "title": "New Haven wants a Guinness record for the world\u2019s largest pizza party",
+        "url": "https://www.ctinsider.com/food/article/new-haven-apizza-feast-2025-21030299.php",
+        "source": "CTInsider",
+        "date": "Sep 4, 2025"
+      },
+      {
+        "title": "Robot waiters are having a moment\u2014cutesy cats deliver sushi and smiles",
+        "url": "https://www.bloomberg.com/news/newsletters/2025-03-09/service-robots-are-becoming-increasingly-common-in-japan",
+        "source": "Bloomberg (newsletter)",
+        "date": "Mar 9, 2025"
+      }
+    ],
+    "stories": [
+      {
+        "title": "Kangaroos stage a jailbreak in Waco\u2014police lend a hand",
+        "url": "https://www.upi.com/Odd_News/2025/09/03/escaped-kangaroos-Waco-Texas/2801756913591/",
+        "source": "UPI Odd News",
+        "date": "Sep 3, 2025",
+        "body": "A wildlife rescue in Waco, Texas, had a literal hopping emergency when multiple kangaroos escaped\ntheir         enclosure. Local police joined staff in rounding up the marsupials, and the facility\nlater confirmed that all         the roos were accounted for and unharmed. Social media did its\nthing\u2014puns and \u2018pouch patrol\u2019 memes flew\u2014while         the rescue promised sturdier fencing.\nThe best part: impromptu neighborhood videos of kangaroos bouncing down suburban streets. Only in\nTexas."
+      },
+      {
+        "title": "New Haven wants a Guinness record for the world\u2019s largest pizza party",
+        "url": "https://www.ctinsider.com/food/article/new-haven-apizza-feast-2025-21030299.php",
+        "source": "CTInsider",
+        "date": "Sep 4, 2025",
+        "body": "Can the pizza\u2011proud city of New Haven out\u2011slice Tulsa? Organizers of the A\u20111 Toyota Apizza Feast\nthink so\u2014         they\u2019re attempting to feed 5,000 people two slices each on September 12 in a bid\nto shatter the Guinness World         Record for largest pizza party. Dozens of trucks from local\nicons like Pepe\u2019s and Sally\u2019s will set up on the         Green, with proceeds supporting local\ncauses.                  Expect cycling races, a pizza relay, and many full bellies. Guinness\nadjudicators will be watching every bite."
+      },
+      {
+        "title": "Robot waiters are having a moment\u2014cutesy cats deliver sushi and smiles",
+        "url": "https://www.bloomberg.com/news/newsletters/2025-03-09/service-robots-are-becoming-increasingly-common-in-japan",
+        "source": "Bloomberg (newsletter)",
+        "date": "Mar 9, 2025",
+        "body": "Need a table run? In Japan\u2014and increasingly in the U.S.\u2014restaurants are deploying robot waiters with\nanimated         cat faces to ferry plates and charm customers. The bots don\u2019t replace servers so\nmuch as bridge staffing gaps,         gliding between tables while humans handle hospitality. Videos\nof the \u201ccat\u2011bots\u201d keep going viral, and the         novelty hasn\u2019t worn off yet.\nAre they practical? Operators say yes for steady routes and simple tasks. And yes, kids love them."
       }
     ]
   },
   "health": {
     "headlines": [
       {
-        "title": "WHO \u2014 Newsroom",
-        "url": "https://www.who.int/news",
-        "source": "WHO"
+        "title": "WHO: Mpox is no longer a global emergency",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/mpox-no-longer-an-emergency-concerns-remain-health-body-says-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025"
       },
       {
-        "title": "Reuters \u2014 Health",
-        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/",
-        "source": "Reuters"
+        "title": "Study: Clopidogrel may beat aspirin in preventing heart attacks and strokes",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/health-rounds-clopidogrel-better-than-aspirin-preventing-heart-attacks-strokes-2025-09-03/",
+        "source": "Reuters",
+        "date": "Sep 3, 2025"
       },
       {
-        "title": "CDC \u2014 Newsroom",
-        "url": "https://www.cdc.gov/media/index.html",
-        "source": "CDC"
+        "title": "Inflammation markers tied to heart risk in women without classic factors",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/health-rounds-inflammation-may-lead-serious-heart-issues-women-without-other-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025"
+      }
+    ],
+    "stories": [
+      {
+        "title": "WHO: Mpox is no longer a global emergency",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/mpox-no-longer-an-emergency-concerns-remain-health-body-says-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025",
+        "body": "The World Health Organization says mpox no longer meets the criteria for a Public Health Emergency\nof         International Concern, citing improved surveillance and vaccination. The virus still\nwarrants vigilance,         especially in vulnerable communities, but the downgrade reflects\ndeclining severe cases and better outbreak         management.                  For public health\nofficials, the message is steady: keep up testing, vaccination, and engagement with         at\u2011risk\npopulations to prevent flare\u2011ups."
+      },
+      {
+        "title": "Study: Clopidogrel may beat aspirin in preventing heart attacks and strokes",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/health-rounds-clopidogrel-better-than-aspirin-preventing-heart-attacks-strokes-2025-09-03/",
+        "source": "Reuters",
+        "date": "Sep 3, 2025",
+        "body": "A new analysis suggests clopidogrel could outperform aspirin for secondary prevention of heart\nattacks and         strokes in some patients. Researchers found lower rates of composite\ncardiovascular events among those on         clopidogrel, though doctors stress that individual\nrisk, tolerability, and cost remain critical factors.                  If guidelines shift, millions\ncould see their go\u2011to antiplatelet therapy change in the coming years."
+      },
+      {
+        "title": "Inflammation markers tied to heart risk in women without classic factors",
+        "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/health-rounds-inflammation-may-lead-serious-heart-issues-women-without-other-2025-09-05/",
+        "source": "Reuters",
+        "date": "Sep 5, 2025",
+        "body": "New research highlights inflammation as a key driver of serious cardiac events among some women who\nlack         traditional risk factors like high cholesterol or hypertension. Elevated inflammatory\nmarkers correlated with         higher event rates, pointing clinicians toward broader screening and\nprevention strategies.                  The takeaway: heart risk can hide in plain sight\u2014ask your\ndoctor about inflammation metrics if you have         symptoms or family history."
       }
     ]
   }
