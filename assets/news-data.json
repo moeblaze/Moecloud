@@ -1,0 +1,59 @@
+{
+  "updated": "2025-09-07",
+  "sections": [
+    {
+      "title": "MBCC Updates",
+      "tag": "mbcc",
+      "items": [
+        {
+          "date": "2025-09-07",
+          "title": "AdSense + Consent Banner Live",
+          "summary": "Home page updated with consent-based AdSense loading and sponsor spotlight.",
+          "link": "https://www.moecommunitycloud.com/"
+        },
+        {
+          "date": "2025-09-07",
+          "title": "New Tools Toolbar",
+          "summary": "Concise/Friendlier/Exec Summary/Expand/Translate/Redact/Extract Actions added across tools.",
+          "link": "https://www.moecommunitycloud.com/apps.html"
+        }
+      ]
+    },
+    {
+      "title": "Community News",
+      "tag": "community",
+      "items": [
+        {
+          "date": "2025-08-29",
+          "title": "Local Founder Showcase",
+          "summary": "Three small businesses shipped their first email campaigns using MBCC tools.",
+          "link": "#"
+        },
+        {
+          "date": "2025-08-18",
+          "title": "Sponsor Applications Open",
+          "summary": "Apply for a sponsor spotlight on the home page or apps hub.",
+          "link": "mailto:moeknowmoe24@gmail.com"
+        }
+      ]
+    },
+    {
+      "title": "Resources & Playbooks",
+      "tag": "resources",
+      "items": [
+        {
+          "date": "2025-08-10",
+          "title": "Proposal/Quote Builder \u2014 Fast Start",
+          "summary": "A 5\u2011minute recipe to turn notes into a clean client proposal.",
+          "link": "https://www.moecommunitycloud.com/proposal-builder.html"
+        },
+        {
+          "date": "2025-08-02",
+          "title": "Newsletter Builder Tips",
+          "summary": "Subject lines, structure, and CTAs that get replies.",
+          "link": "https://www.moecommunitycloud.com/newsletter-builder.html"
+        }
+      ]
+    }
+  ]
+}

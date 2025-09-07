@@ -3,57 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moe Community Cloud — News</title>
-  <meta name="description" content="MBCC News and updates.">
+  <title>News & Updates — Moe Community Cloud</title>
+  <meta name="description" content="MBCC News: product updates, community spotlights, and resources.">
   <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/consent.js"></script>
+  <script defer src="assets/news.js"></script>
+  <style>
+    .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;align-items:center}
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+    .reveal.in-view{opacity:1;transform:none}
+  </style>
 </head>
 <body>
-  
-<header class="header">
-  <div class="container header-row">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="news.html" class="active">News</a>
+        <a href="sports.html">Sports</a>
+        <a href="newsletter.html">Newsletter</a>
+      </nav>
     </div>
-    <nav class="nav"><a href='index.html' class=''>Home</a>
-<a href='apps.html' class=''>Apps</a>
-<a href='news.html' class='active'>News</a>
-<a href='sports.html' class=''>Sports</a>
-<a href='newsletter.html' class=''>Newsletter</a></nav>
-  </div>
-</header>
+  </header>
 
   <main class="container">
-    <h2>News</h2>
-    <div class="grid cols-2">
-      <article class="card">
-        <span class="badge">Update</span>
-        <h3>Launching MBCC Home</h3>
-        <p>The new home for Moe Community Cloud is live with newsletter signup, sponsor placement, and a clean nav to Apps, News, Sports, and more.</p>
-        <div class="kicker">Posted <span id="n1"></span></div>
-      </article>
-      <article class="card">
-        <span class="badge">Sports</span>
-        <h3>Sports AI Suite v1</h3>
-        <p>We’re shipping a unified UI for lineups, Pick 6 predictions, and DvP insights. MLB focus leading into the new season.</p>
-        <div class="kicker">Posted <span id="n2"></span></div>
-      </article>
-    </div>
-  </main>
-  
-<footer class="footer">
-  <div class="container">
-    <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-    <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-  </div>
-</footer>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <section class="card">
+      <div class="badge">News</div>
+      <h2>MBCC News & Community Updates</h2>
+      <p class="kicker">Product launches, community spotlights, and practical resources — updated as we ship.</p>
+      <div class="filters">
+        <select class="input" id="news-filter">
+          <option>Loading…</option>
+        </select>
+        <input id="news-q" class="input" placeholder="Search titles & summaries">
+        <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=News%20Tip">Submit a tip</a>
+      </div>
+    </section>
 
-  <script>
-    document.getElementById('n1').textContent = new Date().toDateString();
-    document.getElementById('n2').textContent = new Date().toDateString();
-  </script>
+    <!-- Ad block (Top) -->
+    <section aria-label="sponsored">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8387411349417007"
+           data-ad-slot="6461821120"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </section>
+
+    <section id="news-container" class="grid cols-3" style="margin-top:12px"></section>
+
+    <!-- Sponsor card + Ad block (Bottom) -->
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <div class="badge">Sponsor Spotlight</div>
+        <p>Promote your brand to our community of builders and operators.</p>
+        <a class="btn" href="mailto:moeknowmoe24@gmail.com">Get featured</a>
+      </div>
+      <div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-8387411349417007"
+             data-ad-slot="6461821120"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
