@@ -1,0 +1,153 @@
+[
+  {
+    "day": "Thu",
+    "away_abbr": "DAL",
+    "home_abbr": "PHI",
+    "away": "Cowboys",
+    "home": "Eagles",
+    "score_away": 20,
+    "score_home": 24,
+    "blurb": "Hurts rushes for 2 TD in a weather\u2011delayed opener."
+  },
+  {
+    "day": "Fri",
+    "away_abbr": "KC",
+    "home_abbr": "LAC",
+    "away": "Chiefs",
+    "home": "Chargers",
+    "score_away": 21,
+    "score_home": 27,
+    "note": "S\u00e3o Paulo Game",
+    "blurb": "Justin Herbert throws for 318 yards & 3 TD in Brazil."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "TB",
+    "home_abbr": "ATL",
+    "away": "Buccaneers",
+    "home": "Falcons",
+    "score_away": 23,
+    "score_home": 20,
+    "blurb": "Tampa Bay edges Atlanta; Michael Penix Jr. posts 298 passing yards."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "CIN",
+    "home_abbr": "CLE",
+    "away": "Bengals",
+    "home": "Browns",
+    "score_away": 17,
+    "score_home": 16,
+    "blurb": "Cincinnati hangs on; Joe Flacco throws for 290 in the loss."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "MIA",
+    "home_abbr": "IND",
+    "away": "Dolphins",
+    "home": "Colts",
+    "score_away": 8,
+    "score_home": 33,
+    "blurb": "Daniel Jones throws for 272 in Indy debut; Pittman scores."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "LV",
+    "home_abbr": "NE",
+    "away": "Raiders",
+    "home": "Patriots",
+    "score_away": 20,
+    "score_home": 13,
+    "blurb": "Geno Smith piles up 362 passing yards as Vegas wins in Foxborough."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "ARI",
+    "home_abbr": "NO",
+    "away": "Cardinals",
+    "home": "Saints",
+    "score_away": 20,
+    "score_home": 13,
+    "blurb": "Rookie Trey Benson\u2019s 69 rush yards help lift Arizona on the road."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "PIT",
+    "home_abbr": "NYJ",
+    "away": "Steelers",
+    "home": "Jets",
+    "score_away": 34,
+    "score_home": 32,
+    "blurb": "Aaron Rodgers tosses 4 TD vs. his former team."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "NYG",
+    "home_abbr": "WSH",
+    "away": "Giants",
+    "home": "Commanders",
+    "score_away": 6,
+    "score_home": 21,
+    "blurb": "Jayden Daniels steady (233y); Deebo Samuel adds 77 receiving yards."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "CAR",
+    "home_abbr": "JAX",
+    "away": "Panthers",
+    "home": "Jaguars",
+    "score_away": 10,
+    "score_home": 26,
+    "blurb": "Travis Etienne rushes for 143 as Jacksonville cruises."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "TEN",
+    "home_abbr": "DEN",
+    "away": "Titans",
+    "home": "Broncos",
+    "score_away": 12,
+    "score_home": 20,
+    "blurb": "Bo Nix debuts with 176 & a TD; Denver\u2019s D closes it out."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "SF",
+    "home_abbr": "SEA",
+    "away": "49ers",
+    "home": "Seahawks",
+    "score_away": 17,
+    "score_home": 13,
+    "blurb": "Brock Purdy throws for 277 and 2 TD; late Niners push holds."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "DET",
+    "home_abbr": "GB",
+    "away": "Lions",
+    "home": "Packers",
+    "score_away": 13,
+    "score_home": 27,
+    "blurb": "Green Bay controls the day; Josh Jacobs logs 66 & a score."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "HOU",
+    "home_abbr": "LAR",
+    "away": "Texans",
+    "home": "Rams",
+    "score_away": 9,
+    "score_home": 14,
+    "blurb": "Matthew Stafford (245y, TD) and Puka Nacua (10\u2011130) pace LA."
+  },
+  {
+    "day": "Sun",
+    "away_abbr": "BAL",
+    "home_abbr": "BUF",
+    "away": "Ravens",
+    "home": "Bills",
+    "score_away": 40,
+    "score_home": 41,
+    "blurb": "Josh Allen (394y) leads a late comeback to stun Baltimore."
+  }
+]
