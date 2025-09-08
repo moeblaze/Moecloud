@@ -1,22 +1,24 @@
-NFL Week 1 (2025) — Full Drop-in + Logo Badges
-=================================================
+NFL Week 1 (2025) — Loader Bundle
+===================================
 
 Files:
-- head-snippet.html         → paste in <head> of sports.html (once)
-- mc-sports.css             → styles
-- nfl-week1-2025.html       → full section with Top Performers, Headlines, and all Thu–Sun games
-- assets/teams/nfl/*.svg    → simple round badges (NOT official logos)
+- mc-sports.css             → stylesheet (add once in <head>)
+- nfl-week1-2025.html       → full Week 1 section (logos + cards + Top Performers + Headlines)
+- nfl-week1-loader.js       → auto-injects the section into sports.html
+- head-snippet.html         → paste into <head> of sports.html (once)
+- body-snippet.html         → paste below your NFL header in sports.html
+- assets/teams/nfl/*.svg    → neutral round badges (NOT official logos)
 
-Install:
-1) Upload everything to the same folder as sports.html.
-2) Paste the contents of head-snippet.html into <head> of sports.html (once):
+Install (no layout changes):
+1) Upload EVERYTHING to the same folder as sports.html (preserving the assets/ path).
+2) In sports.html <head>, add the content of head-snippet.html (one line):
    <link rel="stylesheet" href="mc-sports.css">
-3) Paste the contents of nfl-week1-2025.html under your NFL area.
-4) Hard refresh.
+3) Find your NFL area and paste the content of body-snippet.html there:
+   <h2 id="nfl">NFL</h2>
+   <div id="nfl-week1-mount"></div>
+   <script src="nfl-week1-loader.js" defer></script>
+4) Hard refresh (Ctrl/Cmd+Shift+R).
 
-Logos:
-- These are neutral SVG initials, not official team marks, to avoid trademark issues.
-- If you later obtain licensed logos, keep the same filenames (e.g., PHI.svg) and replace the files.
-
-Coverage:
-- Weekend only (Thu–Sun, Sep 4–7, 2025). Monday game excluded by request.
+Notes:
+- Monday game (Vikings at Bears, Sep 8) is excluded per your “weekend” request.
+- The SVGs are neutral badges to avoid trademark issues. You can replace them later with licensed assets using the same filenames.
