@@ -1,20 +1,45 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Apps — Moe Community Cloud</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="assets/sponsor.css">
-  <script defer src="assets/consent.js"></script>
+  <meta name="description" content="Toolbox of mini‑apps: Meeting Automator and more, on-brand for MBCC."/>
+  <style>
+    :root{--bg:#0b0b0c;--card:#121214;--ink:#e9e9ef;--muted:#a9a9b3;--line:#232327;--accent:#d40a22}
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:#55b6ff;text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;background:#0b0b0c;border-bottom:1px solid #1b1b1e}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    nav{display:flex;gap:12px;flex-wrap:wrap}
+    nav a{color:var(--ink);background:#1a1a1e;border:1px solid #26262b;border-radius:10px;padding:8px 12px;font-weight:600}
+    nav a[aria-current="page"]{outline:2px solid var(--accent)}
+    h1{margin:.3rem 0 0 0;font-size:1.6rem}
+    h2{margin:1rem 0 .3rem 0}
+    .apps-wrap{max-width:1100px;margin:12px auto 28px auto;padding:0 16px}
+    .apps-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .app-card{grid-column:span 12;display:block;padding:18px;border-radius:16px;
+      color:#e9e9ef;background:#121214;border:1px solid #232327;text-decoration:none;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);transition:transform .12s ease,box-shadow .12s ease}
+    .app-card:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(0,0,0,.35)}
+    @media(min-width:800px){.app-card{grid-column:span 6}}
+    @media(min-width:1100px){.app-card{grid-column:span 4}}
+    .app-tag{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.5px;
+      padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#d40a22,#ff1f39);color:#fff}
+    .app-title{margin:.5rem 0 .25rem 0;font-size:1.15rem}
+    .app-desc{margin:0;color:#d9d9e3;line-height:1.55}
+    .app-actions{margin-top:10px;font-weight:700}
+    footer{border-top:1px solid #1b1b1e;color:#a9a9b3;padding:28px 16px;text-align:center}
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
-      <nav class="nav">
+  <header>
+    <div class="container" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <strong>🧰 MBCC</strong>
+      <nav style="margin-left:auto">
         <a href="index.html">Home</a>
-        <a href="apps.html" class="active">Apps</a>
+        <a href="apps.html" aria-current="page">Apps</a>
         <a href="news.html">News</a>
         <a href="sports.html">Sports</a>
         <a href="newsletter.html">Newsletter</a>
@@ -22,47 +47,23 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="card">
-      <div class="badge">Apps</div>
-      <h2>Toolbox</h2>
-      <p class="kicker">We’re refreshing the hub. New cards and icons coming soon.</p>
-      <div class="grid cols-3">
-        <div class="card"><h3>Coming soon</h3><p>Fresh lineup of tools.</p></div>
-        <div class="card"><h3>Coming soon</h3><p>Templates and playbooks.</p></div>
-        <div class="card"><h3>Coming soon</h3><p>Integrations and more.</p></div>
-      </div>
-    </section>
+  <main class="apps-wrap">
+    <h1>Apps</h1>
+    <h2>Toolbox</h2>
+    <div class="apps-grid">
+      <!-- Meeting Automator -->
+      <a class="app-card" href="meeting-automator.html">
+        <span class="app-tag">New</span>
+        <h3 class="app-title">Meeting Automator</h3>
+        <p class="app-desc">Plan agendas, invite attendees, export .ics, Google Calendar draft, and run a live timer — all in the browser.</p>
+        <div class="app-actions">Open →</div>
+      </a>
 
-    <section aria-label="sponsored">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </section>
-
-    
-<!-- Prime Sponsor Ribbon (sitewide) -->
-<section class="container prime-ribbon" aria-label="Prime Sponsor">
-  <div class="prime-ribbon-card">
-    <div class="logo">
-      <img src="assets/prime-sponsor-placeholder.svg" alt="Prime sponsor logo">
+      <!-- Add more cards below as you ship new tools -->
+      <!-- <a class="app-card" href="...">...</a> -->
     </div>
-    <div class="meta">
-      <div class="label">Prime Sponsor</div>
-      <p class="text">Premium placement available. Showcase your brand to our builder community each month.</p>
-    </div>
-    <div class="cta">
-      <a class="btn" href="mailto:moeknowmoe24@gmail.com?subject=Prime%20Sponsor%20Inquiry">Apply</a>
-    </div>
-  </div>
-</section>
-
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-    </div>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <footer>© Moe Community Cloud — All rights reserved.</footer>
 </body>
 </html>
