@@ -1,35 +1,21 @@
-MBCC Home — Darwynn Sponsor Box Update
-======================================
+MBCC Homepage Hero Banner
+=========================
 
-What changed
-- New CSS to make Darwynn's image fill the sponsor box while keeping the blinking glow.
-- Two approaches included:
-  1) Method A (recommended): uses the box as a background image (#darwynn-box)
-  2) Method B (quick): targets the <img> directly via CSS
+What you get
+- `hero.html`  → drop-in hero section (headline + microcopy + CTAs)
+- `hero.css`   → scoped styles to match your dark + gold brand
+- `assets/banner/mbcc-hero-bg.svg` → lightweight background image (vector)
 
-Files in this package
-- darwynn-sponsor.css          → Method A CSS
-- header-include.html          → 1-line <link> tag for your <head>
-- sponsor-box.html             → minimal wrapper markup for Method A
-- darwynn-sponsor-quick.css    → Method B CSS (no HTML changes)
-
-How to deploy (Method A — recommended)
-1) Upload "darwynn-sponsor.css" to the same folder as your homepage (index.html).
-2) In your homepage <head>, add the line from "header-include.html":
-   <link rel="stylesheet" href="darwynn-sponsor.css">
-3) Replace your current Prime Sponsor image block with the snippet in "sponsor-box.html".
+How to install
+1) Upload the **assets** folder and both `hero.html` + `hero.css` next to your homepage.
+2) In your homepage `<head>`, add:
+   <link rel="stylesheet" href="hero.css">
+3) Paste the contents of `hero.html` where you want the banner to appear (usually right after your main nav).
 4) Hard refresh (Ctrl/Cmd+Shift+R).
 
-Alternative (Method B — quick)
-1) Upload "darwynn-sponsor-quick.css".
-2) In the <head>, include it (or paste its contents into your main CSS):
-   <link rel="stylesheet" href="darwynn-sponsor-quick.css">
-3) No HTML changes needed.
+Tweaks
+- Change the kicker line in `hero.html` to tune the humor level:
+  e.g. “serious tools, playfully fast” or “we automate the boring parts (you’re welcome).”
+- Want a full-bleed hero (no rounded corners)? Remove `border-radius` from `#mbcc-hero` in `hero.css`.
 
-Notes
-- The background zoom is set to 190%. If you want tighter/looser crop, adjust in darwynn-sponsor.css:
-    background: #c49a16 url("/assets/sponsors/darwynn-plaid-glow-1600x340.png") left center / 180% auto no-repeat;
-- Keep the "blink" class on the wrapper (Method A) or on the <img> (Method B) to maintain the glow animation.
-- All styles are scoped and won’t affect other parts of your site.
-
-Timestamp: 2025-09-08T10:59:57.741544Z
+Timestamp: 2025-09-08T11:03:58.831025Z
