@@ -1,197 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moe Community Cloud — Home</title>
-
-  <!-- Performance/SEO polish -->
-  <link rel="preload" as="image" href="/assets/sponsors/darwynn-plaid-glow-1600x340.png">
-  <meta name="theme-color" content="#0b0f18">
-  <meta name="description" content="Moe Community Cloud — AI-enhanced tools, sports recaps, and news with a clean, fast layout.">
-  <meta property="og:title" content="Moe Community Cloud">
-  <meta property="og:description" content="AI-enhanced tools, sports recaps, and news — fast and clean.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.moecommunitycloud.com/">
-
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gameday Edge – Demo</title>
+  <link rel="stylesheet" href="assets/css/gameday-edge.css">
   <style>
-    :root { color-scheme: dark; }
-    body { margin: 0; background: #0b0f18; color: #e8ecff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    a { color: #9fc3ff; text-decoration: none; } a:hover { text-decoration: underline; }
-    .muted{ color:#b9c4ff }
-
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 1rem; }
-
-    /* Top nav */
-    header .nav { display: flex; gap: .9rem; align-items: center; flex-wrap: wrap; padding: .6rem 0; }
-    header .nav a { font-weight: 700; color: #e8ecff; padding: .35rem .6rem; border-radius: 8px; }
-    header .nav a:hover { background: #12162a; text-decoration: none; }
-
-    /* HERO */
-    #mbcc-hero {
-      position: relative; border-radius: 18px; overflow: hidden;
-      min-height: clamp(260px, 42vw, 520px);
-      background:
-        radial-gradient(1200px 400px at 20% 15%, rgba(196,154,22,.30), rgba(196,154,22,0) 60%),
-        radial-gradient(900px 340px at 80% 85%, rgba(196,154,22,.22), rgba(196,154,22,0) 60%),
-        linear-gradient(180deg, #0b0f18 0%, #0e1120 50%, #101426 100%);
-      display: grid; place-items: center; padding: 3rem 1.2rem;
-      box-shadow: 0 12px 36px rgba(0,0,0,.35);
-    }
-    .hero-inner { text-align: center; max-width: 900px; color: #eef1ff; text-shadow: 0 2px 14px rgba(0,0,0,.45); }
-    .hero-kicker { margin: 0 0 .4rem 0; font: 800 .85rem/1.2 system-ui; text-transform: uppercase; letter-spacing: 1.6px; color: #ffec9a; }
-    .hero-title { margin: 0 0 .45rem 0; font: 800 clamp(1.6rem, 5vw, 3rem)/1.05 system-ui; letter-spacing: .2px; }
-    .hero-sub { margin: 0 0 1rem 0; font: 400 clamp(.95rem,1.7vw,1.15rem)/1.5 system-ui; color: #dbe2ff; }
-    .hero-cta { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      font: 700 .95rem/1 system-ui; padding: .8rem 1.1rem; border-radius: 12px;
-      border: 1px solid #2a2f4a; background: #11162a; color: #e8ecff;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-      text-decoration: none;
-    }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.35); text-decoration: none; }
-    .btn-primary { background: linear-gradient(90deg,#d40a22,#ff1f39); border-color: transparent; color: #fff; }
-
-    /* Sections */
-    .section { margin: 1.2rem 0; background: #0f1220; border: 1px solid #2a2f4a; border-radius: 14px; padding: 1rem; }
-    h2 { margin: .2rem 0 .8rem 0; font: 800 1.25rem/1.2 system-ui; }
-
-    /* Sponsor box */
-    .sponsor-card { display: grid; gap: .8rem; }
-    .sponsor-lead { color: #b9c4ff; margin: 0; }
-    .sponsor-box {
-      position: relative; border-radius: 16px; overflow: hidden;
-      height: clamp(180px, 26vw, 360px);
-      display: grid; place-items: center;
-      background:
-        url("/assets/sponsors/darwynn-plaid-glow-1600x340.png") left center / cover no-repeat,
-        radial-gradient(600px 220px at 20% 15%, rgba(255,215,0,.30), rgba(255,215,0,0) 60%),
-        linear-gradient(180deg,#c49a16 0%, #b38712 100%);
-      box-shadow:
-        0 0 0 2px rgba(255,215,0,.55),
-        inset 0 0 30px rgba(255,215,0,.18),
-        0 12px 36px rgba(0,0,0,.35);
-      animation: mbccBlink 1.8s ease-in-out infinite;
-    }
-    @keyframes mbccBlink {
-      0%,100% { box-shadow: 0 0 0 2px rgba(255,215,0,.45), inset 0 0 24px rgba(255,215,0,.16), 0 12px 36px rgba(0,0,0,.35); }
-      50%    { box-shadow: 0 0 0 2px rgba(255,215,0,.90), inset 0 0 48px rgba(255,215,0,.32), 0 14px 42px rgba(0,0,0,.45); }
-    }
-
-    /* Subscribe form + toast */
-    #subscribe form { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center }
-    #subscribe input[type="email"]{
-      background:#0e1428; color:#e8ecff; border:1px solid #2a2f4a; border-radius:10px;
-      padding:.8rem 1rem; min-width:260px; outline:none;
-    }
-    #subscribe input[type="email"]::placeholder{ color:#9aa7ff }
-    .toast{
-      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
-      background: linear-gradient(90deg,#d40a22,#ff1f39); color:#fff; padding:.8rem 1rem;
-      border-radius:12px; box-shadow:0 8px 26px rgba(0,0,0,.35); font:700 .95rem/1 system-ui;
-      opacity:0; pointer-events:none; transition: all .28s ease; z-index:9999;
-    }
-    .toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;margin:0;padding:24px;background:#0a0a0a;color:#f7f7f7}
+    header.site h1{margin:0 0 2px 0}
+    header.site p{margin:0 0 18px 0;opacity:.8}
+    .brand{display:inline-block;padding:.35rem .6rem;border-radius:10px;background:repeating-linear-gradient(45deg,#300,#b00 10px,#000 10px,#000 20px);color:#fff;font-weight:800;letter-spacing:.3px}
+    a{color:#55aaff}
   </style>
-
-  <script>
-    window.MBCC_SUBSCRIBE = {
-      endpoint: "https://docs.google.com/forms/d/e/FORM_ID/formResponse",
-      emailEntry: "entry.1234567890"
-    };
-  </script>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/apps.html">Apps</a>
-        <a href="/news.html">News</a>
-        <a href="/sports.html">Sports</a>
-        <a href="/sports.html#nfl">NFL</a>
-        <a href="/sports.html#nba">NBA</a>
-        <a href="/sports.html#mlb">MLB</a>
-        <a href="/sports.html#wnba">WNBA</a>
-        <a href="/newsletter.html">Newsletter</a>
-      </nav>
-    </header>
+  <header class="site">
+    <div class="brand">MBCC Sports</div>
+    <h1>Sports Page (Demo)</h1>
+    <p>This page demonstrates the drop-in <b>Gameday Edge</b> blocks. In production, just add the CSS/JS to your existing <code>sports.html</code>.</p>
+  </header>
 
-    <section id="mbcc-hero">
-      <div class="hero-inner">
-        <p class="hero-kicker">Moe Community Cloud</p>
-        <h1 class="hero-title">AI-enhanced tools, news & sports—fast and clean.</h1>
-        <p class="hero-sub">From meeting automations to creator utilities, we ship simple, useful apps with just enough swagger.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="/apps.html">Explore the Toolbox</a>
-          <a class="btn" href="/sports.html#nfl">Week 1 NFL Recaps</a>
-          <a class="btn" href="/sports.html#nba">NBA Weekend Notebook</a>
-          <a class="btn" href="/sports.html#mlb">MLB Playoff Picture</a>
-        </div>
-      </div>
-    </section>
+  <!-- Existing site content would be here -->
+  <main id="sports">
+    <p>Existing sports content…</p>
+  </main>
 
-    <section class="section sponsor-card" aria-labelledby="sponsor-title">
-      <h2 id="sponsor-title">Featured Sponsor</h2>
-      <p class="sponsor-lead">A big shoutout to our partner—framed in the golden glow.</p>
-      <div class="sponsor-box"></div>
-    </section>
-
-    <section id="subscribe" class="section" aria-labelledby="sub-title">
-      <h2 id="sub-title">Get updates in your inbox</h2>
-      <p class="muted" style="margin-top:-8px">News, app drops, and game recaps. No spam.</p>
-      <form id="mbcc-subscribe-form">
-        <input type="email" name="email" placeholder="you@example.com" required>
-        <button class="btn btn-primary" type="submit">Subscribe</button>
-      </form>
-    </section>
-
-    <section class="section">
-      <h2>What’s New</h2>
-      <ul>
-        <li><a href="/apps.html">Meeting Automator</a> — auto-summaries, action items, transcripts.</li>
-        <li><a href="/sports.html#nfl">NFL Week 1</a> — quick scores + headlines.</li>
-        <li><a href="/sports.html#nba">NBA Weekend</a> — HOF & EuroBasket.</li>
-        <li><a href="/sports.html#mlb">MLB Playoff Picture</a> — seeds, wild cards, what’s next.</li>
-      </ul>
-    </section>
-
-    <footer>
-      <p>&copy; Moe Community Cloud — All rights reserved.</p>
-      <p>Built on black &amp; red plaid with gold energy ⚡</p>
-    </footer>
-  </div>
-
-  <div id="toast" class="toast" role="status" aria-live="polite">Subscribed! Check your inbox shortly.</div>
-
-  <script>
-  (function() {
-    const cfg = window.MBCC_SUBSCRIBE || {};
-    const form = document.getElementById('mbcc-subscribe-form');
-    const toast = document.getElementById('toast');
-
-    function showToast(text){
-      toast.textContent = text || 'Subscribed! Check your inbox shortly.';
-      toast.classList.add('show');
-      setTimeout(()=>toast.classList.remove('show'), 2600);
-    }
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = form.querySelector('input[name="email"]').value.trim();
-      if (!email) return;
-      if (cfg.endpoint && cfg.emailEntry) {
-        const data = new FormData();
-        data.append(cfg.emailEntry, email);
-        fetch(cfg.endpoint, { method:'POST', mode:'no-cors', body:data })
-          .then(()=> { showToast(); form.reset(); })
-          .catch(()=> { showToast('Saved locally. We’ll add you soon.'); });
-      } else {
-        window.location.href = 'mailto:subscribe@moecommunitycloud.com?subject=Subscribe&body=' + encodeURIComponent(email);
-      }
-    });
-  })();
-  </script>
+  <!-- Injector script that appends two blocks automatically -->
+  <script src="assets/js/gameday-edge.js"></script>
 </body>
 </html>
