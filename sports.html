@@ -49,8 +49,10 @@
     .mc-game{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
     .mc-row{display:flex;align-items:center;gap:.6rem;justify-content:space-between}
     .mc-teams{margin:.25rem 0 .35rem 0}
-    .mc-team{display:flex;align-items:center;gap:.5rem}
+    .mc-team{display:flex;align-items:center;gap:.45rem}
     .mc-name{font:600 .95rem/1.2 system-ui;color:#f1f4ff}
+    .mc-logo{width:28px;height:28px;border-radius:50%;overflow:hidden;flex:0 0 28px;display:grid;place-items:center;background:#222}
+    .mc-logo img,.mc-logo svg{display:block;width:100%;height:100%}
     .mc-badge{font:800 .7rem/1.1 system-ui;text-transform:uppercase;letter-spacing:.6px;padding:.25rem .5rem;border-radius:999px;background:linear-gradient(90deg,#d40a22,#ff1f39);color:#fff}
     .mc-blurb{margin:.35rem 0 0 0;font:400 .9rem/1.35 system-ui;color:#cbd3ff}
     .mc-footnote{margin:.6rem 0 0 0;color:#aab3ff;font:.85rem/1.4 system-ui}
@@ -82,6 +84,7 @@
       <a href="/sports.html#nba">NBA</a>
       <a href="/sports.html#mlb">MLB</a>
       <a href="/sports.html#wnba">WNBA</a>
+      <a href="/sports.html#ncaaf">NCAAF</a>
       <a href="/newsletter.html">Newsletter</a>
     </nav>
   </header>
@@ -102,6 +105,7 @@
       <div class="sponsor-mini" title="Darwynn — Featured Partner"></div>
     </section>
 
+    <!-- NFL -->
     <section id="nfl" class="mc-scores section">
       <h2 id="nfl-stamp" class="mc-sec-title">NFL</h2>
       <div class="mc-strip mc-performers">
@@ -118,6 +122,7 @@
       <p id="nfl-footnote" class="mc-footnote"></p>
     </section>
 
+    <!-- NBA -->
     <section id="nba" class="mc-scores section">
       <p class="muted" id="nba-kicker" style="margin:0 0 .2rem 0">NBA</p>
       <h2 id="nba-stamp" class="mc-sec-title">NBA — Weekend Notebook</h2>
@@ -134,6 +139,7 @@
       </div>
     </section>
 
+    <!-- MLB -->
     <section id="mlb" class="section">
       <p class="muted" id="mlb-stamp" style="margin:0 0 .4rem 0">MLB — Playoff Picture</p>
       <div class="grid">
@@ -157,6 +163,7 @@
       <p class="blurb" id="mlb-note" style="margin-top:.8rem"></p>
     </section>
 
+    <!-- WNBA -->
     <section id="wnba" class="section">
       <p class="muted" id="wnba-stamp" style="margin:0 0 .4rem 0">WNBA — Playoff Watch</p>
       <div class="grid">
@@ -182,6 +189,37 @@
         <div id="wnba-scores" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
       </div>
     </section>
+
+    <!-- NCAAF -->
+    <section id="ncaaf" class="section">
+      <p class="muted" id="ncaaf-stamp" style="margin:0 0 .4rem 0">NCAAF — Week 2</p>
+      <div class="grid">
+        <article class="card">
+          <div class="title">Top Headlines</div>
+          <ul id="ncaaf-headlines" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">Upsets</div>
+          <ul id="ncaaf-upsets" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">Top Performers</div>
+          <ul id="ncaaf-performers" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">AP Top 25 (Top 10)</div>
+          <ul id="ncaaf-ap10" class="list"><li>Loading…</li></ul>
+        </article>
+      </div>
+      <div class="mc-scores" style="margin-top:14px">
+        <h3 class="mc-sec-title" style="margin-top:.6rem">Marquee Scores</h3>
+        <div id="ncaaf-scores" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="title">What’s Next</div>
+        <ul id="ncaaf-next" class="list"><li>Loading…</li></ul>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -199,7 +237,45 @@
           const li = document.createElement('li'); li.textContent = t; ul.appendChild(li);
         });
       }
-      function renderScores(containerSel, games){
+
+      // NEW: Logo helpers (monogram avatars by default)
+      function slug(s){ return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+      function initials(name){
+        try {
+          const parts = (name||'').split(/\s+/).filter(Boolean);
+          return (parts[0]?.[0]||'').toUpperCase() + (parts[1]?.[0]||'').toUpperCase();
+        } catch(e){ return '??'; }
+      }
+      function hashColor(str){
+        let h = 0; for (let i=0;i<(str||'').length;i++){ h = (h*31 + (str.charCodeAt(i)||0))|0; }
+        const hue = Math.abs(h)%360; return `hsl(${hue} 70% 45%)`;
+      }
+      function avatarSVG(name){
+        const bg = hashColor(name||'');
+        const txt = initials(name||'');
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="${name}">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="${bg}"/><stop offset="1" stop-color="rgba(255,255,255,.14)"/></linearGradient></defs>
+          <rect width="64" height="64" rx="32" fill="url(#g)"/>
+          <text x="50%" y="54%" text-anchor="middle" font-family="system-ui,Segoe UI,Roboto,Arial" font-weight="800" font-size="28" fill="white">${txt}</text>
+        </svg>`;
+      }
+      function logoPathForTeam(name, league){
+        const base = '/assets/logos'; const s = slug(name||''); const lg = (league||'misc').toLowerCase();
+        return `${base}/${lg}/${s}.svg`;
+      }
+      function teamLogoHTML(name, league){
+        // If you later add real logos under /assets/logos/<league>/<slug>.svg,
+        // set USE_REAL_LOGOS = true below and they'll auto-appear.
+        const USE_REAL_LOGOS = false;
+        if (USE_REAL_LOGOS){
+          const p = logoPathForTeam(name, league);
+          return `<img class="mc-logo" src="${p}" alt="${name} logo" loading="lazy">`;
+        }
+        return `<div class="mc-logo">${avatarSVG(name)}</div>`;
+      }
+
+      function renderScores(containerSel, games, league){
         const container = typeof containerSel === 'string' ? $(containerSel) : containerSel;
         if (!container) return; container.innerHTML = '';
         (games || []).forEach(g=>{
@@ -211,8 +287,8 @@
               <h4 class="mc-title">${g.title || (g.away && g.home ? `${g.away} at ${g.home}` : 'Game')}</h4>
             </header>
             <div class="mc-teams">
-              ${g.away ? `<div class="mc-team"><div class="mc-name">${g.away} ${g.awayPts ?? ''}</div></div>` : ''}
-              ${g.home ? `<div class="mc-team"><div class="mc-name">${g.home} ${g.homePts ?? ''}</div></div>` : ''}
+              ${g.away ? `<div class="mc-team">${teamLogoHTML(g.away, league)}<div class="mc-name">${g.away} ${g.awayPts ?? ''}</div></div>` : ''}
+              ${g.home ? `<div class="mc-team">${teamLogoHTML(g.home, league)}<div class="mc-name">${g.home} ${g.homePts ?? ''}</div></div>` : ''}
             </div>
             <p class="mc-blurb">${g.blurb || g.note || ''}</p>
           `;
@@ -232,9 +308,7 @@
       }
       const CANDIDATES = ['/data/sports-data.json', '/data/data.json', '/data.json'];
 
-      function pick(obj, path){
-        return path.split('.').reduce((a,k)=> (a && a[k] != null) ? a[k] : null, obj);
-      }
+      function pick(obj, path){ return path.split('.').reduce((a,k)=> (a && a[k] != null) ? a[k] : null, obj); }
 
       function renderNFL(nfl){
         if (!nfl) return;
@@ -250,7 +324,7 @@
           perfWrap.appendChild(d);
         });
         fillList('#nfl-headlines', nfl.headlines);
-        renderScores('#nfl-games', nfl.games);
+        renderScores('#nfl-games', nfl.games, 'nfl');
         if (nfl.footnote) el('nfl-footnote').textContent = nfl.footnote;
       }
 
@@ -292,7 +366,7 @@
         fillList('#wnba-seed', wnba.seeding);
         fillList('#wnba-players', wnba.players_to_watch);
         fillList('#wnba-next', wnba.whats_next);
-        renderScores('#wnba-scores', wnba.scores);
+        renderScores('#wnba-scores', wnba.scores, 'wnba');
       }
 
       function renderNCAAF(cf){
@@ -302,17 +376,8 @@
         fillList('#ncaaf-upsets', cf.upsets);
         fillList('#ncaaf-performers', (cf.top_performers||[]).map(p => `${p.name} (${p.team}) — ${p.line}`));
         fillList('#ncaaf-ap10', cf.ap_top10);
-        renderScores('#ncaaf-scores', cf.scores);
+        renderScores('#ncaaf-scores', cf.scores, 'ncaaf');
         fillList('#ncaaf-next', cf.whats_next);
-      }
-
-        if (!wnba) return;
-        if (wnba.stamp) el('wnba-stamp').textContent = `WNBA — Playoff Watch (as of ${wnba.stamp})`;
-        fillList('#wnba-top', wnba.top_storylines);
-        fillList('#wnba-seed', wnba.seeding);
-        fillList('#wnba-players', wnba.players_to_watch);
-        fillList('#wnba-next', wnba.whats_next);
-        renderScores('#wnba-scores', wnba.scores);
       }
 
       fetchFirst(CANDIDATES).then(json=>{
@@ -321,6 +386,7 @@
         renderNBA( root.nba );
         renderMLB( root.mlb );
         renderWNBA( root.wnba );
+        renderNCAAF( root.ncaaf );
       }).catch(()=>{/* leave placeholders */});
     })();
   </script>
