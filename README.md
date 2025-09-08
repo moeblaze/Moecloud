@@ -1,30 +1,25 @@
-# Gameday Edge – Drop‑in Newsletter Blocks
+# MBCC Edge Blocks – Site-wide Fixpack
 
-This pack adds a non-destructive newsletter-style section to your existing **sports.html** without touching any other content.
+Adds newsletter-style **Edge** blocks across your sports page **without altering existing content**.
+Included blocks: **NFL Tonight**, **WNBA Assist Spotlight**, **NCAA Edge**, **NHL Edge**, **NASCAR Edge**.
 
-## What’s inside
-- `assets/css/gameday-edge.css` – Lightweight styles
-- `assets/js/gameday-edge.js` – Appends **NFL Tonight** and **WNBA Assist Spotlight** blocks to your page
-- `gameday-edge.html` – Static HTML fragment if you prefer to paste markup directly
-- `index.html` – Standalone demo (open locally to preview)
+## Files
+- `assets/css/edge-blocks.css` – Shared styles
+- `assets/js/edge-injector.js` – Appends all blocks under `#sports` (or `<main>`/`<body>` as fallback)
+- `assets/js/edge-data.json` – **Editable data** for odds/notes (update this file only)
+- `index.html` – Demo preview page
 
-## Quick install (recommended – JS injector)
-1. Upload the **assets** folder to your site (keep the same paths).
-2. Add these tags to the bottom of your existing `sports.html` (before `</body>`):
+## Install (Recommended)
+1) Upload the `assets/` folder to your site.
+2) In your existing `sports.html`, add right before `</body>`:
 ```html
-<link rel="stylesheet" href="assets/css/gameday-edge.css">
-<script src="assets/js/gameday-edge.js" defer></script>
+<link rel="stylesheet" href="assets/css/edge-blocks.css">
+<script src="assets/js/edge-injector.js" defer></script>
 ```
-That’s it — it will append two cards under `#nfl`, `#sports`, or `<main>` automatically.
+That’s it—blocks will appear below `#sports` automatically.
 
-## Manual install (HTML paste)
-- Open `gameday-edge.html`, copy all markup, and paste it into `sports.html` where you want it to appear.
-- Also include the CSS link in your `<head>`:
-```html
-<link rel="stylesheet" href="assets/css/gameday-edge.css">
-```
+## Editing Picks/Notes
+- Update values in `assets/js/edge-data.json` to refresh odds, players, or notes.
+- `enabled: true/false` toggles a section on/off.
 
-## Notes
-- **Date:** Sept 8, 2025
-- You can update odds/players inside `assets/js/gameday-edge.js` (search for the `data` object near the top).
-- Colors adapt to dark/light mode and won’t interfere with your existing theme.
+**Date:** Sept 8, 2025

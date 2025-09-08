@@ -1,0 +1,126 @@
+{
+  "updatedDisplay": "Sept 8, 2025",
+  "nfl": {
+    "enabled": true,
+    "title": "\ud83c\udfc8 Gameday Edge \u2014 NFL Tonight",
+    "matchup": "Vikings @ Bears",
+    "anytime": [
+      {
+        "player": "Justin Jefferson (MIN)",
+        "odds": "+135",
+        "note": "Safer play"
+      },
+      {
+        "player": "D\u2019Andre Swift (MIN)",
+        "odds": "+155",
+        "note": "Balanced value"
+      },
+      {
+        "player": "DJ Moore (CHI)",
+        "odds": "+180",
+        "note": ""
+      }
+    ],
+    "firstTD": [
+      {
+        "player": "Jordan Mason (MIN)",
+        "odds": "+950"
+      },
+      {
+        "player": "DJ Moore (CHI)",
+        "odds": "+1000"
+      },
+      {
+        "player": "Caleb Williams (CHI)",
+        "odds": "Long Shot"
+      }
+    ],
+    "sources": [
+      {
+        "label": "SportsbookReview \u2013 Anytime/First TD",
+        "href": "https://www.sportsbookreview.com/picks/nfl/vikings-vs-bears-anytime-touchdown-scorer-predictions-mnf-week-1-sept-8-2025/"
+      }
+    ]
+  },
+  "wnba": {
+    "enabled": true,
+    "title": "\ud83c\udfc0 WNBA Assist Props Spotlight",
+    "matchup": "Sun @ Dream",
+    "assists": [
+      {
+        "player": "Jordin Canada (ATL)",
+        "line": "Over 6.5 AST",
+        "odds": "\u2212123"
+      },
+      {
+        "player": "Marina Mabrey (CON)",
+        "line": "Over 3 AST",
+        "odds": "\u2212135"
+      },
+      {
+        "player": "Lindsay Allen (CON)",
+        "line": "Over/Under 3 AST",
+        "odds": "\u2212115 / \u2212111"
+      }
+    ],
+    "sources": [
+      {
+        "label": "TOI \u2013 Best Prop Bets",
+        "href": "https://timesofindia.indiatimes.com/sports/nba/top-stories/atlanta-dream-vs-connecticut-sun-prediction-odds-spread-moneyline-best-wnba-prop-bets-september-8-2025/"
+      },
+      {
+        "label": "DocSports \u2013 Mabrey/Allen",
+        "href": "https://www.docsports.com/free-picks/wnba/2025/marina-mabrey-wnba-player-prop-bets-today-vs-atlanta-dream-9-8-2025.html"
+      }
+    ]
+  },
+  "ncaa": {
+    "enabled": true,
+    "title": "\ud83c\udfc8 NCAA Edge \u2014 Quick Hits",
+    "bullets": [
+      "Top 25 watchlist: monitor line moves 90m pre-kickoff.",
+      "QB injury checks can swing totals by 3\u20135 pts.",
+      "Lean overs on high-tempo matchups (pace > 75 plays)."
+    ],
+    "cta": {
+      "label": "Check live CFB lines",
+      "href": "https://www.espn.com/college-football/scoreboard"
+    }
+  },
+  "nhl": {
+    "enabled": true,
+    "title": "\ud83c\udfd2 NHL Edge \u2014 Form Watch",
+    "bullets": [
+      "Target PP1 usage for shots/points props.",
+      "Back-to-backs: fade road teams (legs matter).",
+      "Goalie confirmations change totals\u2014re-check near puck drop."
+    ],
+    "cta": {
+      "label": "See today\u2019s slate",
+      "href": "https://www.dailyfaceoff.com/gameday/"
+    }
+  },
+  "nascar": {
+    "enabled": true,
+    "title": "\ud83c\udfc1 NASCAR Edge \u2014 Top 3 Targets",
+    "list": [
+      {
+        "driver": "Driver A",
+        "note": "Short-run speed pop (P10\u2192P3 in practice)"
+      },
+      {
+        "driver": "Driver B",
+        "note": "Pit crew advantage; clean air upside"
+      },
+      {
+        "driver": "Driver C",
+        "note": "Long-run tire management at this track"
+      }
+    ],
+    "disclaimer": "Update with this week\u2019s track/practice when available.",
+    "cta": {
+      "label": "Live leaderboard",
+      "href": "https://www.nascar.com/racecenter/"
+    }
+  }
+}
