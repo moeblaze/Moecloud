@@ -1,0 +1,20 @@
+/* Darwynn sponsor image — Method B (no HTML markup changes)
+   Makes the image fill and crop to the left side */
+img[src*="darwynn-plaid-glow-1600x340"]{
+  display:block;
+  width:100%;
+  height: clamp(180px, 26vw, 360px);
+  object-fit: cover;
+  object-position: 15% center;    /* focus left/gold side */
+  border-radius: 14px;
+}
+
+/* If your blink is applied on the image, keep it here */
+img[src*="darwynn-plaid-glow-1600x340"].blink{
+  animation: mbccBlink 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0 2px rgba(255,215,0,.55), inset 0 0 30px rgba(255,215,0,.18);
+}
+@keyframes mbccBlink{
+  0%,100%{ box-shadow:0 0 0 2px rgba(255,215,0,.45), inset 0 0 24px rgba(255,215,0,.16) }
+  50%    { box-shadow:0 0 0 2px rgba(255,215,0,.90), inset 0 0 48px rgba(255,215,0,.32) }
+}
