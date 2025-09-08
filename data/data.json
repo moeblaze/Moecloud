@@ -1,327 +1,42 @@
 {
   "sports": {
-    "nfl": {
-      "stamp": "Week 1 (Sep 4\u20137, 2025)",
-      "top_performers": [
-        {
-          "name": "Josh Allen",
-          "team": "Bills",
-          "line": "394 pass yds, 2 TD",
-          "game": "BUF 41\u201340 BAL"
-        },
-        {
-          "name": "Aaron Rodgers",
-          "team": "Steelers",
-          "line": "244 pass yds, 4 TD",
-          "game": "PIT 34\u201332 NYJ"
-        },
-        {
-          "name": "Justin Herbert",
-          "team": "Chargers",
-          "line": "318 pass yds, 3 TD",
-          "game": "LAC 27\u201321 KC"
-        },
-        {
-          "name": "Travis Etienne Jr.",
-          "team": "Jaguars",
-          "line": "143 rush yds",
-          "game": "JAX 26\u201310 CAR"
-        },
-        {
-          "name": "Puka Nacua",
-          "team": "Rams",
-          "line": "10 rec, 130 yds",
-          "game": "LAR 14\u20139 HOU"
-        }
-      ],
+    "nhl": {
+      "stamp": "Preseason & Camp Watch (as of Sept 8, 2025)",
       "headlines": [
-        "\u2022 Eagles edge Cowboys 24\u201320 in weather-delayed opener",
-        "\u2022 Chargers win Brazil game vs. Chiefs, 27\u201321",
-        "\u2022 Rodgers tosses 4 TD as Steelers outlast Jets",
-        "\u2022 Bills rally late to top Ravens 41\u201340",
-        "\u2022 Colts dominate Dolphins 33\u20138 in Daniel Jones debut"
+        "Training camps open Sept 17; preseason runs Sept 21\u2013Oct 4.",
+        "Opening night Oct 7 on ESPN: Blackhawks\u2013Panthers, Penguins\u2013Rangers, Avalanche\u2013Kings.",
+        "Hurricanes sign a veteran winger to PTO as battles heat up.",
+        "Neutral-site showcases dot the preseason calendar.",
+        "National TV slate announced across ESPN/TNT."
       ],
-      "games": [
-        {
-          "dow": "Thu",
-          "title": "Cowboys at Eagles",
-          "away": "Cowboys",
-          "awayPts": 20,
-          "home": "Eagles",
-          "homePts": 24,
-          "blurb": "Hurts rushes for 2 TD in a weather-delayed opener."
-        },
-        {
-          "dow": "Fri",
-          "title": "Chiefs at Chargers",
-          "away": "Chiefs",
-          "awayPts": 21,
-          "home": "Chargers",
-          "homePts": 27,
-          "blurb": "Justin Herbert throws for 318 yards & 3 TD in Brazil."
-        },
-        {
-          "dow": "Sun",
-          "title": "Buccaneers at Falcons",
-          "away": "Buccaneers",
-          "awayPts": 23,
-          "home": "Falcons",
-          "homePts": 20,
-          "blurb": "Tampa Bay edges Atlanta; Penix Jr. posts 298 passing yards."
-        },
-        {
-          "dow": "Sun",
-          "title": "Bengals at Browns",
-          "away": "Bengals",
-          "awayPts": 17,
-          "home": "Browns",
-          "homePts": 16,
-          "blurb": "Cincinnati hangs on; Joe Flacco throws for 290 in the loss."
-        },
-        {
-          "dow": "Sun",
-          "title": "Dolphins at Colts",
-          "away": "Dolphins",
-          "awayPts": 8,
-          "home": "Colts",
-          "homePts": 33,
-          "blurb": "Daniel Jones throws for 272 in Indy debut; Pittman scores."
-        },
-        {
-          "dow": "Sun",
-          "title": "Raiders at Patriots",
-          "away": "Raiders",
-          "awayPts": 20,
-          "home": "Patriots",
-          "homePts": 13,
-          "blurb": "Geno Smith piles up 362 yards as Vegas wins in Foxborough."
-        },
-        {
-          "dow": "Sun",
-          "title": "Cardinals at Saints",
-          "away": "Cardinals",
-          "awayPts": 20,
-          "home": "Saints",
-          "homePts": 13,
-          "blurb": "Rookie Trey Benson\u2019s 69 rush yards help lift Arizona."
-        },
-        {
-          "dow": "Sun",
-          "title": "Steelers at Jets",
-          "away": "Steelers",
-          "awayPts": 34,
-          "home": "Jets",
-          "homePts": 32,
-          "blurb": "Aaron Rodgers tosses 4 TD vs. his former team."
-        },
-        {
-          "dow": "Sun",
-          "title": "Giants at Commanders",
-          "away": "Giants",
-          "awayPts": 6,
-          "home": "Commanders",
-          "homePts": 21,
-          "blurb": "Jayden Daniels steady; Deebo Samuel adds 77 receiving yards."
-        },
-        {
-          "dow": "Sun",
-          "title": "Panthers at Jaguars",
-          "away": "Panthers",
-          "awayPts": 10,
-          "home": "Jaguars",
-          "homePts": 26,
-          "blurb": "Travis Etienne rushes for 143 as Jacksonville cruises."
-        },
-        {
-          "dow": "Sun",
-          "title": "Titans at Broncos",
-          "away": "Titans",
-          "awayPts": 12,
-          "home": "Broncos",
-          "homePts": 20,
-          "blurb": "Bo Nix debuts with 176 & a TD; Denver\u2019s D closes it out."
-        },
-        {
-          "dow": "Sun",
-          "title": "49ers at Seahawks",
-          "away": "49ers",
-          "awayPts": 17,
-          "home": "Seahawks",
-          "homePts": 13,
-          "blurb": "Brock Purdy throws for 277 and 2 TD; late Niners push holds."
-        },
-        {
-          "dow": "Sun",
-          "title": "Lions at Packers",
-          "away": "Lions",
-          "awayPts": 13,
-          "home": "Packers",
-          "homePts": 27,
-          "blurb": "Green Bay controls the day; Josh Jacobs logs 66 & a score."
-        },
-        {
-          "dow": "Sun",
-          "title": "Texans at Rams",
-          "away": "Texans",
-          "awayPts": 9,
-          "home": "Rams",
-          "homePts": 14,
-          "blurb": "Stafford (245y, TD) and Puka Nacua (10-130) pace LA."
-        },
-        {
-          "dow": "Sun",
-          "title": "Ravens at Bills",
-          "away": "Ravens",
-          "awayPts": 40,
-          "home": "Bills",
-          "homePts": 41,
-          "blurb": "Bills score 16 late to stun Baltimore."
-        }
+      "key_dates": [
+        "Sept 17: NHL training camps open",
+        "Sept 21: Preseason games begin",
+        "Oct 4: Final day of preseason",
+        "Oct 7: Regular season opening-night tripleheader (ESPN)"
       ],
-      "footnote": "Weekend only (Thu\u2013Sun). Monday: Vikings at Bears \u2014 not included."
-    },
-    "nba": {
-      "kicker": "NBA Weekend",
-      "stamp": "Weekend Notebook (Sept 5\u20137, 2025)",
-      "headlines": [
-        "Hall of Fame Class of 2025 enshrined: Carmelo, Dwight, Bird, Moore, Fowles, Redeem Team, more.",
-        "EuroBasket: Georgia stuns France; Don\u010di\u0107 drops 42 as Slovenia advances.",
-        "\u201cNBA on NBC\u201d promo airs during SNF; Opening Night Oct 21 on NBC/Peacock."
+      "preseason_highlights": [
+        "Neutral-site exhibitions: Abbotsford (CGY\u2013VAN), Bakersfield (ANA\u2013LAK), Boise (LAK\u2013Utah), Hershey (PHI\u2013WSH), Orlando (FLA\u2013TBL), Quebec City (NJD\u2013OTT; MTL\u2013OTT)."
       ],
-      "cards1": [
+      "exhibitions": [
         {
-          "title": "EuroBasket Shock: Georgia to QFs",
-          "blurb": "Georgia eliminates France 80\u201370 to reach the quarterfinals for the first time."
+          "date": "Mon, Sep 22",
+          "away": "Buffalo Sabres",
+          "home": "Columbus Blue Jackets",
+          "note": "Preseason opener (example card)"
         },
         {
-          "title": "Luka Magic: 42 vs Italy",
-          "blurb": "Don\u010di\u0107 pours in 42 (84\u201377) to push Slovenia through; Germany next."
-        }
-      ],
-      "cards2": [
-        {
-          "title": "Class of 2025 \u2014 Headliners",
-          "blurb": "Carmelo Anthony, Dwight Howard, Sue Bird, Maya Moore, Sylvia Fowles, the 2008 Redeem Team, and more."
-        },
-        {
-          "title": "Opening Night on NBC",
-          "blurb": "Oct 21: Rockets at Thunder (7:30 ET), Warriors at Lakers (10 ET) on NBC/Peacock."
+          "date": "Mon, Sep 22",
+          "away": "Pittsburgh Penguins",
+          "home": "Montr\u00e9al Canadiens",
+          "note": "Bell Centre tune-up"
         }
       ],
       "whats_next": [
-        "Sept 23\u201329: Media Days & training camps.",
-        "Oct 2\u201312: Global preseason slate.",
-        "Oct 21: 2025\u201326 Opening Night."
+        "Camps open; PTO battles for depth roles across the league.",
+        "First preseason weekend: East-heavy Monday slate (Sep 22)."
       ],
-      "sources": "Weekend highlights & what\u2019s next."
-    },
-    "mlb": {
-      "stamp": "Sept 8, 2025",
-      "division_leaders": [
-        "AL East: Blue Jays lead; Yankees close.",
-        "AL Central: Tigers in front.",
-        "AL West: Astros narrowly ahead; Mariners/Rangers chasing.",
-        "NL East: Phillies up; Mets chasing.",
-        "NL Central: Brewers on top.",
-        "NL West: Dodgers over Padres; tight race."
-      ],
-      "wild_card": [
-        "AL: Yankees/Red Sox strong; Mariners in final slot with a pack behind.",
-        "NL: Cubs, Padres, Mets in WC spots; several teams lurking."
-      ],
-      "power_rankings": [
-        "1) Brewers",
-        "2) Phillies",
-        "3) Blue Jays",
-        "4) Cubs",
-        "5) Tigers"
-      ],
-      "whats_next": [
-        "Mets @ Phillies \u2014 NL East tiebreaker stakes.",
-        "Dodgers vs Padres \u2014 NL West pressure games.",
-        "AL West round-robin \u2014 Mariners/Rangers vs Astros."
-      ],
-      "note": "<em>Note:</em> Standings change daily; this snapshot is stamped for Sept 8 and will be refreshed regularly."
-    },
-    "wnba": {
-      "stamp": "Sept 8, 2025",
-      "top_storylines": [
-        "Fever clinch a playoff berth with a 94\u201365 win at the Mystics.",
-        "Aces extend their win streak to 14 behind A\u2019ja Wilson\u2019s 31 & 11.",
-        "Sparks stay alive by beating the Wings 91\u201377; LA still in the hunt.",
-        "Lynx already have the No. 1 seed; edge Valkyries 78\u201372 in SF.",
-        "Mercury stumble at Sun 87\u201384; seeding race tightens."
-      ],
-      "seeding": [
-        "1) Lynx \u2014 No. 1 seed clinched",
-        "2) Dream / 2) Aces \u2014 jostling for home court",
-        "4) Mercury \u2014 slip after loss at Sun",
-        "5) Liberty \u2014 trending up after road win",
-        "6) Valkyries \u2014 expansion team clinched berth",
-        "7) Fever \u2014 clinched Sunday",
-        "8) Storm / 9) Sparks \u2014 last slot in play"
-      ],
-      "players_to_watch": [
-        "A\u2019ja Wilson \u2014 record 13th 30-pt game; MVP form.",
-        "Napheesa Collier \u2014 steady two-way engine for No.1 Lynx.",
-        "Kelsey Mitchell & Aliyah Boston \u2014 Fever\u2019s clinch drivers.",
-        "Julie Allemand \u2014 career night to keep Sparks alive."
-      ],
-      "whats_next": [
-        "Regular season ends Thu, Sept 11; Playoffs begin Sun, Sept 14.",
-        "Seeding tiebreakers active; watch 2\u20135 shuffle.",
-        "Quarterfinals are best-of-3; higher seeds open at home."
-      ],
-      "scores": [
-        {
-          "date": "Sat, Sep 6",
-          "away": "Minnesota Lynx",
-          "awayPts": 78,
-          "home": "Golden State Valkyries",
-          "homePts": 72,
-          "note": "Hiedeman 24; Lynx had No.1 seed secured"
-        },
-        {
-          "date": "Sat, Sep 6",
-          "away": "Phoenix Mercury",
-          "awayPts": 84,
-          "home": "Connecticut Sun",
-          "homePts": 87,
-          "note": "Leila Lacan scores 6 in final 0:30"
-        },
-        {
-          "date": "Fri, Sep 5",
-          "away": "New York Liberty",
-          "awayPts": 84,
-          "home": "Seattle Storm",
-          "homePts": 76,
-          "note": "Stewart 24 & 5 blocks; Fiebich 21"
-        },
-        {
-          "date": "Sun, Sep 7",
-          "away": "Indiana Fever",
-          "awayPts": 94,
-          "home": "Washington Mystics",
-          "homePts": 65,
-          "note": "Fever clinch playoff berth"
-        },
-        {
-          "date": "Sun, Sep 7",
-          "away": "Chicago Sky",
-          "awayPts": 66,
-          "home": "Las Vegas Aces",
-          "homePts": 80,
-          "note": "Aces win 14th straight (Wilson 31/11)"
-        },
-        {
-          "date": "Sun, Sep 7",
-          "away": "Dallas Wings",
-          "awayPts": 77,
-          "home": "Los Angeles Sparks",
-          "homePts": 91,
-          "note": "Allemand career-high 21; LA stays alive"
-        }
-      ]
+      "footnote": "Dates & TV from NHL/ESPN; neutral sites per league announcement."
     }
   }
 }
