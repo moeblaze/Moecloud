@@ -4,27 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moe Community Cloud — Home</title>
-
-  <!-- Basic dark theme + brand -->
   <style>
     :root { color-scheme: dark; }
-    body {
-      margin: 0;
-      background: #0b0f18;
-      color: #e8ecff;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    a { color: #9fc3ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body { margin: 0; background: #0b0f18; color: #e8ecff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    a { color: #9fc3ff; text-decoration: none; } a:hover { text-decoration: underline; }
 
-    /* Shell */
     .wrap { max-width: 1100px; margin: 0 auto; padding: 1rem; }
-    header .nav {
-      display: flex; gap: .9rem; align-items: center; flex-wrap: wrap; padding: .6rem 0;
-    }
-    header .nav a {
-      font-weight: 700; color: #e8ecff; padding: .35rem .6rem; border-radius: 8px;
-    }
+
+    /* Top nav */
+    header .nav { display: flex; gap: .9rem; align-items: center; flex-wrap: wrap; padding: .6rem 0; }
+    header .nav a { font-weight: 700; color: #e8ecff; padding: .35rem .6rem; border-radius: 8px; }
     header .nav a:hover { background: #12162a; text-decoration: none; }
 
     /* HERO */
@@ -57,14 +46,13 @@
     .section { margin: 1.2rem 0; background: #0f1220; border: 1px solid #2a2f4a; border-radius: 14px; padding: 1rem; }
     h2 { margin: .2rem 0 .8rem 0; font: 800 1.25rem/1.2 system-ui; }
 
-    /* Sponsor box — glowing + blinking, image INSIDE, not stretched to fill */
+    /* Sponsor box — glow + blink, logo INSIDE (contained) */
     .sponsor-card { display: grid; gap: .8rem; }
     .sponsor-lead { color: #b9c4ff; margin: 0; }
     .sponsor-box {
       position: relative; border-radius: 16px; overflow: hidden;
       height: clamp(180px, 26vw, 360px);
-      padding: 1rem;
-      display: grid; place-items: center;
+      padding: 1rem; display: grid; place-items: center;
       background:
         radial-gradient(600px 220px at 20% 15%, rgba(255,215,0,.30), rgba(255,215,0,0) 60%),
         linear-gradient(180deg,#c49a16 0%, #b38712 100%);
@@ -78,15 +66,13 @@
       0%,100% { box-shadow: 0 0 0 2px rgba(255,215,0,.45), inset 0 0 24px rgba(255,215,0,.16), 0 12px 36px rgba(0,0,0,.35); }
       50%    { box-shadow: 0 0 0 2px rgba(255,215,0,.90), inset 0 0 48px rgba(255,215,0,.32), 0 14px 42px rgba(0,0,0,.45); }
     }
-
-    /* Sponsor logo INSIDE the box, contained (not filling), gold background still visible */
     .sponsor-logo {
       display: block;
       max-width: 90%;
       max-height: 80%;
       width: auto;
       height: auto;
-      object-fit: contain; /* key: do NOT stretch/crop; keep aspect and show gold background around it */
+      object-fit: contain; /* keep aspect; show gold background around it */
       filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
     }
 
@@ -102,6 +88,7 @@
         <a href="/news.html">News</a>
         <a href="/sports.html">Sports</a>
         <a href="/sports.html#nfl">NFL</a>
+        <a href="/sports.html#nba">NBA</a>
         <a href="/newsletter.html">Newsletter</a>
       </nav>
     </header>
@@ -115,6 +102,7 @@
         <div class="hero-cta">
           <a class="btn btn-primary" href="/apps.html">Explore the Toolbox</a>
           <a class="btn" href="/sports.html#nfl">Week 1 NFL Recaps</a>
+          <a class="btn" href="/sports.html#nba">NBA Weekend Notebook</a>
         </div>
       </div>
     </section>
@@ -123,8 +111,6 @@
     <section class="section sponsor-card" aria-labelledby="sponsor-title">
       <h2 id="sponsor-title">Featured Sponsor</h2>
       <p class="sponsor-lead">A big shoutout to our partner—highlighted in the golden glow.</p>
-
-      <!-- 🔶 The glowing box: keeps blinking + shows your sponsor image INSIDE (contained) -->
       <div class="sponsor-box">
         <!-- Replace the src with your actual sponsor image path -->
         <img class="sponsor-logo" src="/assets/sponsors/darwynn-logo.png" alt="Darwynn — Sponsor Logo" />
@@ -137,6 +123,7 @@
       <ul>
         <li><a href="/apps.html">Meeting Automator</a> — auto-summaries, action items, transcripts.</li>
         <li><a href="/sports.html#nfl">NFL Week 1</a> — quick scores + headlines, clean layout.</li>
+        <li><a href="/sports.html#nba">NBA Weekend</a> — key headlines, EuroBasket, HOF, what’s next.</li>
         <li><a href="/news.html">Daily News</a> — compact, skimmable updates.</li>
       </ul>
     </section>
