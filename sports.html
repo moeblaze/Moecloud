@@ -295,6 +295,26 @@
         renderScores('#wnba-scores', wnba.scores);
       }
 
+      function renderNCAAF(cf){
+        if (!cf) return;
+        if (cf.stamp) el('ncaaf-stamp').textContent = `NCAAF — ${cf.stamp}`;
+        fillList('#ncaaf-headlines', cf.headlines);
+        fillList('#ncaaf-upsets', cf.upsets);
+        fillList('#ncaaf-performers', (cf.top_performers||[]).map(p => `${p.name} (${p.team}) — ${p.line}`));
+        fillList('#ncaaf-ap10', cf.ap_top10);
+        renderScores('#ncaaf-scores', cf.scores);
+        fillList('#ncaaf-next', cf.whats_next);
+      }
+
+        if (!wnba) return;
+        if (wnba.stamp) el('wnba-stamp').textContent = `WNBA — Playoff Watch (as of ${wnba.stamp})`;
+        fillList('#wnba-top', wnba.top_storylines);
+        fillList('#wnba-seed', wnba.seeding);
+        fillList('#wnba-players', wnba.players_to_watch);
+        fillList('#wnba-next', wnba.whats_next);
+        renderScores('#wnba-scores', wnba.scores);
+      }
+
       fetchFirst(CANDIDATES).then(json=>{
         const root = json.sports ? json.sports : json;
         renderNFL( root.nfl );

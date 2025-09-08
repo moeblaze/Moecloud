@@ -322,6 +322,139 @@
           "note": "Allemand career-high 21; LA stays alive"
         }
       ]
+    },
+    "ncaaf": {
+      "stamp": "Week 2 (Sept 5\u20137, 2025)",
+      "headlines": [
+        "Ohio State blanks Grambling 70\u20130 behind a crisp Sayin-to-Smith connection.",
+        "Oregon crushes Oklahoma State 69\u20133; Ducks fly into Top 5.",
+        "Penn State throttles FIU 34\u20130 as Kaytron Allen pounds out 144 on the ground.",
+        "South Florida shocks No. 13 Florida 18\u201316 on a walk-off field goal in the Swamp.",
+        "Oklahoma tops Michigan 24\u201313 in a blue-blood tilt.",
+        "Washington detonates UC Davis 70\u201310 as Jonah Coleman scores five TD."
+      ],
+      "upsets": [
+        "No. 18 South Florida 18\u201316 at No. 13 Florida (walk-off FG).",
+        "UNLV 30\u201323 over UCLA."
+      ],
+      "top_performers": [
+        {
+          "name": "Jonah Coleman",
+          "team": "Washington",
+          "line": "5 rushing TD vs UC Davis"
+        },
+        {
+          "name": "Dante Moore",
+          "team": "Oregon",
+          "line": "266 pass yds vs Oklahoma State"
+        },
+        {
+          "name": "Kaytron Allen",
+          "team": "Penn State",
+          "line": "144 rush yds vs FIU"
+        },
+        {
+          "name": "Jeremiah Smith",
+          "team": "Ohio State",
+          "line": "119 rec yds vs Grambling"
+        },
+        {
+          "name": "Arch Manning",
+          "team": "Texas",
+          "line": "5 TD passes (bounce-back win)"
+        }
+      ],
+      "scores": [
+        {
+          "date": "Sat, Sep 6",
+          "away": "Grambling State",
+          "awayPts": 0,
+          "home": "Ohio State",
+          "homePts": 70,
+          "note": "OSU posts its second straight shutout."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "Oklahoma State",
+          "awayPts": 3,
+          "home": "Oregon",
+          "homePts": 69,
+          "note": "Ducks overwhelm Cowboys in Eugene."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "FIU",
+          "awayPts": 0,
+          "home": "Penn State",
+          "homePts": 34,
+          "note": "Allen sets the tone on the ground."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "Louisiana Tech",
+          "awayPts": 7,
+          "home": "LSU",
+          "homePts": 23,
+          "note": "Tigers methodical in Baton Rouge."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "Austin Peay",
+          "awayPts": 6,
+          "home": "Georgia",
+          "homePts": 28,
+          "note": "Bulldogs steady; defense tight."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "Bethune\u2013Cookman",
+          "awayPts": 3,
+          "home": "Miami (FL)",
+          "homePts": 45,
+          "note": "Canes spread it around."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "South Florida",
+          "awayPts": 18,
+          "home": "Florida",
+          "homePts": 16,
+          "note": "Nico Gramatica drills the walk-off FG."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "Michigan",
+          "awayPts": 13,
+          "home": "Oklahoma",
+          "homePts": 24,
+          "note": "Sooners close strong."
+        },
+        {
+          "date": "Sat, Sep 6",
+          "away": "UC Davis",
+          "awayPts": 10,
+          "home": "Washington",
+          "homePts": 70,
+          "note": "Coleman\u2019s 5 TD night."
+        }
+      ],
+      "ap_top10": [
+        "1) Ohio State",
+        "2) Penn State",
+        "3) LSU",
+        "4) Oregon",
+        "5) Miami (FL)",
+        "6) Georgia",
+        "7) Texas",
+        "8) Notre Dame",
+        "9) Illinois",
+        "10) Florida State",
+        "Riser: South Florida enters at No. 18"
+      ],
+      "whats_next": [
+        "Week 3: No. 18 South Florida at No. 5 Miami (ranked vs ranked).",
+        "Top-10 tune-ups continue before conference play ramps."
+      ]
     }
   }
 }
