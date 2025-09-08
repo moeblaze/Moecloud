@@ -11,7 +11,8 @@
 .mc-note{font:700 .7rem/1.2 system-ui;color:#ffd66b;margin-left:auto}
 .mc-teams{justify-content:space-between;margin:.25rem 0 .35rem 0}
 .mc-team{display:flex;align-items:center;gap:.5rem}
-.mc-logo{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:800 .78rem/1 system-ui;color:#0e111a;background:linear-gradient(135deg,#ffd66b,#ffae42)}
+.mc-logo{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ffd66b,#ffae42);overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.mc-logo img{width:30px;height:30px;display:block;border-radius:50%}
 .mc-name{font:600 .95rem/1.2 system-ui;color:#f1f4ff}
 .mc-blurb{margin:.35rem 0 0 0;font:400 .9rem/1.35 system-ui;color:#cbd3ff}
 @media (prefers-color-scheme: light){ .mc-game{background:#111317;color:#eef1ff} }
