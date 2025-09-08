@@ -1,174 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sports — Moe Community Cloud</title>
-  <meta name="description" content="MBCC Sports: quick recaps, schedules, and highlights.">
-  <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/consent.js"></script>
   <style>
-    .nav .dropdown{ position:relative }
-    .nav .dropdown > a::after{ content:"▾"; margin-left:6px; font-size:.8em }
-    .nav .menu{ position:absolute; left:0; top:100%; background:#0e0e0e; border:1px solid #333; border-radius:12px; padding:8px; display:none; min-width:180px; box-shadow:0 14px 30px rgba(0,0,0,.35)}
-    .nav .menu a{ display:block; padding:8px 10px; border-radius:8px; }
-    .nav .menu a:hover{ background:#1a1a1a }
-    .nav .dropdown:hover .menu, .nav .dropdown:focus-within .menu{ display:block }
-    @media (max-width: 900px){ .nav .menu{ position:static; display:block; border:0; box-shadow:none; padding:0; } .nav .dropdown > a::after{ display:none } }
-
-    .grid.responsive{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px }
-    .card.glow{ position:relative; background:#0e0e0e; color:#fff; border-radius:16px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.28);}
-    .card.glow::before{ content:""; position:absolute; inset:-2px; border-radius:18px; padding:2px; background:linear-gradient(135deg,#d4af37,#a8841d,#ffd700); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: shine 4s linear infinite; }
-    @keyframes shine{ 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
-    .kicker{ opacity:.9 }
-    .badge.sport{ background:#7d0a0a; color:#fff }
-
-    .scoreline{ font-size:1.1rem; margin:6px 0 10px; display:flex; gap:10px; align-items:center }
-    .scoreline .final{ background:#111; border:1px solid #333; border-radius:999px; padding:2px 8px; font-size:.8rem }
-    .meta-row{ display:flex; gap:10px; flex-wrap:wrap; font-size:.9rem; opacity:.85 }
-    .list{ margin:0; padding-left:18px }
-    .list li{ margin:4px 0 }
-
-    .section-title{ display:flex; align-items:center; gap:8px }
-    .section-title .tag{ font-size:.8rem; background:#1a1a1a; border:1px solid #333; border-radius:999px; padding:2px 8px }
-
-    .reveal{opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease;}
-    .reveal.in-view{opacity:1; transform:none;}
+    :root{ color-scheme: dark; }
+    body{ margin:0; background:#0b0f18; color:#e8ecff; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; }
+    header, main, footer{ max-width:1100px; margin:0 auto; padding: 1rem; }
+    .nav{ display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; padding: .8rem 0; }
+    .nav a{ font-weight:700; color:#e8ecff; padding:.35rem .6rem; border-radius:8px; text-decoration:none }
+    .nav a:hover{ background:#12162a }
+    .subnav{ display:flex; gap:.6rem; flex-wrap:wrap; padding:.4rem 0 .6rem 0 }
+    .muted{ color:#b9c4ff }
+    h1,h2,h3,h4{ margin:.6rem 0 .4rem 0 }
+    .section{ margin: 1.2rem 0; background:#0f1220; border:1px solid #2a2f4a; border-radius:14px; padding:1rem }
+    footer{ text-align:center; color:#9aa7ff; padding-bottom:2rem }
+    /* ----- Scoped NFL styles ----- */
+    .mc-scores{margin:1.25rem 0}
+    .mc-sec-title{margin:.2rem 0 .8rem 0;font:800 1.25rem/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    .mc-strip{background:#0f1220;border:1px solid #2a2f4a;border-radius:14px;padding:12px 14px;margin:0 0 12px 0}
+    .mc-strip-title{margin:0 0 6px 0;font:800 .95rem/1.2 system-ui;color:#fff}
+    .mc-strip-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+    .mc-perf{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:8px}
+    .mc-perf-name{font:700 .92rem/1.2 system-ui;color:#e8ecff}
+    .mc-perf-team{color:#9fb4ff;font-weight:800}
+    .mc-perf-line{font:500 .9rem/1.35 system-ui;color:#cfd6ff}
+    .mc-perf-game{color:#9aa7ff}
+    .mc-headlines-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+    .mc-headlines-list li{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:8px;color:#e8ecff;font:500 .9rem/1.35 system-ui}
+    .mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .mc-game{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
+    .mc-row{display:flex;align-items:center;gap:.6rem;justify-content:space-between}
+    .mc-teams{margin:.25rem 0 .35rem 0}
+    .mc-team{display:flex;align-items:center;gap:.5rem}
+    .mc-name{font:600 .95rem/1.2 system-ui;color:#f1f4ff}
+    .mc-badge{font:800 .7rem/1.1 system-ui;text-transform:uppercase;letter-spacing:.6px;padding:.25rem .5rem;border-radius:999px;background:linear-gradient(90deg,#d40a22,#ff1f39);color:#fff}
+    .mc-blurb{margin:.35rem 0 0 0;font:400 .9rem/1.35 system-ui;color:#cbd3ff}
+    .mc-footnote{margin:.6rem 0 0 0;color:#aab3ff;font:.85rem/1.4 system-ui}
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="apps.html">Apps</a>
-        <a href="news.html">News</a>
-        <div class="dropdown">
-          <a href="sports.html" class="active">Sports</a>
-          <div class="menu">
-            <a href="#nfl">NFL</a>
-            <a href="#nba">NBA</a>
-            <a href="#mlb">MLB</a>
-            <a href="#ncaaf">NCAAF</a>
-            <a href="#nhl">NHL</a>
-            <a href="#wnba">WNBA</a>
-            <a href="#nascar">NASCAR</a>
-          </div>
-        </div>
-        <a href="newsletter.html">Newsletter</a>
-      </nav>
-    </div>
+  <header>
+    <h1>Moe Community Cloud MBCC</h1>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/apps.html">Apps</a>
+      <a href="/news.html">News</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/sports.html#nfl">NFL</a>
+      <a href="/newsletter.html">Newsletter</a>
+    </nav>
   </header>
 
-  <main class="container">
-    <section class="card glow reveal" id="top">
-      <div class="badge sport">MBCC Sports</div>
-      <h2 class="section-title">Today at a glance <span class="tag">Week 1 kickoff</span></h2>
-      <p class="kicker">Fast, clean recaps and what’s next. We’ll spin up dedicated pages for each sport soon.</p>
-    </section>
-
-    <section class="reveal" id="nfl">
-      <div class="badge sport">NFL</div>
-      <h3 class="section-title">Week 1 Quick Hits <span class="tag">Recaps + Schedule</span></h3>
-      <div class="grid responsive">
-        <article class="card glow">
-          <h4>Eagles edge Cowboys in opener</h4>
-          <div class="scoreline"><span class="final">Final</span> PHI 24 — DAL 20</div>
-          <p class="kicker">Philadelphia kicked off the season with a composed fourth quarter, holding off Dallas in a tight rivalry game.</p>
-          <ul class="list">
-            <li><strong>Turning point:</strong> late defensive stand sealed it.</li>
-            <li><strong>Top lines:</strong> Prescott 188 pass yds; Hurts 62 rush yds; Lamb 110 rec yds.</li>
-          </ul>
-          <div class="meta-row"><span>Thu, Sep 4</span><span>Philadelphia, PA</span></div>
-        </article>
-
-        <article class="card glow">
-          <h4>Chargers spoil Chiefs’ Brazil showcase</h4>
-          <div class="scoreline"><span class="final">Final</span> LAC 27 — KC 21</div>
-          <p class="kicker">Justin Herbert diced for 318 yards as L.A. snapped a skid vs. Kansas City in a lively international opener.</p>
-          <ul class="list">
-            <li><strong>Mahomes on the move:</strong> 57 rushing yds kept KC in it.</li>
-            <li><strong>Hollywood Brown:</strong> 99 rec yds set the pace for LAC.</li>
-          </ul>
-          <div class="meta-row"><span>Fri, Sep 5</span><span>São Paulo, Brazil</span></div>
-        </article>
-
-        <article class="card glow" style="grid-column:1/-1">
-          <h4>Tomorrow’s NFL slate (Sun, Sep 7)</h4>
-          <div class="grid responsive">
-            <ul class="list">
-              <li>1:00p — Buccaneers @ Falcons (FOX)</li>
-              <li>1:00p — Bengals @ Browns (FOX)</li>
-              <li>1:00p — Dolphins @ Colts (CBS)</li>
-              <li>1:00p — Raiders @ Patriots (CBS)</li>
-              <li>1:00p — Cardinals @ Saints (CBS)</li>
-              <li>1:00p — Steelers @ Jets (CBS)</li>
-              <li>1:00p — Giants @ Commanders (FOX)</li>
-              <li>1:00p — Panthers @ Jaguars (FOX)</li>
-            </ul>
-            <ul class="list">
-              <li>4:05p — Titans @ Broncos (FOX)</li>
-              <li>4:05p — 49ers @ Seahawks (FOX)</li>
-              <li>4:25p — Lions @ Packers (CBS)</li>
-              <li>4:25p — Texans @ Rams (CBS)</li>
-              <li>8:20p — Ravens @ Bills (NBC)</li>
-            </ul>
-          </div>
-          <p class="tiny" style="opacity:.7">Mon, Sep 8 — Vikings @ Bears (8:15p, ABC/ESPN)</p>
-        </article>
+  <main>
+    <section class="section">
+      <h2>MBCC Sports</h2>
+      <p class="muted">Fast, clean recaps and what’s next. We’re rolling out dedicated pages for each sport.</p>
+      <div class="subnav">
+        <a href="#nfl">NFL</a>
+        <a href="#nba">NBA</a>
+        <a href="#mlb">MLB</a>
+        <a href="#ncaaf">NCAAF</a>
+        <a href="#nhl">NHL</a>
+        <a href="#wnba">WNBA</a>
+        <a href="#nascar">NASCAR</a>
       </div>
     </section>
 
-    <section class="grid responsive reveal">
-      <article class="card glow" id="nba">
-        <div class="badge sport">NBA</div>
-        <h4>NBA hub</h4>
-        <p class="kicker">Latest headlines, standings, and highlights coming soon.</p>
-      </article>
-      <article class="card glow" id="mlb">
-        <div class="badge sport">MLB</div>
-        <h4>MLB hub</h4>
-        <p class="kicker">Postseason races and power rankings on deck.</p>
-      </article>
-      <article class="card glow" id="ncaaf">
-        <div class="badge sport">NCAAF</div>
-        <h4>College Football</h4>
-        <p class="kicker">Key games, polls, and CFP chatter incoming.</p>
-      </article>
-      <article class="card glow" id="nhl">
-        <div class="badge sport">NHL</div>
-        <h4>NHL hub</h4>
-        <p class="kicker">Season preview and major moves next.</p>
-      </article>
-      <article class="card glow" id="wnba">
-        <div class="badge sport">WNBA</div>
-        <h4>WNBA hub</h4>
-        <p class="kicker">Top stories and playoff paths soon.</p>
-      </article>
-      <article class="card glow" id="nascar">
-        <div class="badge sport">NASCAR</div>
-        <h4>Motorsport</h4>
-        <p class="kicker">Results, points, and paint schemes to follow.</p>
-      </article>
-    </section>
+    <!-- ********** NFL — Weekend Scores (Week 1, Sep 4–7, 2025) ********** -->
+    <section id="nfl" class="mc-scores section">
+      <h2 class="mc-sec-title">NFL — Week 1 (Sep 4–7, 2025)</h2>
 
-    <section aria-label="sponsored" style="margin-top:16px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <div class="mc-strip mc-performers">
+        <h4 class="mc-strip-title">Top Performers</h4>
+        <div class="mc-strip-body">
+          <div class="mc-perf"><div class="mc-perf-name">Josh Allen <span class="mc-perf-team">(Bills)</span></div><div class="mc-perf-line">394 pass yds, 2 TD <span class="mc-perf-game">— BUF 41–40 BAL</span></div></div>
+          <div class="mc-perf"><div class="mc-perf-name">Aaron Rodgers <span class="mc-perf-team">(Steelers)</span></div><div class="mc-perf-line">244 pass yds, 4 TD <span class="mc-perf-game">— PIT 34–32 NYJ</span></div></div>
+          <div class="mc-perf"><div class="mc-perf-name">Justin Herbert <span class="mc-perf-team">(Chargers)</span></div><div class="mc-perf-line">318 pass yds, 3 TD <span class="mc-perf-game">— LAC 27–21 KC</span></div></div>
+          <div class="mc-perf"><div class="mc-perf-name">Travis Etienne Jr. <span class="mc-perf-team">(Jaguars)</span></div><div class="mc-perf-line">143 rush yds <span class="mc-perf-game">— JAX 26–10 CAR</span></div></div>
+          <div class="mc-perf"><div class="mc-perf-name">Puka Nacua <span class="mc-perf-team">(Rams)</span></div><div class="mc-perf-line">10 rec, 130 yds <span class="mc-perf-game">— LAR 14–9 HOU</span></div></div>
+        </div>
+      </div>
+
+      <div class="mc-strip mc-headlines">
+        <h4 class="mc-strip-title">Power 5 Headlines</h4>
+        <ul class="mc-headlines-list">
+          <li>• Eagles edge Cowboys 24–20 in weather-delayed opener</li>
+          <li>• Chargers win Brazil game vs. Chiefs, 27–21</li>
+          <li>• Rodgers tosses 4 TD as Steelers outlast Jets</li>
+          <li>• Bills rally late to top Ravens 41–40</li>
+          <li>• Colts dominate Dolphins 33–8 in Daniel Jones debut</li>
+        </ul>
+      </div>
+
+      <div class="mc-grid">
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Thu</div><h4 class="mc-title">Cowboys at Eagles</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Cowboys 20</div></div><div class="mc-team"><div class="mc-name">Eagles 24</div></div></div><p class="mc-blurb">Hurts rushes for 2 TD in a weather-delayed opener.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Fri</div><h4 class="mc-title">Chiefs at Chargers</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Chiefs 21</div></div><div class="mc-team"><div class="mc-name">Chargers 27</div></div></div><p class="mc-blurb">Justin Herbert throws for 318 yards & 3 TD in Brazil.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Buccaneers at Falcons</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Buccaneers 23</div></div><div class="mc-team"><div class="mc-name">Falcons 20</div></div></div><p class="mc-blurb">Tampa Bay edges Atlanta; Michael Penix Jr. posts 298 passing yards.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Bengals at Browns</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Bengals 17</div></div><div class="mc-team"><div class="mc-name">Browns 16</div></div></div><p class="mc-blurb">Cincinnati hangs on; Joe Flacco throws for 290 in the loss.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Dolphins at Colts</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Dolphins 8</div></div><div class="mc-team"><div class="mc-name">Colts 33</div></div></div><p class="mc-blurb">Daniel Jones throws for 272 in Indy debut; Pittman scores.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Raiders at Patriots</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Raiders 20</div></div><div class="mc-team"><div class="mc-name">Patriots 13</div></div></div><p class="mc-blurb">Geno Smith piles up 362 passing yards as Vegas wins in Foxborough.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Cardinals at Saints</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Cardinals 20</div></div><div class="mc-team"><div class="mc-name">Saints 13</div></div></div><p class="mc-blurb">Rookie Trey Benson’s 69 rush yards help lift Arizona on the road.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Steelers at Jets</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Steelers 34</div></div><div class="mc-team"><div class="mc-name">Jets 32</div></div></div><p class="mc-blurb">Aaron Rodgers tosses 4 TD vs. his former team.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Giants at Commanders</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Giants 6</div></div><div class="mc-team"><div class="mc-name">Commanders 21</div></div></div><p class="mc-blurb">Jayden Daniels steady (233y); Deebo Samuel adds 77 receiving yards.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Panthers at Jaguars</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Panthers 10</div></div><div class="mc-team"><div class="mc-name">Jaguars 26</div></div></div><p class="mc-blurb">Travis Etienne rushes for 143 as Jacksonville cruises.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Titans at Broncos</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Titans 12</div></div><div class="mc-team"><div class="mc-name">Broncos 20</div></div></div><p class="mc-blurb">Bo Nix debuts with 176 & a TD; Denver’s D closes it out.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">49ers at Seahawks</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">49ers 17</div></div><div class="mc-team"><div class="mc-name">Seahawks 13</div></div></div><p class="mc-blurb">Brock Purdy throws for 277 and 2 TD; late Niners push holds.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Lions at Packers</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Lions 13</div></div><div class="mc-team"><div class="mc-name">Packers 27</div></div></div><p class="mc-blurb">Green Bay controls the day; Josh Jacobs logs 66 & a score.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Texans at Rams</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Texans 9</div></div><div class="mc-team"><div class="mc-name">Rams 14</div></div></div><p class="mc-blurb">Matthew Stafford (245y, TD) and Puka Nacua (10-130) pace LA.</p></article>
+        <article class="mc-game"><header class="mc-row"><div class="mc-badge">Sun</div><h4 class="mc-title">Ravens at Bills</h4></header><div class="mc-teams"><div class="mc-team"><div class="mc-name">Ravens 40</div></div><div class="mc-team"><div class="mc-name">Bills 41</div></div></div><p class="mc-blurb">Bills score 16 late to stun Baltimore; Josh Allen throws for 394 and 2 TD.</p></article>
+      </div>
+
+      <p class="mc-footnote">Weekend only (Thu–Sun). Monday: Vikings at Bears — not included.</p>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-    </div>
+  <footer>
+    <p>&copy; Moe Community Cloud — All rights reserved.</p>
+    <p>Built on black &amp; red plaid with gold energy ⚡</p>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); }); }, {threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  </script>
 </body>
 </html>
