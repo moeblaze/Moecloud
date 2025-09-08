@@ -1,224 +1,150 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moe Community Cloud — MBCC</title>
-  <meta name="description" content="Moe Community Cloud (MBCC): community-built tools and services for founders & operators.">
-  <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/consent.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moe Community Cloud — Home</title>
+
+  <!-- Basic dark theme + brand -->
   <style>
-    .reveal{opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease;}
-    .reveal.in-view{opacity:1; transform:none;}
-    .hero.plaid{
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,.7), rgba(0,0,0,.7)),
-        repeating-linear-gradient(45deg, #2b2b2b 0 12px, #1a1a1a 12px 24px),
-        repeating-linear-gradient(-45deg, #7d0a0a 0 12px, #5c0808 12px 24px);
-      background-blend-mode: overlay, multiply, normal;
-      color:#fff;
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      background: #0b0f18;
+      color: #e8ecff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    .gold{color:#d4af37}
-    .hero .cta-row{display:flex; gap:12px; flex-wrap:wrap}
-    .lead-sponsor{display:grid; grid-template-columns:1.2fr 1fr; gap:18px; align-items:stretch}
-    @media (max-width: 980px) { .lead-sponsor{grid-template-columns:1fr} }
-    .lead.card{height:100%}
-    .prime-card{ position:relative; background:#0e0e0e; border-radius:22px; padding:16px; color:#fff; box-shadow:0 12px 34px rgba(0,0,0,.35);}
-    .prime-card::before{
-      content:""; position:absolute; inset:-2px; border-radius:24px; padding:2px;
-      background:linear-gradient(135deg,#d4af37,#a8841d,#ffd700);
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      animation: shine 3s linear infinite;
+    a { color: #9fc3ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Shell */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+    header .nav {
+      display: flex; gap: .9rem; align-items: center; flex-wrap: wrap; padding: .6rem 0;
     }
-    @keyframes shine{ 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
-    .prime-logo.lg{width:100%; height:340px; border-radius:18px; border:3px solid #d4af37; background:#000; overflow:hidden; display:flex; align-items:center; justify-content:center}
-    .prime-logo.lg img{width:100%; height:100%; object-fit:contain;}
-    .prime-meta .title{font-size:1.2rem;font-weight:700;margin:12px 0 6px}
-    .prime-meta .bio{opacity:.95;margin:0 0 10px}
-    .prime-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .prime-card .more-panel{ margin-top:8px; background:#111; border:1px solid #333; border-radius:12px; padding:12px; max-height:320px; overflow:auto; }
-    .prime-card .read-more{ color:#d4af37; text-decoration:underline; cursor:pointer; }
+    header .nav a {
+      font-weight: 700; color: #e8ecff; padding: .35rem .6rem; border-radius: 8px;
+    }
+    header .nav a:hover { background: #12162a; text-decoration: none; }
+
+    /* HERO */
+    #mbcc-hero {
+      position: relative; border-radius: 18px; overflow: hidden;
+      min-height: clamp(260px, 42vw, 520px);
+      background:
+        radial-gradient(1200px 400px at 20% 15%, rgba(196,154,22,.30), rgba(196,154,22,0) 60%),
+        radial-gradient(900px 340px at 80% 85%, rgba(196,154,22,.22), rgba(196,154,22,0) 60%),
+        linear-gradient(180deg, #0b0f18 0%, #0e1120 50%, #101426 100%);
+      display: grid; place-items: center; padding: 3rem 1.2rem;
+      box-shadow: 0 12px 36px rgba(0,0,0,.35);
+    }
+    .hero-inner { text-align: center; max-width: 900px; color: #eef1ff; text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+    .hero-kicker { margin: 0 0 .4rem 0; font: 800 .85rem/1.2 system-ui; text-transform: uppercase; letter-spacing: 1.6px; color: #ffec9a; }
+    .hero-title { margin: 0 0 .45rem 0; font: 800 clamp(1.6rem, 5vw, 3rem)/1.05 system-ui; letter-spacing: .2px; }
+    .hero-sub { margin: 0 0 1rem 0; font: 400 clamp(.95rem,1.7vw,1.15rem)/1.5 system-ui; color: #dbe2ff; }
+    .hero-cta { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font: 700 .95rem/1 system-ui; padding: .8rem 1.1rem; border-radius: 12px;
+      border: 1px solid #2a2f4a; background: #11162a; color: #e8ecff;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.35); text-decoration: none; }
+    .btn-primary { background: linear-gradient(90deg,#d40a22,#ff1f39); border-color: transparent; color: #fff; }
+
+    /* Sections */
+    .section { margin: 1.2rem 0; background: #0f1220; border: 1px solid #2a2f4a; border-radius: 14px; padding: 1rem; }
+    h2 { margin: .2rem 0 .8rem 0; font: 800 1.25rem/1.2 system-ui; }
+
+    /* Sponsor box — glowing + blinking, image INSIDE, not stretched to fill */
+    .sponsor-card { display: grid; gap: .8rem; }
+    .sponsor-lead { color: #b9c4ff; margin: 0; }
+    .sponsor-box {
+      position: relative; border-radius: 16px; overflow: hidden;
+      height: clamp(180px, 26vw, 360px);
+      padding: 1rem;
+      display: grid; place-items: center;
+      background:
+        radial-gradient(600px 220px at 20% 15%, rgba(255,215,0,.30), rgba(255,215,0,0) 60%),
+        linear-gradient(180deg,#c49a16 0%, #b38712 100%);
+      box-shadow:
+        0 0 0 2px rgba(255,215,0,.55),
+        inset 0 0 30px rgba(255,215,0,.18),
+        0 12px 36px rgba(0,0,0,.35);
+      animation: mbccBlink 1.8s ease-in-out infinite;
+    }
+    @keyframes mbccBlink {
+      0%,100% { box-shadow: 0 0 0 2px rgba(255,215,0,.45), inset 0 0 24px rgba(255,215,0,.16), 0 12px 36px rgba(0,0,0,.35); }
+      50%    { box-shadow: 0 0 0 2px rgba(255,215,0,.90), inset 0 0 48px rgba(255,215,0,.32), 0 14px 42px rgba(0,0,0,.45); }
+    }
+
+    /* Sponsor logo INSIDE the box, contained (not filling), gold background still visible */
+    .sponsor-logo {
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      width: auto;
+      height: auto;
+      object-fit: contain; /* key: do NOT stretch/crop; keep aspect and show gold background around it */
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+    }
+
+    footer { text-align: center; color: #9aa7ff; padding: 2rem 0; }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
-      </div>
+  <div class="wrap">
+    <header>
       <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="apps.html">Apps</a>
-        <a href="news.html">News</a>
-        <a href="sports.html">Sports</a>
-        <a href="newsletter.html">Newsletter</a>
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/news.html">News</a>
+        <a href="/sports.html">Sports</a>
+        <a href="/sports.html#nfl">NFL</a>
+        <a href="/newsletter.html">Newsletter</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="hero plaid">
-      <div class="container reveal">
-        <h2>Tools & Services for Builders</h2>
-        <p class="kicker">We craft fast, useful web tools and community programs for founders, creators, and operators.</p>
-        <div class="cta-row">
-          <a class="btn" href="apps.html">Explore Apps</a>
-          <a class="btn alt" href="newsletter.html">Join the Newsletter</a>
+    <!-- HERO -->
+    <section id="mbcc-hero">
+      <div class="hero-inner">
+        <p class="hero-kicker">Moe Community Cloud</p>
+        <h1 class="hero-title">AI-enhanced tools, news & sports—fast and clean.</h1>
+        <p class="hero-sub">From meeting automations to creator utilities, we ship simple, useful apps with just enough swagger.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/apps.html">Explore the Toolbox</a>
+          <a class="btn" href="/sports.html#nfl">Week 1 NFL Recaps</a>
         </div>
       </div>
     </section>
 
-    <section class="container reveal lead-sponsor">
-      <div class="card lead">
-        <div class="badge">Stay in the Loop</div>
-        <h3>Newsletter & Services</h3>
-        <form onsubmit="return mbccLead(event)">
-          <div class="row">
-            <input class="input" id="lead_name" placeholder="Your name">
-            <input class="input" id="lead_email" type="email" placeholder="you@example.com" required>
-          </div>
-          <div class="row">
-            <select class="input" id="lead_interest">
-              <option value="">I'm interested in…</option>
-              <option>Web tools</option>
-              <option>Training & playbooks</option>
-              <option>Sponsorship</option>
-              <option>Consulting</option>
-            </select>
-            <input class="input" id="lead_company" placeholder="Company (optional)">
-          </div>
-          <textarea class="input" id="lead_notes" rows="4" placeholder="What are you building? (optional)"></textarea>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn">Send</button>
-            <a class="btn alt" href="newsletter.html">Just the newsletter</a>
-          </div>
-          <div id="lead_msg" class="tiny"></div>
-        </form>
-      </div>
+    <!-- SPONSOR -->
+    <section class="section sponsor-card" aria-labelledby="sponsor-title">
+      <h2 id="sponsor-title">Featured Sponsor</h2>
+      <p class="sponsor-lead">A big shoutout to our partner—highlighted in the golden glow.</p>
 
-      <aside class="prime-card" id="prime-sponsor">
-        <div class="badge">Prime Sponsor</div>
-
-        <div class="prime-logo lg">
-          <img src="assets/sponsors/darwynn-plaid-glow-1600x340.png"
-               alt="Darwynn McPherson — Mating Market Consultant">
-        </div>
-
-        <div class="prime-meta">
-          <p class="title">Darwynn McPherson — Mating Market Consultant</p>
-          <p class="bio">
-            Husband, father, veteran, athlete. Darwynn helps men lead with discipline and purpose.
-            He also gave us our <strong>first YouTube donation</strong> — appreciate you, Darwynn!
-          </p>
-
-          <div class="prime-cta">
-            <a class="btn" href="https://www.youtube.com/@darwynnmcpherson" target="_blank" rel="noopener">YouTube</a>
-          </div>
-
-          <p class="tiny" style="margin-top:8px">
-            <a href="#" class="read-more" data-target="#darwynn-more">Read more</a>
-          </p>
-
-          <div id="darwynn-more" class="more-panel" hidden>
-            <p>
-              Darwynn coaches men to win the mating market with clear standards, leadership, and consistent action.
-              His content brings straight talk and practical frameworks for leveling up relationships and life.
-            </p>
-            <p class="tiny">
-              Watch more on YouTube:
-              <a href="https://www.youtube.com/@darwynnmcpherson" target="_blank" rel="noopener">
-                youtube.com/@darwynnmcpherson
-              </a>
-            </p>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="container" aria-label="sponsored">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="{PUB_ID}" data-ad-slot="{SLOT_ID}" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </section>
-
-    <section class="container reveal">
-      <div class="card">
-        <div class="badge">About</div>
-        <h3>What is Moe Community Cloud?</h3>
-        <p>MBCC is a community-driven studio focused on practical problem-solving. We ship <strong>quick-win tools</strong>, publish <strong>how-to playbooks</strong>, and run <strong>training</strong> that helps small teams move faster.</p>
-        <ul>
-          <li>Lightweight tools that run in the browser</li>
-          <li>Actionable guides for sales, ops, and content</li>
-          <li>Calm, supportive community and partners</li>
-        </ul>
+      <!-- 🔶 The glowing box: keeps blinking + shows your sponsor image INSIDE (contained) -->
+      <div class="sponsor-box">
+        <!-- Replace the src with your actual sponsor image path -->
+        <img class="sponsor-logo" src="/assets/sponsors/darwynn-logo.png" alt="Darwynn — Sponsor Logo" />
       </div>
     </section>
 
-    <section class="container pillars reveal">
-      <div class="pillar">
-        <h3>Build</h3>
-        <p>Launch pages, proposals, emails, and docs in minutes. Our tools favor clarity and speed over complexity.</p>
-        <a class="btn" href="apps.html">Open the toolbox</a>
-      </div>
-      <div class="pillar">
-        <h3>Train</h3>
-        <p>Short, focused playbooks and practice drills to improve communication, operations, and delivery.</p>
-        <a class="btn" href="newsletter.html">Get updates</a>
-      </div>
-      <div class="pillar">
-        <h3>Partner</h3>
-        <p>We collaborate with sponsors and local businesses. Prime digital real estate is available on featured pages.</p>
-        <a class="btn" href="mailto:moeknowmoe24@gmail.com">Sponsor inquiry</a>
-      </div>
+    <!-- Teasers -->
+    <section class="section">
+      <h2>What’s New</h2>
+      <ul>
+        <li><a href="/apps.html">Meeting Automator</a> — auto-summaries, action items, transcripts.</li>
+        <li><a href="/sports.html#nfl">NFL Week 1</a> — quick scores + headlines, clean layout.</li>
+        <li><a href="/news.html">Daily News</a> — compact, skimmable updates.</li>
+      </ul>
     </section>
 
-    <section class="container" aria-label="sponsored">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="{PUB_ID}" data-ad-slot="{SLOT_ID}" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-    </div>
-  </footer>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script>
-    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); }); }, {threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-    async function mbccLead(e){
-      e.preventDefault();
-      const payload = {
-        tool: 'lead',
-        ts: new Date().toISOString(),
-        input: {
-          name: document.getElementById('lead_name').value,
-          email: document.getElementById('lead_email').value,
-          interest: document.getElementById('lead_interest').value,
-          company: document.getElementById('lead_company').value,
-          notes: document.getElementById('lead_notes').value
-        }
-      };
-      const msg = document.getElementById('lead_msg'); msg.textContent='Sending…';
-      try { if (typeof mbccSaveDraft === 'function') { await mbccSaveDraft(payload); msg.textContent='Thanks! We got it.'; e.target.reset(); }
-             else { const a = JSON.parse(localStorage.getItem('mbccLeads')||'[]'); a.push(payload); localStorage.setItem('mbccLeads', JSON.stringify(a)); msg.textContent='Saved locally (offline mode).'; } }
-      catch(err) { console.error(err); msg.textContent='Something went wrong.'; }
-      return false;
-    }
-    document.addEventListener('click', function(e){
-      const a = e.target.closest('.read-more');
-      if(!a) return;
-      e.preventDefault();
-      const sel = a.getAttribute('data-target');
-      const panel = document.querySelector(sel);
-      if(!panel) return;
-      panel.hidden = !panel.hidden;
-      a.textContent = panel.hidden ? 'Read more' : 'Hide';
-    });
-  </script>
-  <script src="assets/api.js"></script>
+    <footer>
+      <p>&copy; Moe Community Cloud — All rights reserved.</p>
+      <p>Built on black &amp; red plaid with gold energy ⚡</p>
+    </footer>
+  </div>
 </body>
 </html>
