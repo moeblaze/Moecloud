@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "https://YOUR_SWA_DEFAULT_DOMAIN.azurestaticapps.net/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=0"
+        },
+        {
+          "key": "X-Proxy-Origin",
+          "value": "azure-swa"
+        }
+      ]
+    }
+  ]
+}

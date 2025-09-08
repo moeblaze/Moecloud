@@ -1,0 +1,9 @@
+MBCC Deploy Check
+Origin: this file is from the repo at 2025-09-08T11:16:48.859557Z
+
+How to use:
+1) Place this file at the repo root as 'origin-check.txt' and commit.
+2) After deploy, open:
+   - Azure SWA default domain: https://YOUR_SWA_DEFAULT_DOMAIN.azurestaticapps.net/origin-check.txt
+   - Vercel domain: https://www.moecommunitycloud.com/origin-check.txt
+If Azure shows the file but the custom domain does not, your DNS/domain is NOT pointing at Azure.
