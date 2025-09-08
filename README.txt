@@ -1,35 +1,17 @@
-MBCC Meeting Automator — Upgraded
-=================================
-This build adds:
-- Google Calendar draft button (opens pre-filled event in Google Calendar)
-- URL pre-fill (open the tool with querystring params to auto-populate)
+Vercel API: /api/yt-chapterize
+==============================
 
-Install
--------
-1) Upload `meeting-automator.html` and the entire `assets/` folder to your site root (same level as apps.html).
-2) In `apps.html`, paste the contents of `apps-card-snippet.html` into your app grid/card list.
-3) Hard refresh the site after deploy.
+Files:
+- api/yt-chapterize.js
 
-Google Calendar Draft
----------------------
-Button text: "Google Calendar draft"
-It uses your current title, start/end (UTC), attendees (comma-separated), location, and details (agenda/notes).
-No backend required.
+Steps:
+1) Drop this `api/` folder into the root of your Vercel project (same level as apps.html).
+2) In Vercel Project → Settings → Environment Variables, add:
+   - OPENAI_API_KEY = <your key>
+   (Set for Production, and Preview/Development if you test previews.)
+3) Redeploy the project.
 
-URL Pre-fill
-------------
-Example:
-/meeting-automator.html?title=Weekly+Sync&organizer=you%40company.com&date=2025-09-09T15:00&duration=45&location=Zoom&attendees=a%40ex.com,b%40ex.com&agenda=Kickoff:5|Roadmap:15|Q%26A:10
+Test:
+curl -X POST https://YOURDOMAIN/api/yt-chapterize   -H "Content-Type: application/json"   -d '{"title":"Test","transcript":"00:00 Intro... 00:30 Tip 1... 01:10 Tip 2...","duration":5}'
 
-Params:
-- title, organizer, date (YYYY-MM-DDTHH:MM), duration (minutes), location
-- attendees = comma-separated emails
-- agenda = pipe-separated "Topic:mins" items
-
-Files
------
-- meeting-automator.html
-- assets/meeting.css
-- assets/meeting.js
-- assets/plaid.svg
-- apps-card-snippet.html
+If you see JSON with chapters/hooks/etc., the endpoint is live.
