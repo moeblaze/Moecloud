@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>YouTube Chapterizer + Shorts Planner — MBCC Toolbox</title>
+  <meta name="description" content="Turn a transcript into smart chapters, short ideas, hooks, hashtags, and SEO metadata — in the browser, no backend required."/>
+  <link rel="stylesheet" href="assets/yt.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div class="brand" style="display:flex;align-items:center;gap:12px">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>YT Chapterizer + Shorts Planner</h1>
+      </div>
+      <nav style="margin-left:auto">
+        <a href="index.html">Home</a>
+        <a href="apps.html">Toolbox</a>
+        <a href="#output">Output</a>
+      </nav>
+    </div>
+    <div class="container">
+      <h2>Ship chapters & shorts in minutes.</h2>
+      <p class="sub">Paste a transcript (or SRT/VTT), and we’ll generate chapters, hooks, thumbnail text, hashtags, tags, and short clip suggestions — matching your current site style.</p>
+    </div>
+  </header>
+
+  <main class="container" style="padding:22px 18px">
+    <div class="grid">
+      <section class="card col-8">
+        <span class="badge">Input</span>
+        <div class="row" style="margin-top:10px">
+          <div>
+            <label>Video title (optional)</label>
+            <input id="title" class="input" placeholder="e.g., 7 Editing Tricks for Faster Videos"/>
+          </div>
+          <div>
+            <label>Approx duration (min)</label>
+            <input id="duration" type="number" class="input" min="1" value="10"/>
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <label>Transcript (paste text, SRT, or VTT)</label>
+          <textarea id="transcript" placeholder="[00:00:02] Welcome back...&#10;00:01:05 --> 00:01:14 Tip one: ...&#10;..."></textarea>
+        </div>
+
+        <div class="actions">
+          <input type="file" id="file" accept=".txt,.srt,.vtt" style="display:none"/>
+          <button class="btn" id="upload">Upload .txt / .srt / .vtt</button>
+          <button class="btn primary" id="analyze">Generate</button>
+          <button class="btn ghost" id="clear">Clear</button>
+        </div>
+
+        <p class="small copy">Privacy: runs entirely in your browser. No files leave your device. (Optional serverless AI hook supported later.)</p>
+      </section>
+
+      <section class="card col-4">
+        <span class="badge" style="background:linear-gradient(90deg,#2ca24e,#39d47a)">Quick KPIs</span>
+        <div class="kpi" style="margin-top:8px">
+          <div class="tile"><div class="small">Chapters</div><b id="kpi-chapters">0</b></div>
+          <div class="tile"><div class="small">Short ideas</div><b id="kpi-shorts">0</b></div>
+          <div class="tile"><div class="small">Hashtags</div><b id="kpi-hashtags">0</b></div>
+        </div>
+        <div class="sep"></div>
+        <div class="small" id="status"></div>
+      </section>
+
+      <section class="card col-6" id="output">
+        <span class="badge">Chapters</span>
+        <div id="chapters" class="list"></div>
+        <div class="actions">
+          <button class="btn" id="copy-desc">Copy for YouTube description</button>
+          <button class="btn" id="download-csv">Download CSV</button>
+        </div>
+      </section>
+
+      <section class="card col-6">
+        <span class="badge" style="background:linear-gradient(90deg,#0aa3d4,#11c3ff)">SEO & Assets</span>
+        <div class="list">
+          <div class="item"><b>Hooks:</b> <div id="hooks"></div></div>
+          <div class="item"><b>Thumbnail text ideas:</b> <div id="thumbs"></div></div>
+          <div class="item"><b>Hashtags:</b> <div id="hashtags"></div></div>
+          <div class="item"><b>Tags:</b> <div id="tags"></div></div>
+          <div class="item"><b>Pinned comment template:</b> <pre id="pinned" style="white-space:pre-wrap;word-wrap:break-word"></pre></div>
+          <div class="item"><b>Short candidates (start–end):</b> <div id="shorts"></div></div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="copy-hooks">Copy hooks</button>
+          <button class="btn" id="copy-hashtags">Copy hashtags</button>
+          <button class="btn" id="copy-tags">Copy tags</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="footer">© 2025 Moe Community Cloud — MBCC A.I. Suite</div>
+
+  <script src="assets/yt.js"></script>
+</body>
+</html>
