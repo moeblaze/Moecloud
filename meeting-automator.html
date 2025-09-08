@@ -1,93 +1,144 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meeting & Workflow Automator — MBCC</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Meeting Automator — MBCC Toolbox</title>
+  <meta name="description" content="Plan agendas, invite attendees, export ICS invites, and run a live agenda timer.">
+  <link rel="stylesheet" href="assets/meeting.css"/>
 </head>
 <body>
   <header class="header">
-    <div class="container header-row">
-      <div class="brand">
+    <div class="container" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div class="brand" style="display:flex;align-items:center;gap:12px">
         <div class="logo" aria-hidden="true"></div>
-        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+        <h1>MBCC Meeting Automator</h1>
       </div>
-      <nav class="nav">
+      <nav style="margin-left:auto">
         <a href="index.html">Home</a>
-        <a href="apps.html" class="active">Apps</a>
-        <a href="news.html">News</a>
-        <a href="sports.html">Sports</a>
-        <a href="newsletter.html">Newsletter</a>
+        <a href="apps.html">Toolbox</a>
+        <a href="#export">Export</a>
       </nav>
+    </div>
+    <div class="container">
+      <h2>Run faster, tighter meetings.</h2>
+      <p class="sub">Create agendas, invite attendees, export an ICS, and keep the meeting on time — all in the browser.</p>
     </div>
   </header>
 
-  <main class="container">
-    <h2>Meeting & Workflow Automator</h2>
-    <div class="grid cols-2">
-      <form class="card" onsubmit="return handleGen(event)">
-        
-<div class="field"><label>Meeting title</label><input class="input" id="mt_title" placeholder="Weekly Ops Sync"></div>
-<div class="field"><label>Date</label><input class="input" id="mt_date" type="date"></div>
-<div class="field"><label>Attendees</label><input class="input" id="mt_people" placeholder="Alex, Jordan, Sam"></div>
-<div class="field"><label>Agenda (one per line)</label><textarea class="input" id="mt_agenda" rows="5"></textarea></div>
-<div class="field"><label>Notes / Transcript</label><textarea class="input" id="mt_notes" rows="10"></textarea></div>
-<script>
-async function handleGen(e){{
-  e.preventDefault();
-  const body = {{
-    tool: 'meeting-automator',
-    prompt: `Create concise meeting minutes with decisions and action items.
-Title: ${{document.getElementById('mt_title').value}}
-Date: ${{document.getElementById('mt_date').value}}
-People: ${{document.getElementById('mt_people').value}}
-Agenda:
-${{document.getElementById('mt_agenda').value}}
-Notes:
-${{document.getElementById('mt_notes').value}}`
-  }};
-  const res = await mbccGenerate(body);
-  document.getElementById('mt_out').innerText = res?.text || '—';
-  return false;
-}}
-</script>
-
-        <button class="btn">Generate</button>
-      </form>
-      <section class="card">
-        <div class="badge">Output</div>
-        <div id="mt_out" style="white-space:pre-wrap"></div>
-        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-          <button class="btn" onclick="copyText('mt_out')">Copy</button>
-          <button class="btn alt" onclick="printSection('mt_out')">Print / PDF</button>
-          <button class="btn" onclick="mbccSaveDraft({ tool:'meeting-automator', input: collectInput(), output: document.getElementById('mt_out').innerText, ts:new Date().toISOString() })">Save Draft</button>
+  <main class="container" style="padding:22px 18px">
+    <div class="grid">
+      <section class="card col-8">
+        <span class="badge">Core setup</span>
+        <div class="row">
+          <div>
+            <label>Meeting title</label>
+            <input id="title" class="input" placeholder="Weekly Ops Sync"/>
+          </div>
+          <div>
+            <label>Organizer email</label>
+            <input id="organizer" type="email" class="input" placeholder="you@company.com"/>
+          </div>
         </div>
+        <div class="row3" style="margin-top:10px">
+          <div>
+            <label>When</label>
+            <input id="date" type="datetime-local" class="input"/>
+          </div>
+          <div>
+            <label>Duration (min)</label>
+            <input id="duration" type="number" min="5" step="5" value="60" class="input"/>
+          </div>
+          <div>
+            <label>Time zone</label>
+            <select id="tz" class="input">
+              <option>America/New_York</option>
+              <option>America/Chicago</option>
+              <option>America/Denver</option>
+              <option>America/Los_Angeles</option>
+              <option>UTC</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div>
+            <label>Location / Link</label>
+            <input id="location" class="input" placeholder="Zoom / Google Meet / Room 301"/>
+          </div>
+          <div>
+            <label>Add attendee</label>
+            <div style="display:flex;gap:8px">
+              <input id="email-input" type="email" class="input" placeholder="name@email.com"/>
+              <button id="add-email" class="btn">Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <label>Attendees</label>
+          <div class="tagbox"></div>
+        </div>
+
+        <div class="sep"></div>
+
+        <span class="badge" style="background:linear-gradient(90deg,#0aa3d4,#11c3ff)">Agenda</span>
+        <div class="agenda-list" style="margin-top:10px"></div>
+        <div class="row" style="margin-top:8px">
+          <input id="agenda-title" class="input" placeholder="Topic / Outcome"/>
+          <div style="display:flex;gap:8px">
+            <input id="agenda-mins" type="number" class="input" min="1" value="5"/>
+            <button id="agenda-add" class="btn good">Add item</button>
+          </div>
+        </div>
+        <div class="actions">
+          <span class="small">Planned time: <b id="agenda-total">0 min</b> • Keep at or under your duration.</span>
+        </div>
+      </section>
+
+      <aside class="card col-4">
+        <span class="badge" style="background:linear-gradient(90deg,#2ca24e,#39d47a)">Live Timer</span>
+        <div class="timer" id="timer" style="opacity:.8;margin-top:6px">
+          <b>00:00</b>
+          <span class="small">Current: <span id="current-topic">—</span></span>
+        </div>
+        <div class="actions">
+          <button id="start-meeting" class="btn primary">Start / Stop</button>
+        </div>
+        <div class="sep"></div>
+        <div class="kpi">
+          <div class="tile"><div class="small">Attendees</div><b id="kpi-attendees">0</b></div>
+          <div class="tile"><div class="small">Agenda items</div><b id="kpi-agenda">0</b></div>
+          <div class="tile"><div class="small">Agenda mins</div><b id="kpi-mins">0</b></div>
+        </div>
+        <div id="status" class="small" style="margin-top:10px;height:20px"></div>
+      </aside>
+
+      <section class="card col-6" id="notes-card">
+        <span class="badge" style="background:linear-gradient(90deg,#b95bff,#f54c9f)">Notes</span>
+        <p class="small">Use this for minutes and action items. It autosaves to your browser.</p>
+        <textarea id="notes" placeholder="• Note line 1&#10;• Action: @owner by MM/DD"></textarea>
+        <div class="actions">
+          <button id="copy-agenda" class="btn">Copy notes / agenda</button>
+        </div>
+      </section>
+
+      <section class="card col-6" id="export">
+        <span class="badge">Share & Export</span>
+        <p class="small">Generate an email draft, export an .ics invite with a 15-minute reminder, or save/load meeting JSON.</p>
+        <div class="actions">
+          <a id="mail-draft" class="btn ghost" href="#" target="_blank" rel="noopener">Open email draft</a>
+          <button id="generate" class="btn">Generate</button>
+          <button id="download-ics" class="btn primary">Download .ics</button>
+          <button id="export-json" class="btn">Export JSON</button>
+          <button id="import-json" class="btn">Import JSON</button>
+        </div>
+        <p class="small">Tip: attach the agenda markdown to your calendar event. Use the timer to stay on track.</p>
       </section>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-    </div>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/api.js"></script>
-  <script src="assets/tools.js"></script>
-  <script type="module">
-    import { attachTransformToolbar } from './assets/transforms.js';
-    function getText(){ return document.getElementById('mt_out').innerText; }
-    function setText(t){ document.getElementById('mt_out').innerText = t; }
-    attachTransformToolbar('mt_out', getText, setText, {});
-  </script>
-  <script>
-    function collectInput(){
-      const data={};
-      document.querySelectorAll('input,textarea,select').forEach(el=>data[el.id||el.name||'field']=el.value);
-      return data;
-    }
-  </script>
+  <div class="footer">© 2025 Moe Community Cloud — MBCC A.I. Suite</div>
+
+  <script src="assets/meeting.js"></script>
 </body>
 </html>
