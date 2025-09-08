@@ -18,28 +18,18 @@
       <stop offset="100%" stop-color="#c49a16"/>
     </linearGradient>
   </defs>
-
-  <!-- Background -->
   <rect width="1920" height="640" fill="url(#bg)"/>
-
-  <!-- Bokeh glows -->
   <circle cx="260" cy="160" r="190" fill="url(#glow)" filter="url(#soft)"/>
   <circle cx="1660" cy="520" r="220" fill="url(#glow)" filter="url(#soft)"/>
   <circle cx="1200" cy="140" r="140" fill="url(#glow)" filter="url(#soft)"/>
-
-  <!-- Curved accent strokes -->
   <path d="M -100,520 C 380,420 820,700 1300,520" fill="none" stroke="url(#stroke)" stroke-width="3" opacity="0.55"/>
   <path d="M -120,560 C 380,480 860,760 1380,560" fill="none" stroke="url(#stroke)" stroke-width="1.5" opacity="0.45"/>
   <path d="M 380,140 C 780,60 1180,220 1580,140" fill="none" stroke="url(#stroke)" stroke-width="1.5" opacity="0.35"/>
-
-  <!-- Playful spark stars (subtle) -->
   <g fill="#ffec9a" opacity="0.75">
     <path d="M1500 120 l6 18 18 6-18 6-6 18-6-18-18-6 18-6 6-18z"/>
     <path d="M420 420 l5 14 14 5-14 5-5 14-5-14-14-5 14-5 5-14z" opacity="0.8"/>
     <path d="M880 280 l4 12 12 4-12 4-4 12-4-12-12-4 12-4 4-12z" opacity="0.8"/>
   </g>
-
-  <!-- Corner gradient overlay for depth -->
   <linearGradient id="corner" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0%" stop-color="#000" stop-opacity="0.0"/>
     <stop offset="100%" stop-color="#000" stop-opacity="0.25"/>

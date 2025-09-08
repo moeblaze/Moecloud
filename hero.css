@@ -10,66 +10,20 @@
   padding: 3.2rem 1.2rem;
   box-shadow: 0 12px 36px rgba(0,0,0,.35);
 }
-
-/* Subtle branded blink/glow (kept soft) */
 .mbcc-blink{
   animation: mbccGlow 2.6s ease-in-out infinite;
   box-shadow: 0 0 0 2px rgba(255,215,0,.35), inset 0 0 36px rgba(255,215,0,.14);
 }
 @keyframes mbccGlow{
-  0%,100%{ box-shadow:0 0 0 2px rgba(255,215,0,.35), inset 0 0 36px rgba(255,215,0,.14) }
-  50%    { box-shadow:0 0 0 2px rgba(255,215,0,.80), inset 0 0 64px rgba(255,215,0,.22) }
+  0%,100%{ box-shadow:0 0 0 2px rgba(255,215,0,.35), inset 0 0 36px rgba(0,0,0,.14) }
+  50%    { box-shadow:0 0 0 2px rgba(255,215,0,.80), inset 0 0 64px rgba(0,0,0,.22) }
 }
-
-.mbcc-hero-wrap{
-  text-align: center;
-  max-width: 1100px;
-  color: #eef1ff;
-  text-shadow: 0 2px 14px rgba(0,0,0,.45);
-}
-
-.mbcc-hero-title{
-  margin: 0 0 .35rem 0;
-  font: 800 clamp(1.6rem, 4.7vw, 3.2rem)/1.05 system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  letter-spacing: .2px;
-}
-
-.mbcc-hero-kicker{
-  margin: 0 0 .4rem 0;
-  font: 800 clamp(.8rem, 1.8vw, 1.1rem)/1.2 system-ui;
-  text-transform: uppercase;
-  letter-spacing: 1.6px;
-  color: #ffec9a;
-}
-
-.mbcc-hero-sub{
-  margin: 0 0 1rem 0;
-  font: 400 clamp(.95rem, 1.6vw, 1.15rem)/1.5 system-ui;
-  color: #dbe2ff;
-}
-
+.mbcc-hero-wrap{ text-align: center; max-width: 1100px; color: #eef1ff; text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+.mbcc-hero-title{ margin:0 0 .35rem 0; font: 800 clamp(1.6rem, 4.7vw, 3.2rem)/1.05 system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing:.2px; }
+.mbcc-hero-kicker{ margin:0 0 .4rem 0; font:800 clamp(.8rem, 1.8vw, 1.1rem)/1.2 system-ui; text-transform:uppercase; letter-spacing:1.6px; color:#ffec9a; }
+.mbcc-hero-sub{ margin:0 0 1rem 0; font:400 clamp(.95rem, 1.6vw, 1.15rem)/1.5 system-ui; color:#dbe2ff; }
 .mbcc-hero-cta{ display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; }
-
-.mbcc-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  font: 700 .95rem/1 system-ui;
-  padding: .8rem 1.1rem;
-  border-radius: 12px;
-  border:1px solid #2a2f4a;
-  background:#11162a;
-  color:#e8ecff; text-decoration:none;
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-}
-.mbcc-btn:hover{ transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.35); }
-
-.mbcc-btn-primary{
-  background: linear-gradient(90deg, #d40a22, #ff1f39);
-  border-color: transparent;
-  color: #fff;
-}
-
-/* If you need the hero to be full-bleed edge to edge: wrap the section in a container that removes border-radius */
-@media (max-width: 640px){
-  #mbcc-hero{ padding: 2.2rem 1rem; }
-  .mbcc-hero-cta{ gap:.5rem; }
-}
+.mbcc-btn{ display:inline-flex; align-items:center; justify-content:center; font:700 .95rem/1 system-ui; padding:.8rem 1.1rem; border-radius:12px; border:1px solid #2a2f4a; background:#11162a; color:#e8ecff; text-decoration:none; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+.mbcc-btn:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.35); }
+.mbcc-btn-primary{ background: linear-gradient(90deg, #d40a22, #ff1f39); border-color: transparent; color:#fff; }
+@media (max-width: 640px){ #mbcc-hero{ padding:2.2rem 1rem } .mbcc-hero-cta{ gap:.5rem } }
