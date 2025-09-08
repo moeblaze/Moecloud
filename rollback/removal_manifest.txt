@@ -1,0 +1,13 @@
+REMOVE:
+- assets/css/edge-blocks.css
+- assets/js/edge-injector.js
+- assets/js/edge-data.json
+
+EDIT sports.html:
+- Remove:
+  <link rel="stylesheet" href="assets/css/edge-blocks.css">
+  <script src="assets/js/edge-injector.js" defer></script>
+
+ADD to sports.html (before </body>):
+  <link rel="stylesheet" href="assets/css/gameday-edge.css">
+  <script src="assets/js/gameday-edge.js" defer></script>

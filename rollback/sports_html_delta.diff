@@ -1,0 +1,9 @@
+--- a/sports.html
++++ b/sports.html
+@@ -999,6 +999,6 @@
+-  <link rel="stylesheet" href="assets/css/edge-blocks.css">
+-  <script src="assets/js/edge-injector.js" defer></script>
++  <link rel="stylesheet" href="assets/css/gameday-edge.css">
++  <script src="assets/js/gameday-edge.js" defer></script>
+ </body>
+ </html>
