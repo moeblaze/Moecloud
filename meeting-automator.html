@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Meeting Automator — MBCC Toolbox</title>
-  <meta name="description" content="Plan agendas, invite attendees, export ICS invites, and run a live agenda timer.">
+  <meta name="description" content="Plan agendas, invite attendees, export ICS invites, create Google Calendar drafts, and run a live agenda timer.">
   <link rel="stylesheet" href="assets/meeting.css"/>
 </head>
 <body>
@@ -22,7 +22,7 @@
     </div>
     <div class="container">
       <h2>Run faster, tighter meetings.</h2>
-      <p class="sub">Create agendas, invite attendees, export an ICS, and keep the meeting on time — all in the browser.</p>
+      <p class="sub">Create agendas, invite attendees, export an ICS, build a Google Calendar draft, and keep the meeting on time — all in the browser.</p>
     </div>
   </header>
 
@@ -124,11 +124,12 @@
 
       <section class="card col-6" id="export">
         <span class="badge">Share & Export</span>
-        <p class="small">Generate an email draft, export an .ics invite with a 15-minute reminder, or save/load meeting JSON.</p>
+        <p class="small">Generate an email draft, export an .ics invite with a 15-minute reminder, save/load JSON, or build a Google Calendar draft.</p>
         <div class="actions">
           <a id="mail-draft" class="btn ghost" href="#" target="_blank" rel="noopener">Open email draft</a>
           <button id="generate" class="btn">Generate</button>
           <button id="download-ics" class="btn primary">Download .ics</button>
+          <a id="gcal-link" class="btn" target="_blank" rel="noopener">Google Calendar draft</a>
           <button id="export-json" class="btn">Export JSON</button>
           <button id="import-json" class="btn">Import JSON</button>
         </div>
