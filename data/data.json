@@ -37,6 +37,61 @@
         "First preseason weekend: East-heavy Monday slate (Sep 22)."
       ],
       "footnote": "Dates & TV from NHL/ESPN; neutral sites per league announcement."
+    },
+    "nascar": {
+      "stamp": "Round of 16 \u2014 after Gateway (as of Sept 8, 2025)",
+      "headlines": [
+        "Denny Hamlin wins at Gateway to seize the playoff lead.",
+        "Chase Briscoe repeats at Darlington\u2019s Southern 500 to open the postseason.",
+        "Bristol Night Race (Sep 13) is the Round of 16 cut \u2014 four drivers out after Saturday.",
+        "Schedule set: Round of 12 starts at New Hampshire (Sep 21), then Kansas (Sep 28) and the Charlotte Roval (Oct 5)."
+      ],
+      "results": [
+        {
+          "date": "Sun, Sep 7",
+          "race": "Enjoy Illinois 300 \u2014 World Wide Technology Raceway (Gateway)",
+          "winner": "Denny Hamlin",
+          "p2": "Chase Briscoe",
+          "p3": "Chase Elliott",
+          "note": "Playoff Race 2: chaotic late restart shapes points."
+        },
+        {
+          "date": "Sun, Aug 31",
+          "race": "Cook Out Southern 500 \u2014 Darlington",
+          "winner": "Chase Briscoe",
+          "p2": "Tyler Reddick",
+          "p3": "Erik Jones",
+          "note": "Briscoe goes back-to-back at Darlington to start the playoffs."
+        }
+      ],
+      "standings_top10": [
+        "1) Denny Hamlin \u2014 2120 pts (5 wins)",
+        "2) Chase Briscoe \u2014 2115 pts (2 wins)",
+        "3) Kyle Larson \u2014 2103 pts (3 wins)",
+        "4) Bubba Wallace \u2014 2093 pts (1 win)",
+        "5) Ryan Blaney \u2014 2085 pts (2 wins)",
+        "6) William Byron \u2014 2082 pts (2 wins)",
+        "7) Tyler Reddick \u2014 2080 pts",
+        "8) Christopher Bell \u2014 2075 pts (3 wins)",
+        "9) Chase Elliott \u2014 2071 pts (1 win)",
+        "10) Joey Logano \u2014 2064 pts (1 win)"
+      ],
+      "manufacturers": [
+        "Chevrolet \u2014 1026 pts (12 wins)",
+        "Toyota \u2014 1000 pts (11 wins)",
+        "Ford \u2014 932 pts (5 wins)"
+      ],
+      "whats_next": [
+        "Sep 13 \u2014 Bristol Motor Speedway (cutoff; 4 eliminated)",
+        "Sep 21 \u2014 New Hampshire Motor Speedway (Round of 12 opener)",
+        "Sep 28 \u2014 Kansas Speedway",
+        "Oct 5 \u2014 Charlotte Roval (elimination)",
+        "Oct 12 \u2014 Las Vegas (Round of 8 opener)",
+        "Oct 19 \u2014 Talladega",
+        "Oct 26 \u2014 Martinsville (elimination)",
+        "Nov 2 \u2014 Phoenix (Championship 4)"
+      ],
+      "footnote": "Leaders & schedule per NASCAR/ESPN; manufacturer points via AP/SeattlePI."
     }
   }
 }
