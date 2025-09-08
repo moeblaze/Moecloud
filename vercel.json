@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "https://YOUR_SWA_DEFAULT_DOMAIN.azurestaticapps.net/$1"
+      "destination": "https://thankful-moss-05b56cb10.1.azurestaticapps.net/$1"
     }
   ],
   "headers": [
