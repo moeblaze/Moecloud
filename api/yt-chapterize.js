@@ -1,22 +1,51 @@
-// api/yt-chapterize.js  — Vercel Serverless Function (no external deps)
-// Set OPENAI_API_KEY in Vercel Project Settings → Environment Variables
+// api/yt-chapterize.js — Vercel Serverless Function with optional Bearer auth + CORS
+// Required:   OPENAI_API_KEY
+// Optional:   OPENAI_MODEL (default: gpt-4o-mini)
+//             AUTH_BEARER (if set, require 'Authorization: Bearer <token>')
+//             CORS_ALLOW_ORIGIN (e.g. 'https://moecloud-hbeworyun-morris-stephens-projects.vercel.app')
+// Note: If AUTH_BEARER is set and you call this from the browser, you'll need to add that header in your client fetch.
+//       Exposing tokens in client code is visible to users; use with care.
 
 module.exports = async (req, res) => {
+  // ---- CORS (optional lock-down) ----
+  const origin = req.headers.origin || "";
+  const allowOrigin = process.env.CORS_ALLOW_ORIGIN || "";
+  const setCORS = () => {
+    const permitted = allowOrigin || origin || "*";
+    res.setHeader("Access-Control-Allow-Origin", permitted);
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.setHeader("Access-Control-Max-Age", "86400");
+  };
+  setCORS();
+  if (req.method === "OPTIONS") { res.status(204).end(); return; }
+
+  // ---- Auth (optional) ----
+  if (process.env.AUTH_BEARER) {
+    const auth = req.headers.authorization || "";
+    if (auth !== `Bearer ${process.env.AUTH_BEARER}`) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+  }
+
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
   }
 
-  // Vercel parses JSON automatically for req.body if content-type is application/json
   const { title = "", transcript = "", duration = 0 } = req.body || {};
   if (!transcript || transcript.length < 20) {
     res.status(400).json({ error: "Missing transcript" });
     return;
   }
 
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+
   const system = `You are a YouTube packaging assistant. Return ONLY valid JSON matching this schema:
 {
-  "chapters": [{"t": number, "title": string}],  // t = seconds
+  "chapters": [{"t": number, "title": string}],  // t = seconds from start
   "hooks": string[],
   "thumbs": string[],
   "hashtags": string[],
@@ -39,7 +68,7 @@ ${transcript}`;
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model,
         response_format: { type: "json_object" },
         temperature: 0.6,
         messages: [
@@ -59,7 +88,7 @@ ${transcript}`;
     let json;
     try {
       json = JSON.parse(data.choices[0].message.content);
-    } catch (e) {
+    } catch {
       res.status(500).json({ error: "AI returned non-JSON" });
       return;
     }

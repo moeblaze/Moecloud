@@ -1,17 +1,32 @@
-Vercel API: /api/yt-chapterize
-==============================
+Secured Vercel API: /api/yt-chapterize
+======================================
 
 Files:
-- api/yt-chapterize.js
+- api/yt-chapterize.js  (adds optional Bearer auth + CORS)
 
-Steps:
-1) Drop this `api/` folder into the root of your Vercel project (same level as apps.html).
-2) In Vercel Project → Settings → Environment Variables, add:
-   - OPENAI_API_KEY = <your key>
-   (Set for Production, and Preview/Development if you test previews.)
-3) Redeploy the project.
+Set env vars in Vercel → Project → Settings → Environment Variables:
 
-Test:
-curl -X POST https://YOURDOMAIN/api/yt-chapterize   -H "Content-Type: application/json"   -d '{"title":"Test","transcript":"00:00 Intro... 00:30 Tip 1... 01:10 Tip 2...","duration":5}'
+Required
+- OPENAI_API_KEY = <your key>
 
-If you see JSON with chapters/hooks/etc., the endpoint is live.
+Optional
+- OPENAI_MODEL = gpt-4o-mini
+- AUTH_BEARER = <any strong token>     # if set, API requires 'Authorization: Bearer <token>'
+- CORS_ALLOW_ORIGIN = https://moecloud-hbeworyun-morris-stephens-projects.vercel.app
+
+Deploy steps
+1) Drop this `api/` folder into your Vercel project root.
+2) Set env vars (above). Redeploy.
+
+Client (only if you set AUTH_BEARER)
+Add the Authorization header in your fetch:
+  fetch('/api/yt-chapterize', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer REPLACE_ME'
+    },
+    body: JSON.stringify({...})
+  })
+
+⚠️ Note: Any token you put in client JS is visible to users. Prefer using only CORS_ALLOW_ORIGIN when calling from the same domain.
