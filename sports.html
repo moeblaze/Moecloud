@@ -16,7 +16,8 @@
     h1,h2,h3,h4{ margin:.6rem 0 .4rem 0 }
     .section{ margin: 1.2rem 0; background:#0f1220; border:1px solid #2a2f4a; border-radius:14px; padding:1rem }
     footer{ text-align:center; color:#9aa7ff; padding-bottom:2rem }
-    /* ----- Scoped NFL styles ----- */
+
+    /* NFL block */
     .mc-scores{margin:1.25rem 0}
     .mc-sec-title{margin:.2rem 0 .8rem 0;font:800 1.25rem/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial}
     .mc-strip{background:#0f1220;border:1px solid #2a2f4a;border-radius:14px;padding:12px 14px;margin:0 0 12px 0}
@@ -38,6 +39,16 @@
     .mc-badge{font:800 .7rem/1.1 system-ui;text-transform:uppercase;letter-spacing:.6px;padding:.25rem .5rem;border-radius:999px;background:linear-gradient(90deg,#d40a22,#ff1f39);color:#fff}
     .mc-blurb{margin:.35rem 0 0 0;font:400 .9rem/1.35 system-ui;color:#cbd3ff}
     .mc-footnote{margin:.6rem 0 0 0;color:#aab3ff;font:.85rem/1.4 system-ui}
+
+    /* NBA block */
+    .nba-sec .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .nba-sec .card{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
+    .nba-sec .title{margin:0 0 6px 0;font:800 .95rem/1.2 system-ui}
+    .nba-sec .blurb{margin:.35rem 0 0 0;font:400 .9rem/1.45 system-ui;color:#cbd3ff}
+    .nba-sec .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+    .nba-sec .list li{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:10px}
+    .nba-kicker{margin:0 0 .2rem 0;font:800 .8rem/1.2 system-ui;text-transform:uppercase;letter-spacing:1.2px;color:#ffec9a}
+    .nba-h2{margin:.2rem 0 .8rem 0;font:800 1.25rem/1.2 system-ui}
   </style>
 </head>
 <body>
@@ -49,6 +60,7 @@
       <a href="/news.html">News</a>
       <a href="/sports.html">Sports</a>
       <a href="/sports.html#nfl">NFL</a>
+      <a href="/sports.html#nba">NBA</a>
       <a href="/newsletter.html">Newsletter</a>
     </nav>
   </header>
@@ -68,7 +80,7 @@
       </div>
     </section>
 
-    <!-- ********** NFL — Weekend Scores (Week 1, Sep 4–7, 2025) ********** -->
+    <!-- ********** NFL — Week 1 (Sep 4–7, 2025) ********** -->
     <section id="nfl" class="mc-scores section">
       <h2 class="mc-sec-title">NFL — Week 1 (Sep 4–7, 2025)</h2>
 
@@ -114,6 +126,62 @@
 
       <p class="mc-footnote">Weekend only (Thu–Sun). Monday: Vikings at Bears — not included.</p>
     </section>
+
+    <!-- ********** NBA — Weekend Notebook (Sept 5–7, 2025) ********** -->
+    <section id="nba" class="mc-scores section">
+      <div class="nba-sec">
+        <p class="nba-kicker">NBA Weekend</p>
+        <h2 class="nba-h2">NBA — Weekend Notebook (Sept 5–7, 2025)</h2>
+
+        <div class="card">
+          <div class="title">Top Headlines</div>
+          <ul class="list">
+            <li>Hall of Fame Class of 2025 enshrined: Carmelo, Dwight, Bird, Moore, Fowles, Crawford, Redeem Team, more.</li>
+            <li>EuroBasket: Georgia stuns France; Luka Dončić drops 42 as Slovenia reaches quarterfinals.</li>
+            <li>“NBA on NBC” promo airs during SNF; Opening Night set for Oct 21 on NBC/Peacock.</li>
+          </ul>
+          <p class="blurb muted">Sources: NBA.com, AP/FIBA, NBC/Peacock.</p>
+        </div>
+
+        <div class="grid" style="margin-top:12px">
+          <article class="card">
+            <div class="title">EuroBasket Shock: Georgia ➜ QFs</div>
+            <p class="blurb">Historic moment as Georgia eliminates France 80–70 to reach the quarterfinals for the first time.</p>
+          </article>
+          <article class="card">
+            <div class="title">Luka Magic: 42 vs Italy</div>
+            <p class="blurb">Dončić pours in 42 (84–77 vs Italy) to push Slovenia through; sets up a showdown with Germany.</p>
+          </article>
+        </div>
+
+        <div class="grid" style="margin-top:12px">
+          <article class="card">
+            <div class="title">Class of 2025 — Headliners</div>
+            <p class="blurb">Carmelo Anthony, Dwight Howard, Sue Bird, Maya Moore, Sylvia Fowles, Danny Crawford, the 2008 “Redeem Team,” coach Billy Donovan and executive Micky Arison enter the Hall.</p>
+          </article>
+          <article class="card">
+            <div class="title">Opening Night on NBC</div>
+            <p class="blurb">Oct 21: Rockets at Thunder (7:30 ET), Warriors at Lakers (10 ET). NBC & Peacock carry Opening Night; promo rolled out during Sunday Night Football.</p>
+          </article>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div class="title">What’s Next</div>
+          <ul class="list">
+            <li><strong>Sept 23–29:</strong> Media Days & training camps open.</li>
+            <li><strong>Oct 2–12:</strong> Global preseason: Abu Dhabi, Melbourne, Canada Series, China Games.</li>
+            <li><strong>Oct 21:</strong> 2025–26 Opening Night — Rockets/Thunder; Warriors/Lakers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholders for other sports -->
+    <section id="mlb" class="section"><h3>MLB hub</h3><p class="muted">Postseason races and power rankings on deck.</p></section>
+    <section id="ncaaf" class="section"><h3>College Football</h3><p class="muted">Key games, polls, and CFP chatter incoming.</p></section>
+    <section id="nhl" class="section"><h3>NHL hub</h3><p class="muted">Season preview and major moves next.</p></section>
+    <section id="wnba" class="section"><h3>WNBA hub</h3><p class="muted">Top stories and playoff paths soon.</p></section>
+    <section id="nascar" class="section"><h3>Motorsport</h3><p class="muted">Results, points, and paint schemes to follow.</p></section>
   </main>
 
   <footer>
