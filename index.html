@@ -4,10 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Moe Community Cloud — Home</title>
+
+  <!-- Performance/SEO polish -->
+  <link rel="preload" as="image" href="/assets/sponsors/darwynn-plaid-glow-1600x340.png">
+  <meta name="theme-color" content="#0b0f18">
+  <meta name="description" content="Moe Community Cloud — AI-enhanced tools, sports recaps, and news with a clean, fast layout.">
+  <meta property="og:title" content="Moe Community Cloud">
+  <meta property="og:description" content="AI-enhanced tools, sports recaps, and news — fast and clean.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.moecommunitycloud.com/">
+
   <style>
     :root { color-scheme: dark; }
     body { margin: 0; background: #0b0f18; color: #e8ecff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     a { color: #9fc3ff; text-decoration: none; } a:hover { text-decoration: underline; }
+    .muted{ color:#b9c4ff }
 
     .wrap { max-width: 1100px; margin: 0 auto; padding: 1rem; }
 
@@ -46,14 +57,13 @@
     .section { margin: 1.2rem 0; background: #0f1220; border: 1px solid #2a2f4a; border-radius: 14px; padding: 1rem; }
     h2 { margin: .2rem 0 .8rem 0; font: 800 1.25rem/1.2 system-ui; }
 
-    /* Sponsor box — glow + blink; uses Darwynn photo with gold ring as BACKGROUND */
+    /* Sponsor box */
     .sponsor-card { display: grid; gap: .8rem; }
     .sponsor-lead { color: #b9c4ff; margin: 0; }
     .sponsor-box {
       position: relative; border-radius: 16px; overflow: hidden;
       height: clamp(180px, 26vw, 360px);
       display: grid; place-items: center;
-      /* Top layer is Darwynn image; below are subtle glows */
       background:
         url("/assets/sponsors/darwynn-plaid-glow-1600x340.png") left center / cover no-repeat,
         radial-gradient(600px 220px at 20% 15%, rgba(255,215,0,.30), rgba(255,215,0,0) 60%),
@@ -69,8 +79,28 @@
       50%    { box-shadow: 0 0 0 2px rgba(255,215,0,.90), inset 0 0 48px rgba(255,215,0,.32), 0 14px 42px rgba(0,0,0,.45); }
     }
 
-    footer { text-align: center; color: #9aa7ff; padding: 2rem 0; }
+    /* Subscribe form + toast */
+    #subscribe form { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center }
+    #subscribe input[type="email"]{
+      background:#0e1428; color:#e8ecff; border:1px solid #2a2f4a; border-radius:10px;
+      padding:.8rem 1rem; min-width:260px; outline:none;
+    }
+    #subscribe input[type="email"]::placeholder{ color:#9aa7ff }
+    .toast{
+      position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(90deg,#d40a22,#ff1f39); color:#fff; padding:.8rem 1rem;
+      border-radius:12px; box-shadow:0 8px 26px rgba(0,0,0,.35); font:700 .95rem/1 system-ui;
+      opacity:0; pointer-events:none; transition: all .28s ease; z-index:9999;
+    }
+    .toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
   </style>
+
+  <script>
+    window.MBCC_SUBSCRIBE = {
+      endpoint: "https://docs.google.com/forms/d/e/FORM_ID/formResponse",
+      emailEntry: "entry.1234567890"
+    };
+  </script>
 </head>
 <body>
   <div class="wrap">
@@ -83,11 +113,11 @@
         <a href="/sports.html#nfl">NFL</a>
         <a href="/sports.html#nba">NBA</a>
         <a href="/sports.html#mlb">MLB</a>
+        <a href="/sports.html#wnba">WNBA</a>
         <a href="/newsletter.html">Newsletter</a>
       </nav>
     </header>
 
-    <!-- HERO -->
     <section id="mbcc-hero">
       <div class="hero-inner">
         <p class="hero-kicker">Moe Community Cloud</p>
@@ -102,14 +132,21 @@
       </div>
     </section>
 
-    <!-- SPONSOR -->
     <section class="section sponsor-card" aria-labelledby="sponsor-title">
       <h2 id="sponsor-title">Featured Sponsor</h2>
       <p class="sponsor-lead">A big shoutout to our partner—framed in the golden glow.</p>
-      <div class="sponsor-box"><!-- background image handles the display --></div>
+      <div class="sponsor-box"></div>
     </section>
 
-    <!-- Teasers -->
+    <section id="subscribe" class="section" aria-labelledby="sub-title">
+      <h2 id="sub-title">Get updates in your inbox</h2>
+      <p class="muted" style="margin-top:-8px">News, app drops, and game recaps. No spam.</p>
+      <form id="mbcc-subscribe-form">
+        <input type="email" name="email" placeholder="you@example.com" required>
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+    </section>
+
     <section class="section">
       <h2>What’s New</h2>
       <ul>
@@ -117,7 +154,6 @@
         <li><a href="/sports.html#nfl">NFL Week 1</a> — quick scores + headlines.</li>
         <li><a href="/sports.html#nba">NBA Weekend</a> — HOF & EuroBasket.</li>
         <li><a href="/sports.html#mlb">MLB Playoff Picture</a> — seeds, wild cards, what’s next.</li>
-        <li><a href="/news.html">Daily News</a> — compact, skimmable updates.</li>
       </ul>
     </section>
 
@@ -126,5 +162,36 @@
       <p>Built on black &amp; red plaid with gold energy ⚡</p>
     </footer>
   </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Subscribed! Check your inbox shortly.</div>
+
+  <script>
+  (function() {
+    const cfg = window.MBCC_SUBSCRIBE || {};
+    const form = document.getElementById('mbcc-subscribe-form');
+    const toast = document.getElementById('toast');
+
+    function showToast(text){
+      toast.textContent = text || 'Subscribed! Check your inbox shortly.';
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2600);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = form.querySelector('input[name="email"]').value.trim();
+      if (!email) return;
+      if (cfg.endpoint && cfg.emailEntry) {
+        const data = new FormData();
+        data.append(cfg.emailEntry, email);
+        fetch(cfg.endpoint, { method:'POST', mode:'no-cors', body:data })
+          .then(()=> { showToast(); form.reset(); })
+          .catch(()=> { showToast('Saved locally. We’ll add you soon.'); });
+      } else {
+        window.location.href = 'mailto:subscribe@moecommunitycloud.com?subject=Subscribe&body=' + encodeURIComponent(email);
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

@@ -1,57 +1,308 @@
-<script> #new script
-  (function(){
-    const el = {
-      top: document.getElementById('wnba-top'),
-      seed: document.getElementById('wnba-seed'),
-      players: document.getElementById('wnba-players'),
-      next: document.getElementById('wnba-next'),
-      stamp: document.getElementById('wnba-stamp'),
-      scores: document.getElementById('wnba-scores')
-    };
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sports — Moe Community Cloud</title>
 
-    function fillList(ul, items){
-      if (!ul) return;
-      ul.innerHTML = '';
-      (items || []).forEach(t=>{
-        const li = document.createElement('li');
-        li.textContent = t;
-        ul.appendChild(li);
-      });
+  <link rel="preload" as="image" href="/assets/sponsors/darwynn-plaid-glow-1600x340.png">
+  <meta name="theme-color" content="#0b0f18">
+  <meta name="description" content="MBCC Sports — fast, clean recaps across NFL, NBA, MLB, WNBA and more.">
+  <meta property="og:title" content="MBCC Sports">
+  <meta property="og:description" content="Weekend scores, headlines, and what’s next — all in one page.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.moecommunitycloud.com/sports.html">
+
+  <style>
+    :root{ color-scheme: dark; }
+    body{ margin:0; background:#0b0f18; color:#e8ecff; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; }
+    header, main, footer{ max-width:1100px; margin:0 auto; padding: 1rem; }
+    .nav{ display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; padding: .8rem 0; }
+    .nav a{ font-weight:700; color:#e8ecff; padding:.35rem .6rem; border-radius:8px; text-decoration:none }
+    .nav a:hover{ background:#12162a }
+    .subnav{ display:flex; gap:.6rem; flex-wrap:wrap; padding:.4rem 0 .6rem 0 }
+    .muted{ color:#b9c4ff }
+    h1,h2,h3,h4{ margin:.6rem 0 .4rem 0 }
+    .section{ margin: 1.2rem 0; background:#0f1220; border:1px solid #2a2f4a; border-radius:14px; padding:1rem }
+    footer{ text-align:center; color:#9aa7ff; padding-bottom:2rem }
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .card{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
+    .title{margin:0 0 6px 0;font:800 .95rem/1.2 system-ui}
+    .blurb{margin:.35rem 0 0 0;font:400 .9rem/1.45 system-ui;color:#cbd3ff}
+    .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+    .list li{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:10px}
+
+    .mc-scores{margin:1.25rem 0}
+    .mc-sec-title{margin:.2rem 0 .8rem 0;font:800 1.25rem/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    .mc-strip{background:#0f1220;border:1px solid #2a2f4a;border-radius:14px;padding:12px 14px;margin:0 0 12px 0}
+    .mc-strip-title{margin:0 0 6px 0;font:800 .95rem/1.2 system-ui;color:#fff}
+    .mc-strip-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+    .mc-perf{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:8px}
+    .mc-perf-name{font:700 .92rem/1.2 system-ui;color:#e8ecff}
+    .mc-perf-team{color:#9fb4ff;font-weight:800}
+    .mc-perf-line{font:500 .9rem/1.35 system-ui;color:#cfd6ff}
+    .mc-perf-game{color:#9aa7ff}
+    .mc-headlines-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+    .mc-headlines-list li{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:8px;color:#e8ecff;font:500 .9rem/1.35 system-ui}
+    .mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .mc-game{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
+    .mc-row{display:flex;align-items:center;gap:.6rem;justify-content:space-between}
+    .mc-teams{margin:.25rem 0 .35rem 0}
+    .mc-team{display:flex;align-items:center;gap:.5rem}
+    .mc-name{font:600 .95rem/1.2 system-ui;color:#f1f4ff}
+    .mc-badge{font:800 .7rem/1.1 system-ui;text-transform:uppercase;letter-spacing:.6px;padding:.25rem .5rem;border-radius:999px;background:linear-gradient(90deg,#d40a22,#ff1f39);color:#fff}
+    .mc-blurb{margin:.35rem 0 0 0;font:400 .9rem/1.35 system-ui;color:#cbd3ff}
+    .mc-footnote{margin:.6rem 0 0 0;color:#aab3ff;font:.85rem/1.4 system-ui}
+
+    .sponsor-mini {
+      border-radius: 14px; overflow: hidden; height: 160px; margin-top: .6rem;
+      background:
+        url("/assets/sponsors/darwynn-plaid-glow-1600x340.png") left center / cover no-repeat,
+        radial-gradient(400px 160px at 16% 24%, rgba(255,215,0,.28), rgba(255,215,0,0) 60%),
+        linear-gradient(180deg,#c49a16 0%, #b38712 100%);
+      box-shadow: 0 0 0 2px rgba(255,215,0,.55), inset 0 0 22px rgba(255,215,0,.18), 0 10px 26px rgba(0,0,0,.35);
+      animation: mbccBlink 1.8s ease-in-out infinite;
     }
-
-    function renderScores(container, games){
-      if (!container) return;
-      container.innerHTML = '';
-      (games || []).forEach(g=>{
-        const card = document.createElement('article');
-        card.className = 'mc-game';
-        card.innerHTML = `
-          <header class="mc-row">
-            <div class="mc-badge">${(g.date || '').split(',')[0] || '—'}</div>
-            <h4 class="mc-title">${g.away} at ${g.home}</h4>
-          </header>
-          <div class="mc-teams">
-            <div class="mc-team"><div class="mc-name">${g.away} ${g.awayPts}</div></div>
-            <div class="mc-team"><div class="mc-name">${g.home} ${g.homePts}</div></div>
-          </div>
-          <p class="mc-blurb">${g.note || ''}</p>
-        `;
-        container.appendChild(card);
-      });
+    @keyframes mbccBlink {
+      0%,100% { box-shadow: 0 0 0 2px rgba(255,215,0,.45), inset 0 0 20px rgba(255,215,0,.16), 0 10px 26px rgba(0,0,0,.35); }
+      50%    { box-shadow: 0 0 0 2px rgba(255,215,0,.90), inset 0 0 40px rgba(255,215,0,.32), 0 12px 34px rgba(0,0,0,.45); }
     }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Moe Community Cloud MBCC</h1>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/apps.html">Apps</a>
+      <a href="/news.html">News</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/sports.html#nfl">NFL</a>
+      <a href="/sports.html#nba">NBA</a>
+      <a href="/sports.html#mlb">MLB</a>
+      <a href="/sports.html#wnba">WNBA</a>
+      <a href="/newsletter.html">Newsletter</a>
+    </nav>
+  </header>
 
-    fetch('/data/sports-data.json?cb=' + Date.now())
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(data => {
-        const w = data && data.wnba ? data.wnba : null;
-        if (!w) return;
-        if (w.stamp) el.stamp.textContent = `WNBA — Playoff Watch (as of ${w.stamp})`;
-        fillList(el.top, w.top_storylines);
-        fillList(el.seed, w.seeding);
-        fillList(el.players, w.players_to_watch);
-        fillList(el.next, w.whats_next);
-        renderScores(el.scores, w.scores);
-      })
-      .catch(()=>{/* leave placeholders if fetch fails */});
-  })();
-</script>
+  <main>
+    <section class="section">
+      <h2>MBCC Sports</h2>
+      <p class="muted">Fast, clean recaps and what’s next. We’re rolling out dedicated pages for each sport.</p>
+      <div class="subnav">
+        <a href="#nfl">NFL</a>
+        <a href="#nba">NBA</a>
+        <a href="#mlb">MLB</a>
+        <a href="#wnba">WNBA</a>
+        <a href="#ncaaf">NCAAF</a>
+        <a href="#nhl">NHL</a>
+        <a href="#nascar">NASCAR</a>
+      </div>
+      <div class="sponsor-mini" title="Darwynn — Featured Partner"></div>
+    </section>
+
+    <section id="nfl" class="mc-scores section">
+      <h2 id="nfl-stamp" class="mc-sec-title">NFL</h2>
+      <div class="mc-strip mc-performers">
+        <h4 class="mc-strip-title">Top Performers</h4>
+        <div id="nfl-performers" class="mc-strip-body">
+          <div class="mc-perf"><div class="mc-perf-name">Loading…</div></div>
+        </div>
+      </div>
+      <div class="mc-strip mc-headlines">
+        <h4 class="mc-strip-title">Power 5 Headlines</h4>
+        <ul id="nfl-headlines" class="mc-headlines-list"><li>Loading…</li></ul>
+      </div>
+      <div id="nfl-games" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
+      <p id="nfl-footnote" class="mc-footnote"></p>
+    </section>
+
+    <section id="nba" class="mc-scores section">
+      <p class="muted" id="nba-kicker" style="margin:0 0 .2rem 0">NBA</p>
+      <h2 id="nba-stamp" class="mc-sec-title">NBA — Weekend Notebook</h2>
+      <div class="card">
+        <div class="title">Top Headlines</div>
+        <ul id="nba-headlines" class="list"><li>Loading…</li></ul>
+        <p id="nba-sources" class="blurb muted"></p>
+      </div>
+      <div id="nba-cards1" class="grid" style="margin-top:12px"></div>
+      <div id="nba-cards2" class="grid" style="margin-top:12px"></div>
+      <div class="card" style="margin-top:12px">
+        <div class="title">What’s Next</div>
+        <ul id="nba-next" class="list"><li>Loading…</li></ul>
+      </div>
+    </section>
+
+    <section id="mlb" class="section">
+      <p class="muted" id="mlb-stamp" style="margin:0 0 .4rem 0">MLB — Playoff Picture</p>
+      <div class="grid">
+        <article class="card">
+          <div class="title">Division Leaders</div>
+          <ul id="mlb-divisions" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">Wild Card Snapshot</div>
+          <ul id="mlb-wildcard" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">Power Rankings — Top 5</div>
+          <ul id="mlb-rankings" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">What’s Next (This Week)</div>
+          <ul id="mlb-next" class="list"><li>Loading…</li></ul>
+        </article>
+      </div>
+      <p class="blurb" id="mlb-note" style="margin-top:.8rem"></p>
+    </section>
+
+    <section id="wnba" class="section">
+      <p class="muted" id="wnba-stamp" style="margin:0 0 .4rem 0">WNBA — Playoff Watch</p>
+      <div class="grid">
+        <article class="card">
+          <div class="title">Top Storylines</div>
+          <ul id="wnba-top" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">Projected Seeding Snapshot</div>
+          <ul id="wnba-seed" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">Players to Watch</div>
+          <ul id="wnba-players" class="list"><li>Loading…</li></ul>
+        </article>
+        <article class="card">
+          <div class="title">What’s Next</div>
+          <ul id="wnba-next" class="list"><li>Loading…</li></ul>
+        </article>
+      </div>
+      <div class="mc-scores" style="margin-top:14px">
+        <h3 class="mc-sec-title" style="margin-top:.6rem">Weekend Scores</h3>
+        <div id="wnba-scores" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Moe Community Cloud — All rights reserved.</p>
+    <p>Built on black &amp; red plaid with gold energy ⚡</p>
+  </footer>
+
+  <script>
+    (function(){
+      const $ = s => document.querySelector(s);
+      function fillList(ulSel, items){
+        const ul = typeof ulSel === 'string' ? $(ulSel) : ulSel;
+        if (!ul) return; ul.innerHTML = '';
+        (items || []).forEach(t=>{
+          const li = document.createElement('li'); li.textContent = t; ul.appendChild(li);
+        });
+      }
+      function renderScores(containerSel, games){
+        const container = typeof containerSel === 'string' ? $(containerSel) : containerSel;
+        if (!container) return; container.innerHTML = '';
+        (games || []).forEach(g=>{
+          const card = document.createElement('article');
+          card.className = 'mc-game';
+          card.innerHTML = `
+            <header class="mc-row">
+              <div class="mc-badge">${(g.dow || g.date || '—').toString().split(',')[0]}</div>
+              <h4 class="mc-title">${g.title || (g.away && g.home ? `${g.away} at ${g.home}` : 'Game')}</h4>
+            </header>
+            <div class="mc-teams">
+              ${g.away ? `<div class="mc-team"><div class="mc-name">${g.away} ${g.awayPts ?? ''}</div></div>` : ''}
+              ${g.home ? `<div class="mc-team"><div class="mc-name">${g.home} ${g.homePts ?? ''}</div></div>` : ''}
+            </div>
+            <p class="mc-blurb">${g.blurb || g.note || ''}</p>
+          `;
+          container.appendChild(card);
+        });
+      }
+      function el(id){ return document.getElementById(id); }
+
+      async function fetchFirst(urls){
+        for (const u of urls){
+          try{
+            const res = await fetch(u + (u.includes('?') ? '&' : '?') + 'cb=' + Date.now());
+            if (res.ok) return await res.json();
+          }catch(e){}
+        }
+        throw new Error('No data file found at ' + urls.join(', '));
+      }
+      const CANDIDATES = ['/data/sports-data.json', '/data/data.json', '/data.json'];
+
+      function pick(obj, path){
+        return path.split('.').reduce((a,k)=> (a && a[k] != null) ? a[k] : null, obj);
+      }
+
+      function renderNFL(nfl){
+        if (!nfl) return;
+        if (nfl.stamp) el('nfl-stamp').textContent = `NFL — ${nfl.stamp}`;
+        const perfWrap = el('nfl-performers'); perfWrap.innerHTML = '';
+        (nfl.top_performers || []).forEach(p=>{
+          const d = document.createElement('div');
+          d.className = 'mc-perf';
+          d.innerHTML = `
+            <div class="mc-perf-name">${p.name} <span class="mc-perf-team">(${p.team})</span></div>
+            <div class="mc-perf-line">${p.line} ${p.game ? `<span class="mc-perf-game">— ${p.game}</span>` : ''}</div>
+          `;
+          perfWrap.appendChild(d);
+        });
+        fillList('#nfl-headlines', nfl.headlines);
+        renderScores('#nfl-games', nfl.games);
+        if (nfl.footnote) el('nfl-footnote').textContent = nfl.footnote;
+      }
+
+      function renderNBA(nba){
+        if (!nba) return;
+        if (nba.kicker) el('nba-kicker').textContent = nba.kicker;
+        if (nba.stamp) el('nba-stamp').textContent = `NBA — ${nba.stamp}`;
+        fillList('#nba-headlines', nba.headlines);
+        if (nba.sources) el('nba-sources').textContent = nba.sources;
+        const c1 = el('nba-cards1'), c2 = el('nba-cards2');
+        c1.innerHTML = ''; c2.innerHTML = '';
+        (nba.cards1 || []).forEach(card => {
+          const a = document.createElement('article'); a.className='card';
+          a.innerHTML = `<div class="title">${card.title}</div><p class="blurb">${card.blurb || ''}</p>`;
+          c1.appendChild(a);
+        });
+        (nba.cards2 || []).forEach(card => {
+          const a = document.createElement('article'); a.className='card';
+          a.innerHTML = `<div class="title">${card.title}</div><p class="blurb">${card.blurb || ''}</p>`;
+          c2.appendChild(a);
+        });
+        fillList('#nba-next', nba.whats_next);
+      }
+
+      function renderMLB(mlb){
+        if (!mlb) return;
+        if (mlb.stamp) el('mlb-stamp').textContent = `MLB — Playoff Picture (as of ${mlb.stamp})`;
+        fillList('#mlb-divisions', mlb.division_leaders);
+        fillList('#mlb-wildcard', mlb.wild_card);
+        fillList('#mlb-rankings', mlb.power_rankings);
+        fillList('#mlb-next', mlb.whats_next);
+        if (mlb.note) el('mlb-note').innerHTML = mlb.note;
+      }
+
+      function renderWNBA(wnba){
+        if (!wnba) return;
+        if (wnba.stamp) el('wnba-stamp').textContent = `WNBA — Playoff Watch (as of ${wnba.stamp})`;
+        fillList('#wnba-top', wnba.top_storylines);
+        fillList('#wnba-seed', wnba.seeding);
+        fillList('#wnba-players', wnba.players_to_watch);
+        fillList('#wnba-next', wnba.whats_next);
+        renderScores('#wnba-scores', wnba.scores);
+      }
+
+      fetchFirst(CANDIDATES).then(json=>{
+        const root = json.sports ? json.sports : json;
+        renderNFL( root.nfl );
+        renderNBA( root.nba );
+        renderMLB( root.mlb );
+        renderWNBA( root.wnba );
+      }).catch(()=>{/* leave placeholders */});
+    })();
+  </script>
+</body>
+</html>
