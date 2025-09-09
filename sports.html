@@ -1,120 +1,28 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sports — Moe Community Cloud (MBCC)</title>
   <meta name="description" content="Weekend sports hub: NFL Week 1, MLB playoff picture, WNBA clinches, college football Week 2, NHL preseason, NASCAR results.">
   <link rel="stylesheet" href="assets/style.css">
-  <style>
-    .subnav{position:sticky;top:0;background:#0b0b0b;padding:10px 0;z-index:10;border-bottom:1px solid #222}
-    .subnav .container{display:flex;gap:10px;flex-wrap:wrap}
-    .pill{display:inline-block;padding:8px 12px;border:1px solid #333;border-radius:999px;text-decoration:none}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-    .scorelist{margin:0;padding-left:18px}
-    .tiny{opacity:.9}
-    .note{background:#101010;border:1px solid #262626;border-radius:10px;padding:8px 12px;margin-top:8px}
-  </style>
+  <style>.subnav{position:sticky;top:0;background:#0b0b0b;padding:10px 0;z-index:10;border-bottom:1px solid #222}.subnav .container{display:flex;gap:10px;flex-wrap:wrap}.pill{display:inline-block;padding:8px 12px;border:1px solid #333;border-radius:999px;text-decoration:none}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.scorelist{margin:0;padding-left:18px}.tiny{opacity:.9}.note{background:#101010;border:1px solid #262626;border-radius:10px;padding:8px 12px;margin-top:8px}</style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="apps.html">Apps</a>
-        <a href="news.html">News</a>
-        <a href="sports.html" class="active">Sports</a>
-        <a href="newsletter.html">Newsletter</a>
-      </nav>
-    </div>
-  </header>
-
-  <nav class="subnav" aria-label="Sports Sections">
-    <div class="container">
-      <a class="pill" href="#nfl">NFL</a>
-      <a class="pill" href="#nba">NBA</a>
-      <a class="pill" href="#mlb">MLB</a>
-      <a class="pill" href="#wnba">WNBA</a>
-      <a class="pill" href="#ncaaf">NCAAF</a>
-      <a class="pill" href="#nhl">NHL</a>
-      <a class="pill" href="#nascar">NASCAR</a>
-    </div>
-  </nav>
-
+  <header class="header"><div class="container header-row"><div class="brand"><div class="logo" aria-hidden="true"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
+    <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a><a href="news.html">News</a><a href="sports.html" class="active">Sports</a><a href="newsletter.html">Newsletter</a></nav></div></header>
+  <nav class="subnav" aria-label="Sports Sections"><div class="container"><a class="pill" href="#nfl">NFL</a><a class="pill" href="#nba">NBA</a><a class="pill" href="#mlb">MLB</a><a class="pill" href="#wnba">WNBA</a><a class="pill" href="#ncaaf">NCAAF</a><a class="pill" href="#nhl">NHL</a><a class="pill" href="#nascar">NASCAR</a></div></nav>
   <main class="container" style="margin-top:18px">
-
-    <section id="nfl" class="card">
-      <div class="badge">NFL</div>
-      <h3>NFL — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Scores</h4><p class="tiny">Loading…</p></article>
-        <article class="card"><h4>Headlines</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
-    <section id="nba" class="card">
-      <div class="badge">NBA</div>
-      <h3>NBA — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Headlines</h4><p class="tiny">Loading…</p></article>
-        <article class="card"><h4>Key dates</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
-    <section id="mlb" class="card">
-      <div class="badge">MLB</div>
-      <h3>MLB — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Division snapshots</h4><p class="tiny">Loading…</p></article>
-        <article class="card"><h4>Postseason watch</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
-    <section id="wnba" class="card">
-      <div class="badge">WNBA</div>
-      <h3>WNBA — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Clinched berths</h4><p class="tiny">Loading…</p></article>
-        <article class="card"><h4>Dates</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
-    <section id="ncaaf" class="card">
-      <div class="badge">NCAAF</div>
-      <h3>NCAAF — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Notable upsets</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
-    <section id="nhl" class="card">
-      <div class="badge">NHL</div>
-      <h3>NHL — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Key dates</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
-    <section id="nascar" class="card">
-      <div class="badge">NASCAR</div>
-      <h3>NASCAR — Loading latest…</h3>
-      <div class="grid">
-        <article class="card"><h4>Results</h4><p class="tiny">Loading…</p></article>
-      </div>
-    </section>
-
+    <section id="nfl" class="card"><div class="badge">NFL</div><h3>Week 1 Recap (Sept 4–8, 2025)</h3>
+      <div class="grid"><article class="card"><h4>Sunday finals (selected)</h4><ul class="scorelist"><li>Buccaneers 23, Falcons 20</li><li>Bengals 17, Browns 16</li><li>Colts 33, Dolphins 8</li><li>Jaguars 26, Panthers 10</li><li>Raiders 20, Patriots 13</li></ul><div class="note tiny">Full scoreboard: <a href="https://www.espn.com/nfl/scoreboard/_/week/1/year/2025/seasontype/2" target="_blank" rel="noopener">ESPN Week 1</a> • <a href="https://www.nfl.com/schedules/2025/reg1/" target="_blank" rel="noopener">NFL.com</a></div></article>
+      <article class="card"><h4>Headlines</h4><ul class="scorelist"><li>Chargers beat Chiefs in São Paulo opener.</li><li>Commanders defense smothers Giants 21–6 in opener.</li></ul><div class="tiny note">Sources: NFL.com, ESPN.</div></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section id="nba" class="card"><div class="badge">NBA</div><h3>Hall of Fame Weekend &amp; Preseason on Deck</h3><div class="grid"><article class="card"><h4>Class of 2025 enshrined</h4><p>Carmelo Anthony, Dwight Howard, Sue Bird, Maya Moore, and Sylvia Fowles headlined the Hall.</p></article><article class="card"><h4>Key dates</h4><ul class="scorelist"><li>Preseason begins Oct</li><li>Regular season opens Oct 21, 2025</li></ul></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section id="mlb" class="card"><div class="badge">MLB</div><h3>September Stretch — Leaders &amp; Wild Card</h3><div class="grid"><article class="card"><h4>Division snapshots</h4><ul class="scorelist"><li>AL East: Blue Jays lead Yankees</li><li>AL Central: Tigers close in</li><li>NL: Brewers pace; Phillies second</li></ul></article><article class="card"><h4>Postseason watch</h4><p>Daily clinch paths and wild-card movement.</p></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section id="wnba" class="card"><div class="badge">WNBA</div><h3>Playoff Field Nearly Set</h3><div class="grid"><article class="card"><h4>Clinched berths</h4><ul class="scorelist"><li>Minnesota (No. 1 seed), Las Vegas, Atlanta</li><li>Phoenix, New York, Golden State, Indiana</li><li>One spot remains (as of Sept 8)</li></ul></article><article class="card"><h4>Headline</h4><p>Indiana Fever clinch a playoff spot.</p></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section id="ncaaf" class="card"><div class="badge">NCAAF</div><h3>Week 2 Shockers &amp; Highlights (Sept 6, 2025)</h3><div class="grid"><article class="card"><h4>Notable upsets</h4><ul class="scorelist"><li>USF 18, Florida 16</li><li>Fresno State 36, Oregon State 27</li><li>Mississippi State 24, Arizona State 20</li></ul></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section id="nhl" class="card"><div class="badge">NHL</div><h3>Preseason Nears — Sept 20 Start</h3><div class="grid"><article class="card"><h4>Key dates</h4><ul class="scorelist"><li>Preseason: Sept 20–Oct 4</li><li>Regular season opens Oct 7</li></ul></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section id="nascar" class="card"><div class="badge">NASCAR</div><h3>Playoffs: Darlington → Gateway</h3><div class="grid"><article class="card"><h4>Darlington (Aug 31)</h4><p>Chase Briscoe wins the Southern 500.</p></article><article class="card"><h4>Gateway (Sept 7)</h4><p>Denny Hamlin wins from pole; Toyota’s 200th Cup victory.</p></article></div><p class="tiny">Snapshot updated September 09, 2025.</p></section>
+    <section class="card"><p class="tiny">Static snapshot for review. When JSON exists, this page hydrates from <code>/data/sports-latest.json</code>.</p></section>
   </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div><div class="tiny"><a href="privacy.html">Privacy</a> • <a href="mailto:moeknowmoe24@gmail.com">Contact</a></div></div></footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="assets/js/sports.js" defer></script>
-</body>
-</html>
+</body></html>
