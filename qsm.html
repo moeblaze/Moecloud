@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="assets/style.css">
   <style>
     .hero.qsm{background:#0b0b0b;padding:20px 0;border-bottom:1px solid #222}
-    .kicker{opacity:.9}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
     .tiny{opacity:.9}
     .pill{display:inline-block;padding:6px 10px;border:1px solid #333;border-radius:999px;margin:2px}
@@ -25,7 +24,6 @@
     <div class="container header-row">
       <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Quantum Spiral Man <span class="gold">(QSM)</span></h1></div>
       <nav class="nav">
-        <!-- No global nav edits — keep site chrome consistent -->
         <a href="index.html">Home</a>
       </nav>
     </div>
@@ -34,7 +32,7 @@
   <section class="hero qsm">
     <div class="container">
       <h2>How the Thought Observer collapses potential into lived reality</h2>
-      <p class="kicker">Your attention & language select the wave, discipline locks the path — creating an <strong>upward</strong> (order/coherence) or <strong>downward</strong> (entropy/dissipation) spiral.</p>
+      <p class="tiny">Train attention, language, inputs, and discipline to spiral up.</p>
       <div class="result-band"><span class="pill">Axioms</span><span class="pill">7 Theories</span><span class="pill">5-Step Drill</span><span class="pill">12‑Question Index</span></div>
     </div>
   </section>
@@ -65,41 +63,30 @@
       </div>
     </section>
 
-    <section class="card">
-      <div class="badge">Negative Systems — 5‑Step Drill</div>
-      <ol style="padding-left:18px;line-height:1.6">
-        <li><strong>Awareness</strong> — name the pattern, trigger, and payoff.</li>
-        <li><strong>Observer Collapse Drill</strong> — pause; breathe 4‑4‑6; state the desired collapse (“I choose X”).</li>
-        <li><strong>Reframe</strong> — replace the story with an empowering one anchored to service/standards.</li>
-        <li><strong>Constructive Inputs</strong> — swap inputs (people, feeds, music, rooms) to match the chosen collapse.</li>
-        <li><strong>Ownership Statement</strong> — commit in writing: “I own X; here’s my next right action.”</li>
-      </ol>
-    </section>
-
     <section class="card" id="qsm-assess">
       <div class="badge">12‑Question Spiral Index</div>
-      <p class="tiny">Rate each item from <strong>1</strong> (rarely/never) to <strong>10</strong> (always). We score four pillars — <em>Attention, Language, Inputs, Discipline</em> — and your overall <strong>Spiral Index</strong>.</p>
+      <p class="tiny">Rate 1–10. We score four pillars — <em>Attention, Language, Inputs, Discipline</em> — and your overall <strong>Spiral Index</strong>.</p>
       <form onsubmit="return qsmCalc(event)">
         <div class="grid">
           <article class="card"><h4>Attention</h4>
-            <label>1) I can notice impulses without acting.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q1">
-            <label>2) I redirect attention fast after distractions.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q2">
-            <label>3) I intentionally choose the outcome I want to collapse.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q3">
+            <label>1) Notice impulses without acting.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q1">
+            <label>2) Redirect after distractions.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q2">
+            <label>3) Choose the outcome to collapse.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q3">
           </article>
           <article class="card"><h4>Language</h4>
-            <label>4) My self‑talk is clean, specific, and responsible.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q4">
-            <label>5) I frame challenges as training and service.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q5">
-            <label>6) I keep commitments to my word and standards.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q6">
+            <label>4) Self‑talk is clean, specific, responsible.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q4">
+            <label>5) Frame challenges as training/service.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q5">
+            <label>6) Keep commitments to word/standards.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q6">
           </article>
           <article class="card"><h4>Inputs</h4>
-            <label>7) My environment supports focus (room, feeds, people).</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q7">
-            <label>8) My media, food, and music match my goals.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q8">
-            <label>9) I deliberately collect constructive inputs daily.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q9">
+            <label>7) Environment supports focus.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q7">
+            <label>8) Media/food/music match goals.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q8">
+            <label>9) Collect constructive inputs daily.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q9">
           </article>
           <article class="card"><h4>Discipline</h4>
-            <label>10) I follow a morning start‑up and evening shutdown.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q10">
-            <label>11) I do the next right action when I don’t feel like it.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q11">
-            <label>12) I keep weekly score and review.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q12">
+            <label>10) Morning start‑up & evening shutdown.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q10">
+            <label>11) Do the next right action.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q11">
+            <label>12) Keep weekly score & review.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q12">
           </article>
         </div>
 
