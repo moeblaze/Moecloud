@@ -25,12 +25,8 @@
     <div class="container header-row">
       <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Quantum Spiral Man <span class="gold">(QSM)</span></h1></div>
       <nav class="nav">
+        <!-- No global nav edits — keep site chrome consistent -->
         <a href="index.html">Home</a>
-        <a href="apps.html">Apps</a>
-        <a href="qsm.html" class="active">QSM</a>
-        <a href="news.html">News</a>
-        <a href="sports.html">Sports</a>
-        <a href="newsletter.html">Newsletter</a>
       </nav>
     </div>
   </header>
@@ -107,7 +103,7 @@
           </article>
         </div>
 
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <div class="btn-row">
           <button class="btn">Calculate Spiral Index</button>
           <button class="btn alt" type="button" onclick="qsmReset()">Reset</button>
           <button class="btn" type="button" onclick="qsmSave()">Save</button>
@@ -130,7 +126,7 @@
         <details style="margin-top:8px">
           <summary><strong>Ownership Statement</strong></summary>
           <textarea id="qsm-own" class="input" rows="4" placeholder="I own … My next right action is …"></textarea>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <div class="btn-row">
             <button class="btn" type="button" onclick="qsmCopy('qsm-own')">Copy</button>
             <button class="btn alt" type="button" onclick="qsmSaveOwn()">Save Statement</button>
           </div>

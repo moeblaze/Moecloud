@@ -8,7 +8,7 @@
     document.getElementById('qsm-result').hidden=false;setMsg('Calculated. Scroll to see your plan.');return false;};
   window.qsmReset=function(){document.querySelectorAll('#qsm-assess input[type=range]').forEach(r=>r.value=5);document.getElementById('qsm-result').hidden=true;setMsg('Reset.');};
   window.qsmSave=async function(){const data=collect();try{localStorage.setItem('qsmAssessment',JSON.stringify(data));}catch(e){}try{if(typeof mbccSaveDraft==='function'){await mbccSaveDraft({tool:'qsm',ts:new Date().toISOString(),input:data});}setMsg('Saved.');}catch(e){setMsg('Saved locally.');}};
-  window.qsmLoad=function(){try{const raw=localStorage.getItem('qsmAssessment');if(!raw)return setMsg('No saved data.');const data=JSON.parse(raw);(data.values||[]).forEach((n,i)=>{const el=document.querySelector(`[name=q${i+1}]`);if(el)el.value=n;});setMsg('Loaded.');}catch(e){setMsg('Load failed.');}};
+  window.qsmLoad=function(){try{const raw=localStorage.getItem('qsmAssessment');if(!raw)return setMsg('No saved data.');const data=JSON.parse(raw);(data.values||[]).forEach((n,i)=>{const el=document.querySelector(`[name=q${i+1}]`);if(el)el.value=n;});setMsg('Loaded.');}};
   window.qsmCopy=function(id){const el=document.getElementById(id);el.select();el.setSelectionRange(0,99999);document.execCommand('copy');setMsg('Copied to clipboard.');};
   window.qsmSaveOwn=function(){try{localStorage.setItem('qsmOwnership',document.getElementById('qsm-own').value||'');setMsg('Ownership statement saved.');}catch(e){setMsg('Could not save.');}};
   function collect(){const values=[];for(let i=1;i<=12;i++){const el=document.querySelector(`[name=q${i}]`);values.push(el?Number(el.value||0):0);}return {values};}

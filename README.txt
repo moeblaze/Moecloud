@@ -1,18 +1,16 @@
-MBCC — QSM Wired Pack (2025-09-09)
+MBCC — QSM ONLY Pack (no homepage edits) — September 09, 2025
 
-This patch:
-- Adds "QSM" to the top nav on index/apps/QSM pages
-- Adds a QSM card to the Apps page
-- Includes qsm.html + qsm.js (assessment & drills)
+This pack **adds QSM** without changing index.html or any other page.
 
-To deploy:
-1) Upload/replace:
-   - /qsm.html
-   - /assets/js/qsm.js
-   - /apps.html  (adds the QSM card + nav link)
-   - /index.html (ensures nav includes QSM — merge into your current homepage if needed)
-2) Cache-bust:
-   https://www.moecommunitycloud.com/apps.html?cb=qsmwire
-   https://www.moecommunitycloud.com/qsm.html?cb=qsmwire
-   https://www.moecommunitycloud.com/index.html?cb=qsmwire
-Note: If you already have a custom index.html, just add <a href="qsm.html">QSM</a> to the nav and keep your content.
+Files:
+- /qsm.html
+- /assets/js/qsm.js
+
+Deploy:
+1) Upload both files at those paths.
+2) (Optional) Link to QSM from anywhere you choose (Apps page, a button, etc.).
+3) Cache-bust once: https://www.moecommunitycloud.com/qsm.html?cb=qsmonly
+
+If you previously added a nav injection for QSM, remove any reference to:
+  <script defer src="assets/js/nav-qsm-patch.js"></script>
+from your pages to avoid layout quirks.
