@@ -33,18 +33,17 @@
     }
     @keyframes shine{ 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
 
-    /* ✅ Sponsor image: fill the frame (no background visible), centered */
+    /* Sponsor image: fill the glowing frame edge-to-edge */
     .prime-logo.lg{
       width:100%; height:340px; border-radius:18px;
       border:3px solid #d4af37;
-      background: transparent;        /* remove gold fill */
+      background: transparent;
       overflow:hidden; display:flex; align-items:center; justify-content:center
     }
     .prime-logo.lg img{
       width:100%; height:100%;
-      object-fit: cover;              /* fill box completely */
-      object-position: center;        /* center within box */
-      clip-path: none;                /* ensure no trimming rule remains */
+      object-fit: cover;      /* fill box completely */
+      object-position: center;/* center within box */
       display:block;
     }
 
@@ -117,8 +116,8 @@
         <div class="badge">Prime Sponsor</div>
 
         <div class="prime-logo lg">
-          <img src="assets/sponsors/darwynn-plaid-glow-1600x340.png"
-               alt="Darwynn McPherson — Mating Market Consultant">
+          <img src="assets/sponsors/darwynn-sponsor.jpg"
+               alt="Darwynn McPherson — Prime Sponsor">
         </div>
 
         <div class="prime-meta">
