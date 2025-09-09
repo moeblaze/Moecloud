@@ -27,6 +27,7 @@
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="apps.html">Apps</a>
+        <a href="qsm.html" class="active">QSM</a>
         <a href="news.html">News</a>
         <a href="sports.html">Sports</a>
         <a href="newsletter.html">Newsletter</a>
@@ -43,7 +44,6 @@
   </section>
 
   <main class="container" style="margin-top:16px">
-    <!-- Axioms -->
     <section class="card">
       <div class="badge">Axioms</div>
       <ul style="padding-left:18px;line-height:1.6">
@@ -56,7 +56,6 @@
       </ul>
     </section>
 
-    <!-- Theories -->
     <section class="card">
       <div class="badge">Seven Theories (overview)</div>
       <div class="grid">
@@ -70,7 +69,6 @@
       </div>
     </section>
 
-    <!-- Negative Systems Drill -->
     <section class="card">
       <div class="badge">Negative Systems — 5‑Step Drill</div>
       <ol style="padding-left:18px;line-height:1.6">
@@ -82,55 +80,34 @@
       </ol>
     </section>
 
-    <!-- Assessment -->
     <section class="card" id="qsm-assess">
       <div class="badge">12‑Question Spiral Index</div>
       <p class="tiny">Rate each item from <strong>1</strong> (rarely/never) to <strong>10</strong> (always). We score four pillars — <em>Attention, Language, Inputs, Discipline</em> — and your overall <strong>Spiral Index</strong>.</p>
       <form onsubmit="return qsmCalc(event)">
         <div class="grid">
-          <!-- Attention (Q1–3) -->
-          <article class="card">
-            <h4>Attention</h4>
-            <label>1) I can notice impulses without acting.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q1">
-            <label>2) I redirect attention fast after distractions.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q2">
-            <label>3) I intentionally choose the outcome I want to collapse.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q3">
+          <article class="card"><h4>Attention</h4>
+            <label>1) I can notice impulses without acting.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q1">
+            <label>2) I redirect attention fast after distractions.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q2">
+            <label>3) I intentionally choose the outcome I want to collapse.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q3">
           </article>
-          <!-- Language (Q4–6) -->
-          <article class="card">
-            <h4>Language</h4>
-            <label>4) My self‑talk is clean, specific, and responsible.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q4">
-            <label>5) I frame challenges as training and service.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q5">
-            <label>6) I keep commitments to my word and standards.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q6">
+          <article class="card"><h4>Language</h4>
+            <label>4) My self‑talk is clean, specific, and responsible.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q4">
+            <label>5) I frame challenges as training and service.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q5">
+            <label>6) I keep commitments to my word and standards.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q6">
           </article>
-          <!-- Inputs (Q7–9) -->
-          <article class="card">
-            <h4>Inputs</h4>
-            <label>7) My environment supports focus (room, feeds, people).</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q7">
-            <label>8) My media, food, and music match my goals.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q8">
-            <label>9) I deliberately collect constructive inputs daily.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q9">
+          <article class="card"><h4>Inputs</h4>
+            <label>7) My environment supports focus (room, feeds, people).</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q7">
+            <label>8) My media, food, and music match my goals.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q8">
+            <label>9) I deliberately collect constructive inputs daily.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q9">
           </article>
-          <!-- Discipline (Q10–12) -->
-          <article class="card">
-            <h4>Discipline</h4>
-            <label>10) I follow a morning start‑up and evening shutdown.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q10">
-            <label>11) I do the next right action when I don’t feel like it.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q11">
-            <label>12) I keep weekly score and review.</label>
-            <input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q12">
+          <article class="card"><h4>Discipline</h4>
+            <label>10) I follow a morning start‑up and evening shutdown.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q10">
+            <label>11) I do the next right action when I don’t feel like it.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q11">
+            <label>12) I keep weekly score and review.</label><input class="q-slider" type="range" min="1" max="10" step="1" value="5" name="q12">
           </article>
         </div>
 
-        <div class="btn-row">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
           <button class="btn">Calculate Spiral Index</button>
           <button class="btn alt" type="button" onclick="qsmReset()">Reset</button>
           <button class="btn" type="button" onclick="qsmSave()">Save</button>
@@ -153,7 +130,7 @@
         <details style="margin-top:8px">
           <summary><strong>Ownership Statement</strong></summary>
           <textarea id="qsm-own" class="input" rows="4" placeholder="I own … My next right action is …"></textarea>
-          <div class="btn-row">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
             <button class="btn" type="button" onclick="qsmCopy('qsm-own')">Copy</button>
             <button class="btn alt" type="button" onclick="qsmSaveOwn()">Save Statement</button>
           </div>
