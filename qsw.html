@@ -1,242 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <title>Quantum Spiral Woman (QSW) — Moe Community Cloud</title>
+  <meta name="description" content="Quantum Spiral Woman (QSW) — Moe Community Cloud — Moe Community Cloud">
+  <link rel="stylesheet" href="assets/style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quantum Spiral Woman (QSW) — Moe Community Cloud</title>
-  <meta name="description" content="QSW: Pre-assessment and training to strengthen mindset, character, and relationship readiness. Direct truth + love; no shaming.">
-  <link rel="stylesheet" href="assets/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
-  <style>
-    .hero{background:#0b0b0b;padding:16px 0;border-bottom:1px solid #222}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    @media (max-width:920px){.two{grid-template-columns:1fr}}
-    .q-item{display:grid;grid-template-columns:1.2fr auto 62px;gap:10px;align-items:center}
-    .q-item output{display:inline-block;width:40px;text-align:right;opacity:.9}
-    .muted{opacity:.9;font-size:.92rem}
-    .plan{white-space:pre-wrap;background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:12px}
-    .pill{display:inline-block;border:1px solid #333;border-radius:999px;padding:4px 10px;margin:2px}
-    .tiny{opacity:.85}
-  </style>
+  <script defer src="assets/js/adsense-init.js"></script>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Quantum Spiral Woman (QSW)</h1></div>
-      <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h2>Direct truth + love for women building a coherent, powerful life</h2>
-      <p class="muted">Assessment → Spiral Index → Level route → 7-day plan. Same standards we give men: discipline, service, cooperation, and accountability.</p>
-      <div>
-        <a class="btn" href="#qsw-assess">Start Assessment</a>
-        <span class="pill">Accountability</span><span class="pill">Co-operation</span><span class="pill">Boundaries</span>
-        <span class="pill">Health</span><span class="pill">Finance</span><span class="pill">Purpose</span>
-      </div>
-    </div>
-  </section>
-
-  <main class="container" style="margin-top:14px">
-    <section class="card">
-      <div class="badge">Principles</div>
-      <ul class="tiny">
-        <li>Reality > narratives. Own results, improve inputs, compound small wins.</li>
-        <li>Attraction is reciprocal: bring what you seek (kindness, stability, fitness, reliability, cooperation).</li>
-        <li>Single or partnered, build a stable life plan (health, finances, time, support). No shaming; just clarity.</li>
-        <li>Children thrive with stable structure and resources—plan deliberately and protect their time.</li>
-      </ul>
-    </section>
-
-    <!-- ===== Pre-Assessment ===== -->
-    <section id="qsw-assess" class="card">
-      <div class="badge">Pre-Assessment (12 items)</div>
-      <p class="muted">Rate honestly 1–10 (1 = not at all / chaotic, 10 = excellent / consistent). This routes you to your training level.</p>
-
-      <div class="grid">
-        <article class="card">
-          <h4>Mindset & Character</h4>
-          <div class="q-item"><label>Accountability (own results, no deflection)</label><input type="range" min="1" max="10" value="5" data-q="accountability" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Emotional regulation (respond > react)</label><input type="range" min="1" max="10" value="5" data-q="emotion" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Integrity & honesty</label><input type="range" min="1" max="10" value="5" data-q="integrity" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Service orientation (give more than you take)</label><input type="range" min="1" max="10" value="5" data-q="service" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Purpose clarity</label><input type="range" min="1" max="10" value="5" data-q="purpose" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Consistency & discipline</label><input type="range" min="1" max="10" value="5" data-q="discipline" oninput="qsw.set(this)"><output>5</output></div>
-        </article>
-
-        <article class="card">
-          <h4>Co-operation & Lifestyle</h4>
-          <div class="q-item"><label>Communication (direct, kind, specific)</label><input type="range" min="1" max="10" value="5" data-q="communication" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Boundary setting (and keeping)</label><input type="range" min="1" max="10" value="5" data-q="boundaries" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Health & fitness habits</label><input type="range" min="1" max="10" value="5" data-q="health" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Financial stability & planning</label><input type="range" min="1" max="10" value="5" data-q="finance" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Digital footprint (drama, oversharing, DMs)</label><input type="range" min="1" max="10" value="5" data-q="digital" oninput="qsw.set(this)"><output>5</output></div>
-          <div class="q-item"><label>Support systems (friends, family, mentors)</label><input type="range" min="1" max="10" value="5" data-q="support" oninput="qsw.set(this)"><output>5</output></div>
-        </article>
-      </div>
-
-      <div class="two" style="margin-top:10px">
-        <textarea class="input" id="qsw-beliefs" rows="4" placeholder="Beliefs to audit (e.g., 'All men are ___', 'I deserve X without bringing Y')."></textarea>
-        <textarea class="input" id="qsw-goals" rows="4" placeholder="Relationship goals (e.g., single & thriving, partnership/marriage, co-parenting plan)."></textarea>
-      </div>
-
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-        <button class="btn" type="button" onclick="qsw.calculate()">Calculate</button>
-        <button class="btn alt" type="button" onclick="qsw.save()">Save</button>
-        <button class="btn" type="button" onclick="qsw.load()">Load</button>
-        <button class="btn alt" type="button" onclick="qsw.reset()">Reset</button>
-        <button class="btn" type="button" onclick="qsw.copy()">Copy 7-Day Plan</button>
-      </div>
-
-      <div class="grid" style="margin-top:12px">
-        <article class="card">
-          <h4>Spiral Index</h4>
-          <p class="tiny">Average of 12 dimensions</p>
-          <div id="qsw-score" style="font-size:2rem;font-weight:700">—</div>
-          <div id="qsw-label" class="muted">Run the calculator</div>
-        </article>
-        <article class="card">
-          <h4>Your 7-Day Plan</h4>
-          <pre id="qsw-plan" class="plan">Your plan will appear here.</pre>
-        </article>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="badge">Reality Checks (for any track)</div>
-      <ul class="tiny">
-        <li>“What I seek in a partner, I also practice.” Write 3 concrete behaviors you’ll do this week.</li>
-        <li>Audit social media: remove 3 low-value inputs; add 3 mentors/skill channels.</li>
-        <li>Time blocks for sleep, food prep, movement, deep work, and loved ones.</li>
-        <li>Money: list fixed costs, 1 savings % goal, and 1 debt action (or investment step).</li>
-      </ul>
-    </section>
-  </main>
-
-  <section class="container" aria-label="sponsored">
-    <!-- Moecommunitycloud -->
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </section>
-
+  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Quantum Spiral Woman (QSW)</h1></div>
+  <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
+  <main class="container"><div class="card"><div class="badge">Quantum Spiral Woman (QSW)</div><p>Open the latest version of Quantum Spiral Woman (QSW).</p></div></main>
+  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8387411349417007"
+     data-ad-slot="6461821120"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section>
   <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-
-  <script>
-  (function(){
-    const KEY='mbcc_qsw_v1';
-    const fields = ["accountability","emotion","integrity","service","purpose","discipline","communication","boundaries","health","finance","digital","support"];
-    const sel = s => document.querySelector(s);
-
-    function values(){
-      const v = {};
-      fields.forEach(k=>{ const el = document.querySelector('[data-q="'+k+'"]'); v[k] = Number(el ? el.value : 5); });
-      return v;
-    }
-    function label(avg){
-      if (avg >= 7.5) return "Mastery Track";
-      if (avg >= 5.0) return "Growth Track";
-      return "Foundation Track";
-    }
-    function plan(v, avg){
-      const level = label(avg);
-      const weak = Object.entries(v).sort((a,b)=>a[1]-b[1]).slice(0,3).map(([k])=>k);
-      const beliefs = (document.getElementById('qsw-beliefs').value||'').trim();
-      const goals = (document.getElementById('qsw-goals').value||'').trim();
-
-      const actions = {
-        accountability: "Daily ownership log: 3 sentences—Result, My part, Next action.",
-        emotion: "Box breathing 4×5/day; ‘name → reframe’ once when triggered.",
-        integrity: "No white lies for 7 days; confirm commitments with time and scope.",
-        service: "One useful act for your circle daily; log who/what.",
-        purpose: "Write a 1-sentence purpose. Read morning/night.",
-        discipline: "Two non-negotiables daily; track with ✔︎. No zero-days.",
-        communication: "Use ‘What I heard / What I need’ framework; 1 hard convo this week.",
-        boundaries: "List 3 boundaries; write exact phrases; practice one ‘no’.",
-        health: "Sleep/walk/protein: 7h, 20-min walk, protein at 2 meals.",
-        finance: "List fixed costs; set 10% save/invest; 1 bill audit.",
-        digital: "Mute 5 low-value accounts; 24-hr no-reply window for low-value DMs.",
-        support: "Schedule 1 mentor call or group session; set weekly check-in."
-      };
-
-      const lines = [];
-      lines.push(`# QSW 7-Day Plan`);
-      lines.push(`Spiral Index: ${avg.toFixed(1)} — ${level}`);
-      if (beliefs) lines.push(`Beliefs to audit: ${beliefs.replace(/\n/g,' ')}`);
-      if (goals) lines.push(`Goals: ${goals.replace(/\n/g,' ')}`);
-      lines.push(`Focus domains this week: ${weak.join(", ")}`);
-
-      if (level === "Foundation Track") {
-        lines.push(`\nAnchors (Foundation):`);
-        lines.push(`- Sleep 7h · 20-min walk · 1 hour offline before bed`);
-        lines.push(`- Money: list fixed costs + automate 10% save`);
-        lines.push(`- Boundaries: 1 ‘no’ + 1 clean conversation`);
-      } else if (level === "Growth Track") {
-        lines.push(`\nAnchors (Growth):`);
-        lines.push(`- Add 2× 45-min deep-work blocks`);
-        lines.push(`- Replace 3 low-value inputs with skill channels`);
-        lines.push(`- Weekly relationship practice: appreciation + request`);
-      } else {
-        lines.push(`\nAnchors (Mastery):`);
-        lines.push(`- Mentor 1 person; document your system`);
-        lines.push(`- 3× workouts; 1 family/friend service project`);
-        lines.push(`- Quarterly plan draft & review`);
-      }
-
-      weak.forEach(k => lines.push(`- ${actions[k]}`));
-      return lines.join('\n');
-    }
-
-    window.qsw = {
-      set(input){
-        const out = input.parentElement.querySelector('output');
-        if(out) out.textContent = input.value;
-      },
-      calculate(){
-        const v = values();
-        const arr = Object.values(v), sum = arr.reduce((s,x)=>s+Number(x||0),0);
-        const avg = sum / arr.length;
-        sel('#qsw-score').textContent = avg.toFixed(1);
-        sel('#qsw-label').textContent = label(avg);
-        sel('#qsw-plan').textContent = plan(v, avg);
-      },
-      save(){
-        const v = values();
-        const data = { v, beliefs: sel('#qsw-beliefs').value||'', goals: sel('#qsw-goals').value||'' };
-        localStorage.setItem(KEY, JSON.stringify(data));
-        alert('Saved.');
-      },
-      load(){
-        const raw = localStorage.getItem(KEY);
-        if(!raw) return alert('No save found.');
-        const data = JSON.parse(raw||'{}');
-        const v = data.v||{};
-        Object.entries(v).forEach(([k,val])=>{
-          const el = document.querySelector('[data-q="'+k+'"]');
-          if(el){ el.value = Number(val)||5; const out = el.parentElement.querySelector('output'); if(out) out.textContent = el.value; }
-        });
-        sel('#qsw-beliefs').value = data.beliefs||'';
-        sel('#qsw-goals').value = data.goals||'';
-        alert('Loaded.');
-      },
-      reset(){
-        document.querySelectorAll('[data-q]').forEach(el=>{ el.value = 5; const out = el.parentElement.querySelector('output'); if(out) out.textContent = '5'; });
-        sel('#qsw-beliefs').value=''; sel('#qsw-goals').value='';
-        sel('#qsw-score').textContent='—'; sel('#qsw-label').textContent='Run the calculator';
-        sel('#qsw-plan').textContent='Your plan will appear here.';
-      },
-      copy(){
-        const txt = sel('#qsw-plan').textContent||'';
-        if(!txt.trim()) return;
-        navigator.clipboard.writeText(txt).then(()=>alert('Plan copied.')).catch(()=>{});
-      }
-    };
-
-    document.querySelectorAll('[data-q]').forEach(el=>{ const out = el.parentElement.querySelector('output'); if(out) out.textContent = el.value; });
-  })();
-  </script>
 </body>
 </html>

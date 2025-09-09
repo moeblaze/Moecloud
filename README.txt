@@ -1,13 +1,14 @@
-MBCC — Creator Tools Pack (recreated 2025-09-09)
+MBCC — AdSense Site Patch v2 (rebuilt 2025-09-09)
 
-Included (single-page, client-only):
-- hooksmith.html — Cold‑Open Hooksmith (hooks + first‑20s beats)
-- shorts-crafter.html — find 15–45s clips; auto-generate SRT
-- comment-coach.html — cluster comments; draft replies + FAQ prompts
-- apps.html — toolbox updated with the three new tools
-- assets/js/adsense-init.js — head loader for AdSense
+Contains:
+- index.html (AdSense head includes, two ad slots, footer policy links)
+- apps.html + tool shells (AdSense head includes + one ad slot)
+- assets/js/adsense-init.js
+- robots.txt, sitemap.xml, ads.txt
+- terms.html
+- partials/ad-slot.html
 
-Install (surgical):
-1) Upload all files to your site (keep same paths).
-2) Go to apps.html?cb=tools
-3) Optional: link these from your homepage CTA.
+Install:
+1) Upload all files preserving paths.
+2) For pages not replaced (news, sports, newsletter, privacy): add the two head lines and one ad slot mid-page.
+3) Submit sitemap in Search Console and hard refresh with ?cb=ads2.

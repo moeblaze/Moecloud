@@ -1,239 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <title>Quantum Spiral Man (QSM) — Moe Community Cloud</title>
+  <meta name="description" content="Quantum Spiral Man (QSM) — Moe Community Cloud — Moe Community Cloud">
+  <link rel="stylesheet" href="assets/style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quantum Spiral Man (QSM) — Moe Community Cloud</title>
-  <meta name="description" content="QSM: Train attention, language, inputs, and discipline to spiral up. Self-assessment + drills + 7-day plan.">
-  <link rel="stylesheet" href="assets/style.css">
-  <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
-  <style>
-    .hero{background:#0b0b0b;padding:16px 0;border-bottom:1px solid #222}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    @media (max-width:920px){.two{grid-template-columns:1fr}}
-    .q-item{display:grid;grid-template-columns:1.2fr auto 62px;gap:10px;align-items:center}
-    .q-item output{display:inline-block;width:40px;text-align:right;opacity:.9}
-    .kicker{opacity:.9}
-    .muted{opacity:.9;font-size:.92rem}
-    .pill{display:inline-block;border:1px solid #333;border-radius:999px;padding:4px 10px;margin:2px}
-    .plan{white-space:pre-wrap;background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:12px}
-  </style>
+  <script defer src="assets/js/adsense-init.js"></script>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Quantum Spiral Man (QSM)</h1></div>
-      <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h2>How the Thought Observer collapses potential into lived reality</h2>
-      <p class="kicker">Create upward spirals (order/coherence) instead of downward spirals (entropy/dissipation).</p>
-      <div>
-        <a class="btn" href="#qsm-assess">Start Assessment</a>
-        <span class="pill">OCT</span><span class="pill">SPT</span><span class="pill">DET</span>
-        <span class="pill">SST</span><span class="pill">NSCT</span><span class="pill">CIT</span><span class="pill">FAT</span>
-      </div>
-    </div>
-  </section>
-
-  <main class="container" style="margin-top:14px">
-    <section class="card">
-      <div class="badge">Axioms</div>
-      <ul>
-        <li><strong>All Thought is God</strong></li>
-        <li><strong>The Thought Observer collapses the wave field</strong></li>
-        <li><strong>Collapse creates the spiral</strong></li>
-        <li><strong>Spiral is Law</strong> — upward (order/coherence) vs downward (entropy/dissipation)</li>
-        <li><strong>Man as Co-Creator</strong> — train attention, language, inputs, and discipline to spiral up</li>
-      </ul>
-    </section>
-
-    <section class="grid">
-      <article class="card">
-        <div class="badge">Seven Theories</div>
-        <ol>
-          <li><strong>Observer Collapse Theory (OCT)</strong> — what you attend to hardens into reality</li>
-          <li><strong>Spiral Path Theory (SPT)</strong> — one step up or down compounds</li>
-          <li><strong>Discipline-Energy Theory (DET)</strong> — discipline → energy → more discipline</li>
-          <li><strong>Service Spiral Theory (SST)</strong> — service lifts you and the circle you touch</li>
-          <li><strong>Negative System Collapse Theory (NSCT)</strong> — starve the negative system</li>
-          <li><strong>Constructive Input Theory (CIT)</strong> — upgrade inputs, upgrade outputs</li>
-          <li><strong>Fractal Ascension Theory (FAT)</strong> — stack micro-wins across domains</li>
-        </ol>
-      </article>
-
-      <article class="card">
-        <div class="badge">Negative Systems — 5-Step Drill</div>
-        <ol>
-          <li><strong>Awareness</strong> — name the negative loop</li>
-          <li><strong>Observer Collapse Drill</strong> — refuse/replace the narrative</li>
-          <li><strong>Reframe</strong> — define a constructive meaning</li>
-          <li><strong>Constructive Inputs</strong> — swap media/people/places/foods</li>
-          <li><strong>Ownership Statement</strong> — “I choose X; I do Y now.”</li>
-        </ol>
-      </article>
-    </section>
-
-    <!-- ===== Assessment ===== -->
-    <section id="qsm-assess" class="card">
-      <div class="badge">QSM Assessment (12 items)</div>
-      <p class="muted">Rate each 1–10 (1 = not at all / chaotic, 10 = excellent / consistent).</p>
-      <div class="two" style="margin-top:8px">
-        <div class="q-item"><label>Attention control (stay on task)</label><input type="range" min="1" max="10" value="5" data-q="attention" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Language hygiene (self-talk)</label><input type="range" min="1" max="10" value="5" data-q="language" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Inputs quality (media/people)</label><input type="range" min="1" max="10" value="5" data-q="inputs" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Daily discipline (non-negotiables)</label><input type="range" min="1" max="10" value="5" data-q="discipline" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Emotional regulation</label><input type="range" min="1" max="10" value="5" data-q="emotion" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Purpose clarity</label><input type="range" min="1" max="10" value="5" data-q="purpose" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Consistency (show up daily)</label><input type="range" min="1" max="10" value="5" data-q="consistency" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Sleep & recovery</label><input type="range" min="1" max="10" value="5" data-q="sleep" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Physical practice</label><input type="range" min="1" max="10" value="5" data-q="physical" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Service orientation</label><input type="range" min="1" max="10" value="5" data-q="service" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Social environment</label><input type="range" min="1" max="10" value="5" data-q="social" oninput="qsm.set(this)"><output>5</output></div>
-        <div class="q-item"><label>Ownership mindset</label><input type="range" min="1" max="10" value="5" data-q="ownership" oninput="qsm.set(this)"><output>5</output></div>
-      </div>
-
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-        <button class="btn" type="button" onclick="qsm.calculate()">Calculate</button>
-        <button class="btn alt" type="button" onclick="qsm.save()">Save</button>
-        <button class="btn" type="button" onclick="qsm.load()">Load</button>
-        <button class="btn alt" type="button" onclick="qsm.reset()">Reset</button>
-        <button class="btn" type="button" onclick="qsm.copy()">Copy Plan</button>
-      </div>
-
-      <div class="grid" style="margin-top:12px">
-        <article class="card">
-          <h4>Spiral Index</h4>
-          <p class="muted">Average of 12 domains</p>
-          <div id="qsm-score" style="font-size:2rem;font-weight:700">—</div>
-          <div id="qsm-label" class="muted">Run the calculator</div>
-        </article>
-        <article class="card">
-          <h4>Your 7-Day Plan</h4>
-          <pre id="qsm-plan" class="plan">Your plan will appear here.</pre>
-        </article>
-      </div>
-    </section>
-
-    <section class="container" aria-label="sponsored">
-      <!-- Moecommunitycloud -->
-      <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-8387411349417007"
-          data-ad-slot="6461821120"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </section>
-  </main>
-
+  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Quantum Spiral Man (QSM)</h1></div>
+  <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
+  <main class="container"><div class="card"><div class="badge">Quantum Spiral Man (QSM)</div><p>Open the latest version of Quantum Spiral Man (QSM).</p></div></main>
+  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8387411349417007"
+     data-ad-slot="6461821120"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section>
   <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-
-  <script>
-  // QSM logic (client-side)
-  (function(){
-    const KEY='mbcc_qsm_v1';
-    const fields = ["attention","language","inputs","discipline","emotion","purpose","consistency","sleep","physical","service","social","ownership"];
-    const bySel = s => document.querySelector(s);
-
-    function getVals(){
-      const v = {};
-      fields.forEach(k=>{
-        const el = document.querySelector('[data-q="'+k+'"]');
-        v[k] = Number(el ? el.value : 5);
-      });
-      return v;
-    }
-    function label(avg){
-      if (avg >= 9) return "Compounding Upward";
-      if (avg >= 7) return "Upward";
-      if (avg >= 4) return "Wobbly / Neutral";
-      return "Downward Risk";
-    }
-    function planText(v, avg){
-      const weak = Object.entries(v).sort((a,b)=>a[1]-b[1]).slice(0,3).map(([k])=>k);
-      const map = {
-        attention: "OCT: 3× daily Observer Collapse drill (name → refuse → replace). 5-min focus sprints.",
-        language: "OCT: Replace self-talk: ‘I can’t’ → ‘I can learn this.’ No negative labels.",
-        inputs: "CIT: 7-day input audit. Replace 2 low-value feeds with educational/fitness/purpose channels.",
-        discipline: "DET: Two non-negotiables daily. Track with ✔︎. No zero-days.",
-        emotion: "OCT/SPT: 4-count breath x5 when triggered; write 1 line reframe.",
-        purpose: "SPT: Write a 1-sentence purpose. Review morning & night.",
-        consistency: "FAT: 15-minute micro-win at the same time daily.",
-        sleep: "DET: Hard cut electronics 60 min pre-bed; same wake time.",
-        physical: "FAT/DET: 20-minute walk + 20 pushups daily.",
-        service: "SST: One helpful act daily; log it.",
-        social: "CIT: 48-hour people audit → 1 tough boundary; 1 upgrade.",
-        ownership: "NSCT: Ownership statement each morning: ‘I choose __; I do __ now.’"
-      };
-      const lines = [];
-      lines.push(`# QSM 7-Day Plan`);
-      lines.push(`Spiral Index: ${avg.toFixed(1)} (${label(avg)})`);
-      lines.push(`Focus domains this week: ${weak.join(", ")}`);
-      weak.forEach(k=>lines.push(`- ${map[k]}`));
-      lines.push(`
-Daily anchors:`);
-      lines.push(`- Morning: purpose sentence, 1 non-negotiable, ownership statement`);
-      lines.push(`- Midday: 5-min Observer Collapse drill`);
-      lines.push(`- Evening: log wins, 10-minute tidy, no-phone last hour`);
-      return lines.join('\n');
-    }
-
-    window.qsm = {
-      set(input){
-        const out = input.parentElement.querySelector('output');
-        if(out){ out.textContent = input.value; }
-      },
-      calculate(){
-        const v = getVals();
-        const arr = Object.values(v);
-        const sum = arr.reduce((s,x)=>s+Number(x||0),0);
-        const avg = sum / arr.length;
-        bySel('#qsm-score').textContent = avg.toFixed(1);
-        bySel('#qsm-label').textContent = label(avg);
-        const txt = planText(v, avg);
-        bySel('#qsm-plan').textContent = txt;
-      },
-      save(){
-        const v = getVals();
-        localStorage.setItem(KEY, JSON.stringify(v));
-        alert('Saved.');
-      },
-      load(){
-        const raw = localStorage.getItem(KEY);
-        if(!raw) return alert('No save found.');
-        const v = JSON.parse(raw);
-        Object.entries(v).forEach(([k,val])=>{
-          const el = document.querySelector('[data-q="'+k+'"]');
-          if(el){ el.value = Number(val)||5; const out = el.parentElement.querySelector('output'); if(out) out.textContent = el.value; }
-        });
-        alert('Loaded.');
-      },
-      reset(){
-        document.querySelectorAll('[data-q]').forEach(el=>{ el.value = 5; const out = el.parentElement.querySelector('output'); if(out) out.textContent = '5';});
-        bySel('#qsm-score').textContent = '—';
-        bySel('#qsm-label').textContent = 'Run the calculator';
-        bySel('#qsm-plan').textContent = 'Your plan will appear here.';
-      },
-      copy(){
-        const txt = bySel('#qsm-plan').textContent || '';
-        if(!txt.trim()) return;
-        navigator.clipboard.writeText(txt).then(()=>alert('Plan copied.')).catch(()=>{});
-      }
-    };
-
-    // Initialize outputs to match default slider values
-    document.querySelectorAll('[data-q]').forEach(el=>{
-      const out = el.parentElement.querySelector('output');
-      if(out) out.textContent = el.value;
-    });
-  })();
-  </script>
 </body>
 </html>

@@ -1,69 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <title>Cold‑Open Hooksmith — Moe Community Cloud</title>
+  <meta name="description" content="Cold‑Open Hooksmith — Moe Community Cloud — Moe Community Cloud">
+  <link rel="stylesheet" href="assets/style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cold‑Open Hooksmith — MBCC</title>
-  <meta name="description" content="Generate punchy cold opens and first-20-second beats for your video.">
-  <link rel="stylesheet" href="assets/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
   <script defer src="assets/js/adsense-init.js"></script>
-  <style>
-    .hero{background:#0b0b0b;padding:16px 0;border-bottom:1px solid #222}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media(max-width:920px){.two{grid-template-columns:1fr}}
-    textarea.input{min-height:140px}
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, monospace; white-space:pre-wrap}
-    .tiny{opacity:.9}
-  </style>
 </head>
 <body>
-  <header class="header"><div class="container header-row">
-    <div class="brand"><div class="logo"></div><h1>Cold‑Open Hooksmith</h1></div>
-    <nav class="nav"><a href="index.html">Home</a><a href="apps.html" class="active">Apps</a></nav>
-  </div></header>
-
-  <section class="hero"><div class="container">
-    <p class="tiny">Pattern‑based hooks that avoid filler and front‑load curiosity.</p>
-    <a class="btn" href="#tool">Jump to tool</a>
-  </div></section>
-
-  <main id="tool" class="container" style="margin-top:12px">
-    <section class="card">
-      <div class="badge">Input</div>
-      <div class="two">
-        <textarea class="input" id="topic" placeholder="Paste your topic or first paragraph of transcript..."></textarea>
-        <div>
-          <label class="tiny">Brand voice</label>
-          <input type="range" id="voice" min="1" max="5" step="1" value="3" oninput="hs.voiceOut.textContent=this.value">
-          <div class="tiny">1 = calm, 3 = confident, 5 = bold → <strong><span id="voiceOut">3</span></strong></div>
-          <label class="tiny">Banned filler (comma‑separated)</label>
-          <input class="input" id="ban" value="in this video, today we're going to, welcome back, smash that like">
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-            <button class="btn" type="button" onclick="hs.generate()">Generate</button>
-            <button class="btn alt" type="button" onclick="hs.save()">Save</button>
-            <button class="btn" type="button" onclick="hs.load()">Load</button>
-            <button class="btn alt" type="button" onclick="hs.reset()">Reset</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
-      <article class="card">
-        <div class="badge">Hooks</div>
-        <ol id="hooks" class="mono"></ol>
-        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="hs.copy('hooks')">Copy hooks</button></div>
-      </article>
-      <article class="card">
-        <div class="badge">First 20s — Beat Sheet</div>
-        <pre id="beats" class="mono">—</pre>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn" onclick="hs.copy('beats')">Copy beats</button>
-          <button class="btn alt" onclick="hs.download('hooksmith-beats.txt','beats')">Download .txt</button>
-        </div>
-      </article>
-    </section>
-  </main>
-
+  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Cold‑Open Hooksmith</h1></div>
+  <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
+  <main class="container"><div class="card"><div class="badge">Cold‑Open Hooksmith</div><p>Open the latest version of Cold‑Open Hooksmith.</p></div></main>
   <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
 <ins class="adsbygoogle"
      style="display:block"
@@ -72,82 +21,7 @@
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section>
-
   <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-
-  <script>
-  (function(){ 
-    const KEY='mbcc_hooksmith_v1';
-    const patterns=[
-      "Most people do X. Here's the quiet reason it fails—and the 1 change that flips it.",
-      "If you only remember one thing about {K}: make this mistake once → it costs; fix it once → it compounds.",
-      "You don't need {K} experience. You need this 2‑step to get past the first wall in 48 hours.",
-      "Everyone says '{K} cliché'. Watch me break it in 20 seconds with a simple test you can try today.",
-      "This will save you weeks: the {K} shortcut nobody names because it's not sexy—only effective."
-    ];
-    const beatsTpl = (k, tone)=>[
-      "[00:00] Cold‑open: problem → promise (5s)",
-      "[00:05] Pattern break (visual/prop) – no 'welcome back' (3s)",
-      "[00:08] Setup: why {K} blocks people; one line credibility (4s)",
-      "[00:12] Roadmap: 3 beats you'll get in 2 minutes (3s)",
-      "[00:15] Tease payoff: a quick test + a checklist at the end (5s)",
-      "\nTone: "+tone
-    ].join("\n").replaceAll('{K}',k);
-
-    function keyTerms(text){
-      const words=(text||'').toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(Boolean);
-      const stop=new Set("the a an and or but if then else for with about into over under when where how what why is are was were be been to of on in this that from you your we they i it's its".split(/\s+/));
-      const freq={}; words.forEach(w=>{ if(!stop.has(w)) freq[w]=(freq[w]||0)+1; });
-      return Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,3);
-    }
-    function toneName(n){ return ({1:'Calm',2:'Assured',3:'Confident',4:'Bold',5:'Punchy'})[n]||'Confident'; }
-    function avoidBanned(line, banned){
-      const lower=line.toLowerCase();
-      return !banned.some(b=> lower.includes(b.trim()));
-    }
-
-    window.hs = {
-      voiceOut: document.getElementById('voiceOut'),
-      generate(){
-        const topic=document.getElementById('topic').value.trim();
-        if(!topic) return alert('Add a topic or snippet.');
-        const tone=toneName(Number(document.getElementById('voice').value||3));
-        const banned=document.getElementById('ban').value.split(',').map(s=>s.trim()).filter(Boolean);
-        const K=keyTerms(topic).join(' / ' ) || 'this topic';
-        const hooksEl=document.getElementById('hooks'); hooksEl.innerHTML='';
-        patterns.forEach((p,i)=>{
-          const line=p.replaceAll('{K}',K);
-          if(avoidBanned(line,banned)) {
-            const li=document.createElement('li'); li.textContent=line; hooksEl.appendChild(li);
-          }
-        });
-        document.getElementById('beats').textContent = beatsTpl(K, tone);
-      },
-      copy(id){
-        const el=document.getElementById(id);
-        const text= id==='hooks' ? Array.from(el.querySelectorAll('li')).map(li=>li.textContent).join('\n') : el.textContent;
-        navigator.clipboard.writeText(text).then(()=>alert('Copied')).catch(()=>{});
-      },
-      download(name, id){
-        const text = id==='hooks' ? Array.from(document.querySelectorAll('#hooks li')).map(li=>li.textContent).join('\n') : document.getElementById(id).textContent;
-        const blob=new Blob([text],{type:'text/plain'});
-        const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click();
-      },
-      save(){
-        const data={ topic:document.getElementById('topic').value, voice:document.getElementById('voice').value, ban:document.getElementById('ban').value };
-        localStorage.setItem(KEY, JSON.stringify(data)); alert('Saved.');
-      },
-      load(){
-        const raw=localStorage.getItem(KEY); if(!raw) return alert('No save.');
-        const d=JSON.parse(raw); document.getElementById('topic').value=d.topic||''; document.getElementById('voice').value=d.voice||3; document.getElementById('voiceOut').textContent=d.voice||3; document.getElementById('ban').value=d.ban||'';
-        alert('Loaded.');
-      },
-      reset(){
-        ['topic','ban'].forEach(id=>document.getElementById(id).value=''); document.getElementById('voice').value=3; document.getElementById('voiceOut').textContent=3;
-        document.getElementById('hooks').innerHTML=''; document.getElementById('beats').textContent='—';
-      }
-    };
-  })();</script>
 </body>
 </html>
