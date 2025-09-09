@@ -1,15 +1,26 @@
-MBCC Sports — Weekend Snapshot (Sept 8, 2025)
--------------------------------------------------
-This update replaces ONLY /sports.html with a static, CSP-safe snapshot of the weekend across NFL/NBA/MLB/WNBA/NCAAF/NHL/NASCAR.
+MBCC Weekend Hydrator + Home Sponsor Fix
+------------------------------------------
+This bundle does two things:
+1) SPORTS: Adds an external hydrator + JSON data so the Sports page auto-updates without inline JS.
+   - sports.html (static snapshot so it works even if JS is blocked)
+   - assets/js/sports.js (CSP-safe hydrator)
+   - data/sports-weekend-2025-09-08.json (data feed the hydrator reads)
 
-Why static? Your previous sports page relied on inline JS hydration and/or a missing JSON file, which was blocked by CSP or 404ing. This file bakes the content in HTML so it shows immediately.
+2) HOME: Makes the Prime Sponsor image fill the glowing box (no red on the right), inside the animated gold frame.
 
-How to deploy
-1) Replace /sports.html on moecommunitycloud.com with the one in this ZIP.
-2) Hard refresh: https://www.moecommunitycloud.com/sports.html?cb=wknd0908
+Deploy steps
+1) Upload/replace these files:
+   /sports.html
+   /assets/js/sports.js
+   /data/sports-weekend-2025-09-08.json
+   /index.html
+2) Cache-bust once:
+   https://www.moecommunitycloud.com/sports.html?cb=wknd-hydrator
+   https://www.moecommunitycloud.com/index.html?cb=sponsor-fill
 
-Notes
-- All links inside each card point to league pages with full details.
-- Timestamps: page footer shows current year; header/nav matches your site.
-- You can reintroduce auto-updating later with an external /assets/js/sports.js and /data/*.json to keep CSP happy.
-Generated: September 09, 2025
+Adjustments (optional)
+- If you still see a red sliver on the sponsor image, tweak the clip amount in index.html:
+    .prime-logo.lg img { clip-path: inset(0 12% 0 0); }
+  Increase 12% → 15% to crop more from the right.
+
+All done!

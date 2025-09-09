@@ -1,0 +1,84 @@
+{
+  "generated": "2025-09-09",
+  "sports": {
+    "nfl": {
+      "week": "Week 1 (Sept 4\u20138, 2025)",
+      "headlines": [
+        "Chargers beat Chiefs in S\u00e3o Paulo opener (Fri.).",
+        "Commanders defense smothers Giants 21\u20136 in opener."
+      ],
+      "scores": [
+        "Eagles 24, Cowboys 20 (Thu)",
+        "Chargers 27, Chiefs 21 (Fri, S\u00e3o Paulo)",
+        "Buccaneers 23, Falcons 20",
+        "Bengals 17, Browns 16",
+        "Colts 33, Dolphins 8",
+        "Jaguars 26, Panthers 10",
+        "Raiders 20, Patriots 13"
+      ],
+      "links": [
+        {
+          "label": "ESPN Week 1",
+          "href": "https://www.espn.com/nfl/scoreboard/_/week/1/year/2025/seasontype/2"
+        },
+        {
+          "label": "NFL.com Week 1",
+          "href": "https://www.nfl.com/schedules/2025/reg1/"
+        }
+      ]
+    },
+    "nba": {
+      "title": "Hall of Fame Weekend & Preseason on Deck",
+      "headlines": [
+        "Class of 2025 enshrined: Carmelo Anthony, Dwight Howard, Sue Bird, Maya Moore, Sylvia Fowles"
+      ],
+      "key_dates": [
+        "Preseason begins early Oct",
+        "Opening Night Oct 21, 2025"
+      ]
+    },
+    "mlb": {
+      "title": "September Stretch \u2014 Leaders & Wild Card",
+      "division": [
+        "AL East: Blue Jays lead Yankees",
+        "AL Central: Tigers close in",
+        "NL: Brewers pace; Phillies second"
+      ],
+      "note": "Check MLB.com Postseason Watch for daily clinch paths"
+    },
+    "wnba": {
+      "title": "Playoff Field Nearly Set",
+      "clinched": [
+        "Minnesota (No. 1 seed), Las Vegas, Atlanta",
+        "Phoenix, New York, Golden State, Indiana",
+        "One spot remains (as of Sept 8)"
+      ],
+      "dates": [
+        "Regular season ends Sept 11",
+        "Playoffs begin Sept 14"
+      ]
+    },
+    "ncaaf": {
+      "title": "Week 2 Shockers & Highlights (Sept 6, 2025)",
+      "upsets": [
+        "USF 18, Florida 16 (late FG)",
+        "Fresno State 36, Oregon State 27 (late FG + pick\u2011six)",
+        "Mississippi State 24, Arizona State 20"
+      ]
+    },
+    "nhl": {
+      "title": "Preseason Nears \u2014 Sept 20 Start",
+      "dates": [
+        "Preseason: Sept 20\u2013Oct 4",
+        "Regular season opens Oct 7"
+      ]
+    },
+    "nascar": {
+      "title": "Playoffs: Darlington \u2192 Gateway",
+      "results": [
+        "Darlington (Aug 31): Chase Briscoe wins Southern 500",
+        "Gateway (Sept 7): Denny Hamlin wins from pole"
+      ]
+    }
+  }
+}
