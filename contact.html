@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Moe Community Cloud</title>
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/css/mbcc-glow.css"></head>
+<body>
+<header class="header"><div class="container header-row"><div class="brand"><div class="logo" aria-hidden="true"></div><h1>Contact</h1></div>
+<nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
+<main class="container">
+<section class="card mbcc-glow"><div class="badge">Get in touch</div>
+<p>Questions, partnerships, or support? We’d love to hear from you.</p>
+<p>Email: <a href="mailto:moeknowmoe24@gmail.com">moeknowmoe24@gmail.com</a></p>
+<form onsubmit="return (function(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());try{localStorage.setItem('mbccContactDraft',JSON.stringify(d));}catch(_){}
+document.getElementById('c-msg').textContent='Saved locally. We will add server send later.';return false;})(event)">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <input class="input" name="name" placeholder="Your name" required>
+    <input class="input" type="email" name="email" placeholder="you@example.com" required>
+  </div>
+  <input class="input" name="subject" placeholder="Subject">
+  <textarea class="input" name="message" rows="5" placeholder="How can we help?"></textarea>
+  <div style="display:flex;gap:8px;margin-top:8px">
+    <button class="btn">Send</button>
+    <a class="btn alt" href="mailto:moeknowmoe24@gmail.com">Open email app</a>
+  </div>
+  <div id="c-msg" class="tiny" style="margin-top:6px"></div>
+</form>
+</section>
+</main>
+<footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script><script defer src="assets/js/mbcc-glow.js"></script>
+</body></html>

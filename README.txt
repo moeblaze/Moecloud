@@ -1,18 +1,13 @@
-MBCC — Restore Index + QSM (separate)
---------------------------------------
-This bundle restores your original homepage (unchanged layout/nav) and
-ships QSM as a separate page. The only homepage tweak: the sponsor image
-fills the glowing box using your portrait file.
+MBCC — AdSense Readiness Pack (September 09, 2025)
 
-Files
-- /index.html (restored; only the sponsor <img> uses assets/sponsors/darwynn-sponsor.jpg with object-fit: cover)
-- /qsm.html
-- /assets/js/qsm.js
-- /assets/sponsors/darwynn-sponsor.jpg
+Includes (no homepage changes):
+- Universal glow styles: /assets/css/mbcc-glow.css + /assets/js/mbcc-glow.js
+- Apps page linking to QSM + Credit Repair
+- QSM: /qsm.html + /assets/js/qsm.js
+- Credit Repair: /credit-repair.html + /assets/js/cr-pro.js
+- Policy & trust pages: /privacy.html, /terms.html, /about.html, /contact.html
 
-Deploy
-1) Replace /index.html with this restored file.
-2) Upload /qsm.html, /assets/js/qsm.js, and /assets/sponsors/darwynn-sponsor.jpg.
-3) Cache-bust:
-   https://www.moecommunitycloud.com/index.html?cb=restore1
-   https://www.moecommunitycloud.com/qsm.html?cb=restore1
+Deploy:
+1) Upload files at the same paths.
+2) Add footer/header links to privacy, terms, about, contact.
+3) Cache-bust each updated page with ?cb=adsready once.

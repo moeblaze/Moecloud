@@ -1,0 +1,14 @@
+
+:root{ --glow-radius:18px; --glow-width:2px; --glow-a:#d4af37; --glow-b:#a8841d; --glow-c:#ffd700; }
+.mbcc-glow{ position:relative; border-radius:var(--glow-radius); }
+.mbcc-glow::before{
+  content:""; position:absolute; inset:calc(-1*var(--glow-width));
+  border-radius:calc(var(--glow-radius) + var(--glow-width)); padding:var(--glow-width);
+  background:linear-gradient(135deg,var(--glow-a),var(--glow-b),var(--glow-c));
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  animation:mbcc-shine 4s linear infinite; pointer-events:none;
+}
+@keyframes mbcc-shine{ 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
+.mbcc-glow-soft::before{ animation:none; opacity:.6; }
+@media (prefers-reduced-motion:reduce){ .mbcc-glow::before{ animation:none; } }
