@@ -1,21 +1,17 @@
-MBCC — AdSense Integration Patch (2025-09-09)
+MBCC — Toolbox Patch
 
-This pack adds your AdSense script + responsive ad unit to each included page.
-Client: ca-pub-8387411349417007
-Slot:   6461821120
+Includes
+- apps.html — refreshed toolbox linking to Meeting Automator + Credit Repair + QSM
+- meeting-automator.html — full client-side tool
+- assets/js/meeting-automator.js — logic (templates, timers, notes, actions, export, ICS, share URL)
+- credit-repair.html — minor fixes, same features; AdSense included
+- assets/js/cr-pro.js — validation + copy/print support
 
-Pages included
-- index.html (2 ad sections)
-- apps.html, qsm.html, credit-repair.html, about.html, privacy.html, terms.html, contact.html
+Deployment
+1) Upload these files to the same paths on your site.
+2) Optional cache-bust once: add ?cb=toolbox to the URL.
+3) No backend required — everything is client-side (localStorage).
 
-Deploy (surgical)
-1) Upload to the same paths.
-2) For pages not in this pack (sports, news, newsletter), paste this block where you want it:
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
-   <!-- Moecommunitycloud -->
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
-3) Hard refresh with ?cb=ads
-
-Compliance
-- Do not encourage clicks. Keep valuable, original content above/below ads.
+AdSense
+- Each page includes your AdSense script in <head> and one ad block near the footer.
+- Client: ca-pub-8387411349417007 | Slot: 6461821120

@@ -1,145 +1,141 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Meeting Automator — MBCC Toolbox</title>
-  <meta name="description" content="Plan agendas, invite attendees, export ICS invites, create Google Calendar drafts, and run a live agenda timer.">
-  <link rel="stylesheet" href="assets/meeting.css"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meeting Automator — Moe Community Cloud</title>
+  <meta name="description" content="Plan fast, run tight meetings. Templates, timers, notes, action items, exports.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
+  <style>
+    .hero{background:#0b0b0b;padding:16px 0;border-bottom:1px solid #222}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    @media (max-width:920px){.two{grid-template-columns:1fr}}
+    .input.sm{max-width:160px}
+    .agenda-item{display:grid;grid-template-columns:42px 1fr 80px;gap:8px;align-items:center}
+    .agenda-item .time{text-align:right;opacity:.9}
+    .pill{display:inline-block;border:1px solid #333;border-radius:999px;padding:4px 10px;margin:2px}
+    .kicker{opacity:.9}
+    .note{min-height:80px}
+    .actions-table{width:100%;border-collapse:collapse}
+    .actions-table th,.actions-table td{border:1px solid #222;padding:6px;text-align:left}
+    .muted{opacity:.9;font-size:.92rem}
+  </style>
 </head>
 <body>
   <header class="header">
-    <div class="container" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div class="brand" style="display:flex;align-items:center;gap:12px">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>MBCC Meeting Automator</h1>
-      </div>
-      <nav style="margin-left:auto">
-        <a href="index.html">Home</a>
-        <a href="apps.html">Toolbox</a>
-        <a href="#export">Export</a>
-      </nav>
-    </div>
-    <div class="container">
-      <h2>Run faster, tighter meetings.</h2>
-      <p class="sub">Create agendas, invite attendees, export an ICS, build a Google Calendar draft, and keep the meeting on time — all in the browser.</p>
+    <div class="container header-row">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Meeting Automator</h1></div>
+      <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav>
     </div>
   </header>
 
-  <main class="container" style="padding:22px 18px">
-    <div class="grid">
-      <section class="card col-8">
-        <span class="badge">Core setup</span>
-        <div class="row">
-          <div>
-            <label>Meeting title</label>
-            <input id="title" class="input" placeholder="Weekly Ops Sync"/>
-          </div>
-          <div>
-            <label>Organizer email</label>
-            <input id="organizer" type="email" class="input" placeholder="you@company.com"/>
-          </div>
-        </div>
-        <div class="row3" style="margin-top:10px">
-          <div>
-            <label>When</label>
-            <input id="date" type="datetime-local" class="input"/>
-          </div>
-          <div>
-            <label>Duration (min)</label>
-            <input id="duration" type="number" min="5" step="5" value="60" class="input"/>
-          </div>
-          <div>
-            <label>Time zone</label>
-            <select id="tz" class="input">
-              <option>America/New_York</option>
-              <option>America/Chicago</option>
-              <option>America/Denver</option>
-              <option>America/Los_Angeles</option>
-              <option>UTC</option>
-            </select>
-          </div>
-        </div>
-        <div class="row" style="margin-top:10px">
-          <div>
-            <label>Location / Link</label>
-            <input id="location" class="input" placeholder="Zoom / Google Meet / Room 301"/>
-          </div>
-          <div>
-            <label>Add attendee</label>
-            <div style="display:flex;gap:8px">
-              <input id="email-input" type="email" class="input" placeholder="name@email.com"/>
-              <button id="add-email" class="btn">Add</button>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:10px">
-          <label>Attendees</label>
-          <div class="tagbox"></div>
-        </div>
-
-        <div class="sep"></div>
-
-        <span class="badge" style="background:linear-gradient(90deg,#0aa3d4,#11c3ff)">Agenda</span>
-        <div class="agenda-list" style="margin-top:10px"></div>
-        <div class="row" style="margin-top:8px">
-          <input id="agenda-title" class="input" placeholder="Topic / Outcome"/>
-          <div style="display:flex;gap:8px">
-            <input id="agenda-mins" type="number" class="input" min="1" value="5"/>
-            <button id="agenda-add" class="btn good">Add item</button>
-          </div>
-        </div>
-        <div class="actions">
-          <span class="small">Planned time: <b id="agenda-total">0 min</b> • Keep at or under your duration.</span>
-        </div>
-      </section>
-
-      <aside class="card col-4">
-        <span class="badge" style="background:linear-gradient(90deg,#2ca24e,#39d47a)">Live Timer</span>
-        <div class="timer" id="timer" style="opacity:.8;margin-top:6px">
-          <b>00:00</b>
-          <span class="small">Current: <span id="current-topic">—</span></span>
-        </div>
-        <div class="actions">
-          <button id="start-meeting" class="btn primary">Start / Stop</button>
-        </div>
-        <div class="sep"></div>
-        <div class="kpi">
-          <div class="tile"><div class="small">Attendees</div><b id="kpi-attendees">0</b></div>
-          <div class="tile"><div class="small">Agenda items</div><b id="kpi-agenda">0</b></div>
-          <div class="tile"><div class="small">Agenda mins</div><b id="kpi-mins">0</b></div>
-        </div>
-        <div id="status" class="small" style="margin-top:10px;height:20px"></div>
-      </aside>
-
-      <section class="card col-6" id="notes-card">
-        <span class="badge" style="background:linear-gradient(90deg,#b95bff,#f54c9f)">Notes</span>
-        <p class="small">Use this for minutes and action items. It autosaves to your browser.</p>
-        <textarea id="notes" placeholder="• Note line 1&#10;• Action: @owner by MM/DD"></textarea>
-        <div class="actions">
-          <button id="copy-agenda" class="btn">Copy notes / agenda</button>
-        </div>
-      </section>
-
-      <section class="card col-6" id="export">
-        <span class="badge">Share & Export</span>
-        <p class="small">Generate an email draft, export an .ics invite with a 15-minute reminder, save/load JSON, or build a Google Calendar draft.</p>
-        <div class="actions">
-          <a id="mail-draft" class="btn ghost" href="#" target="_blank" rel="noopener">Open email draft</a>
-          <button id="generate" class="btn">Generate</button>
-          <button id="download-ics" class="btn primary">Download .ics</button>
-          <a id="gcal-link" class="btn" target="_blank" rel="noopener">Google Calendar draft</a>
-          <button id="export-json" class="btn">Export JSON</button>
-          <button id="import-json" class="btn">Import JSON</button>
-        </div>
-        <p class="small">Tip: attach the agenda markdown to your calendar event. Use the timer to stay on track.</p>
-      </section>
+  <section class="hero">
+    <div class="container">
+      <h2>Plan fast. Run tight. Capture outcomes.</h2>
+      <p class="kicker">Templates → agenda → timers → notes → action items → export (Markdown / Email / ICS)</p>
+      <div>
+        <span class="pill">1:1</span>
+        <span class="pill">Stand‑up</span>
+        <span class="pill">Sales Call</span>
+        <span class="pill">Retro</span>
+        <span class="pill">Custom</span>
+      </div>
     </div>
+  </section>
+
+  <main class="container" style="margin-top:14px">
+    <section class="card">
+      <div class="badge">Setup</div>
+      <div class="two">
+        <div>
+          <label class="tiny">Template</label>
+          <select id="m_template" class="input">
+            <option value="oneonone">1:1</option>
+            <option value="standup">Stand‑up</option>
+            <option value="sales">Sales Call</option>
+            <option value="retro">Retrospective</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+        <div>
+          <label class="tiny">Duration (minutes)</label>
+          <input id="m_duration" class="input sm" type="number" value="30" min="5" step="5">
+        </div>
+      </div>
+      <div class="two" style="margin-top:8px">
+        <input class="input" id="m_title" placeholder="Meeting title" value="Weekly Sync">
+        <input class="input" id="m_when" placeholder="When (YYYY-MM-DD HH:MM)">
+      </div>
+      <div class="two" style="margin-top:8px">
+        <input class="input" id="m_attendees" placeholder="Attendees (comma-separated)">
+        <input class="input" id="m_location" placeholder="Location / Link">
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn" onclick="mt.autoPlan()">Auto Plan</button>
+        <button class="btn alt" onclick="mt.addItem()">Add Agenda Item</button>
+        <button class="btn" onclick="mt.save()">Save</button>
+        <button class="btn alt" onclick="mt.load()">Load</button>
+        <button class="btn" onclick="mt.reset()">Reset</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="badge">Agenda & Timers</div>
+      <div id="agenda"></div>
+    </section>
+
+    <section class="card">
+      <div class="badge">Notes</div>
+      <textarea id="m_notes" class="input note" placeholder="Key decisions, risks, blockers…"></textarea>
+    </section>
+
+    <section class="card">
+      <div class="badge">Action Items</div>
+      <div class="two">
+        <input id="a_owner" class="input" placeholder="Owner">
+        <input id="a_task" class="input" placeholder="Task">
+      </div>
+      <div class="two" style="margin-top:6px">
+        <input id="a_due" class="input" placeholder="Due (YYYY-MM-DD)">
+        <input id="a_notes" class="input" placeholder="Notes (optional)">
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn" onclick="mt.addAction()">Add</button>
+        <button class="btn alt" onclick="mt.clearActions()">Clear</button>
+      </div>
+      <table class="actions-table" style="margin-top:8px">
+        <thead><tr><th>Owner</th><th>Task</th><th>Due</th><th>Notes</th></tr></thead>
+        <tbody id="actions"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <div class="badge">Export</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" onclick="mt.copyMarkdown()">Copy Markdown</button>
+        <button class="btn alt" onclick="mt.downloadMarkdown()">Download .md</button>
+        <button class="btn" onclick="mt.mailto()">Email Draft</button>
+        <button class="btn alt" onclick="mt.downloadICS()">Download .ics</button>
+        <button class="btn" onclick="mt.shareURL()">Share URL</button>
+      </div>
+      <p class="muted">Tip: Start a timer on each agenda item as you run the meeting. Export the notes and action items at the end.</p>
+      <pre id="export_preview" class="tiny" style="white-space:pre-wrap;background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:10px;max-height:220px;overflow:auto"></pre>
+    </section>
   </main>
 
-  <div class="footer">© 2025 Moe Community Cloud — MBCC A.I. Suite</div>
+  <section class="container" aria-label="sponsored">
+    <!-- Moecommunitycloud -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+  </section>
 
-  <script src="assets/meeting.js"></script>
+  <footer class="footer">
+    <div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script defer src="assets/js/meeting-automator.js"></script>
 </body>
 </html>

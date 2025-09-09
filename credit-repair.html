@@ -4,16 +4,139 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Credit Repair Pro — Moe Community Cloud</title>
+  <meta name="description" content="Educational credit repair workflow: intake, letter generator, tracker.">
   <link rel="stylesheet" href="assets/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
+  <style>
+    .hero{background:#0b0b0b;padding:16px 0;border-bottom:1px solid #222}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    @media (max-width:920px){.two{grid-template-columns:1fr}}
+    .letter-preview{white-space:pre-wrap;background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:12px;min-height:160px}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{border:1px solid #222;padding:8px;text-align:left}
+    .tiny{opacity:.9}
+  </style>
 </head>
 <body>
-  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Credit Repair Pro</h1></div><nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
-  <main class="container"><div class="card"><div class="badge">Workflow</div><p>Intake → letters → tracking.</p></div></main>
-  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Credit Repair <span class="gold">Pro</span></h1></div>
+      <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Intake → letters → tracking</h2>
+      <p class="tiny">For education only — not legal, financial, or tax advice. Consult a licensed professional for legal guidance.</p>
+    </div>
+  </section>
+
+  <main class="container" style="margin-top:12px">
+    <section class="card">
+      <div class="badge">1) Client Intake</div>
+      <form id="cr-intake" onsubmit="return crSaveIntake(event)">
+        <div class="grid">
+          <article class="card">
+            <h4>Contact</h4>
+            <div class="two">
+              <input class="input" name="fullName" placeholder="Full name" required>
+              <input class="input" name="dob" placeholder="DOB (YYYY-MM-DD)">
+            </div>
+            <input class="input" name="address1" placeholder="Street address">
+            <div class="two">
+              <input class="input" name="city" placeholder="City">
+              <input class="input" name="state" placeholder="State">
+            </div>
+            <div class="two">
+              <input class="input" name="zip" placeholder="ZIP">
+              <input class="input" name="ssn4" placeholder="SSN last 4">
+            </div>
+            <input class="input" name="email" type="email" placeholder="email@example.com">
+            <input class="input" name="phone" placeholder="Phone">
+          </article>
+
+          <article class="card">
+            <h4>Account / Furnisher</h4>
+            <input class="input" name="accountName" placeholder="Creditor / Collector / Furnisher" required>
+            <input class="input" name="accountNumber" placeholder="Account #">
+            <select class="input" name="letterType">
+              <option value="FCRA611">FCRA §611 Dispute (to CRA)</option>
+              <option value="FCRA623">FCRA §623 Direct Dispute (to Furnisher)</option>
+              <option value="FDCPA">FDCPA Debt Validation (to Collector)</option>
+              <option value="GOODWILL">Goodwill Adjustment</option>
+              <option value="PFD">Pay‑for‑Delete Offer</option>
+            </select>
+            <textarea class="input" name="facts" placeholder="Short facts: what’s inaccurate or unfair?" rows="5"></textarea>
+            <label class="tiny"><input type="checkbox" name="idIncluded"> I will include ID & proof of address</label>
+          </article>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <button class="btn">Save Intake</button>
+          <button class="btn alt" type="button" onclick="crLoadIntake()">Load</button>
+          <button class="btn" type="button" onclick="crResetIntake()">Reset</button>
+        </div>
+        <div id="cr-msg" class="tiny" style="margin-top:6px"></div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="badge">2) Letter Generator</div>
+      <div class="grid">
+        <article class="card">
+          <h4>Generator</h4>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" type="button" onclick="crGen()">Generate</button>
+            <button class="btn alt" type="button" onclick="crCopy()">Copy</button>
+            <button class="btn" type="button" onclick="crDownload()">Download .txt</button>
+            <button class="btn alt" type="button" onclick="window.print()">Print</button>
+          </div>
+          <p class="tiny" style="margin-top:8px">Tip: USPS Certified Mail, keep copies, track replies.</p>
+        </article>
+        <article class="card">
+          <h4>Preview</h4>
+          <pre id="cr-letter" class="letter-preview">Your letter will appear here.</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="badge">3) Dispute Tracker</div>
+      <div class="grid">
+        <article class="card">
+          <h4>Add Item</h4>
+          <div class="two">
+            <select id="tr-bureau" class="input"><option>Experian</option><option>Equifax</option><option>TransUnion</option></select>
+            <input id="tr-acct" class="input" placeholder="Account # or Name">
+          </div>
+          <div class="two">
+            <input id="tr-sent" class="input" placeholder="Date sent (YYYY-MM-DD)">
+            <select id="tr-status" class="input"><option>Sent</option><option>In Review</option><option>Verified</option><option>Updated</option><option>Deleted</option></select>
+          </div>
+          <textarea id="tr-notes" class="input" rows="4" placeholder="Notes"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn" type="button" onclick="crAddItem()">Add</button>
+            <button class="btn alt" type="button" onclick="crClearItems()">Clear All</button>
+          </div>
+        </article>
+        <article class="card">
+          <h4>Items</h4>
+          <table class="table"><thead><tr><th>Bureau</th><th>Account</th><th>Sent</th><th>Status</th><th>Notes</th></tr></thead><tbody id="tr-body"></tbody></table>
+        </article>
+      </div>
+      <p class="tiny">Educational tool. You are responsible for your own use.</p>
+    </section>
+  </main>
+
+  <section class="container" aria-label="sponsored">
+    <!-- Moecommunitycloud -->
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></section>
+<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+  </section>
+
   <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script defer src="assets/js/cr-pro.js"></script>
 </body>
 </html>

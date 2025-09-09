@@ -3,17 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apps — Moe Community Cloud</title>
+  <title>Apps — Moe Community Cloud (MBCC)</title>
+  <meta name="description" content="MBCC Toolbox: quick-win web tools for builders.">
   <link rel="stylesheet" href="assets/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
+  <style>
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .tool-card .meta{opacity:.9;font-size:.95rem}
+    .tool-card .cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  </style>
 </head>
 <body>
-  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Apps</h1></div><nav class="nav"><a href="index.html">Home</a><a href="apps.html" class="active">Apps</a><a href="news.html">News</a><a href="sports.html">Sports</a><a href="newsletter.html">Newsletter</a></nav></div></header>
-  <main class="container"><div class="badge">Toolbox</div><div class="card"><p><a class="btn" href="qsm.html">QSM</a> <a class="btn" href="credit-repair.html">Credit Repair Pro</a></p></div></main>
-  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Apps</h1></div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="apps.html" class="active">Apps</a>
+        <a href="news.html">News</a>
+        <a href="sports.html">Sports</a>
+        <a href="newsletter.html">Newsletter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="badge">Toolbox</div>
+    <h3>Quick‑win tools you can use now</h3>
+
+    <section class="tools-grid">
+      <article class="card tool-card">
+        <h4>Meeting Automator</h4>
+        <p class="meta">Agenda templates, timers, notes, action items, export to Markdown/Email/ICS.</p>
+        <div class="cta">
+          <a class="btn" href="meeting-automator.html">Open</a>
+        </div>
+      </article>
+
+      <article class="card tool-card">
+        <h4>Credit Repair Pro</h4>
+        <p class="meta">Intake → dispute/goodwill/validation letters → tracker. (Educational)</p>
+        <div class="cta">
+          <a class="btn" href="credit-repair.html">Open</a>
+        </div>
+      </article>
+
+      <article class="card tool-card">
+        <h4>Quantum Spiral Man (QSM)</h4>
+        <p class="meta">12‑question Spiral Index, drills, and a 7‑day plan.</p>
+        <div class="cta"><a class="btn" href="qsm.html">Open</a></div>
+      </article>
+    </section>
+  </main>
+
+  <section class="container" aria-label="sponsored">
+    <!-- Moecommunitycloud -->
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script></section>
-  <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
