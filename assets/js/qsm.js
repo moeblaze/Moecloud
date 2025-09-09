@@ -1,0 +1,142 @@
+/* QSM logic: scoring, plan, save/load (localStorage + optional mbccSaveDraft) */
+(function(){
+  window.qsmCalc = function(e){
+    e.preventDefault();
+    const vals = [];
+    for(let i=1;i<=12;i++){
+      const el = e.target['q'+i];
+      vals.push(el ? Number(el.value||0) : 0);
+    }
+    // Pillars: 3 each
+    const pillars = {
+      Attention: avg(vals.slice(0,3)),
+      Language: avg(vals.slice(3,6)),
+      Inputs: avg(vals.slice(6,9)),
+      Discipline: avg(vals.slice(9,12))
+    };
+    const overall = avg(vals);
+    const band = bandText(overall);
+
+    const sum = document.getElementById('qsm-summary');
+    sum.innerHTML = `Spiral Index: <strong>${overall.toFixed(1)}/10</strong> <span class="score-badge ${band.cls}">${band.txt}</span>`;
+
+    const wrap = document.getElementById('qsm-pillars');
+    wrap.innerHTML = Object.entries(pillars).map(([k,v]) =>
+      `<article class="card"><h4>${k}</h4><p>Score: <strong>${v.toFixed(1)}/10</strong></p>${coach(k,v)}</article>`
+    ).join('');
+
+    const plan = document.getElementById('qsm-plan');
+    plan.innerHTML = renderPlan(pillars);
+
+    document.getElementById('qsm-result').hidden = false;
+    const msg = document.getElementById('qsm-msg');
+    msg.textContent = 'Calculated. Scroll to see your plan.';
+    return false;
+  };
+
+  window.qsmReset = function(){
+    document.querySelectorAll('#qsm-assess input[type=range]').forEach(r=>r.value=5);
+    document.getElementById('qsm-result').hidden = true;
+    setMsg('Reset.');
+  };
+
+  window.qsmSave = async function(){
+    const data = collect();
+    try{
+      localStorage.setItem('qsmAssessment', JSON.stringify(data));
+    }catch(e){}
+    try{
+      if (typeof mbccSaveDraft === 'function'){
+        await mbccSaveDraft({tool:'qsm', ts:new Date().toISOString(), input:data});
+      }
+      setMsg('Saved.');
+    }catch(e){
+      setMsg('Saved locally.');
+    }
+  };
+
+  window.qsmLoad = function(){
+    try{
+      const raw = localStorage.getItem('qsmAssessment');
+      if(!raw) return setMsg('No saved data.');
+      const data = JSON.parse(raw);
+      (data.values||[]).forEach((v,i)=>{
+        const el = document.querySelector(`[name=q${i+1}]`);
+        if(el) el.value = v;
+      });
+      setMsg('Loaded.');
+    }catch(e){
+      setMsg('Load failed.');
+    }
+  };
+
+  window.qsmCopy = function(id){
+    const el = document.getElementById(id);
+    el.select(); el.setSelectionRange(0,99999);
+    document.execCommand('copy');
+    setMsg('Copied to clipboard.');
+  };
+
+  window.qsmSaveOwn = function(){
+    try{
+      localStorage.setItem('qsmOwnership', document.getElementById('qsm-own').value||'');
+      setMsg('Ownership statement saved.');
+    }catch(e){ setMsg('Could not save.'); }
+  };
+
+  /* helpers */
+  function collect(){
+    const values = [];
+    for(let i=1;i<=12;i++){
+      const el = document.querySelector(`[name=q${i}]`);
+      values.push(el?Number(el.value||0):0);
+    }
+    return { values };
+  }
+  function avg(a){ return a.reduce((s,x)=>s+Number(x||0),0)/a.length; }
+  function bandText(x){
+    if (x < 4) return {txt:'Downward', cls:'bad'};
+    if (x < 6) return {txt:'Drifting', cls:'warn'};
+    if (x < 8) return {txt:'Rising', cls:'good'};
+    return {txt:'Compounding', cls:'ok'};
+  }
+  function coach(k,v){
+    const tips = {
+      Attention: [
+        'Run the 4‑4‑6 breath + “I choose …” line for 2 minutes.',
+        'Build a 25‑min focus block; swap phone to another room.'
+      ],
+      Language: [
+        'Replace “I can’t” with “I choose / I will.”',
+        'State outcomes in present-tense specifics.'
+      ],
+      Inputs: [
+        'Clean your desk + block one toxic feed.',
+        'Add 2 inputs that signal the man you’re becoming.'
+      ],
+      Discipline: [
+        'Define a 3‑item shutdown checklist for tonight.',
+        'Do one hard rep now: the next right action.'
+      ]
+    };
+    const list = (v<6)?tips[k]:(v<8)?tips[k].slice(0,1):['Keep compounding with longer reps.'];
+    return `<ul style="padding-left:18px;line-height:1.5">${list.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+  }
+  function renderPlan(p){
+    const days = [
+      {d:'Day 1', a:'Awareness log (triggers, payoffs).'},
+      {d:'Day 2', a:'Observer Collapse Drill x3 moments.'},
+      {d:'Day 3', a:'Reframe 3 stories into service/standard language.'},
+      {d:'Day 4', a:'Constructive Inputs: room reset + feed cleanup.'},
+      {d:'Day 5', a:'Discipline: run full startup + shutdown.'},
+      {d:'Day 6', a:'Service: one concrete act for someone else.'},
+      {d:'Day 7', a:'Weekly review + next week targets.'}
+    ];
+    const lines = Object.entries(p).map(([k,v])=>`${k}: ${v.toFixed(1)}/10`).join(' • ');
+    return `<p class="tiny">Pillars — ${lines}</p>` +
+      `<div class="grid">` +
+      days.map(x=>`<article class="card"><h4>${x.d}</h4><p>${x.a}</p><p class="tiny">Ownership: <em>What is the next right action?</em></p></article>`).join('') +
+      `</div>`;
+  }
+  function setMsg(t){ const m=document.getElementById('qsm-msg'); if(m) m.textContent=t; }
+})();
