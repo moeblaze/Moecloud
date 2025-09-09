@@ -1,0 +1,10 @@
+USAGE NOTES
+-----------
+1) Commit this bundle into your repo root.
+2) In your current sports.html hydrator, change the fetch URL to:
+   fetch('/data/sports-latest.json', { cache: 'no-store' })
+3) Enable the Action:
+   - Repo → Settings → Secrets and variables → Actions → New repository secret:
+     * CFBD_API_KEY         (optional; collegefootballdata.com free key)
+     * ALLOW_UNOFFICIAL_ESPN = 1   (optional; if you accept ESPN scoreboard JSON usage)
+4) The workflow runs hourly and commits updated /data/sports-latest.json.
