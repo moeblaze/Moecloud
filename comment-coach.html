@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment Coach — MBCC</title>
+  <meta name="description" content="Cluster comments into themes and draft on-brand replies + FAQs.">
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/js/adsense-init.js"></script>
+  <style>
+    .hero{background:#0b0b0b;padding:16px 0;border-bottom:1px solid #222}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media(max-width:920px){.two{grid-template-columns:1fr}}
+    textarea.input{min-height:160px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, monospace; white-space:pre-wrap}
+    .tiny{opacity:.9}
+    .tag{display:inline-block;border:1px solid #333;border-radius:999px;padding:2px 8px;margin:2px}
+  </style>
+</head>
+<body>
+  <header class="header"><div class="container header-row">
+    <div class="brand"><div class="logo"></div><h1>Comment Coach</h1></div>
+    <nav class="nav"><a href="index.html">Home</a><a href="apps.html" class="active">Apps</a></nav>
+  </div></header>
+
+  <section class="hero"><div class="container"><p class="tiny">Paste comments (CSV or one per line). Get themes, replies, and FAQ prompts.</p></div></section>
+
+  <main class="container" style="margin-top:12px">
+    <section class="card">
+      <div class="badge">Input</div>
+      <div class="two">
+        <textarea id="comments" class="input" placeholder="Paste comments... CSV or one comment per line."></textarea>
+        <div>
+          <label class="tiny">Brand voice</label>
+          <input type="range" id="tone" min="1" max="5" step="1" value="3" oninput="cc.toneOut.textContent=this.value">
+          <div class="tiny">1 = warm · 3 = neutral · 5 = firm → <strong><span id="toneOut">3</span></strong></div>
+          <label class="tiny">Keywords to watch (comma‑separated)</label>
+          <input id="watch" class="input" value="price, shipping, tutorial, proof, scam, bug, feature">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <button class="btn" onclick="cc.cluster()">Analyze</button>
+            <button class="btn alt" onclick="cc.reset()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="badge">Themes</div>
+        <ul id="themes" class="mono"></ul>
+      </article>
+      <article class="card">
+        <div class="badge">Reply Drafts</div>
+        <ol id="replies" class="mono"></ol>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" onclick="cc.copy('replies')">Copy replies</button>
+        </div>
+      </article>
+      <article class="card">
+        <div class="badge">FAQ Prompts / Content Ideas</div>
+        <ul id="faqs" class="mono"></ul>
+      </article>
+    </section>
+  </main>
+
+  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8387411349417007"
+     data-ad-slot="6461821120"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section>
+
+  <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+  <script>
+  (function(){
+    function linesToArray(raw){
+      if(/,/.test(raw) && /\n/.test(raw)){ 
+        return raw.split(/\n+/).map(r=>r.split(',')[0]).map(s=>s.trim()).filter(Boolean);
+      }
+      return raw.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+    }
+    function detectThemes(arr, watch){
+      const cats={questions:[], praise:[], objections:[], ideas:[]};
+      arr.forEach(c=>{
+        const lc=c.toLowerCase();
+        if(/[?]/.test(c) || /how\b|what\b|why\b|when\b|where\b/.test(lc)) cats.questions.push(c);
+        else if(/love|great|thanks|amazing|awesome|helpful|🔥|👏/.test(lc)) cats.praise.push(c);
+        else if(/not|don't|can't|won't|scam|fake|bad|worse|terrible|bug|issue|problem/.test(lc)) cats.objections.push(c);
+        else cats.ideas.push(c);
+      });
+      const kw = watch.split(',').map(s=>s.trim().toLowerCase()).filter(Boolean);
+      const counts={}; kw.forEach(k=>counts[k]=0);
+      arr.forEach(c=>{ const lc=c.toLowerCase(); kw.forEach(k=>{ if(lc.includes(k)) counts[k]++; }); });
+      return {cats, counts};
+    }
+    function replyFor(comment, tone){
+      const base = {1:'Warm', 2:'Friendly', 3:'Neutral', 4:'Direct', 5:'Firm'}[tone] || 'Neutral';
+      const lc=comment.toLowerCase();
+      if(/[?]/.test(comment)) return base+": Thanks for asking — quick answer: [state the answer]. If you want more detail, I can share a short step‑by‑step.";
+      if(/scam|fake/.test(lc)) return base+": I hear the concern. We don’t do hype — here’s how it works and a proof point you can check.";
+      if(/price|cost/.test(lc)) return base+": Totally fair question on price. We focus on value/ROI; here’s the outcome and what’s included.";
+      if(/bug|issue|problem/.test(lc)) return base+": Thanks for flagging. I logged this and have a fix path. Can you share device/browser so we can replicate?";
+      return base+": Appreciate you. Here’s one next action you can try today: [insert actionable tip].";
+    }
+    function faqFromTheme(t){
+      const lc=t.toLowerCase();
+      if(/price|cost/.test(lc)) return "Pricing & ROI: What am I actually getting?";
+      if(/bug|issue|problem/.test(lc)) return "Troubleshooting: Common fixes & how to contact us";
+      if(/tutorial|how/.test(lc)) return "Step‑by‑step: From blank page to result";
+      if(/shipping|delivery/.test(lc)) return "Shipping & timelines: What to expect";
+      return "FAQ: "+t.replace(/[^a-z0-9\s]/gi,'').slice(0,60);
+    }
+
+    window.cc = {
+      toneOut: document.getElementById('toneOut'),
+      cluster(){
+        const raw=document.getElementById('comments').value.trim();
+        if(!raw) return alert('Paste comments first.');
+        const arr=linesToArray(raw);
+        const {cats, counts} = detectThemes(arr, document.getElementById('watch').value);
+        const th=document.getElementById('themes'); th.innerHTML='';
+        Object.entries(cats).forEach(([k,v])=>{ const li=document.createElement('li'); li.innerHTML = "<strong>"+k+"</strong>: "+v.length; th.appendChild(li); });
+        const kw=document.createElement('div'); kw.className='tiny'; kw.innerHTML = Object.entries(counts).map(([k,c])=>'<span class="tag">'+k+': '+c+'</span>').join(' ');
+        th.appendChild(kw);
+        const tone=Number(document.getElementById('tone').value||3);
+        const rep=document.getElementById('replies'); rep.innerHTML='';
+        arr.slice(0,20).forEach((c,i)=>{ const li=document.createElement('li'); li.textContent = c + "\n→ " + replyFor(c,tone); rep.appendChild(li); });
+        const fq=document.getElementById('faqs'); fq.innerHTML='';
+        Object.keys(counts).filter(k=>counts[k]>0).forEach(k=>{ const li=document.createElement('li'); li.textContent = faqFromTheme(k); fq.appendChild(li); });
+      },
+      copy(id){ const t=document.getElementById(id).innerText||''; if(!t.trim()) return; navigator.clipboard.writeText(t).then(()=>alert('Copied')).catch(()=>{}); },
+      reset(){ ['comments'].forEach(id=>document.getElementById(id).value=''); ['themes','replies','faqs'].forEach(id=>document.getElementById(id).innerHTML=''); }
+    };
+  })();</script>
+</body>
+</html>
