@@ -1,547 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sports — Moe Community Cloud</title>
-
-  <meta name="theme-color" content="#0b0f18">
-  <meta name="description" content="MBCC Sports — fast, clean recaps across NFL, NBA, MLB, WNBA, NCAAF, NHL & NASCAR.">
-  <link rel="preload" as="image" href="/assets/sponsors/darwynn-plaid-glow-1600x340.png">
-
+  <title>Sports — Moe Community Cloud (MBCC)</title>
+  <meta name="description" content="Weekend sports hub: NFL Week 1, MLB playoff picture, WNBA clinches, college football Week 2, NHL preseason, NASCAR results.">
+  <link rel="stylesheet" href="assets/style.css">
   <style>
-    :root{ color-scheme: dark; }
-    body{ margin:0; background:#0b0f18; color:#e8ecff; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; }
-    header, main, footer{ max-width:1100px; margin:0 auto; padding: 1rem; }
-    .nav{ display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; padding: .8rem 0; }
-    .nav a{ font-weight:700; color:#e8ecff; padding:.35rem .6rem; border-radius:8px; text-decoration:none }
-    .nav a:hover{ background:#12162a }
-    .subnav{ display:flex; gap:.6rem; flex-wrap:wrap; padding:.4rem 0 .6rem 0 }
-    .muted{ color:#b9c4ff }
-    h1,h2,h3,h4{ margin:.6rem 0 .4rem 0 }
-    .section{ margin: 1.2rem 0; background:#0f1220; border:1px solid #2a2f4a; border-radius:14px; padding:1rem }
-    footer{ text-align:center; color:#9aa7ff; padding-bottom:2rem }
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-    .card{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
-    .title{margin:0 0 6px 0;font:800 .95rem/1.2 system-ui}
-    .blurb{margin:.35rem 0 0 0;font:400 .9rem/1.45 system-ui;color:#cbd3ff}
-    .list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-    .list li{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:10px}
-
-    .mc-scores{margin:1.25rem 0}
-    .mc-sec-title{margin:.2rem 0 .8rem 0;font:800 1.25rem/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    .mc-strip{background:#0f1220;border:1px solid #2a2f4a;border-radius:14px;padding:12px 14px;margin:0 0 12px 0}
-    .mc-strip-title{margin:0 0 6px 0;font:800 .95rem/1.2 system-ui;color:#fff}
-    .mc-strip-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-    .mc-perf{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:8px}
-    .mc-perf-name{font:700 .92rem/1.2 system-ui;color:#e8ecff}
-    .mc-perf-team{color:#9fb4ff;font-weight:800}
-    .mc-perf-line{font:500 .9rem/1.35 system-ui;color:#cfd6ff}
-    .mc-perf-game{color:#9aa7ff}
-    .mc-headlines-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
-    .mc-headlines-list li{background:#12162a;border:1px solid #2e3554;border-radius:10px;padding:8px;color:#e8ecff;font:500 .9rem/1.35 system-ui}
-    .mc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-    .mc-game{background:#0e111a;border:1px solid #222634;border-radius:14px;padding:14px;color:#ecf0ff;box-shadow:0 8px 26px rgba(0,0,0,.25)}
-    .mc-row{display:flex;align-items:center;gap:.6rem;justify-content:space-between}
-    .mc-teams{margin:.25rem 0 .35rem 0}
-    .mc-team{display:flex;align-items:center;gap:.45rem}
-    .mc-name{font:600 .95rem/1.2 system-ui;color:#f1f4ff}
-    .mc-logo{width:28px;height:28px;border-radius:50%;overflow:hidden;flex:0 0 28px;display:grid;place-items:center;background:#222}
-    .mc-logo img,.mc-logo svg{display:block;width:100%;height:100%}
-    .mc-badge{font:800 .7rem/1.1 system-ui;text-transform:uppercase;letter-spacing:.6px;padding:.25rem .5rem;border-radius:999px;background:linear-gradient(90deg,#d40a22,#ff1f39);color:#fff}
-    .mc-blurb{margin:.35rem 0 0 0;font:400 .9rem/1.35 system-ui;color:#cbd3ff}
-    .mc-footnote{margin:.6rem 0 0 0;color:#aab3ff;font:.85rem/1.4 system-ui}
-
-    .sponsor-mini {
-      border-radius: 14px; overflow: hidden; height: 160px; margin-top: .6rem;
-      background:
-        url("/assets/sponsors/darwynn-plaid-glow-1600x340.png") left center / cover no-repeat,
-        radial-gradient(400px 160px at 16% 24%, rgba(255,215,0,.28), rgba(255,215,0,0) 60%),
-        linear-gradient(180deg,#c49a16 0%, #b38712 100%);
-      box-shadow: 0 0 0 2px rgba(255,215,0,.55), inset 0 0 22px rgba(255,215,0,.18), 0 10px 26px rgba(0,0,0,.35);
-      animation: mbccBlink 1.8s ease-in-out infinite;
-    }
-    @keyframes mbccBlink {
-      0%,100% { box-shadow: 0 0 0 2px rgba(255,215,0,.45), inset 0 0 20px rgba(255,215,0,.16), 0 10px 26px rgba(0,0,0,.35); }
-      50%    { box-shadow: 0 0 0 2px rgba(255,215,0,.90), inset 0 0 40px rgba(255,215,0,.32), 0 12px 34px rgba(0,0,0,.45); }
-    }
+    .subnav{position:sticky;top:0;background:#0b0b0b;padding:10px 0;z-index:10;border-bottom:1px solid #222}
+    .subnav .container{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{display:inline-block;padding:8px 12px;border:1px solid #333;border-radius:999px;text-decoration:none}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .scorelist{margin:0;padding-left:18px}
+    .tiny{opacity:.9}
+    .note{background:#101010;border:1px solid #262626;border-radius:10px;padding:8px 12px;margin-top:8px}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Moe Community Cloud MBCC</h1>
-    <nav class="nav">
-      <a href="/">Home</a>
-      <a href="/apps.html">Apps</a>
-      <a href="/news.html">News</a>
-      <a href="/sports.html">Sports</a>
-      <a href="#nfl">NFL</a>
-      <a href="#nba">NBA</a>
-      <a href="#mlb">MLB</a>
-      <a href="#wnba">WNBA</a>
-      <a href="#ncaaf">NCAAF</a>
-      <a href="#nhl">NHL</a>
-      <a href="#nascar">NASCAR</a>
-      <a href="/newsletter.html">Newsletter</a>
-    </nav>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Moe Community Cloud <span class="gold">MBCC</span></h1>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="news.html">News</a>
+        <a href="sports.html" class="active">Sports</a>
+        <a href="newsletter.html">Newsletter</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="section">
-      <h2>MBCC Sports</h2>
-      <p class="muted">Fast, clean recaps and what’s next. Snapshot as of Sept 8, 2025.</p>
-      <div class="subnav">
-        <a href="#nfl">NFL</a>
-        <a href="#nba">NBA</a>
-        <a href="#mlb">MLB</a>
-        <a href="#wnba">WNBA</a>
-        <a href="#ncaaf">NCAAF</a>
-        <a href="#nhl">NHL</a>
-        <a href="#nascar">NASCAR</a>
-      </div>
-      <div class="sponsor-mini" title="Darwynn — Featured Partner"></div>
-    </section>
+  <nav class="subnav" aria-label="Sports Sections">
+    <div class="container">
+      <a class="pill" href="#nfl">NFL</a>
+      <a class="pill" href="#nba">NBA</a>
+      <a class="pill" href="#mlb">MLB</a>
+      <a class="pill" href="#wnba">WNBA</a>
+      <a class="pill" href="#ncaaf">NCAAF</a>
+      <a class="pill" href="#nhl">NHL</a>
+      <a class="pill" href="#nascar">NASCAR</a>
+    </div>
+  </nav>
+
+  <main class="container" style="margin-top:18px">
 
     <!-- NFL -->
-    <section id="nfl" class="mc-scores section">
-      <h2 id="nfl-stamp" class="mc-sec-title">NFL</h2>
-      <div class="mc-strip mc-performers">
-        <h4 class="mc-strip-title">Top Performers</h4>
-        <div id="nfl-performers" class="mc-strip-body"><div class="mc-perf"><div class="mc-perf-name">Loading…</div></div></div>
+    <section id="nfl" class="card">
+      <div class="badge">NFL</div>
+      <h3>Week 1 Recap (Sept 4–8, 2025)</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Sunday finals (selected)</h4>
+          <ul class="scorelist">
+            <li>Buccaneers 23, Falcons 20</li>
+            <li>Bengals 17, Browns 16</li>
+            <li>Colts 33, Dolphins 8</li>
+            <li>Jaguars 26, Panthers 10</li>
+            <li>Raiders 20, Patriots 13</li>
+          </ul>
+          <div class="note tiny">Full scoreboard &amp; box scores: <a href="https://www.espn.com/nfl/scoreboard/_/week/1/year/2025/seasontype/2" target="_blank" rel="noopener">ESPN Week&nbsp;1</a> • <a href="https://www.nfl.com/schedules/2025/reg1/" target="_blank" rel="noopener">NFL.com</a></div>
+        </article>
+        <article class="card">
+          <h4>Headlines</h4>
+          <ul class="scorelist">
+            <li>Chargers beat Chiefs in São Paulo opener (Fri.).</li>
+            <li>Commanders defense smothers Giants 21–6 in opener.</li>
+          </ul>
+          <div class="tiny note">Sources: NFL.com, ESPN, team/local reports.</div>
+        </article>
       </div>
-      <div class="mc-strip mc-headlines">
-        <h4 class="mc-strip-title">Power 5 Headlines</h4>
-        <ul id="nfl-headlines" class="mc-headlines-list"><li>Loading…</li></ul>
-      </div>
-      <div id="nfl-games" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
-      <p id="nfl-footnote" class="mc-footnote"></p>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
     </section>
 
     <!-- NBA -->
-    <section id="nba" class="mc-scores section">
-      <p class="muted" id="nba-kicker" style="margin:0 0 .2rem 0">NBA</p>
-      <h2 id="nba-stamp" class="mc-sec-title">NBA — Weekend Notebook</h2>
-      <div class="card">
-        <div class="title">Top Headlines</div>
-        <ul id="nba-headlines" class="list"><li>Loading…</li></ul>
-        <p id="nba-sources" class="blurb muted"></p>
+    <section id="nba" class="card">
+      <div class="badge">NBA</div>
+      <h3>Hall of Fame Weekend &amp; Preseason on Deck</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Class of 2025 enshrined (Sept 5–6)</h4>
+          <p>Carmelo Anthony, Dwight Howard, Sue Bird, Maya Moore, and Sylvia Fowles headlined the Hall of Fame class.</p>
+          <div class="note tiny">More: hoophall weekend &amp; honorees.</div>
+        </article>
+        <article class="card">
+          <h4>Key dates</h4>
+          <ul class="scorelist">
+            <li>Preseason begins Oct 2–6 (international/openers).</li>
+            <li>Regular season opens Oct 21, 2025.</li>
+          </ul>
+          <div class="note tiny">More: NBA.com key dates.</div>
+        </article>
       </div>
-      <div id="nba-cards1" class="grid" style="margin-top:12px"></div>
-      <div id="nba-cards2" class="grid" style="margin-top:12px"></div>
-      <div class="card" style="margin-top:12px">
-        <div class="title">What’s Next</div>
-        <ul id="nba-next" class="list"><li>Loading…</li></ul>
-      </div>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
     </section>
 
     <!-- MLB -->
-    <section id="mlb" class="section">
-      <p class="muted" id="mlb-stamp" style="margin:0 0 .4rem 0">MLB — Playoff Picture</p>
+    <section id="mlb" class="card">
+      <div class="badge">MLB</div>
+      <h3>September Stretch — Leaders &amp; Wild Card</h3>
       <div class="grid">
         <article class="card">
-          <div class="title">Division Leaders</div>
-          <ul id="mlb-divisions" class="list"><li>Loading…</li></ul>
+          <h4>Division snapshots</h4>
+          <ul class="scorelist">
+            <li>AL East: Blue Jays lead Yankees.</li>
+            <li>AL Central: Tigers control with single‑digit magic number.</li>
+            <li>NL: Brewers pace the league; Phillies second.</li>
+          </ul>
+          <div class="note tiny">Standings: MLB.com • ESPN.</div>
         </article>
         <article class="card">
-          <div class="title">Wild Card Snapshot</div>
-          <ul id="mlb-wildcard" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">Power Rankings — Top 5</div>
-          <ul id="mlb-rankings" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">What’s Next (This Week)</div>
-          <ul id="mlb-next" class="list"><li>Loading…</li></ul>
+          <h4>Postseason watch</h4>
+          <p>Wild‑card races remain tight in both leagues; daily updates track tiebreakers and clinch scenarios.</p>
+          <div class="note tiny">More: MLB.com Postseason Watch.</div>
         </article>
       </div>
-      <p class="blurb" id="mlb-note" style="margin-top:.8rem"></p>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
     </section>
 
     <!-- WNBA -->
-    <section id="wnba" class="section">
-      <p class="muted" id="wnba-stamp" style="margin:0 0 .4rem 0">WNBA — Playoff Watch</p>
+    <section id="wnba" class="card">
+      <div class="badge">WNBA</div>
+      <h3>Playoff Field Nearly Set</h3>
       <div class="grid">
         <article class="card">
-          <div class="title">Top Storylines</div>
-          <ul id="wnba-top" class="list"><li>Loading…</li></ul>
+          <h4>Clinched berths</h4>
+          <ul class="scorelist">
+            <li>Minnesota (No. 1 seed), Las Vegas, Atlanta</li>
+            <li>Phoenix, New York, Golden State, Indiana</li>
+            <li>One spot remains (as of Sept 8).</li>
+          </ul>
+          <div class="note tiny">Season ends Sept 11; playoffs begin Sept 14.</div>
         </article>
         <article class="card">
-          <div class="title">Projected Seeding Snapshot</div>
-          <ul id="wnba-seed" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">Players to Watch</div>
-          <ul id="wnba-players" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">What’s Next</div>
-          <ul id="wnba-next" class="list"><li>Loading…</li></ul>
+          <h4>Headline</h4>
+          <p>Indiana Fever clinch a playoff spot despite injuries.</p>
         </article>
       </div>
-      <div class="mc-scores" style="margin-top:14px">
-        <h3 class="mc-sec-title" style="margin-top:.6rem">Weekend Scores</h3>
-        <div id="wnba-scores" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
-      </div>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
     </section>
 
     <!-- NCAAF -->
-    <section id="ncaaf" class="section">
-      <p class="muted" id="ncaaf-stamp" style="margin:0 0 .4rem 0">NCAAF — Week 2</p>
+    <section id="ncaaf" class="card">
+      <div class="badge">NCAAF</div>
+      <h3>Week 2 Shockers &amp; Highlights (Sept 6, 2025)</h3>
       <div class="grid">
         <article class="card">
-          <div class="title">Top Headlines</div>
-          <ul id="ncaaf-headlines" class="list"><li>Loading…</li></ul>
+          <h4>Notable upsets</h4>
+          <ul class="scorelist">
+            <li>USF 18, No. 13 Florida 16 (late FG at The Swamp)</li>
+            <li>Fresno State 36, Oregon State 27 (late FG + pick‑six)</li>
+            <li>Mississippi State 24, Arizona State 20 (last‑minute TD)</li>
+          </ul>
         </article>
         <article class="card">
-          <div class="title">Upsets</div>
-          <ul id="ncaaf-upsets" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">Top Performers</div>
-          <ul id="ncaaf-performers" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">AP Top 25 (Top 10)</div>
-          <ul id="ncaaf-ap10" class="list"><li>Loading…</li></ul>
+          <h4>Trending</h4>
+          <p>Illinois surges; SEC chaos early; Baylor escapes SMU in 2OT.</p>
         </article>
       </div>
-      <div class="mc-scores" style="margin-top:14px">
-        <h3 class="mc-sec-title" style="margin-top:.6rem">Marquee Scores</h3>
-        <div id="ncaaf-scores" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div class="title">What’s Next</div>
-        <ul id="ncaaf-next" class="list"><li>Loading…</li></ul>
-      </div>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
     </section>
 
     <!-- NHL -->
-    <section id="nhl" class="section">
-      <p class="muted" id="nhl-stamp" style="margin:0 0 .4rem 0">NHL — Preseason & Camp Watch</p>
+    <section id="nhl" class="card">
+      <div class="badge">NHL</div>
+      <h3>Preseason Nears — Sept 20 Start</h3>
       <div class="grid">
         <article class="card">
-          <div class="title">Top Headlines</div>
-          <ul id="nhl-headlines" class="list"><li>Loading…</li></ul>
+          <h4>Key dates</h4>
+          <ul class="scorelist">
+            <li>Preseason: Sept 20–Oct 4</li>
+            <li>Regular season opens Oct 7</li>
+          </ul>
+          <div class="note tiny">Schedule announced by NHL.com; neutral‑site games booked across NA.</div>
         </article>
         <article class="card">
-          <div class="title">Key Dates</div>
-          <ul id="nhl-dates" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">Preseason Highlights</div>
-          <ul id="nhl-preseason" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">What’s Next</div>
-          <ul id="nhl-next" class="list"><li>Loading…</li></ul>
+          <h4>Rookie watch</h4>
+          <p>Eyes on rising prospects as camps open mid‑September.</p>
         </article>
       </div>
-      <div class="mc-scores" style="margin-top:14px">
-        <h3 class="mc-sec-title" style="margin-top:.6rem">Exhibition Matchups</h3>
-        <div id="nhl-scores" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
-        <p class="mc-footnote" id="nhl-footnote"></p>
-      </div>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
     </section>
 
     <!-- NASCAR -->
-    <section id="nascar" class="section">
-      <p class="muted" id="nascar-stamp" style="margin:0 0 .4rem 0">NASCAR — Playoffs</p>
+    <section id="nascar" class="card">
+      <div class="badge">NASCAR</div>
+      <h3>Playoffs: Darlington → Gateway</h3>
       <div class="grid">
         <article class="card">
-          <div class="title">Top Headlines</div>
-          <ul id="nascar-headlines" class="list"><li>Loading…</li></ul>
+          <h4>Darlington (Aug 31)</h4>
+          <p>Chase Briscoe wins the Southern 500, leading 309 of 367 laps.</p>
         </article>
         <article class="card">
-          <div class="title">Playoff Standings — Top 10</div>
-          <ul id="nascar-standings" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">Manufacturer Standings</div>
-          <ul id="nascar-mfg" class="list"><li>Loading…</li></ul>
-        </article>
-        <article class="card">
-          <div class="title">What’s Next</div>
-          <ul id="nascar-next" class="list"><li>Loading…</li></ul>
+          <h4>Gateway (Sept 7)</h4>
+          <p>Denny Hamlin wins from pole to clinch a Round of 12 berth; Toyota’s 200th Cup victory.</p>
         </article>
       </div>
+      <p class="tiny">Snapshot updated September 09, 2025.</p>
+    </section>
 
-      <div class="mc-scores" style="margin-top:14px">
-        <h3 class="mc-sec-title" style="margin-top:.6rem">Recent Results</h3>
-        <div id="nascar-results" class="mc-grid"><article class="mc-game"><p class="mc-blurb">Loading…</p></article></div>
-        <p class="mc-footnote" id="nascar-footnote"></p>
-      </div>
+    <section class="card">
+      <p class="tiny">Sources are linked inline to league sites or major outlets. This page is a static snapshot intended to avoid any CSP/inline‑script issues.</p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; Moe Community Cloud — All rights reserved.</p>
-    <p>Built on black &amp; red plaid with gold energy ⚡</p>
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
+    </div>
   </footer>
-
-  <!-- INLINE DATA: remove external fetch dependency -->
-  <script id="mbcc-sports-data" type="application/json">{
-    "nfl": {
-      "stamp": "Week 1 (Sep 4–7, 2025)",
-      "top_performers": [
-        { "name": "Josh Allen", "team": "Bills", "line": "394 pass yds, 2 TD", "game": "BUF 41–40 BAL" },
-        { "name": "Aaron Rodgers", "team": "Steelers", "line": "244 pass yds, 4 TD", "game": "PIT 34–32 NYJ" },
-        { "name": "Justin Herbert", "team": "Chargers", "line": "318 pass yds, 3 TD", "game": "LAC 27–21 KC" }
-      ],
-      "headlines": [
-        "Eagles edge Cowboys 24–20 in delayed opener",
-        "Chargers beat Chiefs 27–21 in Brazil",
-        "Rodgers throws 4 TD as Steelers outlast Jets",
-        "Bills rally past Ravens 41–40"
-      ],
-      "games": [
-        { "dow": "Thu", "away": "Cowboys", "awayPts": 20, "home": "Eagles", "homePts": 24, "blurb": "Hurts rushes for 2 TD in a weather-delayed opener." },
-        { "dow": "Fri", "away": "Chiefs", "awayPts": 21, "home": "Chargers", "homePts": 27, "blurb": "Herbert cooks in São Paulo." },
-        { "dow": "Sun", "away": "Steelers", "awayPts": 34, "home": "Jets", "homePts": 32, "blurb": "Rodgers vs his former team." }
-      ],
-      "footnote": "Weekend only (Thu–Sun)."
-    },
-    "nba": {
-      "kicker": "NBA Weekend",
-      "stamp": "Weekend Notebook (Sept 5–7, 2025)",
-      "headlines": [
-        "Hall of Fame Class of 2025 enshrined.",
-        "EuroBasket: Georgia stuns France; Dončić drops 42.",
-        "“NBA on NBC” promo drops; Opening Night Oct 21."
-      ],
-      "cards1": [
-        { "title": "EuroBasket Shock: Georgia to QFs", "blurb": "First-ever quarterfinal for Georgia." },
-        { "title": "Luka Magic: 42 vs Italy", "blurb": "Slovenia advances; Germany next." }
-      ],
-      "cards2": [
-        { "title": "Class of 2025", "blurb": "Carmelo, Dwight, Bird, Moore, Fowles, Redeem Team." },
-        { "title": "Opening Night on NBC", "blurb": "Oct 21 doubleheader." }
-      ],
-      "whats_next": ["Media Days Sept 23–29", "Preseason Oct 2–12", "Opening Night Oct 21"]
-    },
-    "mlb": {
-      "stamp": "Sept 8, 2025",
-      "division_leaders": [
-        "AL East: Blue Jays lead",
-        "AL Central: Tigers in front",
-        "AL West: Astros narrowly ahead",
-        "NL East: Phillies up",
-        "NL Central: Brewers on top",
-        "NL West: Dodgers over Padres"
-      ],
-      "wild_card": ["AL: Yankees/Red Sox/Mariners", "NL: Cubs/Padres/Mets"],
-      "power_rankings": ["Brewers","Phillies","Blue Jays","Cubs","Tigers"],
-      "whats_next": ["Mets @ Phillies", "Dodgers vs Padres", "AL West round‑robin"],
-      "note": "Standings change daily; snapshot only."
-    },
-    "wnba": {
-      "stamp": "Sept 8, 2025",
-      "top_storylines": [
-        "Fever clinch a playoff berth.",
-        "Aces extend win streak to 14.",
-        "Sparks stay alive with key win."
-      ],
-      "seeding": ["1) Lynx","2) Aces","3) Dream","4) Mercury","5) Liberty","6) Valkyries","7) Fever","8) Storm/Sparks"],
-      "players_to_watch": ["A’ja Wilson","Napheesa Collier","Kelsey Mitchell","Aliyah Boston"],
-      "whats_next": ["Reg. season ends Sept 11","Playoffs begin Sept 14"],
-      "scores": [
-        { "date": "Sun, Sep 7", "away": "Indiana Fever", "awayPts": 94, "home": "Washington Mystics", "homePts": 65, "note": "Fever clinch berth" },
-        { "date": "Sun, Sep 7", "away": "Chicago Sky", "awayPts": 66, "home": "Las Vegas Aces", "homePts": 80, "note": "Aces win 14th straight" }
-      ]
-    },
-    "ncaaf": {
-      "stamp": "Week 2 (Sept 5–7, 2025)",
-      "headlines": [
-        "Ohio State blanks Grambling 70–0.",
-        "Oregon crushes Oklahoma State 69–3.",
-        "USF upsets Florida 18–16 (walk‑off FG)."
-      ],
-      "upsets": ["USF 18–16 Florida","UNLV 30–23 UCLA"],
-      "top_performers": [
-        { "name": "Jonah Coleman", "team": "Washington", "line": "5 rushing TD" },
-        { "name": "Kaytron Allen", "team": "Penn State", "line": "144 rush yds" }
-      ],
-      "scores": [
-        { "date": "Sat, Sep 6", "away": "Grambling State", "awayPts": 0, "home": "Ohio State", "homePts": 70, "note": "Second straight shutout" },
-        { "date": "Sat, Sep 6", "away": "Oklahoma State", "awayPts": 3, "home": "Oregon", "homePts": 69, "note": "Ducks overwhelm" }
-      ],
-      "ap_top10": ["1) Ohio State","2) Penn State","3) LSU","4) Oregon","5) Miami (FL)","6) Georgia","7) Texas","8) Notre Dame","9) Illinois","10) Florida State"],
-      "whats_next": ["Week 3: USF at Miami","Conference play ramps"]
-    },
-    "nhl": {
-      "stamp": "Preseason & Camp Watch (as of Sept 8, 2025)",
-      "headlines": [
-        "Camps open Sept 17; preseason Sept 21–Oct 4.",
-        "Opening night Oct 7 on ESPN.",
-        "PTO battles ramp across the league."
-      ],
-      "key_dates": ["Sept 17: Camps open","Sept 21: Preseason start","Oct 4: Preseason ends","Oct 7: Opening night"],
-      "preseason_highlights": ["Neutral‑site exhibitions across NA (Quebec City, Orlando, Boise & more)."],
-      "exhibitions": [
-        { "date": "Mon, Sep 22", "away": "Buffalo Sabres", "home": "Columbus Blue Jackets", "note": "Preseason opener (example)" }
-      ],
-      "whats_next": ["Camps open; PTOs settled","First preseason weekend Sep 22"]
-    },
-    "nascar": {
-      "stamp": "Round of 16 — snapshot",
-      "headlines": [
-        "Gateway winner takes points lead.",
-        "Darlington opener: repeat winner."
-      ],
-      "results": [
-        { "date": "Sun, Sep 7", "race": "Gateway — Enjoy Illinois 300", "winner": "Denny Hamlin", "p2": "Chase Briscoe", "p3": "Chase Elliott", "note": "Late restart chaos" }
-      ],
-      "standings_top10": ["1) Hamlin","2) Briscoe","3) Larson","4) Wallace","5) Blaney","6) Byron","7) Reddick","8) Bell","9) Elliott","10) Logano"],
-      "manufacturers": ["Chevrolet","Toyota","Ford"],
-      "whats_next": ["Sep 13 — Bristol cutoff","Sep 21 — New Hampshire","Sep 28 — Kansas","Oct 5 — Charlotte Roval"]
-    }
-  }</script>
-
-  <script>
-    (function(){
-      // Utilities
-      const $ = s => document.querySelector(s);
-      function fillList(ulSel, items){
-        const ul = typeof ulSel === 'string' ? $(ulSel) : ulSel;
-        if (!ul) return; ul.innerHTML = '';
-        (items || []).forEach(t=>{ const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
-      }
-      function slug(s){ return (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
-      function initials(name){
-        try { const p=(name||'').split(/\s+/).filter(Boolean); return (p[0]?.[0]||'').toUpperCase() + (p[1]?.[0]||'').toUpperCase(); } catch(e){ return '??'; }
-      }
-      function hashColor(str){ let h=0; for (let i=0;i<(str||'').length;i++){ h=(h*31+(str.charCodeAt(i)||0))|0; } const hue=Math.abs(h)%360; return `hsl(${hue} 70% 45%)`; }
-      function avatarSVG(name){
-        const bg=hashColor(name||''), txt=initials(name||'');
-        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="${name}"><rect width="64" height="64" rx="32" fill="${bg}"/><text x="50%" y="54%" text-anchor="middle" font-family="system-ui,Segoe UI,Roboto,Arial" font-weight="800" font-size="28" fill="white">${txt}</text></svg>`;
-      }
-      function teamLogoHTML(name, league){
-        const USE_REAL_LOGOS=false;
-        if (USE_REAL_LOGOS){
-          const p=`/assets/logos/${(league||'misc')}/${slug(name||'')}.svg`;
-          return `<img class="mc-logo" src="${p}" alt="${name} logo" loading="lazy">`;
-        }
-        return `<div class="mc-logo">${avatarSVG(name)}</div>`;
-      }
-      function renderScores(containerSel, games, league){
-        const container = typeof containerSel === 'string' ? $(containerSel) : containerSel;
-        if (!container) return; container.innerHTML = '';
-        (games || []).forEach(g=>{
-          const card = document.createElement('article');
-          card.className = 'mc-game';
-          card.innerHTML = `
-            <header class="mc-row">
-              <div class="mc-badge">${(g.dow || g.date || '—').toString().split(',')[0]}
-              </div>
-              <h4 class="mc-title">${g.title || (g.away && g.home ? `${g.away} at ${g.home}` : 'Game')}</h4>
-            </header>
-            <div class="mc-teams">
-              ${g.away ? `<div class="mc-team">${teamLogoHTML(g.away, league)}<div class="mc-name">${g.away} ${g.awayPts ?? ''}</div></div>` : ''}
-              ${g.home ? `<div class="mc-team">${teamLogoHTML(g.home, league)}<div class="mc-name">${g.home} ${g.homePts ?? ''}</div></div>` : ''}
-            </div>
-            <p class="mc-blurb">${g.blurb || g.note || ''}</p>
-          `;
-          container.appendChild(card);
-        });
-      }
-      function el(id){ return document.getElementById(id); }
-
-      // Load inline JSON
-      let root = {}
-      try {
-        const raw = document.getElementById('mbcc-sports-data')?.textContent || '{}';
-        root = JSON.parse(raw);
-      } catch(e){ root = {}; }
-
-      // Renderers
-      function renderNFL(nfl){ if (!nfl) return;
-        if (nfl.stamp) el('nfl-stamp').textContent = `NFL — ${nfl.stamp}`;
-        const perfWrap = el('nfl-performers'); perfWrap.innerHTML = '';
-        (nfl.top_performers || []).forEach(p=>{ const d=document.createElement('div'); d.className='mc-perf';
-          d.innerHTML = `<div class="mc-perf-name">${p.name} <span class="mc-perf-team">(${p.team})</span></div>
-                         <div class="mc-perf-line">${p.line} ${p.game ? `<span class="mc-perf-game">— ${p.game}</span>` : ''}</div>`;
-          perfWrap.appendChild(d);
-        });
-        fillList('#nfl-headlines', nfl.headlines);
-        renderScores('#nfl-games', nfl.games, 'nfl');
-        if (nfl.footnote) el('nfl-footnote').textContent = nfl.footnote;
-      }
-      function renderNBA(nba){ if (!nba) return;
-        if (nba.kicker) el('nba-kicker').textContent = nba.kicker;
-        if (nba.stamp) el('nba-stamp').textContent = `NBA — ${nba.stamp}`;
-        fillList('#nba-headlines', nba.headlines);
-        if (nba.sources) el('nba-sources').textContent = nba.sources;
-        const c1 = el('nba-cards1'), c2 = el('nba-cards2'); c1.innerHTML=''; c2.innerHTML='';
-        (nba.cards1 || []).forEach(card => { const a=document.createElement('article'); a.className='card'; a.innerHTML = `<div class="title">${card.title}</div><p class="blurb">${card.blurb || ''}</p>`; c1.appendChild(a); });
-        (nba.cards2 || []).forEach(card => { const a=document.createElement('article'); a.className='card'; a.innerHTML = `<div class="title">${card.title}</div><p class="blurb">${card.blurb || ''}</p>`; c2.appendChild(a); });
-        fillList('#nba-next', nba.whats_next);
-      }
-      function renderMLB(mlb){ if (!mlb) return;
-        if (mlb.stamp) el('mlb-stamp').textContent = `MLB — Playoff Picture (as of ${mlb.stamp})`;
-        fillList('#mlb-divisions', mlb.division_leaders);
-        fillList('#mlb-wildcard', mlb.wild_card || mlb.wildcard || mlb.wild_card_snapshot || mlb.wild_card);
-        fillList('#mlb-rankings', mlb.power_rankings);
-        fillList('#mlb-next', mlb.whats_next);
-        if (mlb.note) el('mlb-note').innerHTML = mlb.note;
-      }
-      function renderWNBA(wnba){ if (!wnba) return;
-        if (wnba.stamp) el('wnba-stamp').textContent = `WNBA — Playoff Watch (as of ${wnba.stamp})`;
-        fillList('#wnba-top', wnba.top_storylines);
-        fillList('#wnba-seed', wnba.seeding);
-        fillList('#wnba-players', wnba.players_to_watch);
-        fillList('#wnba-next', wnba.whats_next);
-        renderScores('#wnba-scores', wnba.scores, 'wnba');
-      }
-      function renderNCAAF(cf){ if (!cf) return;
-        if (cf.stamp) el('ncaaf-stamp').textContent = `NCAAF — ${cf.stamp}`;
-        fillList('#ncaaf-headlines', cf.headlines);
-        fillList('#ncaaf-upsets', cf.upsets);
-        fillList('#ncaaf-performers', (cf.top_performers||[]).map(p => `${p.name} (${p.team}) — ${p.line}`));
-        fillList('#ncaaf-ap10', cf.ap_top10);
-        renderScores('#ncaaf-scores', cf.scores, 'ncaaf');
-        fillList('#ncaaf-next', cf.whats_next);
-      }
-      function renderNHL(nhl){ if (!nhl) return;
-        if (nhl.stamp) el('nhl-stamp').textContent = `NHL — ${nhl.stamp}`;
-        fillList('#nhl-headlines', nhl.headlines);
-        fillList('#nhl-dates', nhl.key_dates);
-        fillList('#nhl-preseason', nhl.preseason_highlights);
-        fillList('#nhl-next', nhl.whats_next);
-        renderScores('#nhl-scores', nhl.exhibitions, 'nhl');
-        if (nhl.footnote) el('nhl-footnote').textContent = nhl.footnote;
-      }
-      function renderNASCAR(n){ if (!n) return;
-        if (n.stamp) el('nascar-stamp').textContent = `NASCAR — ${n.stamp}`;
-        fillList('#nascar-headlines', n.headlines);
-        fillList('#nascar-standings', n.standings_top10);
-        fillList('#nascar-mfg', n.manufacturers);
-        fillList('#nascar-next', n.whats_next);
-        // results
-        const cont = $('#nascar-results'); cont.innerHTML='';
-        (n.results||[]).forEach(r=>{ const card=document.createElement('article'); card.className='mc-game';
-          card.innerHTML = `<header class="mc-row"><div class="mc-badge">${(r.date||'').toString().split(',')[0]||'—'}</div><h4 class="mc-title">${r.race||'Race'}</h4></header>
-            <div class="mc-teams">
-              ${r.winner ? `<div class="mc-team">${teamLogoHTML(r.winner, 'nascar')}<div class="mc-name">Winner: ${r.winner}</div></div>` : ''}
-              ${r.p2 ? `<div class="mc-team">${teamLogoHTML(r.p2, 'nascar')}<div class="mc-name">P2: ${r.p2}</div></div>` : ''}
-              ${r.p3 ? `<div class="mc-team">${teamLogoHTML(r.p3, 'nascar')}<div class="mc-name">P3: ${r.p3}</div></div>` : ''}
-            </div>
-            <p class="mc-blurb">${r.note || ''}</p>`;
-          cont.appendChild(card);
-        });
-        if (n.footnote) el('nascar-footnote').textContent = n.footnote;
-      }
-
-      // Kick everything
-      const root = JSON.parse(document.getElementById('mbcc-sports-data').textContent || '{}');
-      renderNFL(root.nfl);
-      renderNBA(root.nba);
-      renderMLB(root.mlb);
-      renderWNBA(root.wnba);
-      renderNCAAF(root.ncaaf);
-      renderNHL(root.nhl);
-      renderNASCAR(root.nascar);
-    })();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

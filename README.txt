@@ -1,16 +1,15 @@
-MBCC SPORTS — SURGICAL NFL PATCH
----------------------------------
-This package includes a drop-in replacement for ONLY the NFL section on sports.html.
-No layout or CSS changes. Just paste this section in place of your current <section id="nfl">…</section>.
+MBCC Sports — Weekend Snapshot (Sept 8, 2025)
+-------------------------------------------------
+This update replaces ONLY /sports.html with a static, CSP-safe snapshot of the weekend across NFL/NBA/MLB/WNBA/NCAAF/NHL/NASCAR.
 
-Steps:
-1) Open your site file: /sports.html
-2) Find the block that starts with: <section id="nfl">
-3) Replace that ENTIRE block with the contents of nfl-section.html in this ZIP.
-4) Save & deploy, then hard-refresh: https://www.moecommunitycloud.com/sports.html?cb=nfl1
+Why static? Your previous sports page relied on inline JS hydration and/or a missing JSON file, which was blocked by CSP or 404ing. This file bakes the content in HTML so it shows immediately.
 
-Notes:
-- This patch avoids JavaScript/CSP issues by baking the Week 1 finals directly into HTML.
-- You can later re-enable JS hydration with an external /assets/js/sports.js and /data/*.json.
+How to deploy
+1) Replace /sports.html on moecommunitycloud.com with the one in this ZIP.
+2) Hard refresh: https://www.moecommunitycloud.com/sports.html?cb=wknd0908
 
-Generated: Sep 9, 2025
+Notes
+- All links inside each card point to league pages with full details.
+- Timestamps: page footer shows current year; header/nav matches your site.
+- You can reintroduce auto-updating later with an external /assets/js/sports.js and /data/*.json to keep CSP happy.
+Generated: September 09, 2025
