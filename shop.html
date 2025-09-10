@@ -3,49 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Moe Bucks Deals — MBCC</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --mbcc-gold:#D4AF37; --mbcc-red:#C81E1E; }
-    body{ margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#0a0a0a; color:#fff;}
-    header{ padding:16px 20px; border-bottom:2px solid var(--mbcc-red);}
-    nav a{ color:#fff; text-decoration:none; margin-right:18px; font-weight:700 }
-    nav a:hover{ color:var(--mbcc-gold) }
-    .wrap{ max-width:1200px; margin:0 auto; padding:24px 20px; }
-    h1{ font-size:2.2rem; margin:12px 0 18px }
-    #shop{ min-height:80vh; background:transparent }
-    .loading{ color:var(--mbcc-gold); opacity:.9 }
-  </style>
+  <title>Shop — MBCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mbcc.css">
+  
 </head>
 <body>
   <header>
-    <nav class="wrap">
+    <nav class="nav">
       <a href="/index.html">Home</a>
-      <a href="/apps.html">Apps</a>
-      <a href="/news.html">News</a>
+      <a href="/apps.html" aria-current="page">Apps</a>
       <a href="/sports.html">Sports</a>
       <a href="/newsletter.html">Newsletter</a>
-      <a href="/shop.html" aria-current="page">Shop</a>
+      <a href="/shop.html">Shop</a>
     </nav>
   </header>
+  <main>
+    
+<h1>🛍️ Moe Bucks Deals</h1>
+<div id="shop" class="section" style="min-height:70vh;background:transparent">Spreadshop loading…</div>
+<script>
+window.spread_shop_config = {
+  shopName: 'moe-bucks',
+  prefix: 'https://moe-bucks.myspreadshop.com',
+  baseId: 'shop',
+  locale: 'en_US',
+  updateMetadata: false
+};
+</script>
+<script src="https://moe-bucks.myspreadshop.com/js/shopclient.nocache.js" defer></script>
 
-  <main class="wrap">
-    <h1>🛍️ Moe Bucks Deals</h1>
-    <div id="shop" class="loading">Spreadshop loading…</div>
+    <div class="footer">© MBCC • Light • Energy • Frequency</div>
   </main>
-
-  <script>
-    /* Spreadshop embed config (official) */
-    window.spread_shop_config = {
-      shopName: 'moe-bucks',
-      prefix: 'https://moe-bucks.myspreadshop.com',
-      baseId: 'shop',
-      locale: 'en_US',
-      updateMetadata: false,     // keep your page <title>/SEO stable
-      // Optional: startToken: 'men+t-shirts'  // open a category by default
-    };
-  </script>
-  <script src="https://moe-bucks.myspreadshop.com/js/shopclient.nocache.js" defer></script>
+  <div class="plaid"></div>
+  <script src="assets/mbcc.js"></script>
 </body>
 </html>

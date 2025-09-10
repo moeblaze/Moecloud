@@ -1,27 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Quantum Spiral Woman (QSW) — Moe Community Cloud</title>
-  <meta name="description" content="Quantum Spiral Woman (QSW) — Moe Community Cloud — Moe Community Cloud">
-  <link rel="stylesheet" href="assets/style.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
-  <script defer src="assets/js/adsense-init.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QSW — Quantum Spiral Woman — MBCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mbcc.css">
+  
 </head>
 <body>
-  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Quantum Spiral Woman (QSW)</h1></div>
-  <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
-  <main class="container"><div class="card"><div class="badge">Quantum Spiral Woman (QSW)</div><p>Open the latest version of Quantum Spiral Woman (QSW).</p></div></main>
-  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8387411349417007"
-     data-ad-slot="6461821120"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section>
-  <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <header>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/newsletter.html">Newsletter</a>
+      <a href="/shop.html">Shop</a>
+    </nav>
+  </header>
+  <main>
+    
+<h1>QSW — Quantum Spiral Woman Assessment</h1>
+<div class="section">
+  <div class="row">
+    <div>
+      <label>Focus Area</label>
+      <select id="focus">
+        <option>Clarity</option>
+        <option>Confidence</option>
+        <option>Wellness</option>
+        <option>Career</option>
+        <option>Wealth</option>
+      </select>
+    </div>
+    <div>
+      <label>Calm Level (1–10)</label>
+      <input id="calm" type="number" min="1" max="10" value="7">
+    </div>
+  </div>
+  <label>Top 3 Goals</label>
+  <textarea id="goals" placeholder="- Goal 1
+- Goal 2
+- Goal 3"></textarea>
+  <label>Biggest Constraint</label>
+  <textarea id="block" placeholder="What’s blocking your energy?"></textarea>
+  <div class="actions">
+    <button class="btn" onclick="buildPlan()">Generate Plan</button>
+    <button class="btn" onclick="downloadPlan()">Download .txt</button>
+    <button class="btn" onclick="copyPlan()">Copy</button>
+  </div>
+</div>
+<div class="section">
+  <label>Your Plan</label>
+  <textarea id="plan" placeholder="Your QSW plan will appear here…"></textarea>
+</div>
+<script>
+function buildPlan(){
+  const focus=$id('focus').value, calm=+$id('calm').value||5;
+  const goals=$id('goals').value.trim().split(/\n+/).filter(Boolean);
+  const block=$id('block').value.trim();
+  const actions={
+    Clarity:['15‑min morning clarity','Evening 3‑line journal','Weekly clarity walk'],
+    Confidence:['One brave outreach','Post one insight','Daily self‑talk reset'],
+    Wellness:['20‑min movement','Whole‑food dinner','7‑hour sleep gate'],
+    Career:['Ship one task','30‑min learning','Network 1 person'],
+    Wealth:['Track cashflow','Automate 10% save','Ship a micro‑offer']
+  };
+  const picks=actions[focus]||actions.Clarity;
+  const plan=[
+    `FOCUS: ${focus}`,
+    `CALM: ${calm}/10`,
+    `GOALS:\n- ${goals.join('\n- ')||'Set three goals'}`,
+    `CONSTRAINT: ${block||'None provided'}`,
+    `ACTIONS:`,
+    `- Daily: ${picks[0]}`,
+    `- Weekly: ${picks[1]}`,
+    `- Monthly: ${picks[2]}`,
+    `RHYTHM: 7‑day streaks → 4‑week cycles → 12‑month arc.`
+  ].join('\n\n');
+  $id('plan').value=plan;
+}
+function downloadPlan(){ downloadFile('qsw-plan.txt', $id('plan').value||''); }
+function copyPlan(){ copyText($id('plan')); }
+</script>
+
+    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+  </main>
+  <div class="plaid"></div>
+  <script src="assets/mbcc.js"></script>
 </body>
 </html>

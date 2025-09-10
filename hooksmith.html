@@ -1,27 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Cold‑Open Hooksmith — Moe Community Cloud</title>
-  <meta name="description" content="Cold‑Open Hooksmith — Moe Community Cloud — Moe Community Cloud">
-  <link rel="stylesheet" href="assets/style.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8387411349417007" crossorigin="anonymous"></script>
-  <script defer src="assets/js/adsense-init.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hooksmith — MBCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mbcc.css">
+  
 </head>
 <body>
-  <header class="header"><div class="container header-row"><div class="brand"><div class="logo"></div><h1>Cold‑Open Hooksmith</h1></div>
-  <nav class="nav"><a href="index.html">Home</a><a href="apps.html">Apps</a></nav></div></header>
-  <main class="container"><div class="card"><div class="badge">Cold‑Open Hooksmith</div><p>Open the latest version of Cold‑Open Hooksmith.</p></div></main>
-  <section class="container" aria-label="sponsored"><!-- Moecommunitycloud -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8387411349417007"
-     data-ad-slot="6461821120"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></section>
-  <footer class="footer"><div class="container"><div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div></div></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <header>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/newsletter.html">Newsletter</a>
+      <a href="/shop.html">Shop</a>
+    </nav>
+  </header>
+  <main>
+    
+<h1>Hooksmith</h1>
+<div class="section">
+  <div class="row">
+    <div>
+      <label>Topic / Offer</label>
+      <input id="topic" type="text" placeholder="NBA picks tonight / credit repair / healing frequencies">
+    </div>
+    <div>
+      <label>Platform</label>
+      <select id="platform">
+        <option>YouTube</option>
+        <option>Instagram Reels</option>
+        <option>TikTok</option>
+        <option>X (Twitter)</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <label>Persona</label>
+      <select id="persona">
+        <option>Coach</option>
+        <option>Analyst</option>
+        <option>Hype</option>
+        <option>Professor</option>
+      </select>
+    </div>
+    <div>
+      <label>Tone</label>
+      <select id="tone">
+        <option>Bold</option>
+        <option>Funny</option>
+        <option>Serious</option>
+        <option>Spiritual</option>
+      </select>
+    </div>
+  </div>
+  <label>Call to Action</label>
+  <input id="cta" type="text" placeholder="Join free, link in bio / Grab the free guide / Tap Shop">
+  <div class="actions">
+    <button class="btn" onclick="genHooks()">Generate Hooks</button>
+    <button class="btn" onclick="downloadHooks()">Download .txt</button>
+    <button class="btn" onclick="copyHooks()">Copy</button>
+  </div>
+</div>
+<div class="section">
+  <label>Hooks</label>
+  <textarea id="out" placeholder="Your hooks will appear here…"></textarea>
+</div>
+<script>
+const patterns = [
+  "{topic}: The truth they won’t tell you 🔥",
+  "Stop scrolling. {topic} in 30 seconds.",
+  "If you do {topic} like this, you’re losing…",
+  "I tried {topic} so you don’t have to.",
+  "POV: You need {topic} yesterday.",
+  "{topic} — the 3‑step fix.",
+  "Everyone’s wrong about {topic}. Here’s why.",
+  "No fluff. {topic}. Let’s go.",
+  "{persona} mode: {topic}.",
+  "{tone} take: {topic}.",
+  "{topic}? Screenshot this and save it.",
+  "Do this before {topic}.",
+  "{topic} myths, destroyed.",
+  "Day 1 of fixing {topic}.",
+  "Bet you didn’t know this about {topic}…",
+  "PSA: {topic}. {cta}"
+];
+function genHooks(){
+  const topic=$id('topic').value||'your topic';
+  const persona=$id('persona').value;
+  const tone=$id('tone').value;
+  const cta=$id('cta').value||'Link in bio';
+  const out = patterns.map(p=>p.replaceAll('{topic}',topic).replaceAll('{persona}',persona).replaceAll('{tone}',tone).replaceAll('{cta}',cta)).join('\n');
+  $id('out').value = out;
+}
+function downloadHooks(){ downloadFile('hooks.txt', $id('out').value||''); }
+function copyHooks(){ copyText($id('out')); }
+</script>
+
+    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+  </main>
+  <div class="plaid"></div>
+  <script src="assets/mbcc.js"></script>
 </body>
 </html>
