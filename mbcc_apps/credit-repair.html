@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Credit Repair Pro — MBCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mbcc.css">
+  
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/newsletter.html">Newsletter</a>
+      <a href="/shop.html">Shop</a>
+    </nav>
+  </header>
+  <main>
+    
+<h1>Credit Repair Pro</h1>
+<div class="section">
+  <div class="row">
+    <div>
+      <label>Your Full Name</label>
+      <input id="name" type="text" placeholder="Morris Stephens">
+    </div>
+    <div>
+      <label>Your Address</label>
+      <input id="addr" type="text" placeholder="1234 Main St, City, ST 12345">
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <label>Credit Bureau</label>
+      <select id="bureau">
+        <option>Experian</option>
+        <option>Equifax</option>
+        <option>TransUnion</option>
+      </select>
+    </div>
+    <div>
+      <label>Account / Creditor</label>
+      <input id="creditor" type="text" placeholder="ABC Collections, Acct #123456">
+    </div>
+  </div>
+  <label>Dispute Reason</label>
+  <select id="reason">
+    <option value="not_mine">This account is not mine</option>
+    <option value="inaccurate">Information is inaccurate (balance/limit/status)</option>
+    <option value="obsolete">Obsolete information (>7 years)</option>
+    <option value="identity_theft">Victim of identity theft</option>
+    <option value="paid">Account was paid/settled</option>
+  </select>
+
+  <label>Additional Details (optional)</label>
+  <textarea id="details" placeholder="Provide clarifying details, dates, communications…"></textarea>
+
+  <div class="actions">
+    <button class="btn" onclick="genLetter()">Generate Letter</button>
+    <button class="btn" onclick="downloadLetter()">Download .txt</button>
+    <button class="btn" onclick="copyLetter()">Copy</button>
+    <button class="btn" onclick="window.print()">Print</button>
+  </div>
+</div>
+
+<div class="section">
+  <label>Preview</label>
+  <textarea id="preview" placeholder="Your letter will appear here…"></textarea>
+  <p class="helper">This tool provides a general template; personalize as needed.</p>
+</div>
+
+<script>
+function letterTemplate(data){
+return `
+${data.name}
+${data.addr}
+
+{BUREAU_ADDRESS}
+
+{DATE}
+
+RE: Dispute of credit file information — {creditor}
+
+To Whom It May Concern:
+
+I am writing to dispute the following item in my credit file with {bureau}: {creditor}. The information is inaccurate/invalid for the following reason(s): {reason_text}. {extra}
+
+Under the Fair Credit Reporting Act (FCRA), I request an investigation and deletion or correction of this item. Please provide written confirmation of your findings and any documentation used in your verification.
+
+Sincerely,
+
+${data.name}
+`.trim();
+}
+
+function genLetter(){
+  const data = {
+    name:$id('name').value||'Your Name',
+    addr:$id('addr').value||'Your Address',
+    bureau:$id('bureau').value,
+    creditor:$id('creditor').value||'Creditor/Account',
+    reason:$id('reason').value,
+    details:$id('details').value.trim()
+  };
+  const map={
+    not_mine:'This account does not belong to me.',
+    inaccurate:'The reported details (balance/limit/status) are inaccurate.',
+    obsolete:'This information is obsolete and past the allowable reporting period.',
+    identity_theft:'I am a victim of identity theft; this item was opened/frauded without my authorization.',
+    paid:'This account has been paid/settled and is reported incorrectly.'
+  };
+  const extra = data.details? `Additional details: ${data.details}` : '';
+  let txt = letterTemplate({
+    ...data,
+    reason_text: map[data.reason],
+    extra
+  });
+  txt = txt.replace('{bureau}', data.bureau).replace('{creditor}', data.creditor);
+  $id('preview').value = txt;
+}
+function downloadLetter(){ downloadFile('credit-dispute-letter.txt', $id('preview').value||''); }
+function copyLetter(){ copyText($id('preview')); }
+</script>
+
+    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+  </main>
+  <div class="plaid"></div>
+  <script src="assets/mbcc.js"></script>
+</body>
+</html>

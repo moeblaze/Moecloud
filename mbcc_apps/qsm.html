@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QSM — Quantum Spiral Man — MBCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mbcc.css">
+  
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/newsletter.html">Newsletter</a>
+      <a href="/shop.html">Shop</a>
+    </nav>
+  </header>
+  <main>
+    
+<h1>QSM — Quantum Spiral Man Assessment</h1>
+<div class="section">
+  <div class="row">
+    <div>
+      <label>Focus Area</label>
+      <select id="focus">
+        <option>Discipline</option>
+        <option>Purpose</option>
+        <option>Leadership</option>
+        <option>Health</option>
+        <option>Wealth</option>
+      </select>
+    </div>
+    <div>
+      <label>Energy Level (1–10)</label>
+      <input id="energy" type="number" min="1" max="10" value="7">
+    </div>
+  </div>
+  <label>Top 3 Goals</label>
+  <textarea id="goals" placeholder="- Goal 1
+- Goal 2
+- Goal 3"></textarea>
+  <label>Biggest Constraint</label>
+  <textarea id="block" placeholder="What’s holding you back?"></textarea>
+  <div class="actions">
+    <button class="btn" onclick="buildPlan()">Generate Plan</button>
+    <button class="btn" onclick="downloadPlan()">Download .txt</button>
+    <button class="btn" onclick="copyPlan()">Copy</button>
+  </div>
+</div>
+<div class="section">
+  <label>Your Plan</label>
+  <textarea id="plan" placeholder="Your QSM plan will appear here…"></textarea>
+</div>
+<script>
+function buildPlan(){
+  const focus=$id('focus').value, energy=+$id('energy').value||5;
+  const goals=$id('goals').value.trim().split(/\n+/).filter(Boolean);
+  const block=$id('block').value.trim();
+  const tiers=['Daily','Weekly','Monthly'];
+  const actions={
+    Discipline:['90‑min deep work block','No phone first hour','Sleep at 10pm'],
+    Purpose:['Write 200 words of mission','Journal 10 mins','One mentor outreach'],
+    Leadership:['1:1 check‑in','Delegate one task','Lead a retro 15 min'],
+    Health:['30‑min training','10k steps','Protein target met'],
+    Wealth:['Track expenses','Invest $X DCA','Ship one product task']
+  };
+  const picks=actions[focus]||actions.Discipline;
+  const plan=[
+    `FOCUS: ${focus}`,
+    `ENERGY: ${energy}/10`,
+    `GOALS:\n- ${goals.join('\n- ')||'Set three goals'}`,
+    `CONSTRAINT: ${block||'None provided'}`,
+    `ACTIONS:`,
+    `- Daily: ${picks[0]}`,
+    `- Weekly: ${picks[1]}`,
+    `- Monthly: ${picks[2]}`,
+    `METRIC: 7‑day streaks → 4‑week cycles → 12‑month arc.`
+  ].join('\n\n');
+  $id('plan').value=plan;
+}
+function downloadPlan(){ downloadFile('qsm-plan.txt', $id('plan').value||''); }
+function copyPlan(){ copyText($id('plan')); }
+</script>
+
+    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+  </main>
+  <div class="plaid"></div>
+  <script src="assets/mbcc.js"></script>
+</body>
+</html>
