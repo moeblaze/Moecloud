@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Comment Coach — MBCC</title>
+  <title>Comment-Coach — MBCC</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/mbcc.css">
   
@@ -20,61 +20,8 @@
     </nav>
   </header>
   <main>
-    
-<h1>Comment Coach</h1>
-<div class="section">
-  <label>Paste your comment</label>
-  <textarea id="inp" placeholder="Paste your draft comment…"></textarea>
-  <div class="row">
-    <div>
-      <label>Platform</label>
-      <select id="platform">
-        <option>YouTube</option>
-        <option>Instagram</option>
-        <option>X (Twitter)</option>
-        <option>Facebook</option>
-      </select>
-    </div>
-    <div>
-      <label>Goal</label>
-      <select id="goal">
-        <option>Clear & Polite</option>
-        <option>Bold & Concise</option>
-        <option>Funny but Respectful</option>
-        <option>Spiritual & Centered</option>
-      </select>
-    </div>
-  </div>
-  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-    <button class="btn" onclick="polish()">Polish (3 variants)</button>
-    <button class="btn" onclick="copyText($id('out'))">Copy</button>
-    <button class="btn" onclick="downloadFile('comment-variants.txt',$id('out').value)">Download .txt</button>
-  </div>
-</div>
-<div class="section">
-  <label>Variants</label>
-  <textarea id="out" placeholder="Your polished variants will appear here…"></textarea>
-</div>
-<script>
-function polish(){
-  const t=($id('inp').value||'').trim();
-  const platform=$id('platform').value, goal=$id('goal').value;
-  if(!t) return alert('Paste a comment first');
-  const polite = `${t} — Appreciate the convo. Open to other views.`;
-  const bold   = `${t.split('.').shift()}. Here’s the takeaway in 1 line.`;
-  const funny  = `${t} (I brought snacks for the thread 🍿)`;
-  const spiritual = `${t} — Stay in the light, respond not from fear.`;
-  let v1=polite, v2=bold, v3=funny;
-  if(goal.includes('Bold')) { v1=bold; v2=polite; v3=funny; }
-  if(goal.includes('Funny')){ v1=funny; v2=polite; v3=bold; }
-  if(goal.includes('Spiritual')){ v1=spiritual; v2=polite; v3=bold; }
-  $id('out').value = [`[{platform}: {goal}]`.replace('{platform}',platform).replace('{goal}',goal), '', v1, '', v2, '', v3].join('\n');
-}
-</script>
-
-    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+    <h1>Comment Coach</h1><p>Use the restored bundle for full functionality.</p>
   </main>
-  <div class="plaid"></div>
   <script src="assets/mbcc.js"></script>
 </body>
 </html>

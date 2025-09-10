@@ -22,73 +22,500 @@
   <main>
     
 <h1>Quantum Spiral Man (QSM)</h1>
-<div class="section">
+
+<div class="stepper">
+  <div class="step active" id="s1">1) Questionnaire</div>
+  <div class="step" id="s2">2) Scores</div>
+  <div class="step" id="s3">3) 7‑Day Training</div>
+  <div class="step" id="s4">4) Progress & Export</div>
+</div>
+
+<div class="section" id="step1">
   <div class="row">
-    <div>
-      <label>Focus Area</label>
-      <select id="focus">
-        <option>Discipline</option>
-        <option>Purpose</option>
-        <option>Leadership</option>
-        <option>Health</option>
-        <option>Wealth</option>
-      </select>
-    </div>
-    <div>
-      <label>Energy Level (1–10)</label>
-      <input id="energy" type="number" min="1" max="10" value="7">
-    </div>
+    <div><label>Your Name (optional)</label><input id="name" type="text" placeholder="Your name"></div>
+    <div><label>Start Date</label><input id="start" type="date"></div>
   </div>
-  <label>Top 3 Goals</label>
-  <textarea id="goals" placeholder="- Goal 1
-- Goal 2
-- Goal 3"></textarea>
-  <label>Biggest Constraint</label>
-  <textarea id="block" placeholder="What’s holding you back?"></textarea>
-  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-    <button class="btn" onclick="buildPlan()">Generate Plan</button>
-    <button class="btn" onclick="downloadPlan()">Download .txt</button>
-    <button class="btn" onclick="copyPlan()">Copy</button>
+  <p class="helper">Rate each statement from 1 (not true) to 5 (very true). Be honest; this is for you.</p>
+  <h2>Discipline</h2>
+<div class='section'>
+
+<div class="row">
+  <div><label>I complete daily priorities without procrastination.</label></div>
+  <div>
+    <select id="discipline_1">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
   </div>
 </div>
-<div class="section">
-  <label>Your Plan</label>
-  <textarea id="plan" placeholder="Your QSM plan will appear here…"></textarea>
+<div class="row">
+  <div><label>My phone does not derail my focus blocks.</label></div>
+  <div>
+    <select id="discipline_2">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
 </div>
+<div class="row">
+  <div><label>I keep promises to myself consistently.</label></div>
+  <div>
+    <select id="discipline_3">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I wake up and sleep on a set rhythm.</label></div>
+  <div>
+    <select id="discipline_4">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I can say “no” to low‑value tasks.</label></div>
+  <div>
+    <select id="discipline_5">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+</div>
+<h2>Purpose</h2>
+<div class='section'>
+
+<div class="row">
+  <div><label>I have a written mission I review weekly.</label></div>
+  <div>
+    <select id="purpose_1">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>My weekly actions align with my purpose.</label></div>
+  <div>
+    <select id="purpose_2">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I can articulate why I’m doing what I’m doing.</label></div>
+  <div>
+    <select id="purpose_3">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I measure progress against purpose, not noise.</label></div>
+  <div>
+    <select id="purpose_4">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I feel energized by my path.</label></div>
+  <div>
+    <select id="purpose_5">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+</div>
+<h2>Leadership</h2>
+<div class='section'>
+
+<div class="row">
+  <div><label>I set clear expectations with others.</label></div>
+  <div>
+    <select id="leadership_1">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I delegate effectively and follow up.</label></div>
+  <div>
+    <select id="leadership_2">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I coach or mentor someone each week.</label></div>
+  <div>
+    <select id="leadership_3">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I handle conflict without avoiding it.</label></div>
+  <div>
+    <select id="leadership_4">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I celebrate team wins regularly.</label></div>
+  <div>
+    <select id="leadership_5">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+</div>
+<h2>Health</h2>
+<div class='section'>
+
+<div class="row">
+  <div><label>I train or move my body most days.</label></div>
+  <div>
+    <select id="health_1">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I prioritize sleep quality.</label></div>
+  <div>
+    <select id="health_2">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I hit a daily protein or nutrition target.</label></div>
+  <div>
+    <select id="health_3">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I hydrate and limit junk intake.</label></div>
+  <div>
+    <select id="health_4">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I manage stress with breath or walks.</label></div>
+  <div>
+    <select id="health_5">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+</div>
+<h2>Wealth</h2>
+<div class='section'>
+
+<div class="row">
+  <div><label>I track my expenses weekly.</label></div>
+  <div>
+    <select id="wealth_1">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I invest on an automated schedule.</label></div>
+  <div>
+    <select id="wealth_2">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I spend less than I earn.</label></div>
+  <div>
+    <select id="wealth_3">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I build/ship assets that can pay me.</label></div>
+  <div>
+    <select id="wealth_4">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div><label>I have an emergency buffer.</label></div>
+  <div>
+    <select id="wealth_5">
+      <option value="1">1 — Not true</option>
+      <option value="2">2</option>
+      <option value="3" selected>3 — Sometimes</option>
+      <option value="4">4</option>
+      <option value="5">5 — Very true</option>
+    </select>
+  </div>
+</div>
+</div>
+  <div class="actions">
+    <button class="btn" onclick="computeScores()">Continue → Scores</button>
+    <button class="btn" onclick="saveDraft()">Save Draft</button>
+    <button class="btn" onclick="resetAll()">Reset</button>
+  </div>
+</div>
+
+<div class="section" id="step2" style="display:none">
+  <h2>Domain Scores</h2>
+  <div class="chart brand-halo"><canvas id="scoreChart" style="width:100%;height:100%"></canvas></div>
+  <div id="scoreText" style="margin-top:10px"></div>
+  <div class="actions">
+    <button class="btn" onclick="buildPlan()">Build 7‑Day Training Plan</button>
+    <button class="btn" onclick="backTo(1)">← Back</button>
+  </div>
+</div>
+
+<div class="section" id="step3" style="display:none">
+  <h2>Your 7‑Day Training Plan</h2>
+  <p class="helper">We emphasize your lowest domains first. Each day shows 3 blocks: Morning • Midday • Evening.</p>
+  <div id="planDays"></div>
+  <h2 style="margin-top:16px">Training Library</h2>
+  <div class="row">
+
+  <div class="card">
+    <div class="title">Discipline — Core Blocks</div>
+    <ul><li>90‑min Deep Work</li><li>No‑Phone First Hour</li><li>Night Shutdown Routine</li></ul>
+  </div>
+
+  <div class="card">
+    <div class="title">Purpose — Core Blocks</div>
+    <ul><li>200‑word Mission Writing</li><li>10‑min Evening Journal</li><li>Weekly Alignment Review</li></ul>
+  </div>
+
+  <div class="card">
+    <div class="title">Leadership — Core Blocks</div>
+    <ul><li>Schedule 1:1</li><li>Delegate One Task Daily</li><li>15‑min Retro at Week End</li></ul>
+  </div>
+
+  <div class="card">
+    <div class="title">Health — Core Blocks</div>
+    <ul><li>30‑min Training</li><li>10k Steps</li><li>Protein Target</li></ul>
+  </div>
+
+  <div class="card">
+    <div class="title">Wealth — Core Blocks</div>
+    <ul><li>Track Cashflow</li><li>Automate DCA</li><li>Ship One Product Task</li></ul>
+  </div>
+</div>
+  <div class="actions" style="margin-top:12px">
+    <button class="btn" onclick="toProgress()">Start Tracking →</button>
+    <button class="btn" onclick="backTo(2)">← Back</button>
+  </div>
+</div>
+
+<div class="section" id="step4" style="display:none">
+  <h2>Progress Tracker</h2>
+  <div class="progress"><div id="pct"></div></div>
+  <div id="checklist" style="margin-top:12px"></div>
+  <div class="actions" style="margin-top:12px">
+    <button class="btn" onclick="exportPlan()">Export .json</button>
+    <button class="btn" onclick="copyPlan()">Copy Summary</button>
+    <button class="btn" onclick="window.print()">Print</button>
+    <button class="btn" onclick="resetCycle()">Reset Cycle</button>
+  </div>
+</div>
+
 <script>
-function buildPlan(){
-  const focus=$id('focus').value, energy=+$id('energy').value||5;
-  const goals=$id('goals').value.trim().split(/\n+/).filter(Boolean);
-  const block=$id('block').value.trim();
-  const tiers=['Daily','Weekly','Monthly'];
-  const actions={
-    Discipline:['90‑min deep work block','No phone first hour','Sleep at 10pm'],
-    Purpose:['Write 200 words of mission','Journal 10 mins','One mentor outreach'],
-    Leadership:['1:1 check‑in','Delegate one task','Lead a retro 15 min'],
-    Health:['30‑min training','10k steps','Protein target met'],
-    Wealth:['Track expenses','Invest $X DCA','Ship one product task']
-  };
-  const picks=actions[focus]||actions.Discipline;
-  const plan=[
-    `FOCUS: ${focus}`,
-    `ENERGY: ${energy}/10`,
-    `GOALS:\n- ${goals.join('\n- ')||'Set three goals'}`,
-    `CONSTRAINT: ${block||'None provided'}`,
-    `ACTIONS:`,
-    `- Daily: ${picks[0]}`,
-    `- Weekly: ${picks[1]}`,
-    `- Monthly: ${picks[2]}`,
-    `METRIC: 7‑day streaks → 4‑week cycles → 12‑month arc.`
-  ].join('\n\n');
-  $id('plan').value=plan;
+const KEY='mbcc_qsm';
+const DOMAINS=["Discipline", "Purpose", "Leadership", "Health", "Wealth"];
+const FOCUS={"Discipline": ["90\u2011min Deep Work", "No\u2011Phone First Hour", "Night Shutdown Routine"], "Purpose": ["200\u2011word Mission Writing", "10\u2011min Evening Journal", "Weekly Alignment Review"], "Leadership": ["Schedule 1:1", "Delegate One Task Daily", "15\u2011min Retro at Week End"], "Health": ["30\u2011min Training", "10k Steps", "Protein Target"], "Wealth": ["Track Cashflow", "Automate DCA", "Ship One Product Task"]};
+
+function step(n){ ['s1','s2','s3','s4'].forEach((id,i)=>{ document.getElementById(id).classList.toggle('active', i===n-1); });
+                  ['step1','step2','step3','step4'].forEach((id,i)=>{ document.getElementById(id).style.display = (i===n-1)?'block':'none'; }) }
+function backTo(n){ step(n); }
+
+function saveDraft(){ saveLocal(KEY, collectState()); alert('Saved locally.'); }
+function resetAll(){ if(confirm('Clear your answers and progress?')){ resetLocal(KEY); location.reload(); } }
+
+function collectState(){
+  const name=document.getElementById('name').value||'';
+  const start=document.getElementById('start').value||'';
+  const answers={};
+  DOMAINS.forEach(dom=>{ for(let i=1;i<=5;i++){ const id=(dom+'_'+i).replaceAll(' ','_').toLowerCase(); answers[id]=+document.getElementById(id).value || 3; } });
+  return {name,start,answers};
 }
-function downloadPlan(){ downloadFile('qsm-plan.txt', $id('plan').value||''); }
-function copyPlan(){ copyText($id('plan')); }
+
+(function init(){ const s=loadLocal(KEY,null); if(s){ document.getElementById('name').value=s.name||''; document.getElementById('start').value=s.start||'';
+  Object.entries(s.answers||{}).forEach(([k,v])=>{ const el=document.getElementById(k); if(el) el.value=v; }); } })();
+
+function computeScores(){
+  const st = collectState();
+  saveLocal(KEY, st);
+  const sums={}; DOMAINS.forEach(dom=>{ sums[dom]=0; });
+  Object.entries(st.answers).forEach(([k,v])=>{
+    const dom=DOMAINS.find(d=>k.startsWith(d.toLowerCase())); if(dom) sums[dom]+= (+v||0);
+  });
+  const data = DOMAINS.map(dom=>({ label:dom, score:sums[dom], max:25 }));
+  drawBars(document.getElementById('scoreChart'), data);
+  document.getElementById('scoreText').innerHTML = data.map(d=>`<span class="chip">${d.label}: ${d.score}/${d.max}</span>`).join('');
+  step(2);
+  const s=loadLocal(KEY,{}); s.scores = data; saveLocal(KEY,s);
+}
+
+function buildPlan(){
+  const s=loadLocal(KEY,{});
+  if(!s.scores) return alert('Compute scores first.');
+  const low = [...s.scores].sort((a,b)=>a.score-b.score).slice(0,3).map(d=>d.label);
+  const days=[];
+  for(let d=0; d<7; d++){ const dom = low[d % low.length]; const acts = FOCUS[dom];
+    days.push({ day:d+1, domain:dom, blocks:[acts[0], acts[1], acts[2]] });
+  }
+  s.plan = days; saveLocal(KEY,s);
+  const wrap=document.getElementById('planDays'); wrap.innerHTML='';
+  days.forEach(day=>{ const el=document.createElement('div'); el.className='card'; el.innerHTML =
+    `<div class="title">Day ${day.day} — Focus: ${day.domain}</div>
+     <ul><li>Morning: ${day.blocks[0]}</li>
+         <li>Midday: ${day.blocks[1]}</li>
+         <li>Evening: ${day.blocks[2]}</li></ul>`;
+    wrap.appendChild(el);
+  });
+  step(3);
+}
+
+function toProgress(){
+  const s=loadLocal(KEY,{});
+  if(!s.plan) return alert('Build the plan first.');
+  if(!s.progress) s.progress = s.plan.map(d=>({ morning:false, midday:false, evening:false }));
+  saveLocal(KEY,s);
+  renderProgress();
+  step(4);
+}
+
+function renderProgress(){
+  const s=loadLocal(KEY,{});
+  const c=document.getElementById('checklist'); c.innerHTML='';
+  s.progress.forEach((p,i)=>{ const day=s.plan[i];
+    const row=document.createElement('div'); row.className='card';
+    row.innerHTML = `<div class="title">Day ${i+1} — ${s.plan[i].domain}</div>`;
+    const ul=document.createElement('ul');
+    ['morning','midday','evening'].forEach((slot,j)=>{ const li=document.createElement('li');
+      const id=`d${i}_${slot}`;
+      const chk=document.createElement('input'); chk.type='checkbox'; chk.id=id; chk.checked=!!p[slot];
+      chk.addEventListener('change',()=>{ const st=loadLocal(KEY,{}); st.progress[i][slot]=chk.checked; saveLocal(KEY,st); renderPct(); });
+      li.appendChild(chk); li.appendChild(document.createTextNode(' ' + slot[0].toUpperCase()+slot.slice(1) + ': ' + day.blocks[j]));
+      ul.appendChild(li);
+    });
+    row.appendChild(ul); c.appendChild(row);
+  });
+  renderPct();
+}
+function renderPct(){ const s=loadLocal(KEY,{}); const done=s.progress.flatMap(p=>[p.morning,p.midday,p.evening]).filter(Boolean).length;
+  const total=s.progress.length*3; document.getElementById('pct').style.width = Math.round((done/total)*100)+'%'; }
+
+function exportPlan(){ const s=loadLocal(KEY,{}); downloadFile('mbcc_qsm.json', JSON.stringify(s,null,2), 'application/json'); }
+function copyPlan(){ const s=loadLocal(KEY,{}); copyText(JSON.stringify(s,null,2)); }
+function resetCycle(){ if(confirm('Reset your 7‑day cycle and progress?')){ const s=loadLocal(KEY,{}); delete s.progress; saveLocal(KEY,s); renderProgress(); }}
 </script>
 
-    <div class="footer">© MBCC • Light • Energy • Frequency</div>
   </main>
-  <div class="plaid"></div>
   <script src="assets/mbcc.js"></script>
 </body>
 </html>

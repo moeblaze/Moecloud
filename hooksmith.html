@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cold‑Open Hooksmith — MBCC</title>
+  <title>Hooksmith — MBCC</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/mbcc.css">
   
@@ -20,90 +20,8 @@
     </nav>
   </header>
   <main>
-    
-<h1>Cold‑Open Hooksmith</h1>
-<div class="section">
-  <div class="row">
-    <div>
-      <label>Topic / Offer</label>
-      <input id="topic" type="text" placeholder="NBA picks tonight / credit repair / healing frequencies">
-    </div>
-    <div>
-      <label>Platform</label>
-      <select id="platform">
-        <option>YouTube</option>
-        <option>Instagram Reels</option>
-        <option>TikTok</option>
-        <option>X (Twitter)</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
-    <div>
-      <label>Persona</label>
-      <select id="persona">
-        <option>Coach</option>
-        <option>Analyst</option>
-        <option>Hype</option>
-        <option>Professor</option>
-      </select>
-    </div>
-    <div>
-      <label>Tone</label>
-      <select id="tone">
-        <option>Bold</option>
-        <option>Funny</option>
-        <option>Serious</option>
-        <option>Spiritual</option>
-      </select>
-    </div>
-  </div>
-  <label>Call to Action</label>
-  <input id="cta" type="text" placeholder="Join free, link in bio / Grab the free guide / Tap Shop">
-  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-    <button class="btn" onclick="genHooks()">Generate Hooks</button>
-    <button class="btn" onclick="downloadHooks()">Download .txt</button>
-    <button class="btn" onclick="copyHooks()">Copy</button>
-  </div>
-</div>
-<div class="section">
-  <label>Hooks</label>
-  <textarea id="out" placeholder="Your hooks will appear here…"></textarea>
-</div>
-<script>
-const patterns = [
-  "{topic}: The truth they won’t tell you 🔥",
-  "Stop scrolling. {topic} in 30 seconds.",
-  "If you do {topic} like this, you’re losing…",
-  "I tried {topic} so you don’t have to.",
-  "POV: You need {topic} yesterday.",
-  "{topic} — the 3‑step fix.",
-  "Everyone’s wrong about {topic}. Here’s why.",
-  "No fluff. {topic}. Let’s go.",
-  "{persona} mode: {topic}.",
-  "{tone} take: {topic}.",
-  "{topic}? Screenshot this and save it.",
-  "Do this before {topic}.",
-  "{topic} myths, destroyed.",
-  "Day 1 of fixing {topic}.",
-  "Bet you didn’t know this about {topic}…",
-  "PSA: {topic}. {cta}"
-];
-function genHooks(){
-  const topic=$id('topic').value||'your topic';
-  const persona=$id('persona').value;
-  const tone=$id('tone').value;
-  const cta=$id('cta').value||'Link in bio';
-  const out = patterns.map(p=>p.replaceAll('{topic}',topic).replaceAll('{persona}',persona).replaceAll('{tone}',tone).replaceAll('{cta}',cta)).join('\n');
-  $id('out').value = out;
-}
-function downloadHooks(){ downloadFile('hooks.txt', $id('out').value||''); }
-function copyHooks(){ copyText($id('out')); }
-</script>
-
-    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+    <h1>Cold‑Open Hooksmith</h1><p>Use the restored bundle for full functionality.</p>
   </main>
-  <div class="plaid"></div>
   <script src="assets/mbcc.js"></script>
 </body>
 </html>

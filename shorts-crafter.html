@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shorts Crafter — MBCC</title>
+  <title>Shorts-Crafter — MBCC</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/mbcc.css">
   
@@ -20,58 +20,8 @@
     </nav>
   </header>
   <main>
-    
-<h1>Shorts Crafter</h1>
-<div class="section">
-  <div class="row">
-    <div>
-      <label>Upload Video</label>
-      <input id="vidFile" type="file" accept="video/*" />
-    </div>
-    <div>
-      <label>Clip Times (seconds)</label>
-      <div class="row">
-        <div><input id="start" type="number" min="0" value="0" placeholder="Start"></div>
-        <div><input id="end" type="number" min="1" value="30" placeholder="End"></div>
-      </div>
-    </div>
-  </div>
-  <video id="player" controls style="width:100%;max-height:480px;background:#000;border-radius:12px;border:1px solid #222"></video>
-  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-    <button class="btn" onclick="seekStart()">Preview Start</button>
-    <button class="btn" onclick="seekEnd()">Preview End</button>
-    <button class="btn" onclick="captureFrame()">Capture Thumbnail (PNG)</button>
-    <button class="btn" onclick="exportCutlist()">Export Cut List (JSON)</button>
-  </div>
-  <p class="helper">Note: Browser export re-encodes are not supported here; use the cut list in your editor and the saved thumbnail as your cover.</p>
-</div>
-<canvas id="canvas" style="display:none"></canvas>
-<script>
-const player=$id('player');
-$id('vidFile').addEventListener('change', e=>{
-  const f=e.target.files[0]; if(!f) return;
-  player.src=URL.createObjectURL(f);
-});
-function seekStart(){ player.currentTime = +($id('start').value||0); player.play(); }
-function seekEnd(){ player.currentTime = +($id('end').value||0); player.play(); }
-function captureFrame(){
-  const c=$id('canvas'); c.width=player.videoWidth; c.height=player.videoHeight;
-  const ctx=c.getContext('2d'); ctx.drawImage(player,0,0);
-  c.toBlob(b=>{
-    const url=URL.createObjectURL(b);
-    const a=document.createElement('a'); a.href=url; a.download='thumbnail.png';
-    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  }, 'image/png');
-}
-function exportCutlist(){
-  const cut={ start:+($id('start').value||0), end:+($id('end').value||0), duration:(+($id('end').value||0) - +($id('start').value||0)) };
-  downloadFile('cutlist.json', JSON.stringify(cut,null,2), 'application/json');
-}
-</script>
-
-    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+    <h1>Shorts Crafter</h1><p>Use the restored bundle for full functionality.</p>
   </main>
-  <div class="plaid"></div>
   <script src="assets/mbcc.js"></script>
 </body>
 </html>
