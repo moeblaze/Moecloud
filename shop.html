@@ -1,40 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shop — Moe Community Cloud (MBCC)</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Moe Bucks Deals — MBCC</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
   <style>
-    .container{max-width:1100px;margin:0 auto;padding:18px}
-    .shop-wrap{background:#0e0e0e;border:1px solid #222;border-radius:16px;padding:12px;min-height:70vh}
-    .tiny{opacity:.9}
+    :root { --mbcc-gold:#D4AF37; --mbcc-red:#C81E1E; }
+    body{ margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#0a0a0a; color:#fff;}
+    header{ padding:16px 20px; border-bottom:2px solid var(--mbcc-red);}
+    nav a{ color:#fff; text-decoration:none; margin-right:18px; font-weight:700 }
+    nav a:hover{ color:var(--mbcc-gold) }
+    .wrap{ max-width:1200px; margin:0 auto; padding:24px 20px; }
+    h1{ font-size:2.2rem; margin:12px 0 18px }
+    #shop{ min-height:80vh; background:transparent }
+    .loading{ color:var(--mbcc-gold); opacity:.9 }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>MBCC <span class="gold">Shop</span></h1></div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="apps.html">Apps</a>
-        <a href="news.html">News</a>
-        <a href="sports.html">Sports</a>
-        <a href="newsletter.html">Newsletter</a>
-      </nav>
-    </div>
+  <header>
+    <nav class="wrap">
+      <a href="/index.html">Home</a>
+      <a href="/apps.html">Apps</a>
+      <a href="/news.html">News</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/newsletter.html">Newsletter</a>
+      <a href="/shop.html" aria-current="page">Shop</a>
+    </nav>
   </header>
 
-  <main class="container">
-    <div class="shop-wrap">
-      <div id="shop">Loading Moe Bucks…</div>
-    </div>
-    <p class="tiny" style="margin-top:10px">If the shop doesn’t appear, <a href="https://moe-bucks.myspreadshop.com/" target="_blank" rel="noopener">open it in a new tab</a>.</p>
+  <main class="wrap">
+    <h1>🛍️ Moe Bucks Deals</h1>
+    <div id="shop" class="loading">Spreadshop loading…</div>
   </main>
 
-  <!-- Shop config first (local file) -->
-  <script src="assets/js/spreadshop.config.js"></script>
-  <!-- Then the Spreadshop client (loads from your shop origin) -->
-  <script src="https://moe-bucks.myspreadshop.com/js/shopclient.nocache.js"></script>
+  <script>
+    /* Spreadshop embed config (official) */
+    window.spread_shop_config = {
+      shopName: 'moe-bucks',
+      prefix: 'https://moe-bucks.myspreadshop.com',
+      baseId: 'shop',
+      locale: 'en_US',
+      updateMetadata: false,     // keep your page <title>/SEO stable
+      // Optional: startToken: 'men+t-shirts'  // open a category by default
+    };
+  </script>
+  <script src="https://moe-bucks.myspreadshop.com/js/shopclient.nocache.js" defer></script>
 </body>
 </html>
