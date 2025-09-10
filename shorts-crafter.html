@@ -13,6 +13,7 @@
     <nav class="nav">
       <a href="/index.html">Home</a>
       <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/news.html">News</a>
       <a href="/sports.html">Sports</a>
       <a href="/newsletter.html">Newsletter</a>
       <a href="/shop.html">Shop</a>
@@ -36,13 +37,13 @@
     </div>
   </div>
   <video id="player" controls style="width:100%;max-height:480px;background:#000;border-radius:12px;border:1px solid #222"></video>
-  <div class="actions">
+  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
     <button class="btn" onclick="seekStart()">Preview Start</button>
     <button class="btn" onclick="seekEnd()">Preview End</button>
     <button class="btn" onclick="captureFrame()">Capture Thumbnail (PNG)</button>
     <button class="btn" onclick="exportCutlist()">Export Cut List (JSON)</button>
   </div>
-  <p class="helper">Note: Browser export re-encodes are not supported here; use the cut list in your editor (Premiere/CapCut) and the saved thumbnail as your cover.</p>
+  <p class="helper">Note: Browser export re-encodes are not supported here; use the cut list in your editor and the saved thumbnail as your cover.</p>
 </div>
 <canvas id="canvas" style="display:none"></canvas>
 <script>

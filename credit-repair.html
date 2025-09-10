@@ -13,6 +13,7 @@
     <nav class="nav">
       <a href="/index.html">Home</a>
       <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/news.html">News</a>
       <a href="/sports.html">Sports</a>
       <a href="/newsletter.html">Newsletter</a>
       <a href="/shop.html">Shop</a>
@@ -54,24 +55,20 @@
     <option value="identity_theft">Victim of identity theft</option>
     <option value="paid">Account was paid/settled</option>
   </select>
-
   <label>Additional Details (optional)</label>
   <textarea id="details" placeholder="Provide clarifying details, dates, communications…"></textarea>
-
-  <div class="actions">
+  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
     <button class="btn" onclick="genLetter()">Generate Letter</button>
     <button class="btn" onclick="downloadLetter()">Download .txt</button>
     <button class="btn" onclick="copyLetter()">Copy</button>
     <button class="btn" onclick="window.print()">Print</button>
   </div>
 </div>
-
 <div class="section">
   <label>Preview</label>
   <textarea id="preview" placeholder="Your letter will appear here…"></textarea>
   <p class="helper">This tool provides a general template; personalize as needed.</p>
 </div>
-
 <script>
 function letterTemplate(data){
 return `
@@ -95,7 +92,6 @@ Sincerely,
 ${data.name}
 `.trim();
 }
-
 function genLetter(){
   const data = {
     name:$id('name').value||'Your Name',

@@ -13,6 +13,7 @@
     <nav class="nav">
       <a href="/index.html">Home</a>
       <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/news.html">News</a>
       <a href="/sports.html">Sports</a>
       <a href="/newsletter.html">Newsletter</a>
       <a href="/shop.html">Shop</a>
@@ -32,18 +33,18 @@
       <input id="mtime" type="datetime-local" />
     </div>
   </div>
-
-  <label>Agenda (one item per line)</label>
+  <label>Agenda (one per line)</label>
   <textarea id="agenda" placeholder="- Wins
 - Blockers
 - Next actions"></textarea>
-
   <div class="row">
     <div>
       <label>Timer (mm:ss)</label>
-      <div class="actions">
-        <input id="mm" type="number" min="0" value="15" style="width:120px">
-        <input id="ss" type="number" min="0" max="59" value="0" style="width:120px">
+      <div class="row">
+        <div><input id="mm" type="number" min="0" value="15"></div>
+        <div><input id="ss" type="number" min="0" max="59" value="0"></div>
+      </div>
+      <div class="row" style="margin-top:8px">
         <button class="btn" onclick="startTimer()">Start</button>
         <button class="btn" onclick="stopTimer()">Stop</button>
         <button class="btn" onclick="resetTimer()">Reset</button>
@@ -55,21 +56,20 @@
       <textarea id="notes" placeholder="Type live notes here…"></textarea>
     </div>
   </div>
-  <div class="actions">
+  <div class="actions" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
     <button class="btn" onclick="exportMinutes()">Export .txt</button>
     <button class="btn" onclick="copyMinutes()">Copy</button>
     <button class="btn" onclick="window.print()">Print</button>
   </div>
-  <p class="helper">Tip: Use <span class="kbd">Ctrl</span> + <span class="kbd">S</span> to save this page as PDF with your notes.</p>
 </div>
 <script>
-let tInt=null, total=0, left=0;
+let tInt=null,left=0;
 function pad(n){return n.toString().padStart(2,'0')}
 function startTimer(){
+  if(tInt) return;
   const m=parseInt($id('mm').value||'0',10);
   const s=parseInt($id('ss').value||'0',10);
-  if(!tInt){ total = left || (m*60+s); left = total; }
-  if(tInt) return;
+  left = left || (m*60+s);
   tInt=setInterval(()=>{
     left--; const mm=Math.floor(left/60), ss=left%60;
     $id('display').textContent=`${pad(mm)}:${pad(ss)}`;

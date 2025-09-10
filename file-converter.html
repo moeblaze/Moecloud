@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>File Converter — MBCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/mbcc.css">
+  
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+      <a href="/apps.html" aria-current="page">Apps</a>
+      <a href="/news.html">News</a>
+      <a href="/sports.html">Sports</a>
+      <a href="/newsletter.html">Newsletter</a>
+      <a href="/shop.html">Shop</a>
+    </nav>
+  </header>
+  <main>
+    
+<h1>File Converter</h1>
+<div class="section">
+  <div class="row">
+    <div>
+      <label>Output format</label>
+      <select id="format">
+        <option value="image/png">PNG (.png)</option>
+        <option value="image/jpeg">JPEG (.jpg)</option>
+        <option value="image/webp">WEBP (.webp)</option>
+      </select>
+    </div>
+    <div>
+      <label>Quality (JPEG / WEBP)</label>
+      <input id="quality" type="range" min="50" max="100" value="90" oninput="qid.textContent=value+'%'">
+      <div class="small">Current: <span id="qid">90%</span></div>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <label><input type="checkbox" id="limit" checked> Limit max size</label>
+      <div class="row">
+        <div><input id="maxw" type="number" value="2048"><div class="small">Max width (px)</div></div>
+        <div><input id="maxh" type="number" value="2048"><div class="small">Max height (px)</div></div>
+      </div>
+    </div>
+    <div>
+      <label>Background for transparent → JPG</label>
+      <input id="bg" type="text" value="#000000" />
+      <div class="small">Used only when converting to JPEG (no alpha). Hex like #000000 or #ffffff.</div>
+    </div>
+  </div>
+  <div class="drop" id="drop">
+    <div class="badge">Drag & Drop files here</div>
+    <div class="small">or</div>
+    <p><input type="file" id="picker" multiple accept="image/*,.svg,.heic,.heif" /></p>
+    <div class="small">Note: Animated formats (GIF/WEBP) will be flattened to a single frame.</div>
+  </div>
+  <div class="actions" style="margin-top:14px">
+    <button class="btn" onclick="convertAll()">Convert All</button>
+    <button class="btn" onclick="clearAll()">Clear</button>
+  </div>
+</div>
+<div class="section">
+  <div class="title">Files</div>
+  <div id="list" class="preview"></div>
+</div>
+<script>
+const drop = $id('drop');
+const picker = $id('picker');
+const list = $id('list');
+let queue = [];
+['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e=>{ e.preventDefault(); drop.style.borderColor = '#444' }));
+['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e=>{ e.preventDefault(); drop.style.borderColor = '#333' }));
+drop.addEventListener('drop', e=>{ addFiles([...e.dataTransfer.files]); });
+picker.addEventListener('change', e => addFiles([...e.target.files]));
+function addFiles(files){
+  files.forEach(f=>{
+    const id = 'f_' + Math.random().toString(36).slice(2,8);
+    queue.push({ id, file:f, status:'pending' });
+    const card = document.createElement('div'); card.className='thumb'; card.id=id;
+    const img = document.createElement('img'); img.alt = f.name; img.title = f.name; card.appendChild(img);
+    const meta = document.createElement('div');
+    meta.innerHTML = `<div><b>${f.name}</b></div><div class="small meta">${prettyBytes(f.size)} — ${f.type||'unknown'}</div><div class="small" id="${id}_status">Pending</div><div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="convertOne('${id}')">Convert</button><a class="btn" id="${id}_dl" style="display:none">Download</a></div>`;
+    card.appendChild(meta);
+    list.appendChild(card);
+    const url = URL.createObjectURL(f);
+    img.src = url; img.onload = ()=> URL.revokeObjectURL(url);
+  });
+}
+async function convertOne(id){
+  const item = queue.find(x=>x.id===id); if(!item) return;
+  const st = $id(id+'_status'); st.textContent = 'Converting…';
+  try{
+    const outType = $id('format').value;
+    const quality = parseInt($id('quality').value, 10)/100;
+    const bg = $id('bg').value || '#000000';
+    const limit = $id('limit').checked;
+    const maxw = parseInt($id('maxw').value, 10)||2048;
+    const maxh = parseInt($id('maxh').value, 10)||2048;
+    const blob = await rasterizeTo(item.file, outType, quality, {limit,maxw,maxh,bg});
+    if(!blob) throw new Error('Unsupported format or failed to render');
+    const ext = (outType==='image/png')?'png':(outType==='image/jpeg')?'jpg':'webp';
+    const base = item.file.name.replace(/\.[^.]+$/, '');
+    const name = base + '.' + ext;
+    const url = URL.createObjectURL(blob);
+    const a = $id(id+'_dl'); a.href = url; a.download = name; a.style.display = 'inline-flex';
+    st.textContent = 'Ready';
+  }catch(err){ console.error(err); st.textContent = 'Error: ' + err.message; }
+}
+async function convertAll(){ for(const it of queue){ await convertOne(it.id); } }
+function clearAll(){ queue = []; list.innerHTML=''; }
+function hexToRGBA(hex){ const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex); if(!m) return [0,0,0,255]; return [parseInt(m[1],16),parseInt(m[2],16),parseInt(m[3],16),255]; }
+function drawOnCanvas(img, outType, quality, opt){
+  const srcW = img.naturalWidth || img.videoWidth || img.width;
+  const srcH = img.naturalHeight || img.videoHeight || img.height;
+  let w = srcW, h = srcH;
+  if(opt.limit){
+    const scale = Math.min(opt.maxw/srcW, opt.maxh/srcH, 1);
+    w = Math.max(1, Math.floor(srcW*scale));
+    h = Math.max(1, Math.floor(srcH*scale));
+  }
+  const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  if(outType==='image/jpeg'){
+    const [r,g,b,a] = hexToRGBA(opt.bg||'#000000'); ctx.fillStyle = `rgba(${r},${g},${b},${a/255})`; ctx.fillRect(0,0,w,h);
+  }
+  ctx.drawImage(img, 0, 0, w, h);
+  return new Promise((res, rej)=>{ canvas.toBlob(b=> b?res(b):rej(new Error('Canvas export failed')), outType, quality); });
+}
+async function rasterizeTo(file, outType, quality, opt){
+  const lower = file.name.toLowerCase();
+  if(lower.endsWith('.svg') || file.type==='image/svg+xml'){
+    const text = await file.text(); const svg = new Blob([text], {type:'image/svg+xml'});
+    const url = URL.createObjectURL(svg); const img = new Image(); img.crossOrigin='anonymous'; img.src = url; await img.decode().catch(()=>{});
+    const blob = await drawOnCanvas(img, outType, quality, opt); URL.revokeObjectURL(url); return blob;
+  }
+  if(file.type.startsWith('image/') || /\.(png|jpg|jpeg|webp|gif|bmp|heic|heif|tiff?)$/i.test(lower)){
+    const url = URL.createObjectURL(file); const img = new Image(); img.crossOrigin='anonymous'; img.src = url; await img.decode().catch(()=>{});
+    const blob = await drawOnCanvas(img, outType, quality, opt); URL.revokeObjectURL(url); return blob;
+  }
+  return null;
+}
+</script>
+
+    <div class="footer">© MBCC • Light • Energy • Frequency</div>
+  </main>
+  <div class="plaid"></div>
+  <script src="assets/mbcc.js"></script>
+</body>
+</html>
