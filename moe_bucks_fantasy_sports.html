@@ -1,0 +1,346 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moe Bucks Fantasy Sports</title>
+<meta name="description" content="Daily picks, parlays, and prop leans by Moe Bucks — NFL, WNBA, MLB.">
+<style>
+:root{
+  --bg:#0b0b0d;
+  --card:#121216;
+  --accent:#d72638; /* red */
+  --accent-dark:#a51b29;
+  --plaid1:#1a1a1f;
+  --plaid2:#0f0f13;
+  --gold:#d4af37;
+  --text:#e9e9ef;
+  --muted:#b8b8c7;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color:var(--text);
+  background:
+    linear-gradient(45deg,var(--plaid1) 25%, transparent 25%) -20px 0/40px 40px,
+    linear-gradient(-45deg,var(--plaid1) 25%, transparent 25%) -20px 0/40px 40px,
+    linear-gradient(45deg,transparent 75%, var(--plaid2) 75%) -20px 0/40px 40px,
+    linear-gradient(-45deg,transparent 75%, var(--plaid2) 75%) -20px 0/40px 40px,
+    var(--bg);
+}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+header{
+  position:sticky;top:0;z-index:5;
+  background:linear-gradient(180deg,rgba(11,11,13,.95),rgba(11,11,13,.7));
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid rgba(212,175,55,.25);
+}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.brand{
+  display:flex;align-items:center;gap:14px;
+}
+.logo{
+  width:44px;height:44px;border-radius:12px;
+  background: conic-gradient(from 0deg, var(--gold),#ffd86b,var(--gold));
+  box-shadow:0 0 0 3px rgba(212,175,55,.2), 0 6px 30px rgba(212,175,55,.25);
+  display:grid;place-items:center;font-weight:800;color:#0b0b0d;
+}
+h1{margin:0;font-size:1.6rem;letter-spacing:.3px}
+.subtitle{color:var(--muted);font-size:.95rem;margin-top:4px}
+.grid{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  align-items:stretch;
+}
+.card{
+  background:linear-gradient(180deg,rgba(18,18,22,.9),rgba(18,18,22,.85));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.35);
+  overflow:hidden;position:relative;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.card:hover{ transform: translateY(-3px); border-color: rgba(212,175,55,.35); box-shadow:0 12px 36px rgba(212,175,55,.15)}
+.card .head{
+  padding:14px 16px; border-bottom:1px dashed rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;gap:10px
+}
+.badge{
+  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+  color:white;border-radius:999px;padding:6px 10px;font-size:.75rem;font-weight:700;letter-spacing:.3px
+}
+.card h3{margin:0;font-size:1.05rem}
+.card .body{padding:16px}
+ul{margin:0 0 0 18px;padding:0}
+li{margin:6px 0}
+.kicker{color:var(--muted);font-size:.85rem;margin-top:8px}
+.footer{
+  margin-top:28px;color:var(--muted);font-size:.85rem;text-align:center
+}
+.section-title{
+  margin:28px 0 10px 0;
+  font-size:1.1rem;color:#fff;
+  display:flex;align-items:center;gap:10px
+}
+.section-title::before{
+  content:"";width:8px;height:22px;border-radius:6px;background:linear-gradient(180deg,var(--gold),#866a1c);
+  box-shadow:0 0 0 3px rgba(212,175,55,.2)
+}
+.row{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(4,1fr);
+}
+@media(max-width:1100px){ .row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){ .row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){ .row{grid-template-columns:1fr}}
+.note{font-size:.85rem;color:var(--muted)}
+hr{border:0;border-top:1px solid rgba(255,255,255,.08);margin:20px 0}
+
+nav{
+  display:flex;align-items:center;gap:18px;justify-content:space-between;
+  padding:10px 0;
+}
+.nav-left,.nav-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.nav-link{
+  padding:8px 12px;border-radius:12px;font-weight:600;
+  border:1px solid rgba(212,175,55,.25);
+  background:rgba(13,13,16,.35);
+  transition:transform .2s ease,background .2s ease;
+}
+.nav-link:hover{transform:translateY(-1px);background:rgba(212,175,55,.08)}
+.cta{
+  background:linear-gradient(90deg,#d4af37,#ffd86b);
+  color:#0b0b0d !important;border-color:transparent;
+  box-shadow:0 6px 20px rgba(212,175,55,.25);
+}
+footer{
+  margin-top:40px;padding:28px 0; border-top:1px solid rgba(212,175,55,.25);
+  background:linear-gradient(180deg, rgba(11,11,13,.7), rgba(11,11,13,.9));
+}
+.footer-grid{
+  display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.footer h4{margin:0 0 8px 0}
+.footer a{color:var(--text)}
+.footer a:hover{color:var(--gold)}
+.copy{margin-top:16px;color:var(--muted);font-size:.85rem;text-align:center}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="container brand">
+    <nav>
+      <div class="nav-left">
+        <a class="nav-link" href="https://www.moecommunitycloud.com/index.html">Home</a>
+        <a class="nav-link" href="https://www.moecommunitycloud.com/apps.html">Apps</a>
+        <a class="nav-link" href="https://www.moecommunitycloud.com/newsletter.html">Newsletter</a>
+        <a class="nav-link" href="https://www.moecommunitycloud.com/news.html">News</a>
+        <a class="nav-link" href="https://www.moecommunitycloud.com/optimizer.html">Sports Optimizer</a>
+      </div>
+      <div class="nav-right">
+        <a class="nav-link" href="mailto:moeknowmoe24@gmail.com">Contact</a>
+        <a class="nav-link cta" href="https://www.moecommunitycloud.com/signup.html">Sign&nbsp;Up</a>
+      </div>
+    </nav>
+    <div class="logo">MB</div>
+    <div>
+      <h1>Moe Bucks Fantasy Sports</h1>
+      <div class="subtitle">Live cardboard — NFL · WNBA · MLB · Updated September 11, 2025 11:17 PM ET</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <h2 class="section-title">NFL — Packers vs Commanders</h2>
+  <div class="row">
+    <section class="card">
+      <div class="head"><h3>Safe SGP</h3><span class="badge">LOW RISK</span></div>
+      <div class="body">
+        <ul>
+          <li>Commanders +3.5</li>
+          <li>Over 36.5 points (alt)</li>
+          <li>Terry McLaurin — Anytime TD</li>
+        </ul>
+        <p class="kicker">Script: tight game, steady scoring, #17 cashes.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Balanced SGP</h3><span class="badge">MODERATE</span></div>
+      <div class="body">
+        <ul>
+          <li>Over 42.5 points</li>
+          <li>Jordan Love — 2+ Pass TD</li>
+          <li>Brian Robinson Jr. — Anytime TD</li>
+        </ul>
+        <p class="kicker">Home offense shows; Washington answers on the ground.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>High-Risk SGP</h3><span class="badge">BOLD</span></div>
+      <div class="body">
+        <ul>
+          <li>Commanders ML</li>
+          <li>Over 48.5 points</li>
+          <li>McLaurin &amp; Doubs — Both score</li>
+        </ul>
+        <p class="kicker">Upset + shootout for big juice.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Exact Score Leans</h3><span class="badge">PROJ</span></div>
+      <div class="body">
+        <ul>
+          <li>Packers 24 – Commanders 20</li>
+          <li>Packers 31 – Commanders 24</li>
+        </ul>
+        <p class="note">Use for alt‑totals/score band parlays.</p>
+      </div>
+    </section>
+  </div>
+
+  <h2 class="section-title">WNBA — Props Tonight</h2>
+  <div class="grid">
+    <section class="card">
+      <div class="head"><h3>Rebounds Leaders</h3><span class="badge">BOARDS</span></div>
+      <div class="body">
+        <ul>
+          <li>A’ja Wilson — Over 9+ REB</li>
+          <li>Breanna Stewart — Over 9+ REB</li>
+          <li>Kamilla Cardoso — Over 8+ REB</li>
+        </ul>
+        <p class="kicker">Anchor with one “over” per ticket.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Steals Targets</h3><span class="badge">TAKEAWAYS</span></div>
+      <div class="body">
+        <ul>
+          <li>Gabby Williams — Over 2+ STL</li>
+          <li>Napheesa Collier — Over 1.5 STL</li>
+          <li>Alyssa Thomas — Over 1.5 STL</li>
+        </ul>
+        <p class="kicker">Pair one steals prop with your spread pick.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Blocks Picks</h3><span class="badge">RIM</span></div>
+      <div class="body">
+        <ul>
+          <li>A’ja Wilson — Over 2+ BLK</li>
+          <li>Ezi Magbegor — Over 1.5 BLK</li>
+          <li>Alanna Smith — Over 1+ BLK</li>
+        </ul>
+        <p class="kicker">High variance; sprinkle lightly.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Game Leans</h3><span class="badge">SIDES/TOTALS</span></div>
+      <div class="body">
+        <ul>
+          <li>Liberty ML (−)</li>
+          <li>Liberty −9.5 spread</li>
+          <li>Aces ML</li>
+          <li>Mercury vs Wings — Over 162.5</li>
+          <li>Lynx −7.5 (lean)</li>
+        </ul>
+        <p class="note">Mix 2–3 for a cleaner W parlay.</p>
+      </div>
+    </section>
+  </div>
+
+  <h2 class="section-title">MLB — Tonight’s Picks</h2>
+  <div class="row">
+    <section class="card">
+      <div class="head"><h3>Mets @ Phillies</h3><span class="badge">PICK</span></div>
+      <div class="body">
+        <ul>
+          <li>Phillies ML</li>
+          <li>Over 8.5 Runs</li>
+          <li>Kyle Schwarber — 1.5+ TB (lean)</li>
+        </ul>
+        <p class="kicker">Proj: PHI 6 – NYM 3</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Rockies @ Padres</h3><span class="badge">PICK</span></div>
+      <div class="body">
+        <ul>
+          <li>Padres −1.5 RL</li>
+        </ul>
+        <p class="kicker">San Diego at home vs vulnerable staff.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Angels @ Mariners</h3><span class="badge">PICK</span></div>
+      <div class="body">
+        <ul>
+          <li>Under 8.0 Runs</li>
+        </ul>
+        <p class="kicker">Pitching/park lean under.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="head"><h3>Yankees Hitters</h3><span class="badge">HITS</span></div>
+      <div class="body">
+        <ul>
+          <li>Aaron Judge — 1+ Hit</li>
+          <li>Anthony Volpe — 1+ Hit</li>
+          <li>Gleyber Torres — 1+ Hit</li>
+          <li>Giancarlo Stanton — 1+ Hit (boom/bust)</li>
+        </ul>
+        <p class="note">Build a 2‑ or 3‑leg hits ladder for safer returns.</p>
+      </div>
+    </section>
+  </div>
+
+  <hr/>
+  <p class="footer">⚠️ Responsible play: Set limits. This page is opinion content for entertainment & strategy. Lines move — confirm final odds and lineups before betting.</p>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Site</h4>
+          <ul>
+            <li><a href="https://www.moecommunitycloud.com/index.html">Home</a></li>
+            <li><a href="https://www.moecommunitycloud.com/apps.html">Apps</a></li>
+            <li><a href="https://www.moecommunitycloud.com/news.html">News</a></li>
+            <li><a href="https://www.moecommunitycloud.com/newsletter.html">Newsletter</a></li>
+            <li><a href="https://www.moecommunitycloud.com/optimizer.html">Sports Optimizer</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Fantasy & Picks</h4>
+          <ul>
+            <li><a href="#">NFL SGPs</a></li>
+            <li><a href="#">WNBA Props</a></li>
+            <li><a href="#">MLB Picks</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Brand</h4>
+          <ul>
+            <li><a href="mailto:moeknowmoe24@gmail.com">Email Us</a></li>
+            <li><a href="https://www.youtube.com/@MoeBucks" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://www.linkedin.com/in/morris-stephens" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Updated</h4>
+          <p class="note">Last refresh: September 11, 2025 11:20 PM ET</p>
+          <p class="note">© MBCC A.I. Suite — Moe Bucks</p>
+        </div>
+      </div>
+      <div class="copy">Responsible play only. Odds change — verify lines before betting.</div>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
