@@ -4,16 +4,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moe Bucks Fantasy Sports</title>
-<meta name="description" content="Daily picks, parlays, and prop leans by Moe Bucks — NFL, WNBA, MLB.">
+<title>Moe Bucks Fantasy Sports — Standalone</title>
+<meta name="description" content="Daily picks, parlays, and prop leans by Moe Bucks — NFL, WNBA, MLB. Standalone page for moecommunitycloud.com">
 <style>
 :root{
   --bg:#0b0b0d;
-  --card:#121216;
-  --accent:#d72638; /* red */
-  --accent-dark:#a51b29;
   --plaid1:#1a1a1f;
   --plaid2:#0f0f13;
+  --card:#121216;
+  --accent:#d72638;
+  --accent-dark:#a51b29;
   --gold:#d4af37;
   --text:#e9e9ef;
   --muted:#b8b8c7;
@@ -31,18 +31,14 @@ body{
     linear-gradient(-45deg,transparent 75%, var(--plaid2) 75%) -20px 0/40px 40px,
     var(--bg);
 }
-a{color:var(--gold);text-decoration:none}
-a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:20px}
 header{
   position:sticky;top:0;z-index:5;
   background:linear-gradient(180deg,rgba(11,11,13,.95),rgba(11,11,13,.7));
   backdrop-filter: blur(8px);
   border-bottom:1px solid rgba(212,175,55,.25);
 }
-.container{max-width:1200px;margin:0 auto;padding:20px}
-.brand{
-  display:flex;align-items:center;gap:14px;
-}
+.brand{display:flex;align-items:center;gap:14px}
 .logo{
   width:44px;height:44px;border-radius:12px;
   background: conic-gradient(from 0deg, var(--gold),#ffd86b,var(--gold));
@@ -51,58 +47,11 @@ header{
 }
 h1{margin:0;font-size:1.6rem;letter-spacing:.3px}
 .subtitle{color:var(--muted);font-size:.95rem;margin-top:4px}
-.grid{
-  display:grid;gap:16px;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  align-items:stretch;
-}
-.card{
-  background:linear-gradient(180deg,rgba(18,18,22,.9),rgba(18,18,22,.85));
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:18px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.35);
-  overflow:hidden;position:relative;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-.card:hover{ transform: translateY(-3px); border-color: rgba(212,175,55,.35); box-shadow:0 12px 36px rgba(212,175,55,.15)}
-.card .head{
-  padding:14px 16px; border-bottom:1px dashed rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:space-between;gap:10px
-}
-.badge{
-  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
-  color:white;border-radius:999px;padding:6px 10px;font-size:.75rem;font-weight:700;letter-spacing:.3px
-}
-.card h3{margin:0;font-size:1.05rem}
-.card .body{padding:16px}
-ul{margin:0 0 0 18px;padding:0}
-li{margin:6px 0}
-.kicker{color:var(--muted);font-size:.85rem;margin-top:8px}
-.footer{
-  margin-top:28px;color:var(--muted);font-size:.85rem;text-align:center
-}
-.section-title{
-  margin:28px 0 10px 0;
-  font-size:1.1rem;color:#fff;
-  display:flex;align-items:center;gap:10px
-}
-.section-title::before{
-  content:"";width:8px;height:22px;border-radius:6px;background:linear-gradient(180deg,var(--gold),#866a1c);
-  box-shadow:0 0 0 3px rgba(212,175,55,.2)
-}
-.row{
-  display:grid;gap:16px;
-  grid-template-columns:repeat(4,1fr);
-}
-@media(max-width:1100px){ .row{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:800px){ .row{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){ .row{grid-template-columns:1fr}}
-.note{font-size:.85rem;color:var(--muted)}
-hr{border:0;border-top:1px solid rgba(255,255,255,.08);margin:20px 0}
 
+/* Top Nav */
 nav{
   display:flex;align-items:center;gap:18px;justify-content:space-between;
-  padding:10px 0;
+  padding:10px 0;margin-top:8px;
 }
 .nav-left,.nav-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .nav-link{
@@ -110,6 +59,7 @@ nav{
   border:1px solid rgba(212,175,55,.25);
   background:rgba(13,13,16,.35);
   transition:transform .2s ease,background .2s ease;
+  color:var(--text);text-decoration:none
 }
 .nav-link:hover{transform:translateY(-1px);background:rgba(212,175,55,.08)}
 .cta{
@@ -117,41 +67,65 @@ nav{
   color:#0b0b0d !important;border-color:transparent;
   box-shadow:0 6px 20px rgba(212,175,55,.25);
 }
-footer{
-  margin-top:40px;padding:28px 0; border-top:1px solid rgba(212,175,55,.25);
-  background:linear-gradient(180deg, rgba(11,11,13,.7), rgba(11,11,13,.9));
+
+/* Cards / Grid */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));align-items:stretch}
+.row{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){ .row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){ .row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){ .row{grid-template-columns:1fr}}
+.card{
+  background:linear-gradient(180deg,rgba(18,18,22,.9),rgba(18,18,22,.85));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.35);
+  overflow:hidden;position:relative;transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-.footer-grid{
-  display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-}
+.card:hover{ transform: translateY(-3px); border-color: rgba(212,175,55,.35); box-shadow:0 12px 36px rgba(212,175,55,.15)}
+.card .head{padding:14px 16px;border-bottom:1px dashed rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.badge{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:white;border-radius:999px;padding:6px 10px;font-size:.75rem;font-weight:700;letter-spacing:.3px}
+.card h3{margin:0;font-size:1.05rem}
+.card .body{padding:16px}
+ul{margin:0 0 0 18px;padding:0}
+li{margin:6px 0}
+.kicker{color:var(--muted);font-size:.85rem;margin-top:8px}
+.note{font-size:.85rem;color:var(--muted)}
+.section-title{margin:28px 0 10px 0;font-size:1.1rem;color:#fff;display:flex;align-items:center;gap:10px}
+.section-title::before{content:"";width:8px;height:22px;border-radius:6px;background:linear-gradient(180deg,var(--gold),#866a1c);box-shadow:0 0 0 3px rgba(212,175,55,.2)}
+hr{border:0;border-top:1px solid rgba(255,255,255,.08);margin:20px 0}
+
+/* Footer */
+footer{margin-top:40px;padding:28px 0;border-top:1px solid rgba(212,175,55,.25);background:linear-gradient(180deg, rgba(11,11,13,.7), rgba(11,11,13,.9))}
+.footer-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .footer h4{margin:0 0 8px 0}
-.footer a{color:var(--text)}
+.footer a{color:var(--text);text-decoration:none}
 .footer a:hover{color:var(--gold)}
 .copy{margin-top:16px;color:var(--muted);font-size:.85rem;text-align:center}
-
 </style>
 </head>
 <body>
 <header>
   <div class="container brand">
-    <nav>
+    <div class="logo">MB</div>
+    <div>
+      <h1>Moe Bucks Fantasy Sports</h1>
+      <div class="subtitle">Updated September 12, 2025 12:29 AM ET</div>
+    </div>
+  </div>
+  <div class="container">
+    <nav aria-label="Site">
       <div class="nav-left">
         <a class="nav-link" href="https://www.moecommunitycloud.com/index.html">Home</a>
         <a class="nav-link" href="https://www.moecommunitycloud.com/apps.html">Apps</a>
         <a class="nav-link" href="https://www.moecommunitycloud.com/newsletter.html">Newsletter</a>
         <a class="nav-link" href="https://www.moecommunitycloud.com/news.html">News</a>
         <a class="nav-link" href="https://www.moecommunitycloud.com/optimizer.html">Sports Optimizer</a>
+        <a class="nav-link" href="https://www.moecommunitycloud.com/moe-bucks-fantasy-sports.html">This Page</a>
       </div>
       <div class="nav-right">
         <a class="nav-link" href="mailto:moeknowmoe24@gmail.com">Contact</a>
         <a class="nav-link cta" href="https://www.moecommunitycloud.com/signup.html">Sign&nbsp;Up</a>
       </div>
     </nav>
-    <div class="logo">MB</div>
-    <div>
-      <h1>Moe Bucks Fantasy Sports</h1>
-      <div class="subtitle">Live cardboard — NFL · WNBA · MLB · Updated September 11, 2025 11:17 PM ET</div>
-    </div>
   </div>
 </header>
 
@@ -167,7 +141,7 @@ footer{
           <li>Over 36.5 points (alt)</li>
           <li>Terry McLaurin — Anytime TD</li>
         </ul>
-        <p class="kicker">Script: tight game, steady scoring, #17 cashes.</p>
+        <p class="kicker">Script: tight game, steady scoring, WR1 cashes.</p>
       </div>
     </section>
     <section class="card">
@@ -300,47 +274,46 @@ footer{
   </div>
 
   <hr/>
-  <p class="footer">⚠️ Responsible play: Set limits. This page is opinion content for entertainment & strategy. Lines move — confirm final odds and lineups before betting.</p>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Site</h4>
-          <ul>
-            <li><a href="https://www.moecommunitycloud.com/index.html">Home</a></li>
-            <li><a href="https://www.moecommunitycloud.com/apps.html">Apps</a></li>
-            <li><a href="https://www.moecommunitycloud.com/news.html">News</a></li>
-            <li><a href="https://www.moecommunitycloud.com/newsletter.html">Newsletter</a></li>
-            <li><a href="https://www.moecommunitycloud.com/optimizer.html">Sports Optimizer</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Fantasy & Picks</h4>
-          <ul>
-            <li><a href="#">NFL SGPs</a></li>
-            <li><a href="#">WNBA Props</a></li>
-            <li><a href="#">MLB Picks</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Brand</h4>
-          <ul>
-            <li><a href="mailto:moeknowmoe24@gmail.com">Email Us</a></li>
-            <li><a href="https://www.youtube.com/@MoeBucks" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://www.linkedin.com/in/morris-stephens" target="_blank" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Updated</h4>
-          <p class="note">Last refresh: September 11, 2025 11:20 PM ET</p>
-          <p class="note">© MBCC A.I. Suite — Moe Bucks</p>
-        </div>
-      </div>
-      <div class="copy">Responsible play only. Odds change — verify lines before betting.</div>
-    </div>
-  </footer>
-
+  <p class="note">⚠️ This page is opinion content for entertainment & strategy. Lines move — confirm final odds and lineups before betting.</p>
 </main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="https://www.moecommunitycloud.com/index.html">Home</a></li>
+          <li><a href="https://www.moecommunitycloud.com/apps.html">Apps</a></li>
+          <li><a href="https://www.moecommunitycloud.com/news.html">News</a></li>
+          <li><a href="https://www.moecommunitycloud.com/newsletter.html">Newsletter</a></li>
+          <li><a href="https://www.moecommunitycloud.com/optimizer.html">Sports Optimizer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Fantasy & Picks</h4>
+        <ul>
+          <li><a href="#">NFL SGPs</a></li>
+          <li><a href="#">WNBA Props</a></li>
+          <li><a href="#">MLB Picks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Brand</h4>
+        <ul>
+          <li><a href="mailto:moeknowmoe24@gmail.com">Email Us</a></li>
+          <li><a href="https://www.youtube.com/@MoeBucks" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.linkedin.com/in/morris-stephens" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Updated</h4>
+        <p class="note">September 12, 2025 12:29 AM ET</p>
+        <p class="note">© MBCC A.I. Suite — Moe Bucks</p>
+      </div>
+    </div>
+    <div class="copy">Responsible play only. Odds change — verify lines before betting.</div>
+  </div>
+</footer>
 </body>
 </html>
