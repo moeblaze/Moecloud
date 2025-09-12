@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekend Track & Field — Moe Community Cloud</title>
+  <meta name="description" content="Weekend Track & Field preview with predictions, highlights, and live broadcast beat." />
+  <style>
+    :root{
+      --brand-red:#c40000;
+      --brand-black:#0b0b0b;
+      --brand-gold:#caa74a;
+      --bg:#101010;
+      --text:#f5f5f5;
+      --muted:#a7a7a7;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);}
+    /* Plaid banner */
+    .banner{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.4) 0 100%),
+        repeating-linear-gradient(90deg, var(--brand-red) 0 6px, #7a0000 6px 12px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 10px, rgba(0,0,0,.15) 10px 20px);
+      color:#fff;padding:28px 16px;border-bottom:3px solid var(--brand-gold);
+      text-align:center;
+    }
+    .brand{font-weight:800;letter-spacing:0.5px}
+    .wrap{max-width:1120px;margin:0 auto;padding:16px;}
+    nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;padding:10px 12px;background:#121212;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:10}
+    nav a{color:#ddd;text-decoration:none;padding:8px 10px;border-radius:10px;transition:.2s}
+    nav a:hover{background:#1f1f1f;color:#fff}
+    nav a.active{background:var(--brand-red);color:#fff;border:1px solid rgba(255,255,255,.15)}
+    header h1{margin:.2rem 0 0;font-size:clamp(1.6rem,2.4vw,2.4rem)}
+    header p{margin:.4rem 0 0;color:#e6e6e6}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+    .card{background:#151515;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+    .pill{display:inline-block;background:#1e1e1e;color:#cfcfcf;border:1px solid rgba(255,255,255,.06);border-radius:999px;padding:6px 10px;font-size:.85rem;margin-right:8px}
+    .muted{color:var(--muted);font-size:.92rem}
+    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--brand-red);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer}
+    .audio-bar{display:flex;align-items:center;gap:10px;background:#141414;border-top:1px solid rgba(255,255,255,.06);padding:12px 16px;position:sticky;bottom:0}
+    .audio-bar .status{font-size:.9rem;color:#ccc}
+    .footer{padding:40px 16px;color:#bdbdbd;text-align:center;border-top:1px solid rgba(255,255,255,.06);margin-top:28px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <!-- Patched Header / Global Nav -->
+  <nav aria-label="Primary">
+    <a href="/index.html">Home</a>
+    <a href="/apps.html">Apps</a>
+    <a href="/news.html">News</a>
+    <a href="/sports.html">Sports</a>
+    <a href="/newsletter.html">Newsletter</a>
+    <a class="active" href="/weekend-track.html">Weekend Track &amp; Field</a>
+  </nav>
+
+  <header class="banner">
+    <div class="wrap">
+      <h1><span class="brand">Moe Community Cloud</span> • Weekend Track &amp; Field Preview</h1>
+      <p class="muted">Predictions, storylines, and live-show beat baked in.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid" aria-label="Highlights">
+      <article class="card">
+        <h2>Women’s 100m — Prediction</h2>
+        <p>We’re calling a wire-to-wire year: <strong>Melissa Jefferson</strong> to take the 100m. The start, top-end speed, and late-phase posture have looked locked all season. Expect a clean 10.7–10.8 window in ideal conditions.</p>
+        <p class="muted">Watch the drive phase — if she’s clear by 40m, goodnight.</p>
+      </article>
+      <article class="card">
+        <h2>Sha’Carri Watch</h2>
+        <p>Can Sha’Carri recalibrate and grab a podium? Talent says yes; rhythm and consistency are the variables. If she nails blocks + transition, she can still finish <strong>Top 3</strong>.</p>
+        <p class="muted">Form cycle + mental reset are the keys.</p>
+      </article>
+      <article class="card">
+        <h2>Key Races To Track</h2>
+        <ul>
+          <li>Women’s 100m final</li>
+          <li>Women’s 200m final</li>
+          <li>Men’s 100m final</li>
+          <li>Men’s 200m final</li>
+        </ul>
+        <p class="muted">Add exact meet links/times here as needed.</p>
+      </article>
+      <article class="card">
+        <h2>Notes for Broadcast</h2>
+        <ul>
+          <li>Open cold with horn stab + DJ tag.</li>
+          <li>Lower the bed to -18 LUFS under voice.</li>
+          <li>Drop sprint B-roll between segments.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <!-- Hidden audio; controlled via the bottom bar -->
+  <audio id="mbccBeat" loop autoplay>
+    <!-- Prefer MP3 on your site for faster streaming; provide WAV fallback -->
+    <source src="assets/audio/trap_song_1min_voicetag.mp3" type="audio/mpeg">
+    <source src="assets/audio/trap_song_1min_voicetag.wav" type="audio/wav">
+  </audio>
+
+  <div class="audio-bar" role="region" aria-label="Audio controls">
+    <button id="toggleBtn" class="cta" aria-pressed="false"><span id="toggleLabel">🔊 Unmute</span></button>
+    <div class="status">Looping beat for broadcast is <strong id="statusWord">muted</strong>.</div>
+  </div>
+
+  <footer class="footer">
+    <small>© MBCC A.I. Suite — Moe Community Cloud</small>
+  </footer>
+
+  <script>
+    // Respect browser autoplay policies: start muted; user can unmute.
+    const audio = document.getElementById('mbccBeat');
+    const btn = document.getElementById('toggleBtn');
+    const label = document.getElementById('toggleLabel');
+    const status = document.getElementById('statusWord');
+    audio.muted = true;
+
+    function updateUI(){
+      const isMuted = audio.muted || audio.volume === 0;
+      label.textContent = isMuted ? "🔊 Unmute" : "🔇 Mute";
+      status.textContent = isMuted ? "muted" : "playing";
+      btn.setAttribute('aria-pressed', (!isMuted).toString());
+    }
+
+    btn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      if (!audio.paused && audio.currentTime > 0) {
+        // already playing; just toggle
+      } else {
+        audio.play().catch(()=>{});
+      }
+      updateUI();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && audio.paused) {
+        audio.play().catch(()=>{});
+      }
+    });
+
+    // Initial UI state
+    updateUI();
+  </script>
+</body>
+</html>
