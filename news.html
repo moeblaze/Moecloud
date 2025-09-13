@@ -1,84 +1,56 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>News — Moe Community Cloud</title>
-  <meta name="description" content="News from trusted sources — curated by Moe Community Cloud.">
-  <link rel="canonical" href="https://www.moecommunitycloud.com/news.html">
-  <meta property="og:title" content="News — Moe Community Cloud">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Moe Community Cloud">
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="assets/news/news.css">
-  <script defer src="assets/consent.js"></script>
-  <style>
-    .nav .dropdown{ position:relative }
-    .nav .dropdown > a::after{ content:"▾"; margin-left:6px; font-size:.8em }
-    .nav .menu{ position:absolute; left:0; top:100%; background:#0e0e0e; border:1px solid #333; border-radius:12px; padding:8px; display:none; min-width:210px; box-shadow:0 14px 30px rgba(0,0,0,.35)}
-    .nav .menu a{ display:block; padding:8px 10px; border-radius:8px; }
-    .nav .menu a:hover{ background:#1a1a1a }
-    .nav .dropdown:hover .menu, .nav .dropdown:focus-within .menu{ display:block }
-    @media (max-width: 900px){ .nav .menu{ position:static; display:block; border:0; box-shadow:none; padding:0; } .nav .dropdown > a::after{ display:none } }
-  </style>
-</head>
-<body data-page="hub" data-category="all">
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><h1>Moe Community Cloud <span class="gold">MBCC</span></h1></div>
-      
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="apps.html">Apps</a>
-        
-        <div class="dropdown">
-          <a href="news.html" class="active">News</a>
-          <div class="menu">
-            <a href="news-ai.html">AI News</a>
-            <a href="news-tech.html">Tech News</a>
-            <a href="news-funny.html">Funny Stories</a>
-            <a href="news-health.html">Health & Lifestyle</a>
-          </div>
-        </div>
-    
-        <a href="sports.html">Sports</a>
-        <a href="newsletter.html">Newsletter</a>
-      </nav>
-    
-    </div>
-  </header>
+<html lang="en"><head>
+<title>News — Moe Community Cloud</title>
 
-  <main class="container">
-    
-<section class="card glow reveal">
-  <div class="badge news">MBCC News</div>
-  <h2>Top Headlines</h2>
-  <div class="headlines"><div class="track"></div></div>
-  <p class="kicker">AI • Tech • Funny • Health — curated links to reputable sources</p>
-</section>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --mb-red:#b10000; --mb-gold:#d4af37; --ink:#eee; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#000;color:var(--ink)}
+  header{position:sticky;top:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);border-bottom:2px solid var(--mb-red);z-index:50}
+  .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:14px 16px}
+  .logo{width:40px;height:40px;border:2px solid var(--mb-gold);border-radius:12px;background:conic-gradient(from 0deg,#900,#300,#900)}
+  .brand{font-weight:800;letter-spacing:.3px}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap}
+  nav a{text-decoration:none;color:#eee} nav a:hover{color:var(--mb-gold)}
+  main{max-width:1200px;margin:20px auto 80px;padding:0 16px}
+  .hero, .card{border:1px solid #222;border-radius:20px;padding:16px;background:linear-gradient(180deg,rgba(20,20,20,.85),rgba(10,10,10,.85));box-shadow:0 10px 30px rgba(0,0,0,.55)}
+  h1,h2{margin:.2em 0}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+  .grid .card{grid-column:span 12}
+  @media(min-width:720px){.grid .card{grid-column:span 6}}
+  @media(min-width:1024px){.grid .card{grid-column:span 4}}
+  footer{color:#aaa;text-align:center;padding:30px 0}
+</style>
 
-<section class="card glow reveal" style="margin-top:16px">
-  <h3>Fresh Reads</h3>
-  <div class="article-list"></div>
-</section>
+</head><body>
+<header>
+  <div class="nav">
+    <div class="logo"></div>
+    <div class="brand">Moe Community Cloud</div>
+    <nav id="topnav" style="margin-left:auto">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/apps.html">Apps</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/sports.html">Sports</a></li>
+        <li><a href="/sports-weekend/index.html">Weekend Sports</a></li>
+        <li><a href="/newsletter.html">Newsletter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
 
-    <section aria-label="sponsored" style="margin-top:16px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8387411349417007" data-ad-slot="6461821120" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </section>
-  </main>
+<h1>MBCC News</h1>
+<h2>Top Headlines</h2>
+<p>AI • Tech • Funny • Health — curated links to reputable sources</p>
+<h3>Fresh Reads</h3>
 
-  <footer class="footer">
-    <div class="container">
-      <div>© <span id="year"></span> Moe Community Cloud — All rights reserved.</div>
-      <div class="kicker">Built on black & red plaid with gold energy ⚡</div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in-view'); }); }, {threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  </script>
-  <script defer src="assets/news/news.js"></script>
-</body>
-</html>
+</main>
+<footer>© Moe Community Cloud — All rights reserved.<br/>Built on black &amp; red plaid with gold energy ⚡</footer>
+</body></html>

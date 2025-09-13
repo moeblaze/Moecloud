@@ -1,27 +1,33 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moe Community Cloud — MBCC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --mb-red:#b10000; --mb-gold:#d4af37; }
-    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:#000; color:#eee; }
-    header { position:sticky; top:0; background:rgba(0,0,0,.7); backdrop-filter: blur(8px); border-bottom:2px solid var(--mb-red); z-index:50 }
-    .nav { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:16px; padding:14px 16px }
-    .logo { width:40px; height:40px; border:2px solid var(--mb-gold); border-radius:12px; background: conic-gradient(from 0deg,#900,#300,#900) }
-    .brand { font-weight:800; letter-spacing:.3px }
-    nav ul { list-style:none; margin:0; padding:0; display:flex; gap:16px; flex-wrap:wrap }
-    nav a { text-decoration:none; color:#eee }
-    nav a:hover { color: var(--mb-gold) }
-    main { max-width: 1100px; margin: 20px auto 80px; padding: 0 16px }
-    .hero { border:1px solid #222; border-radius:20px; padding:20px; background:linear-gradient(180deg,rgba(20,20,20,.85),rgba(10,10,10,.85)); }
-  </style>
-</head>
-<body>
+<html lang="en"><head>
+<title>Moe Community Cloud — MBCC</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --mb-red:#b10000; --mb-gold:#d4af37; --ink:#eee; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#000;color:var(--ink)}
+  header{position:sticky;top:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);border-bottom:2px solid var(--mb-red);z-index:50}
+  .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:14px 16px}
+  .logo{width:40px;height:40px;border:2px solid var(--mb-gold);border-radius:12px;background:conic-gradient(from 0deg,#900,#300,#900)}
+  .brand{font-weight:800;letter-spacing:.3px}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap}
+  nav a{text-decoration:none;color:#eee} nav a:hover{color:var(--mb-gold)}
+  main{max-width:1200px;margin:20px auto 80px;padding:0 16px}
+  .hero, .card{border:1px solid #222;border-radius:20px;padding:16px;background:linear-gradient(180deg,rgba(20,20,20,.85),rgba(10,10,10,.85));box-shadow:0 10px 30px rgba(0,0,0,.55)}
+  h1,h2{margin:.2em 0}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+  .grid .card{grid-column:span 12}
+  @media(min-width:720px){.grid .card{grid-column:span 6}}
+  @media(min-width:1024px){.grid .card{grid-column:span 4}}
+  footer{color:#aaa;text-align:center;padding:30px 0}
+</style>
+
+</head><body>
 <header>
   <div class="nav">
     <div class="logo"></div>
@@ -38,13 +44,49 @@
     </nav>
   </div>
 </header>
-
 <main>
-  <div class="hero">
-    <h1>Welcome to Moe Community Cloud — MBCC</h1>
-    <p>Updated September 12, 2025. We build fast, useful tools and weekly sports hubs. Use the nav to open <strong>Weekend Sports</strong>.</p>
-  </div>
-</main>
 
-</body>
-</html>
+<section class="hero">
+  <h1>Moe Community Cloud MBCC</h1>
+  <p>Tools &amp; Services for Builders</p>
+  <p>We craft fast, useful web tools and community programs for founders, creators, and operators.</p>
+</section>
+
+<section class="grid" style="margin-top:16px">
+  <div class="card">
+    <h2>Stay in the Loop</h2>
+    <p><strong>Newsletter &amp; Services</strong></p>
+    <p>I'm interested in… Web tools · Training &amp; playbooks · Sponsorship · Consulting</p>
+  </div>
+  <div class="card">
+    <h2>Prime Sponsor</h2>
+    <p><strong>Darwynn McPherson — Mating Market Consultant</strong></p>
+    <p>Husband, father, veteran, athlete. Darwynn helps men lead with discipline and purpose. He also gave us our first YouTube donation — appreciate you, Darwynn!</p>
+    <p><a href="https://youtube.com/@darwynnmcpherson" target="_blank" rel="noopener">Watch more on YouTube</a></p>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="card">
+    <h2>What is Moe Community Cloud?</h2>
+    <ul>
+      <li>Lightweight tools that run in the browser</li>
+      <li>Actionable guides for sales, ops, and content</li>
+      <li>Calm, supportive community and partners</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Build</h2>
+    <p>Launch pages, proposals, emails, and docs in minutes. Our tools favor clarity and speed over complexity.</p>
+    <p><a href="/apps.html">Open the toolbox</a></p>
+  </div>
+  <div class="card">
+    <h2>Train</h2>
+    <p>Short, focused playbooks and practice drills to improve communication, operations, and delivery.</p>
+    <p><a href="/newsletter.html">Get updates</a></p>
+  </div>
+</section>
+
+</main>
+<footer>© Moe Community Cloud — All rights reserved.<br/>Built on black &amp; red plaid with gold energy ⚡</footer>
+</body></html>
