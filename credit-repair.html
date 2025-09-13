@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Credit-Repair — MBCC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/mbcc.css">
-  
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Repair Pro</title>
+<style>
+:root{--mb-red:#b10000;--mb-black:#0b0b0b;--mb-gold:#d4af37;--mb-ink:#e8e8e8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--mb-ink);
+ background:linear-gradient(180deg,#000,#000)}
+header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);border-bottom:2px solid var(--mb-red)}
+.nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:14px 16px}
+.logo{width:40px;height:40px;border:2px solid var(--mb-gold);border-radius:12px;background:conic-gradient(from 0deg,#900,#300,#900)}
+.brand{font-weight:800;letter-spacing:.3px}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap}
+nav a{text-decoration:none;color:#eee} nav a:hover{color:var(--mb-gold)}
+.wrap{max-width:1200px;margin:20px auto 80px;padding:0 16px}
+.h1{font-size:clamp(22px,4vw,36px);margin:14px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.card{grid-column:span 12;background:#121212;border:1px solid #222;border-radius:18px;padding:16px}
+@media(min-width:720px){.card{grid-column:span 6}} @media(min-width:1024px){.card{grid-column:span 4}}
+.card h2{margin:8px 0 6px;font-size:18px}
+.card a.btn{display:inline-block;padding:10px 12px;border:1px solid var(--mb-red);border-radius:12px;text-decoration:none;color:#fff}
+</style>
 </head>
-<body>
-  <header>
-    <nav class="nav">
-      <a href="/index.html">Home</a>
-      <a href="/apps.html" aria-current="page">Apps</a>
-      <a href="/news.html">News</a>
-      <a href="/sports.html">Sports</a>
-      <a href="/newsletter.html">Newsletter</a>
-      <a href="/shop.html">Shop</a>
-    </nav>
-  </header>
-  <main>
-    <h1>Credit Repair Pro</h1><p>Use the restored bundle for full functionality.</p>
-  </main>
-  <script src="assets/mbcc.js"></script>
-</body>
-</html>
+<body><header><div class="nav"><div class="logo"></div><div class="brand">Credit Repair Pro</div>
+<nav style="margin-left:auto"><ul><li><a href="/index.html">Home</a></li><li><a href="/apps.html">Apps</a></li></ul></nav></div></header>
+<main class="wrap"><div class="h1">Credit Repair Pro</div>
+<section class="card"><h2>Dispute Letter</h2><textarea id="letter" style="width:100%;min-height:160px"></textarea>
+<div><button id="download">Download .txt</button></div></section></main>
+<script>
+document.getElementById('download').onclick=()=>{const t=document.getElementById('letter').value;const b=new Blob([t],{type:'text/plain'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='dispute_letter.txt';a.click();URL.revokeObjectURL(u);};
+</script></body></html>

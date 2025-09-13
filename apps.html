@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Apps — Toolbox — MBCC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/mbcc.css">
-  
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Apps — Toolbox — MBCC</title>
+<style>
+:root{--mb-red:#b10000;--mb-black:#0b0b0b;--mb-gold:#d4af37;--mb-ink:#e8e8e8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--mb-ink);
+ background:linear-gradient(180deg,#000,#000)}
+header{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);border-bottom:2px solid var(--mb-red)}
+.nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:14px 16px}
+.logo{width:40px;height:40px;border:2px solid var(--mb-gold);border-radius:12px;background:conic-gradient(from 0deg,#900,#300,#900)}
+.brand{font-weight:800;letter-spacing:.3px}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap}
+nav a{text-decoration:none;color:#eee} nav a:hover{color:var(--mb-gold)}
+.wrap{max-width:1200px;margin:20px auto 80px;padding:0 16px}
+.h1{font-size:clamp(22px,4vw,36px);margin:14px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.card{grid-column:span 12;background:#121212;border:1px solid #222;border-radius:18px;padding:16px}
+@media(min-width:720px){.card{grid-column:span 6}} @media(min-width:1024px){.card{grid-column:span 4}}
+.card h2{margin:8px 0 6px;font-size:18px}
+.card a.btn{display:inline-block;padding:10px 12px;border:1px solid var(--mb-red);border-radius:12px;text-decoration:none;color:#fff}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav">
-      <a href="/index.html">Home</a>
-      <a href="/apps.html" aria-current="page">Apps</a>
-      <a href="/news.html">News</a>
-      <a href="/sports.html">Sports</a>
-      <a href="/newsletter.html">Newsletter</a>
-      <a href="/shop.html">Shop</a>
-    </nav>
-  </header>
-  <main>
-    
-<h1>Toolbox</h1>
-<div class="grid">
-  <div class="card"><div class="title">Meeting Automator</div><div class="actions"><a class="btn" href="/meeting-automator.html">Open</a></div></div>
-  <div class="card"><div class="title">Credit Repair Pro</div><div class="actions"><a class="btn" href="/credit-repair.html">Open</a></div></div>
-  <div class="card"><div class="title">Quantum Spiral Man (QSM)</div><div class="actions"><a class="btn" href="/qsm.html">Open</a></div></div>
-  <div class="card"><div class="title">Quantum Spiral Woman (QSW)</div><div class="actions"><a class="btn" href="/qsw.html">Open</a></div></div>
-  <div class="card"><div class="title">Cold‑Open Hooksmith</div><div class="actions"><a class="btn" href="/hooksmith.html">Open</a></div></div>
-  <div class="card"><div class="title">Shorts Crafter</div><div class="actions"><a class="btn" href="/shorts-crafter.html">Open</a></div></div>
-  <div class="card"><div class="title">Comment Coach</div><div class="actions"><a class="btn" href="/comment-coach.html">Open</a></div></div>
-  <div class="card"><div class="title">File Converter</div><div class="actions"><a class="btn" href="/file-converter.html">Open</a></div></div>
-</div>
-
-  </main>
-  <script src="assets/mbcc.js"></script>
-</body>
-</html>
+<header><div class="nav"><div class="logo"></div><div class="brand">Moe Community Cloud</div>
+<nav id="topnav" style="margin-left:auto"><ul>
+<li><a href="/index.html">Home</a></li><li><a href="/apps.html">Apps</a></li><li><a href="/newsletter.html">Newsletter</a></li><li><a href="/sports-weekend/index.html">Weekend Sports</a></li>
+</ul></nav></div></header>
+<main class="wrap">
+  <div class="h1"># Toolbox</div>
+  <section class="grid">
+    <article class="card"><h2>Meeting Automator</h2><p>Agenda → timed blocks → action items → export.</p><a class="btn" href="/meeting-automator.html">Open</a></article>
+    <article class="card"><h2>Credit Repair Pro</h2><p>Dispute letter builder + tracker with export.</p><a class="btn" href="/credit-repair.html">Open</a></article>
+    <article class="card"><h2>Quantum Spiral Man (QSM)</h2><p>Questionnaire → 7‑day plan → tracker.</p><a class="btn" href="/qsm.html">Open</a></article>
+    <article class="card"><h2>Quantum Spiral Woman (QSW)</h2><p>Tailored tracks & guidance.</p><a class="btn" href="/qsw.html">Open</a></article>
+    <article class="card"><h2>Cold‑Open Hooksmith</h2><p>Punchy hooks for shorts & lives.</p><a class="btn" href="/hooksmith.html">Open</a></article>
+    <article class="card"><h2>Shorts Crafter</h2><p>9:16 storyboard + captions.</p><a class="btn" href="/shorts-crafter.html">Open</a></article>
+    <article class="card"><h2>Comment Coach</h2><p>Comments → replies & CTAs.</p><a class="btn" href="/comment-coach.html">Open</a></article>
+    <article class="card"><h2>File Converter</h2><p>Convert images to PNG/JPG/WebP in‑browser.</p><a class="btn" href="/file-converter.html">Open</a></article>
+  </section>
+</main>
+</body></html>
