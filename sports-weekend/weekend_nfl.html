@@ -1,1 +1,132 @@
-<!doctype html><meta charset='utf-8'><title>weekend_nfl.html</title><h1>weekend_nfl.html</h1><p>Placeholder page.</p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MCC Weekend NFL News Hub</title>
+
+<style>
+  :root { --mb-red:#b10000; --mb-black:#0b0b0b; --mb-gold:#d4af37; --mb-gray:#c9c9c9; }
+  * { box-sizing: border-box; }
+  body{
+    margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color:#f3f3f3;
+    background:
+      radial-gradient(1200px 800px at 10% -10%, rgba(255,0,0,.18), transparent 60%),
+      radial-gradient(1200px 800px at 110% 110%, rgba(255,0,0,.12), transparent 60%),
+      repeating-linear-gradient(45deg, #0a0a0a 0 12px, #121212 12px 24px),
+      linear-gradient(180deg,#000,#000);
+  }
+  header{
+    position: sticky; top:0; z-index:50;
+    background: rgba(0,0,0,.65); backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--mb-red); padding: 18px 16px;
+  }
+  .brand{ display:flex; align-items:center; gap:14px; max-width:1160px; margin:0 auto; }
+  .logo{ width:42px;height:42px; border-radius:12px; border:2px solid var(--mb-gold);
+         background: conic-gradient(from 0deg,#900,#300,#900); box-shadow:0 0 24px rgba(255,0,0,.35) inset; }
+  h1{ margin:0; font-size:clamp(22px, 4vw, 36px); letter-spacing:.4px; }
+  .date{ color:#bbb; font-size:14px; margin-top:4px; }
+
+  .wrap{ max-width:1160px; margin:22px auto 80px; padding: 0 16px; }
+
+  .hero{
+    position:relative; border-radius:22px; overflow:hidden; border:1px solid #222; margin: 10px 0 18px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.6);
+  }
+  .hero img{ width:100%; height: min(55vh,520px); object-fit:cover; display:block; }
+  .hero .title{
+    position:absolute; left:0; right:0; bottom:0; padding:18px 18px 20px;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.8));
+    font-weight:700; font-size:clamp(18px,3.2vw,28px);
+  }
+
+  .cards{ display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; }
+  .card{
+    grid-column: span 12;
+    background:linear-gradient(180deg, rgba(20,20,20,.85), rgba(10,10,10,.85));
+    border:1px solid #222; border-radius:18px; padding:16px 16px 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.55);
+    transform: translateY(10px); opacity:0; animation: rise .6s ease forwards;
+  }
+  .card:nth-child(2){ animation-delay:.08s } .card:nth-child(3){ animation-delay:.16s } .card:nth-child(4){ animation-delay:.24s }
+  .card h2{ display:flex; align-items:center; gap:8px; font-size:20px; margin:6px 0 8px; }
+  .tag{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid var(--mb-red); border-radius:999px; font-size:12px; }
+  .bullet{ padding-left:18px; }
+  .bullet li{ margin:8px 0; line-height:1.45; }
+
+  .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:12px; }
+  .kpi{ grid-column: span 12; background:#121212; border:1px solid #252525; border-radius:14px; padding:12px; transition: transform .25s ease, box-shadow .25s ease; }
+  @media (min-width:720px){ .kpi{ grid-column: span 6 } }
+  @media (min-width:1024px){ .kpi{ grid-column: span 4 } }
+  .kpi:hover{ transform: translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,.45) }
+
+  .source{ color: var(--mb-gray); font-size:12px; margin-top:8px }
+  .disclaimer{ color:#a9a9a9; font-size:12px; }
+
+  @keyframes rise{ from{ transform: translateY(16px); opacity:0 } to{ transform: translateY(0); opacity:1 } }
+
+  @media (min-width:720px){
+    .card{ grid-column: span 6; }
+  }
+  @media (min-width:1024px){
+    .card{ grid-column: span 6; }
+  }
+</style>
+
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo"></div>
+    <div>
+      <h1>MCC Weekend NFL News Hub</h1>
+      <div class="date">Updated September 12, 2025 • Moe Community Cloud • Animated Cards</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <img src="https://picsum.photos/seed/nfl/1600/800" alt="NFL hero">
+    <div class="title">Week 2 headlines, injuries and line movement watch</div>
+  </div>
+
+  <div class="cards">
+    <section class="card">
+      <h2><span class="tag">Latest News</span> Headlines</h2>
+      <ul class="bullet">
+        <li>Eagles TE Dallas Goedert ruled OUT vs Chiefs (knee sprain).</li><li>Bills DT Ed Oliver OUT vs Jets; rookie T.J. Sanders expected to start.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="tag">Parlay Angles</span> Quick Ideas</h2>
+      <div class="grid">
+        <div class="kpi"><div>Two-team teaser: push a live dog through 3 &amp; 7 + bring a high total down for an over.</div></div><div class="kpi"><div>Anytime TD (value WR/TE) + team ML where pace and red-zone usage align.</div></div><div class="kpi"><div>WR receptions over when opposing CB is limited/out—confirm Friday reports.</div></div>
+      </div>
+      <p class="disclaimer">Illustrative concepts. Verify live lines/props before placing wagers.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tag">Lines</span> Spreads/Totals to Monitor</h2>
+      <ul class="bullet">
+        <li>Expect Sunday AM steam on key numbers (3, 7).</li><li>Shop lines; small half-point edges matter around 3/7.</li><li>Live-bet triggers after two drives if pressure rates deviate from baseline.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="tag">Projections</span> Player/Team Notes</h2>
+      <ul class="bullet">
+        <li>RB touch share changes with questionable tags—adjust rush+rec medians.</li><li>QB pressure rate vs OL pass-block win rate drives sack/TO variance.</li><li>TE red-zone usage can hide TD-scorer value.</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer style="margin-top:20px;">
+    <p class="disclaimer">Gambling involves risk. This content is informational only. Play responsibly.</p>
+  </footer>
+</div>
+</body>
+</html>
