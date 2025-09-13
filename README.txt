@@ -1,16 +1,15 @@
-MBCC — RESTORE PACK (built 2025-09-09)
+# MBCC — Weekend Sports Hardcoded Nav Patch
 
-What this does
-- Restores ONLY the files we unintentionally changed:
-  • index.html (unchanged layout; sponsor image fills the glowing box; uses assets/sponsors/channels4_profile (1).jpg)
-  • apps.html (restored toolbox layout and styling)
-  • assets/sponsors/channels4_profile (1).jpg (image included)
+This patch **replaces your homepage (`/index.html`)** with a safe header that already contains a
+**Weekend Sports** nav item linking to `/sports-weekend/index.html`, and also includes the full
+`/sports-weekend/` folder.
 
-How to install
-1) Upload index.html and apps.html to your site root, overwriting the current files.
-2) Create folder assets/sponsors/ if it doesn't exist and upload the image inside.
-3) Hard refresh each page: index.html?cb=restore and apps.html?cb=restore
+## Deploy
+1) Commit the files in this ZIP to your site root (same level as your current `index.html`).
+2) If you want to keep your original content, copy the `<nav>` block from this index into your template
+   or merge manually — but this file is ready to drop in as-is.
+3) Push to GitHub and refresh the site.
 
-Notes
-- No global CSS or JS changed. Your existing assets/style.css and assets/consent.js remain untouched.
-- If any content page still looks off, tell me which file and I’ll ship JUST that file without touching others.
+If you prefer not to replace the whole homepage, paste this line in your existing nav `<ul>`:
+`<li><a href="/sports-weekend/index.html">Weekend Sports</a></li>`
+
