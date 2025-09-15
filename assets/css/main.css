@@ -1,30 +1,11 @@
 
-:root{--mbcc-red:#B30000;--mbcc-black:#0b0b0b;--mbcc-gold:#d4af37}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#0b0b0b;color:#eee;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.6}
-a{color:#ffd166;text-decoration:none}
-a:hover{text-decoration:underline}
-header{background:linear-gradient(135deg,var(--mbcc-black),#1a1a1a);border-bottom:4px solid var(--mbcc-red)}
-.container{max-width:1200px;margin:0 auto;padding:1rem}
-.brand{display:flex;align-items:center;gap:.75rem}
-.brand img{width:44px;height:44px;border-radius:12px}
-.brand h1{margin:0;font-size:1.25rem;letter-spacing:.5px}
-nav ul{display:flex;gap:1rem;list-style:none;margin:.5rem 0 0;padding:0;flex-wrap:wrap}
-.hero{position:relative;overflow:hidden;border-bottom:4px solid var(--mbcc-red)}
-.hero img{width:100%;height:auto;display:block}
-.hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.65))}
-.hero .caption{position:absolute;left:5%;bottom:6%;max-width:800px}
-.hero h2{margin:0 0 .25rem 0;font-size:2rem}
-.hero p{margin:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:2rem 0}
-.card{background:#121212;border:1px solid #202020;border-radius:16px;padding:1rem;box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.card h3{margin-top:0}
-footer{border-top:4px solid var(--mbcc-red);background:#0e0e0e;margin-top:2rem}
-footer nav{display:flex;gap:1rem;flex-wrap:wrap}
-.badge{display:inline-block;background:var(--mbcc-red);color:white;padding:.25rem .5rem;border-radius:999px;font-size:.75rem;margin-left:.5rem}
-.plaid{background-image: linear-gradient(90deg, #111 25%, transparent 25%), 
-linear-gradient(90deg, transparent 75%, #111 75%), 
-linear-gradient(0deg, #111 25%, transparent 25%), 
-linear-gradient(0deg, transparent 75%, #111 75%);
-background-size:20px 20px; background-color:#1a1a1a; border:1px solid #222; border-radius:16px; padding:1rem}
-.small{font-size:.9rem;color:#c9c9c9}
+:root{--mbcc-red:#B30000;--mbcc-black:#0b0b0b}
+body{margin:0;background:#0b0b0b;color:#eee;font-family:system-ui,Segoe UI,Roboto,Inter,Arial,sans-serif}
+.container{max-width:960px;margin:0 auto;padding:1rem}
+header,footer{background:#0e0e0e;border-top:4px solid var(--mbcc-red);border-bottom:4px solid var(--mbcc-red)}
+.brand{display:flex;align-items:center;gap:.5rem}
+.brand img{width:44px;height:44px;border-radius:10px}
+nav ul{list-style:none;padding:0;margin:.5rem 0 0;display:flex;gap:1rem;flex-wrap:wrap}
+a{color:#ffd166}
+.badge{display:inline-block;background:var(--mbcc-red);padding:.15rem .5rem;border-radius:999px;font-size:.75rem}
+.small{color:#c9c9c9}
