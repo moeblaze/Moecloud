@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Moe Community Cloud — Updates</title>
+    <link>https://www.moecommunitycloud.com/</link>
+    <description>New playbooks, training drops, and ROI tools from Moe Community Cloud.</description>
+    <lastBuildDate>Wed, 24 Sep 2025 01:42:34 +0000</lastBuildDate>
+    <item>
+      <title>Playbooks Hub launched</title>
+      <link>https://www.moecommunitycloud.com/playbooks/index.html</link>
+      <pubDate>Wed, 24 Sep 2025 01:42:34 +0000</pubDate>
+      <description>Zero Trust, FinOps Guardrail, Compliance Readiness, and Observability Lite.</description>
+      <guid>https://www.moecommunitycloud.com/playbooks/index.html</guid>
+    </item>
+    <item>
+      <title>ROI calculator updated</title>
+      <link>https://www.moecommunitycloud.com/training/roi.html</link>
+      <pubDate>Wed, 24 Sep 2025 01:42:34 +0000</pubDate>
+      <description>Now with CSV export and CTAs.</description>
+      <guid>https://www.moecommunitycloud.com/training/roi.html</guid>
+    </item>
+  </channel>
+</rss>
