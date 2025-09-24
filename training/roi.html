@@ -3,6 +3,39 @@
 <title>ROI Calculator — MOE Learning</title>
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script defer src="../assets/js/main.js"></script>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+    <nav class="nav"><a href="../index.html">Home</a><a href="index.html">Training</a></nav>
+  </div>
+</header>
+
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Training</a> <span>›</span> <a href="roi.html">ROI</a></div>
+</section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card"><h3>Inputs</h3>
+    <label>Engineers <input id="roi_eng" type="number" min="1" value="20" style="width:100%"></label>
+    <label>Avg loaded cost per engineer ($/yr) <input id="roi_cost" type="number" min="10000" value="200000" style="width:100%"></label>
+    <label>Deploy frequency (per month) <input id="roi_deploy" type="number" min="1" value="2" style="width:100%"></label>
+    <label>MTTR today (hours) <input id="roi_mttr" type="number" min="1" value="4" style="width:100%"></label>
+    <label>Monthly cloud spend ($) <input id="roi_cloud" type="number" min="0" value="100000" style="width:100%"></label>
+    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="calcROI()">Calculate</button>
+      <button class="btn ghost" onclick="exportROICSV()">Export ROI to CSV</button>
+    </div>
+    <p class="micro">Assumptions: 50–70% lead time reduction, MTTR down 60%, 15–30% FinOps savings.</p>
+  </div>
+  <div class="card" id="roi_result"><h3>Results</h3><p class="micro">Enter inputs and click Calculate.</p></div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
 <script>
 function calcROI(){
   const eng=+document.getElementById('roi_eng').value||0;
@@ -66,34 +99,4 @@ function exportROICSV(){
   try{ gtag('event','roi_export'); }catch(e){}
 }
 </script>
-</head>
-<body>
-<header class="site-header">
-  <div class="wrap">
-    <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
-    <nav class="nav"><a href="../index.html">Home</a><a href="index.html">Training</a></nav>
-  </div>
-</header>
-
-<section class="wrap" style="padding:20px 0">
-  <div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Training</a> <span>›</span> <a href="roi.html">ROI</a></div>
-</section>
-
-<section class="section"><div class="wrap grid two">
-  <div class="card"><h3>Inputs</h3>
-    <label>Engineers <input id="roi_eng" type="number" min="1" value="20" style="width:100%"></label>
-    <label>Avg loaded cost per engineer ($/yr) <input id="roi_cost" type="number" min="10000" value="200000" style="width:100%"></label>
-    <label>Deploy frequency (per month) <input id="roi_deploy" type="number" min="1" value="2" style="width:100%"></label>
-    <label>MTTR today (hours) <input id="roi_mttr" type="number" min="1" value="4" style="width:100%"></label>
-    <label>Monthly cloud spend ($) <input id="roi_cloud" type="number" min="0" value="100000" style="width:100%"></label>
-    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn primary" onclick="calcROI()">Calculate</button>
-      <button class="btn ghost" onclick="exportROICSV()">Export ROI to CSV</button>
-    </div>
-    <p class="micro">Assumptions: 50–70% lead time reduction, MTTR down 60%, 15–30% FinOps savings.</p>
-  </div>
-  <div class="card" id="roi_result"><h3>Results</h3><p class="micro">Enter inputs and click Calculate.</p></div>
-</div></section>
-
-<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
 </body></html>
