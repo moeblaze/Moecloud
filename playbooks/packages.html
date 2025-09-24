@@ -5,63 +5,7 @@
 <script defer src="../assets/js/main.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/impl.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Moe Community Cloud Packages",
-  "itemListElement": [
-    {
-      "@type": "Product",
-      "name": "No\u2011Code Playbook",
-      "description": "Static, SEO\u2011ready hub with ROI calculator, newsletter + gated downloads, policy pages, and auto sitemaps.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "15000",
-        "priceValidUntil": "2030-12-31",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Product",
-      "name": "Integration Playbook (AI Assist)",
-      "description": "AI chat, ROI coach, lead qualification, serverless backend, API Management guardrails, telemetry.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "50000",
-        "priceValidUntil": "2030-12-31",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Product",
-      "name": "White\u2011Label Ecosystem",
-      "description": "Multi\u2011tenant hub & spoke, partner telemetry, white\u2011label toggle, resale rights and automation tools.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "150000",
-        "priceValidUntil": "2030-12-31",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "Product",
-      "name": "Enterprise Transformation Package",
-      "description": "Zero\u2011Trust infra (Landing Zone, VPCs), EKS + GitOps, API GW + Lambda, RDS/DynamoDB, S3+CloudFront+WAF, SQS/SNS/EventBridge, Prometheus/Grafana/Otel, IAM SSO, Secrets/KMS, OPA/Gatekeeper, LMS + dashboards.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "1000000",
-        "priceValidUntil": "2030-12-31",
-        "availability": "https://schema.org/PreOrder"
-      }
-    }
-  ]
-}
-</script>
+<script src="../assets/js/consultation.js"></script>
 </head><body>
 <header class="site-header"><div class="wrap">
   <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
@@ -79,11 +23,12 @@
 
 <section class="section"><div class="wrap">
   <h1 class="section-title">Packages</h1>
-  <p class="micro">Pick your path: launch without code, add AI Assist, white-label it, or transform the enterprise.</p>
+  <p class="micro">Compare tiers, see pricing, and book a consultation. High-end packages require qualification.</p>
 
   <div class="grid cards four">
     <div class="card rise">
       <h3>No‑Code Playbook</h3>
+      <p class="micro">Price: <b>$15k–$30k</b> + $500–$1k/mo</p>
       <ul>
         <li>Static, SEO‑ready site</li>
         <li>ROI calculator (CSV)</li>
@@ -91,11 +36,11 @@
         <li>Privacy/Terms/Cookies</li>
         <li>Auto‑sitemaps & robots</li>
       </ul>
-      <p class="micro">Investment: <b>$15k–$30k</b> + $500–$1k/mo</p>
-      <button class="btn" onclick="selectTier('No‑Code Playbook')">Select</button>
+      <a class="btn" href="#" data-mcc-consult data-tier="No‑Code Playbook">Book consultation</a>
     </div>
     <div class="card rise">
       <h3>Integration (AI Assist)</h3>
+      <p class="micro">Price: <b>$50k–$75k</b> + $2k–$5k/mo</p>
       <ul>
         <li>Everything in No‑Code</li>
         <li>AI chat + ROI coach</li>
@@ -103,11 +48,11 @@
         <li>Azure Functions + APIM</li>
         <li>Telemetry + insights</li>
       </ul>
-      <p class="micro">Investment: <b>$50k–$75k</b> + $2k–$5k/mo</p>
-      <button class="btn" onclick="selectTier('Integration (AI Assist)')">Select</button>
+      <a class="btn" href="#" data-mcc-consult data-tier="Integration (AI Assist)">Book consultation</a>
     </div>
     <div class="card rise">
       <h3>White‑Label Ecosystem</h3>
+      <p class="micro">Price: <b>$150k+</b> + $10k+/mo</p>
       <ul>
         <li>Everything in Integration</li>
         <li>Brand toggle + automation</li>
@@ -115,11 +60,11 @@
         <li>Partner telemetry exports</li>
         <li>Resale rights</li>
       </ul>
-      <p class="micro">Investment: <b>$150k+</b> + $10k+/mo</p>
-      <button class="btn" onclick="selectTier('White‑Label Ecosystem')">Select</button>
+      <a class="btn" href="#" data-mcc-consult data-tier="White‑Label Ecosystem">Book consultation</a>
     </div>
     <div class="card rise">
       <h3>Enterprise Transformation</h3>
+      <p class="micro">Price: <b>$1M+</b> (multi‑year)</p>
       <ul>
         <li>Zero‑Trust architecture</li>
         <li>EKS + GitOps, API GW + Lambda</li>
@@ -127,8 +72,7 @@
         <li>SQS/SNS/EventBridge backbone</li>
         <li>Observability, IAM SSO, KMS, OPA</li>
       </ul>
-      <p class="micro">Investment: <b>$1M+</b> (multi‑year)</p>
-      <button class="btn gold" onclick="selectTier('Enterprise Transformation')">Select</button>
+      <a class="btn gold" href="#" data-mcc-consult data-tier="Enterprise Transformation">Book consultation</a>
     </div>
   </div>
 
@@ -145,91 +89,8 @@
       <tr><td>LMS + Executive Dashboards</td><td>—</td><td>Optional</td><td>Optional</td><td>Included</td></tr>
     </table>
   </div>
-
-  <div class="grid two" style="margin-top:20px">
-    <div class="card">
-      <h3>ROI + Quote Summary</h3>
-      <label>Selected tier <input id="pkg_tier" value="No‑Code Playbook" style="width:100%"></label>
-      <label>Engineers <input id="pkg_eng" type="number" min="1" value="20" style="width:100%"></label>
-      <label>Monthly cloud spend ($) <input id="pkg_spend" type="number" min="0" value="100000" style="width:100%"></label>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-        <button class="btn primary" onclick="calcPkg()">Estimate ROI</button>
-        <button class="btn ghost" onclick="exportPkg()">Export Quote CSV</button>
-      </div>
-      <div id="pkg_result" class="micro" style="margin-top:10px">Enter inputs and click Estimate.</div>
-    </div>
-
-    <div class="card">
-      <h3>Get Started</h3>
-      <p class="micro">Want a formal proposal? Export a quote and contact us.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-        <a class="btn" href="../contact.html">Contact Sales</a>
-        <a class="btn" href="../training/roi.html">Open Full ROI</a>
-        <a class="btn gold" href="../training/partners.html">Partner Models</a>
-      </div>
-    </div>
-  </div>
 </div></section>
 
 <footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
-
-<script>
-function selectTier(t){ document.getElementById('pkg_tier').value = t; }
-
-function tierCost(t){
-  switch(t){
-    case 'No‑Code Playbook': return 25000;
-    case 'Integration (AI Assist)': return 60000;
-    case 'White‑Label Ecosystem': return 200000;
-    case 'Enterprise Transformation': return 1000000;
-    default: return 25000;
-  }
-}
-
-function calcPkg(){
-  const tier = document.getElementById('pkg_tier').value||'No‑Code Playbook';
-  const eng = +document.getElementById('pkg_eng').value||0;
-  const spend = +document.getElementById('pkg_spend').value||0;
-  const annualCost = tierCost(tier);
-  const dev_low = eng*200000*0.10, dev_high = eng*200000*0.20;
-  const fin_low = spend*0.15*12, fin_high = spend*0.30*12;
-  const total_low = dev_low + fin_low, total_high = dev_high + fin_high;
-  const payback_low_months = Math.max(1, Math.round(annualCost / (total_high/12)));
-  const payback_high_months = Math.max(1, Math.round(annualCost / (total_low/12)));
-  const $ = x => '$'+(Math.round(x)).toLocaleString();
-  document.getElementById('pkg_result').innerHTML = `
-    <ul>
-      <li>Estimated annual impact: <b>${$(total_low)} – ${$(total_high)}</b></li>
-      <li>Package price (est.): <b>${$(annualCost)}</b></li>
-      <li>Estimated payback: <b>${payback_low_months}–${payback_high_months} months</b></li>
-    </ul>`;
-  try{ gtag('event','package_estimated',  {tier: tier} ); }catch(e){}
-}
-
-function exportPkg(){
-  const tier = document.getElementById('pkg_tier').value||'No‑Code Playbook';
-  const eng = +document.getElementById('pkg_eng').value||0;
-  const spend = +document.getElementById('pkg_spend').value||0;
-  const annualCost = tierCost(tier);
-  const dev_low = eng*200000*0.10, dev_high = eng*200000*0.20;
-  const fin_low = spend*0.15*12, fin_high = spend*0.30*12;
-  const rows = [
-    ['Field','Value'],
-    ['Selected tier', tier],
-    ['Engineers', eng],
-    ['Monthly cloud spend', spend],
-    ['Package price (est., one‑time)', Math.round(annualCost)],
-    ['Dev productivity (annual) low', Math.round(dev_low)],
-    ['Dev productivity (annual) high', Math.round(dev_high)],
-    ['FinOps savings (annual) low', Math.round(fin_low)],
-    ['FinOps savings (annual) high', Math.round(fin_high)]
-  ];
-  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\\n');
-  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a'); a.href=url; a.download='MCC_Package_Quote.csv';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-  try{ gtag('event','package_export',  {tier: tier} ); }catch(e){}
-}
-</script>
+<script src="../assets/js/ai.js"></script>
 </body></html>
