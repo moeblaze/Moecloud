@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://www.moecommunitycloud.com/</loc></url>
-<url><loc>https://www.moecommunitycloud.com/apps.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/news.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/sports.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/weekend-sports.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/newsletter.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/contact.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/privacy-policy.html</loc></url>
-<url><loc>https://www.moecommunitycloud.com/terms.html</loc></url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://moecommunitycloud.example/</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/newsletter.html</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/newsletter-thanks.html</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/training/</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/training/courses.html</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/training/partners.html</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/training/roi.html</loc><lastmod>2025-09-24</lastmod></url>
+  <url><loc>https://moecommunitycloud.example/services/monetization.html</loc><lastmod>2025-09-24</lastmod></url>
 </urlset>

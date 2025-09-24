@@ -1,60 +1,63 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moe Community Cloud — Home</title>
-<meta name="description" content="Moe Community Cloud — tools, training, and shop.">
-<link rel="stylesheet" href="assets/css/theme.css">
-</head>
-<body><header>
-  <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Home">
-      <img src="assets/img/logo.svg" alt="Moe Community Cloud logo" width="180" height="44">
-    </a>
-    <ul>
-      <li><a class="link" href="index.html" data-active>Home</a></li>
-      <li><a class="link" href="newsletter.html">Newsletter</a></li>
-      <li><a class="link" href="about.html">About</a></li>
-      <li><a class="link" href="shop.html">Shop</a></li>
-    </ul>
+<!DOCTYPE html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moe Community Cloud — Cloud Infrastructure, Training & Partners</title>
+<link rel="stylesheet" href="assets/css/styles.css"><script defer src="assets/js/main.js"></script>
+</head><body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand"><div class="logo"></div><div class="brand-text">
+      <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+    <nav class="nav">
+      <a href="index.html" style='color:#fff;'>Home</a>
+      <a href="training/index.html" >Training</a>
+      <a href="services/monetization.html">Monetization</a>
+      <a href="newsletter.html" class="btn ghost">Newsletter</a>
+    </nav>
   </div>
 </header>
-<main>
-  <section class="hero">
-    <div class="container">
-      <span class="kicker">MCC</span>
-      <h1>Build, brand, and monetize — all in one hub</h1>
-      <p>Clean slate. New site. Simple, fast, and focused: our newsletter, our story, and our shop.</p>
-      <a class="cta" href="newsletter.html">Subscribe to Newsletter →</a>
+<section class="hero plaid-bg">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Enterprise Cloud Platforms <span class="gold">&</span> Training</h1>
+      <p>Landing Zones, EKS with GitOps, CI/CD, Observability, DR & FinOps—plus a partner program to monetize your expertise.</p>
+      <div style="margin-top:12px"><a class="btn primary" href="training/courses.html">Browse Courses</a> <a class="btn gold" href="training/roi.html">Run ROI</a></div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="container grid cols-3">
-      <div class="card">
-        <h3>Newsletter</h3>
-        <p class="small">Weekly drops: tools, tips, and sports notes.</p>
-        <p><a class="arrow" href="newsletter.html">Open Newsletter →</a></p>
-      </div>
-      <div class="card">
-        <h3>About</h3>
-        <p class="small">Who we are and what we’re building.</p>
-        <p><a class="arrow" href="about.html">Read About →</a></p>
-      </div>
-      <div class="card">
-        <h3>Shop</h3>
-        <p class="small">Grab official Moe Bucks merch.</p>
-        <p><a class="arrow" href="shop.html">Open Shop →</a></p>
-      </div>
+    <div class="card rise">
+      <h3>Packages</h3>
+      <ul><li>Foundation Platform Build</li><li>Managed SRE</li><li>Training & Certification</li></ul>
+      <a class="btn" href="training/partners.html">Partner Options</a>
     </div>
-  </section>
-</main>
-<footer>
-  <div class="container">
-    <div>© <span id="y"></span> Moe Community Cloud · <a href="https://moe-bucks.myspreadshop.com/" target="_blank" rel="noopener">Shop</a></div>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-  <script src="assets/js/scripts.js" defer></script>
-</footer>
+</section>
+
+<section id="training-partners" class="section">
+  <div class="wrap">
+    <h2 class="section-title">Training & Partners</h2>
+    <div class="grid cards three">
+      <div class="card rise">
+        <h3>Courses & Certification</h3>
+        <p>Foundations, EKS & GitOps, CI/CD & Serverless, Observability/DR/FinOps.</p>
+        <a class="btn" href="training/courses.html">Browse Courses</a>
+      </div>
+      <div class="card rise">
+        <h3>Partner Program</h3>
+        <p>Referral, Co-Sell & White-Label. Earn up to 20% on builds + 10% of yr‑1 SRE.</p>
+        <a class="btn" href="training/partners.html">Explore Partner Models</a>
+      </div>
+      <div class="card rise">
+        <h3>ROI Calculator</h3>
+        <p>Estimate developer productivity, reliability, and FinOps impact.</p>
+        <a class="btn gold" href="training/roi.html">Open ROI</a>
+      </div>
+      <div class="card rise">
+        <h3>Monetization Services</h3>
+        <p>Optional add‑on: AdSense, affiliates, and sponsorship slots—without compromising your brand.</p>
+        <a class="btn" href="services/monetization.html">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="wrap">© 2025-09-24 Moe Community Cloud</div></footer>
 </body></html>
