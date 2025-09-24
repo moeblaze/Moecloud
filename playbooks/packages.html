@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Packages — Playbooks</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+</head><body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../training/index.html">Training</a>
+    <a href="../services/monetization.html">Monetization</a>
+    <a href="index.html" style="color:#fff;">Playbooks</a>
+  </nav>
+</div></header>
+
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Playbooks</a> <span>›</span> <a href="packages.html">Packages</a></div>
+</section>
+
+<section class="section"><div class="wrap">
+  <h2 class="section-title">Packages</h2>
+  <p class="micro">Choose a tier, estimate ROI, and export a quote summary — all no-code.</p>
+
+  <div class="grid two">
+    <div class="card">
+      <h3>Compare Tiers</h3>
+      <table class="table">
+        <tr><th>Feature</th><th>Foundation</th><th>Pro</th><th>Enterprise</th></tr>
+        <tr><td>Landing Zone + Guardrails</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>EKS with GitOps</td><td>—</td><td>✓</td><td>✓</td></tr>
+        <tr><td>CI/CD & Serverless</td><td>—</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Observability + DR + FinOps</td><td>—</td><td>—</td><td>✓</td></tr>
+        <tr><td>Managed SRE (yr‑1)</td><td>—</td><td>Optional</td><td>Included</td></tr>
+        <tr><td>Training & Certification</td><td>Essentials</td><td>Advanced</td><td>Full Catalog</td></tr>
+      </table>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn" onclick="selectTier('Foundation')">Select Foundation</button>
+        <button class="btn" onclick="selectTier('Pro')">Select Pro</button>
+        <button class="btn gold" onclick="selectTier('Enterprise')">Select Enterprise</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>ROI + Quote Summary</h3>
+      <label>Selected tier <input id="pkg_tier" value="Foundation" style="width:100%"></label>
+      <label>Engineers <input id="pkg_eng" type="number" min="1" value="20" style="width:100%"></label>
+      <label>Monthly cloud spend ($) <input id="pkg_spend" type="number" min="0" value="100000" style="width:100%"></label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn primary" onclick="calcPkg()">Estimate ROI</button>
+        <button class="btn ghost" onclick="exportPkg()">Export Quote CSV</button>
+      </div>
+      <div id="pkg_result" class="micro" style="margin-top:10px">Enter inputs and click Estimate.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <a class="btn" href="../training/roi.html">Open Full ROI</a>
+        <a class="btn" href="../training/courses.html">Browse Training</a>
+        <a class="btn gold" href="../training/partners.html">Partner Models</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function selectTier(t){ document.getElementById('pkg_tier').value = t; }
+function calcPkg(){
+  const tier = document.getElementById('pkg_tier').value||'Foundation';
+  const eng = +document.getElementById('pkg_eng').value||0;
+  const spend = +document.getElementById('pkg_spend').value||0;
+  const annualCost = {Foundation: 50000, Pro: 120000, Enterprise: 240000}[tier] || 50000; // placeholder
+  const dev_low = eng*200000*0.10, dev_high = eng*200000*0.20;
+  const fin_low = spend*0.15*12, fin_high = spend*0.30*12;
+  const total_low = dev_low + fin_low, total_high = dev_high + fin_high;
+  const payback_low_months = Math.max(1, Math.round(annualCost / (total_high/12)));
+  const payback_high_months = Math.max(1, Math.round(annualCost / (total_low/12)));
+  const $ = x => '$'+(Math.round(x)).toLocaleString();
+  document.getElementById('pkg_result').innerHTML = `
+    <ul>
+      <li>Estimated annual impact: <b>${$(total_low)} – ${$(total_high)}</b></li>
+      <li>Placeholder package cost: <b>${$(annualCost)}</b></li>
+      <li>Estimated payback: <b>${payback_low_months}–${payback_high_months} months</b></li>
+    </ul>`;
+  try{ gtag('event','package_estimated', {tier}); }catch(e){}
+}
+function exportPkg(){
+  const tier = document.getElementById('pkg_tier').value||'Foundation';
+  const eng = +document.getElementById('pkg_eng').value||0;
+  const spend = +document.getElementById('pkg_spend').value||0;
+  const annualCost = {Foundation: 50000, Pro: 120000, Enterprise: 240000}[tier] || 50000; // placeholder
+  const dev_low = eng*200000*0.10, dev_high = eng*200000*0.20;
+  const fin_low = spend*0.15*12, fin_high = spend*0.30*12;
+  const rows = [
+    ['Field','Value'],
+    ['Selected tier', tier],
+    ['Engineers', eng],
+    ['Monthly cloud spend', spend],
+    ['Placeholder package cost (annual)', Math.round(annualCost)],
+    ['Dev productivity (annual) low', Math.round(dev_low)],
+    ['Dev productivity (annual) high', Math.round(dev_high)],
+    ['FinOps savings (annual) low', Math.round(fin_low)],
+    ['FinOps savings (annual) high', Math.round(fin_high)]
+  ];
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Package_Quote.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  try{ gtag('event','package_export', {tier}); }catch(e){}
+}
+</script>
+</body></html>
