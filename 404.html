@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page Not Found — Moe Community Cloud</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script defer src="assets/js/main.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/impl.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="training/index.html">Training</a>
+    <a href="services/monetization.html">Monetization</a>
+    <a href="playbooks/index.html">Playbooks</a>
+  </nav>
+</div></header>
+
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="index.html">Home</a> <span>›</span> <a href="404.html">404</a></div>
+</section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card">
+    <h1>We couldn't find that page</h1>
+    <p class="micro">It might have moved or the link is out of date. Use the buttons below to continue.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="javascript:void(0)" onclick="mccBackOrHome()">‹ Back</a>
+      <a class="btn gold" href="index.html">Go Home</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Quick links</h3>
+    <ul>
+      <li><a href="training/index.html">Training Catalog</a></li>
+      <li><a href="training/roi.html">ROI Calculator</a></li>
+      <li><a href="playbooks/index.html">Playbooks Hub</a></li>
+      <li><a href="training/partners.html">Partner Program</a></li>
+    </ul>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function mccBackOrHome(){
+  if (document.referrer && document.referrer !== location.href) history.back();
+  else location.href = 'index.html';
+}
+</script>
+</body></html>
