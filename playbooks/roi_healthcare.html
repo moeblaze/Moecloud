@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Healthcare ROI — Playbook</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text">
+    <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../training/index.html">Training</a>
+    <a href="../services/monetization.html">Monetization</a>
+    <a href="../playbooks/index.html" style="color:#fff;">Playbooks</a>
+  </nav>
+</div></header>
+<section class="wrap" style="padding:20px 0"><div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Playbooks</a> <span>›</span> <a href="roi_healthcare.html">Healthcare ROI</a></div></section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card">
+    <h3>Healthcare ROI</h3>
+    <p class="micro">Tailored assumptions for Healthcare initiatives.</p>
+    <label>Monthly cloud spend ($) <input id="roi_spend" type="number" min="0" value="100000" style="width:100%"></label>
+    <label># of clinicians/analysts <input id="roi_staff" type="number" min="1" value="20" style="width:100%"></label>
+    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="document.getElementById('res').innerHTML='Use Export to view summary.'">Calculate</button>
+      <button class="btn ghost" onclick="mccExportCSV_healthcare()">Export ROI to CSV</button>
+    </div>
+  </div>
+  <div class="card" id="res"><h3>Results</h3><p class="micro">Click Export to build your summary.</p></div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function mccExportCSV_healthcare() {
+  const rows = (function(){
+  const spend = +document.getElementById('roi_spend').value||0;
+  const staff = +document.getElementById('roi_staff').value||0;
+  const prod_low = staff*200000*0.10, prod_high = staff*200000*0.20;
+  const fin_low = spend*0.15*12, fin_high = spend*0.30*12;
+  return [
+    ['Monthly cloud spend', spend],
+    ['# of clinicians/analysts', staff],
+    ['Developer productivity', Math.round(prod_low), Math.round(prod_high)],
+    ['FinOps savings (annual)', Math.round(fin_low), Math.round(fin_high)],
+    ['Total annual impact', Math.round(prod_low+fin_low), Math.round(prod_high+fin_high)]
+  ];
+})();
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Playbook_Output.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  try{ gtag('event','playbook_export'); }catch(e){}
+}
+</script>
+</body></html>

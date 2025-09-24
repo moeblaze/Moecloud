@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Trust Starter — Playbook</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Zero Trust Starter",
+  "description": "Identity-first access and least privilege playbook.",
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "IAM SSO"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "Secrets Manager"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "KMS"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text">
+    <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../training/index.html">Training</a>
+    <a href="../services/monetization.html">Monetization</a>
+    <a href="../playbooks/index.html" style="color:#fff;">Playbooks</a>
+  </nav>
+</div></header>
+<section class="wrap" style="padding:20px 0"><div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Playbooks</a> <span>›</span> <a href="zero-trust.html">Zero Trust</a></div></section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card">
+    <h3>Zero Trust Starter</h3>
+    <p class="micro">Identity-first access, least privilege, credential hygiene.</p>
+    <label><input type="checkbox" id="zt_sso"> SSO enabled for all apps</label><br>
+    <label><input type="checkbox" id="zt_mfa"> MFA enforced for workforce</label><br>
+    <label><input type="checkbox" id="zt_rotate"> Secrets rotate every ≤ 90 days</label><br>
+    <button class="btn gold" onclick="mccExportCSV_zt()">Export Checklist</button>
+  </div>
+  <div class="card">
+    <h3>What You Get</h3>
+    <ul><li>Guardrail templates</li><li>Access policy patterns</li><li>Implementation options</li></ul>
+    <a class="btn" href="../training/partners.html">Implementation Options</a>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function mccExportCSV_zt() {
+  const rows = (function(){
+  const sso = document.getElementById('zt_sso').checked ? 'Enabled' : 'Not enabled';
+  const mfa = document.getElementById('zt_mfa').checked ? 'Enabled' : 'Not enabled';
+  const rotate = document.getElementById('zt_rotate').checked ? 'Yes' : 'No';
+  return [
+    ['Control','Status'],
+    ['SSO', sso],
+    ['MFA', mfa],
+    ['Secrets rotation', rotate]
+  ];
+})();
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Playbook_Output.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  try{ gtag('event','playbook_export'); }catch(e){}
+}
+</script>
+</body></html>

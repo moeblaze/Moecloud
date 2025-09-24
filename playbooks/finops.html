@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FinOps Guardrail — Playbook</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "FinOps Guardrail",
+  "provider": {
+    "@type": "Organization",
+    "name": "Moe Community Cloud",
+    "url": "https://www.moecommunitycloud.com/"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Global"
+  },
+  "description": "Anomaly detection, budgets, and rightsizing recommendations."
+}
+</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text">
+    <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../training/index.html">Training</a>
+    <a href="../services/monetization.html">Monetization</a>
+    <a href="../playbooks/index.html" style="color:#fff;">Playbooks</a>
+  </nav>
+</div></header>
+<section class="wrap" style="padding:20px 0"><div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Playbooks</a> <span>›</span> <a href="finops.html">FinOps Guardrail</a></div></section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card">
+    <h3>FinOps Guardrail</h3>
+    <p class="micro">Estimate immediate savings with basic guardrails.</p>
+    <label>Monthly cloud spend ($) <input id="fo_spend" type="number" min="0" value="100000" style="width:100%"></label>
+    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="document.getElementById('fo_result').innerHTML='Use Export to see savings.'">Calculate</button>
+      <button class="btn ghost" onclick="mccExportCSV_finops()">Export Savings to CSV</button>
+    </div>
+  </div>
+  <div class="card" id="fo_result"><h3>Results</h3><p class="micro">Enter inputs and click Export.</p></div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function mccExportCSV_finops() {
+  const rows = (function(){
+  const spend = +document.getElementById('fo_spend').value||0;
+  const save_low = spend*0.15, save_high = spend*0.30;
+  return [
+    ['Monthly cloud spend', spend],
+    ['Estimated annual savings (low)', Math.round(save_low)],
+    ['Estimated annual savings (high)', Math.round(save_high)]
+  ];
+})();
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Playbook_Output.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  try{ gtag('event','playbook_export'); }catch(e){}
+}
+</script>
+</body></html>

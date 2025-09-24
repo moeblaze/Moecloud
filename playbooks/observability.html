@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observability Lite — Playbook</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Observability Lite",
+  "description": "Open-source metrics, logs and traces with minimal cost.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Metrics",
+      "text": "Deploy Prometheus + exporters"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Dashboards",
+      "text": "Grafana dashboards + alerts"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Traces",
+      "text": "OpenTelemetry instrumentation"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text">
+    <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="../training/index.html">Training</a>
+    <a href="../services/monetization.html">Monetization</a>
+    <a href="../playbooks/index.html" style="color:#fff;">Playbooks</a>
+  </nav>
+</div></header>
+<section class="wrap" style="padding:20px 0"><div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Playbooks</a> <span>›</span> <a href="observability.html">Observability Lite</a></div></section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card">
+    <h3>Observability Lite</h3>
+    <p class="micro">Get dashboards and alerts quickly, then scale.</p>
+    <label># of services <input id="ob_services" type="number" min="1" value="3" style="width:100%"></label><br>
+    <label><input type="checkbox" id="ob_slos"> Define SLOs for top endpoints</label><br>
+    <button class="btn ghost" onclick="mccExportCSV_ob()">Export Plan</button>
+  </div>
+  <div class="card">
+    <h3>Starter Stack</h3>
+    <ul><li>Prometheus + node/app exporters</li><li>Grafana dashboards</li><li>Otel traces</li></ul>
+    <a class="btn" href="../training/course_observability_dr_finops.html">Related Course</a>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function mccExportCSV_ob() {
+  const rows = (function(){
+  const svc = document.getElementById('ob_services').value||'3';
+  const slo = document.getElementById('ob_slos').checked?'Yes':'No';
+  return [
+    ['Services monitored', svc],
+    ['SLOs defined', slo]
+  ];
+})();
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Playbook_Output.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  try{ gtag('event','playbook_export'); }catch(e){}
+}
+</script>
+</body></html>
