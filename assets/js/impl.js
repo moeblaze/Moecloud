@@ -1,6 +1,5 @@
 (function(){
   const cfg = (window.MCC_CONFIG||{});
-  // GA loader (optional)
   function loadGA(id){
     if(!id || !cfg.enableGA) return;
     if(document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
@@ -13,50 +12,55 @@
     gtag('js', new Date());
     gtag('config', id);
   }
-  function isSubscribed(){
-    try { return JSON.parse(localStorage.getItem('mccNewsOK')||'false')===true; } catch(e){ return false; }
-  }
+  function isSubscribed(){ try { return JSON.parse(localStorage.getItem('mccNewsOK')||'false')===true; } catch(e){ return false; } }
   function gateDownloads(){
     if(!cfg.newsletterGate) return;
-    const anchors = document.querySelectorAll('a[href]');
-    anchors.forEach(a=>{
-      try{
-        const href = a.getAttribute('href')||'';
-        if(href.includes(cfg.docsPrefix)){
-          a.addEventListener('click', function(e){
-            if(!isSubscribed()){
-              e.preventDefault();
-              alert("Please subscribe to the newsletter to access downloads.");
-              // compute newsletter path relative to current
-              const isTraining = location.pathname.includes('/training/');
-              location.href = isTraining ? '../newsletter.html' : 'newsletter.html';
-            }
-          });
-        }
-      }catch(e){/*noop*/}
+    document.querySelectorAll('a[href]').forEach(a=>{
+      const href = a.getAttribute('href')||'';
+      if(href.includes(cfg.docsPrefix||'/docs/')){
+        a.addEventListener('click', function(e){
+          if(!isSubscribed()){
+            e.preventDefault();
+            alert("Please subscribe to the newsletter to access downloads.");
+            const isTraining = location.pathname.includes('/training/');
+            location.href = isTraining ? '../newsletter.html' : 'newsletter.html';
+          }
+        });
+      }
     });
   }
   function wireROIEvents(){
-    // Fire events if ROI functions are called
     const w = window;
     if(typeof w.calcROI === 'function'){
       const orig = w.calcROI;
-      w.calcROI = function(){
-        try{ gtag && gtag('event','roi_calculated'); }catch(e){}
-        return orig.apply(this, arguments);
-      };
+      w.calcROI = function(){ try{ gtag('event','roi_calculated'); }catch(e){} return orig.apply(this, arguments); };
     }
     if(typeof w.exportROICSV === 'function'){
       const orig2 = w.exportROICSV;
-      w.exportROICSV = function(){
-        try{ gtag && gtag('event','roi_export'); }catch(e){}
-        return orig2.apply(this, arguments);
-      };
+      w.exportROICSV = function(){ try{ gtag('event','roi_export'); }catch(e){} return orig2.apply(this, arguments); };
     }
   }
+  function ensurePlaybooksNav(){
+    try{
+      const nav = document.querySelector('header .nav');
+      if(!nav) return;
+      const links = Array.from(nav.querySelectorAll('a')).map(a => (a.getAttribute('href')||'').replace(location.origin,''));
+      const has = links.some(h => h.endsWith('/playbooks/index.html') || h.endsWith('/playbooks/') || h === '/playbooks');
+      if(!has){
+        const a = document.createElement('a');
+        // Compute prefix based on depth: if current path has /training/ or /playbooks/ or /services/, use "../"
+        const depth = location.pathname.split('/').filter(Boolean);
+        const isDeep = depth.includes('training') || depth.includes('playbooks') || depth.includes('services');
+        a.href = isDeep ? '../playbooks/index.html' : 'playbooks/index.html';
+        a.textContent = 'Playbooks';
+        nav.appendChild(a);
+      }
+    }catch(e){/*noop*/}
+  }
   document.addEventListener('DOMContentLoaded', function(){
-    loadGA(cfg.gaId);
+    loadGA((window.MCC_CONFIG||{}).gaId);
     gateDownloads();
     wireROIEvents();
+    ensurePlaybooksNav();
   });
 })();
