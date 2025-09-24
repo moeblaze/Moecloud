@@ -1,63 +1,80 @@
-<!DOCTYPE html><html><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moe Community Cloud — Cloud Infrastructure, Training & Partners</title>
-<link rel="stylesheet" href="assets/css/styles.css"><script defer src="assets/js/main.js"></script>
-</head><body>
+<!doctype html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moe Community Cloud</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script defer src="assets/js/main.js"></script>
+<!-- Add GA/config + runtime helpers -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/impl.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <div class="brand">
+    <div class="logo"></div>
+    <div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div>
+  </div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="training/index.html">Training</a>
+    <a href="services/monetization.html">Monetization</a>
+    <a href="playbooks/index.html">Playbooks</a>
+  </nav>
+</div></header>
 
-<header class="site-header">
-  <div class="wrap">
-    <div class="brand"><div class="logo"></div><div class="brand-text">
-      <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
-    <nav class="nav">
-      <a href="index.html" style='color:#fff;'>Home</a>
-      <a href="training/index.html" >Training</a>
-      <a href="services/monetization.html">Monetization</a>
-      <a href="newsletter.html" class="btn ghost">Newsletter</a>
-    </nav>
-  </div>
-</header>
-<section class="hero plaid-bg">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Enterprise Cloud Platforms <span class="gold">&</span> Training</h1>
-      <p>Landing Zones, EKS with GitOps, CI/CD, Observability, DR & FinOps—plus a partner program to monetize your expertise.</p>
-      <div style="margin-top:12px"><a class="btn primary" href="training/courses.html">Browse Courses</a> <a class="btn gold" href="training/roi.html">Run ROI</a></div>
-    </div>
-    <div class="card rise">
-      <h3>Packages</h3>
-      <ul><li>Foundation Platform Build</li><li>Managed SRE</li><li>Training & Certification</li></ul>
-      <a class="btn" href="training/partners.html">Partner Options</a>
-    </div>
-  </div>
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="index.html">Home</a></div>
 </section>
 
-<section id="training-partners" class="section">
+<!-- Hero -->
+<section class="section"><div class="wrap grid two">
+  <div class="card">
+    <h1>Community Cloud Platform</h1>
+    <p class="micro">Landing Zones, EKS + GitOps, CI/CD & Serverless, Observability, DR & FinOps — delivered with zero-code playbooks or full implementation.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn gold" href="training/index.html">Get Training</a>
+      <a class="btn" href="training/roi.html">Run ROI</a>
+      <a class="btn ghost" href="playbooks/index.html">Explore Playbooks</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>What’s Included</h3>
+    <ul>
+      <li>Zero Trust foundations</li>
+      <li>EKS with GitOps & policy guardrails</li>
+      <li>API GW + Lambda blueprints</li>
+      <li>RDS/DynamoDB patterns</li>
+      <li>CloudFront + WAF, S3 static hosting</li>
+      <li>Prometheus/Grafana/Otel observability</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- Packages (teaser) -->
+<section class="section">
   <div class="wrap">
-    <h2 class="section-title">Training & Partners</h2>
+    <h2 class="section-title">Packages</h2>
     <div class="grid cards three">
       <div class="card rise">
-        <h3>Courses & Certification</h3>
-        <p>Foundations, EKS & GitOps, CI/CD & Serverless, Observability/DR/FinOps.</p>
+        <h3>Foundation Platform Build</h3>
+        <p>Landing Zone, IAM SSO, Secrets/KMS, guardrails.</p>
+        <a class="btn" href="training/index.html#packages">See Details</a>
+      </div>
+      <div class="card rise">
+        <h3>Managed SRE</h3>
+        <p>24/7 on-call, SLOs, incident response, DR drills.</p>
+        <a class="btn" href="training/index.html#packages">See Details</a>
+      </div>
+      <div class="card rise">
+        <h3>Training & Certification</h3>
+        <p>4 tracks, exams, partner enablement collateral.</p>
         <a class="btn" href="training/courses.html">Browse Courses</a>
-      </div>
-      <div class="card rise">
-        <h3>Partner Program</h3>
-        <p>Referral, Co-Sell & White-Label. Earn up to 20% on builds + 10% of yr‑1 SRE.</p>
-        <a class="btn" href="training/partners.html">Explore Partner Models</a>
-      </div>
-      <div class="card rise">
-        <h3>ROI Calculator</h3>
-        <p>Estimate developer productivity, reliability, and FinOps impact.</p>
-        <a class="btn gold" href="training/roi.html">Open ROI</a>
-      </div>
-      <div class="card rise">
-        <h3>Monetization Services</h3>
-        <p>Optional add‑on: AdSense, affiliates, and sponsorship slots—without compromising your brand.</p>
-        <a class="btn" href="services/monetization.html">Learn More</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer"><div class="wrap">© 2025-09-24 Moe Community Cloud</div></footer>
-</body></html>
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+</body>
+</html>
