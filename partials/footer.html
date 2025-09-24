@@ -1,0 +1,49 @@
+<!-- Brand-safe global footer -->
+<footer class="site-footer">
+  <div class="wrap grid three" style="gap:20px">
+    <div>
+      <h4>Moe Community Cloud</h4>
+      <p class="micro">Platform • Training • Partners</p>
+      <p class="micro">© Moe Community Cloud</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul style="list-style:none;padding:0">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms</a></li>
+        <li><a href="/cookies.html">Cookies</a></li>
+        <li><a href="/disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Newsletter</h4>
+      <form onsubmit="return mccFooterSignup(event)">
+        <input type="email" id="mcc_footer_email" placeholder="you@company.com" required style="width:100%;margin-bottom:8px">
+        <button class="btn gold" type="submit" style="width:100%">Subscribe</button>
+        <p id="mcc_footer_msg" class="micro" style="margin-top:6px"></p>
+      </form>
+      <p class="micro"><a href="/newsletter.html">See what you get →</a></p>
+    </div>
+  </div>
+</footer>
+<script>
+function mccFooterSignup(e){
+  e.preventDefault();
+  const el = document.getElementById('mcc_footer_email');
+  if(!el || !el.value) return false;
+  try { localStorage.setItem('mccNewsOK','true'); } catch(e){}
+  try { gtag('event','newsletter_signup_footer'); } catch(e){}
+  const msg = document.getElementById('mcc_footer_msg');
+  msg.textContent = "Thanks! You're on the list — downloads are unlocked.";
+  // Offer CSV save for records
+  const rows=[["timestamp","email"], [new Date().toISOString(), el.value]].map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([rows],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Newsletter_Footer_Signup.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+  el.value='';
+  return false;
+}
+</script>
