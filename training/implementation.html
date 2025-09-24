@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playbook Implementation — Training — Moe Community Cloud</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+</head><body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+  <nav class="nav">
+    <a href="../index.html">Home</a>
+    <a href="index.html">Training</a>
+    <a href="../playbooks/index.html">Playbooks</a>
+    <a href="../services/monetization.html">Monetization</a>
+  </nav>
+</div></header>
+
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Training</a> <span>›</span> <a href="implementation.html">Playbook Implementation</a></div>
+</section>
+
+<section class="section"><div class="wrap">
+  <div class="card">
+    <h1>Playbook Implementation (Zero‑Trust Cloud)</h1>
+    <p class="micro">Duration: 4–6 weeks · Format: blended (self‑paced + live labs) · Level: Intermediate‑Advanced</p>
+    <h3>Outcomes</h3>
+    <ul>
+      <li>Design and deploy a Zero‑Trust landing zone with VPCs and secure networking</li>
+      <li>Stand up EKS with GitOps pipelines, policies (OPA/Gatekeeper), and observability</li>
+      <li>Implement serverless APIs (API Gateway + Lambda) and data layers (RDS/DynamoDB)</li>
+      <li>Ship a production‑grade edge (S3 + CloudFront + WAF) and event backbone (SQS/SNS/EventBridge)</li>
+      <li>Wire IAM SSO, Secrets Manager + KMS, and incident telemetry (Prometheus/Grafana/Otel)</li>
+    </ul>
+
+    <h3>Prerequisites</h3>
+    <ul>
+      <li>Cloud fundamentals (IAM, networking, CI/CD basics)</li>
+      <li>Git and container basics</li>
+      <li>Familiarity with YAML and Infrastructure‑as‑Code helpful</li>
+    </ul>
+
+    <h3>Curriculum</h3>
+    <ol>
+      <li><b>Foundations & Landing Zone</b> — accounts, org guardrails, VPCs, subnets, routing, zero‑trust design</li>
+      <li><b>EKS + GitOps</b> — cluster bootstrap, ArgoCD/Flux patterns, OPA/Gatekeeper, secrets, progressive delivery</li>
+      <li><b>App & Data</b> — API Gateway + Lambda, RDS schema patterns, DynamoDB for scale, ECR supply‑chain</li>
+      <li><b>Edge & Events</b> — S3 static hosting, CloudFront + WAF, SQS/SNS/EventBridge designs</li>
+      <li><b>Observability & Resilience</b> — Prometheus, Grafana, OpenTelemetry, SLOs, MTTR drills</li>
+      <li><b>Security & Compliance</b> — IAM SSO, RBAC, KMS envelope encryption, audit trails</li>
+      <li><b>Capstone</b> — deploy a reference workload end‑to‑end with CI/CD and guardrails</li>
+    </ol>
+
+    <h3>Labs</h3>
+    <ul>
+      <li>Lab 1: Landing Zone bootstrap (network + identity)</li>
+      <li>Lab 2: GitOps pipeline with policy checks</li>
+      <li>Lab 3: Serverless API with persistence</li>
+      <li>Lab 4: Edge hardening (WAF rules + CDN)</li>
+      <li>Lab 5: Observability with OTel traces</li>
+      <li>Lab 6: DR game day (chaos & recovery)</li>
+    </ul>
+
+    <h3>Enroll or Request Private Cohort</h3>
+    <form id="mcc_enroll" onsubmit="return mccEnroll(event)">
+      <div class="grid two">
+        <label>Full name <input id="en_name" required style="width:100%"></label>
+        <label>Work email <input id="en_email" type="email" required style="width:100%"></label>
+        <label>Company <input id="en_company" style="width:100%"></label>
+        <label>Role <input id="en_role" style="width:100%"></label>
+        <label>Team size <input id="en_team" type="number" min="1" value="5" style="width:100%"></label>
+        <label>Preferred start <input id="en_start" type="date" style="width:100%"></label>
+      </div>
+      <label>Goals / context <textarea id="en_goals" style="width:100%;min-height:100px"></textarea></label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn gold" type="submit">Enroll (CSV)</button>
+        <a class="btn" href="../contact.html">Contact Sales</a>
+      </div>
+      <p id="en_msg" class="micro" style="margin-top:8px"></p>
+    </form>
+    <script>
+      function mccEnroll(e){
+        e.preventDefault();
+        const rows = [["timestamp","name","email","company","role","team","start","goals"], [
+          new Date().toISOString(),
+          document.getElementById('en_name').value||'',
+          document.getElementById('en_email').value||'',
+          document.getElementById('en_company').value||'',
+          document.getElementById('en_role').value||'',
+          document.getElementById('en_team').value||'',
+          document.getElementById('en_start').value||'',
+          (document.getElementById('en_goals').value||'').replace(/[\r\n]+/g,' ')
+        ]];
+        const csv = rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+        const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href=url; a.download='MCC_Implementation_Enrollment.csv';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        document.getElementById('en_msg').textContent = "Enrollment CSV downloaded — we’ll follow up via email.";
+        try{ gtag('event','enroll_submit'); }catch(ex){}
+        return false;
+      }
+    </script>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+</body></html>
