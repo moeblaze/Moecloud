@@ -1,22 +1,87 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Contact — MoeCommunityCloud</title><link rel='stylesheet' href='assets/css/theme.css'></head><body>
-<header aria-label="Site header">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Moe Community Cloud</title>
+<meta name="description" content="Contact at Moe Community Cloud">
+<link rel="canonical" href="index.html">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script defer src="assets/js/main.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/impl.js"></script>
+<script src="assets/js/cookie-consent.js"></script>
+</head><body>
+<header class="site-header"><div class="wrap">
+  <div class="brand">
+    <div class="logo"></div>
+    <div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div>
+  </div>
   <nav class="nav">
-    <a class="brand" href="index.html" aria-label="MCC home">
-      <img src="assets/img/logo.svg" width="160" height="40" alt="Moe Community Cloud logo">
-    </a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="apps.html">Apps</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="sports.html">Sports</a></li>
-      <li><a href="weekend-sports.html">Weekend Sports</a></li>
-      <li><a href="newsletter.html">Newsletter</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="training/index.html">Training</a>
+    <a href="services/monetization.html">Monetization</a>
+    <a href="playbooks/index.html">Playbooks</a>
   </nav>
-</header><section class='section'><div class='container'><p>Content restored and sponsor-free.</p></div></section>
-<footer>
-  <div class="container" style="padding:16px 0;color:#aaa">© <span id="y"></span> Moe Community Cloud · <a href="privacy-policy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="sitemap.xml">Sitemap</a></div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-  <script src="assets/js/scripts.js" defer></script>
-</footer></body></html>
+</div></header>
+
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="index.html">Home</a> <span>›</span> <a href="#">Contact</a></div>
+</section>
+
+<section class="section"><div class="wrap">
+  <div class="card">
+    <h1 style="margin-bottom:8px">Contact</h1>
+    
+<p>Reach out with questions, partnerships, or media inquiries.</p>
+<div class="grid two">
+  <div>
+    <h3>Contact form</h3>
+    <form id="mcc_contact" onsubmit="return mccContact(event)">
+      <label>Name <input type="text" id="ct_name" required style="width:100%"></label>
+      <label>Email <input type="email" id="ct_email" required style="width:100%"></label>
+      <label>Message <textarea id="ct_msg" required style="width:100%;min-height:100px"></textarea></label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <button class="btn gold" type="submit">Send</button>
+        <button class="btn ghost" type="button" onclick="mccContactCSV()">Export as CSV</button>
+        <a class="btn" id="ct_mailto" href="#">Open email draft</a>
+      </div>
+      <p id="ct_msg_status" class="micro" style="margin-top:8px"></p>
+    </form>
+  </div>
+  <div>
+    <h3>Other ways</h3>
+    <p>Email: <a href="mailto:hello@moecommunitycloud.com">hello@moecommunitycloud.com</a></p>
+    <p>Website: <a href="https://www.moecommunitycloud.com">www.moecommunitycloud.com</a></p>
+  </div>
+</div>
+<script>
+function mccContact(e){
+  e.preventDefault();
+  const name=document.getElementById('ct_name').value.trim();
+  const email=document.getElementById('ct_email').value.trim();
+  const msg=document.getElementById('ct_msg').value.trim();
+  if(!name||!email||!msg) return false;
+  const mailto = 'mailto:hello@moecommunitycloud.com'
+    + '?subject=' + encodeURIComponent('Website inquiry from ' + name)
+    + '&body=' + encodeURIComponent(msg + '\n\nFrom: ' + name + ' <' + email + '>');
+  document.getElementById('ct_mailto').href = mailto;
+  document.getElementById('ct_msg_status').textContent = 'Draft email prepared — click "Open email draft" to send.';
+  try{ gtag('event','contact_submit'); }catch(e){}
+  return false;
+}
+function mccContactCSV(){
+  const name=document.getElementById('ct_name').value||'';
+  const email=document.getElementById('ct_email').value||'';
+  const msg=document.getElementById('ct_msg').value||'';
+  const rows=[['timestamp','name','email','message'], [new Date().toISOString(), name, email, msg]];
+  const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_Contact.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+</script>
+
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+</body></html>
