@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROI Calculator — MOE Learning</title>
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script defer src="../assets/js/main.js"></script>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/impl.js"></script>
+</head><body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand"><div class="logo"></div><div class="brand-text"><strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
+    <nav class="nav"><a href="../index.html">Home</a><a href="index.html">Training</a></nav>
+  </div>
+</header>
+
+<section class="wrap" style="padding:20px 0">
+  <div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Training</a> <span>›</span> <a href="roi.html">ROI</a></div>
+</section>
+
+<section class="section"><div class="wrap grid two">
+  <div class="card"><h3>Inputs</h3>
+    <label>Engineers <input id="roi_eng" type="number" min="1" value="20" style="width:100%"></label>
+    <label>Avg loaded cost per engineer ($/yr) <input id="roi_cost" type="number" min="10000" value="200000" style="width:100%"></label>
+    <label>Deploy frequency (per month) <input id="roi_deploy" type="number" min="1" value="2" style="width:100%"></label>
+    <label>MTTR today (hours) <input id="roi_mttr" type="number" min="1" value="4" style="width:100%"></label>
+    <label>Monthly cloud spend ($) <input id="roi_cloud" type="number" min="0" value="100000" style="width:100%"></label>
+    <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn primary" onclick="calcROI()">Calculate</button>
+      <button class="btn ghost" onclick="exportROICSV()">Export ROI to CSV</button>
+    </div>
+    <p class="micro">Assumptions: 50–70% lead time reduction, MTTR down 60%, 15–30% FinOps savings.</p>
+  </div>
+  <div class="card" id="roi_result"><h3>Results</h3><p class="micro">Enter inputs and click Calculate.</p></div>
+</div></section>
+
+<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
+
+<script>
+function calcROI(){
+  const eng=+document.getElementById('roi_eng').value||0;
+  const cost=+document.getElementById('roi_cost').value||0;
+  const deploy=+document.getElementById('roi_deploy').value||1;
+  const mttr=+document.getElementById('roi_mttr').value||1;
+  const cloud=+document.getElementById('roi_cloud').value||0;
+  const prod_low=0.10, prod_high=0.20;
+  const dev_low=eng*cost*prod_low, dev_high=eng*cost*prod_high;
+  const outages=Math.max(1, Math.round(deploy/2));
+  const blended=(eng*cost)/(52*40);
+  const rel=outages*mttr*0.60*blended*12;
+  const fin_low=cloud*0.15*12, fin_high=cloud*0.30*12;
+  const tot_low=dev_low+rel+fin_low, tot_high=dev_high+rel+fin_high;
+  const $=x=>'$'+(Math.round(x)).toLocaleString();
+  document.getElementById('roi_result').innerHTML=`
+    <ul>
+      <li>Developer productivity: <b>${$(dev_low)} – ${$(dev_high)}</b></li>
+      <li>Reliability/MTTR savings: <b>${$(rel)}</b></li>
+      <li>FinOps savings: <b>${$(fin_low)} – ${$(fin_high)}</b></li>
+      <li>Total annual impact: <b>${$(tot_low)} – ${$(tot_high)}</b></li>
+    </ul>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" href="index.html#packages">See Packages</a>
+      <a class="btn gold" href="partners.html">Partner Models</a>
+      <a class="btn ghost" href="../docs/MCC_Executive_OnePager.pdf">Attach One‑Pager</a>
+    </div>`;
+  try{ gtag('event','roi_calculated'); }catch(e){}
+}
+function exportROICSV(){
+  const eng=+document.getElementById('roi_eng').value||0;
+  const cost=+document.getElementById('roi_cost').value||0;
+  const deploy=+document.getElementById('roi_deploy').value||1;
+  const mttr=+document.getElementById('roi_mttr').value||1;
+  const cloud=+document.getElementById('roi_cloud').value||0;
+  const prod_low=0.10, prod_high=0.20;
+  const dev_low=eng*cost*prod_low, dev_high=eng*cost*prod_high;
+  const outages=Math.max(1, Math.round(deploy/2));
+  const blended=(eng*cost)/(52*40);
+  const rel=outages*mttr*0.60*blended*12;
+  const fin_low=cloud*0.15*12, fin_high=cloud*0.30*12;
+  const tot_low=dev_low+rel+fin_low, tot_high=dev_high+rel+fin_high;
+  const rows=[
+    ['Metric','Value (Low)','Value (High)'],
+    ['Engineers', eng, ''],
+    ['Loaded cost per engineer (annual)', cost, ''],
+    ['Deploys per month (current)', deploy, ''],
+    ['MTTR (hours)', mttr, ''],
+    ['Monthly cloud spend', cloud, ''],
+    ['Developer productivity gain', Math.round(dev_low), Math.round(dev_high)],
+    ['Reliability/MTTR savings (annual)', Math.round(rel), ''],
+    ['FinOps savings (annual)', Math.round(fin_low), Math.round(fin_high)],
+    ['Total annual impact', Math.round(tot_low), Math.round(tot_high)]
+  ];
+  const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='MCC_ROI_Estimate.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  try{ gtag('event','roi_export'); }catch(e){}
+}
+</script>
+</body></html>
