@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head><meta charset='utf-8'/><meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>MBCC Admin — Enrollment Export</title><link rel='stylesheet' href='/mbcc-home.css'/></head>
+<body class='mbcc-plaid'>
+<main class='wrap' style='max-width:1000px'>
+<h1>Enrollment & Quiz Export</h1>
+<p>Aggregates client-side enrollments (localStorage) and quiz events captured via <code>/training/enroll.js</code>. Use GA4 for canonical analytics.</p>
+<button class='btn btn-primary' onclick='render()'>Load Data</button>
+<button class='btn' onclick='exportCSV()'>Export CSV</button>
+<pre id='out' style='min-height:200px'></pre>
+</main>
+<script>
+function render(){
+  const enroll = JSON.parse(localStorage.getItem('mbcc_enrollments')||'[]');
+  const quiz = JSON.parse(localStorage.getItem('mbcc_quiz_events')||'[]');
+  const rows = []; enroll.forEach(e=> rows.push({type:'enroll',...e})); quiz.forEach(q=> rows.push({type:'quiz',...q}));
+  document.getElementById('out').textContent = JSON.stringify(rows, null, 2);
+  window.__rows = rows;
+}
+function exportCSV(){
+  const rows = window.__rows || []; if(!rows.length){ alert('Load data first.'); return; }
+  const keys = Array.from(rows.reduce((s,r)=>{ Object.keys(r).forEach(k=>s.add(k)); return s; }, new Set()));
+  const csv = [keys.join(',')].concat(rows.map(r=> keys.map(k => JSON.stringify(r[k]||'')).join(','))).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='mbcc_enrollments.csv'; a.click(); URL.revokeObjectURL(a.href);
+}
+</script>
+</body></html>
