@@ -38,3 +38,4 @@ h1{font-size:40px;margin:6px 0 8px}
 .badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid rgba(212,175,55,0.35);background: rgba(20,20,20,0.6);font-size:12px}
 .status{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:var(--border);background:rgba(255,255,255,0.04)}
 .dot{width:10px;height:10px;border-radius:50%}.dot-green{background:#38d995}.dot-amber{background:#ffc04d}
+.nav a{margin-left:8px}
