@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MBCC Academy — Course</title>
+  <link rel="stylesheet" href="lms.css"/>
+  <script defer src="lms.js"></script>
+</head>
+<body class="mbcc-plaid">
+  <header class="mbcc-topbar">
+    <div class="mbcc-brand">
+      <span class="mbcc-mark">MB</span>
+      <div>
+        <div class="kicker" style="color:#ffd86a">Course</div>
+        <strong id="courseTitle">Loading…</strong>
+      </div>
+    </div>
+    <nav class="mbcc-cta">
+      <a class="btn" href="courses.html">All Courses</a>
+      <a class="btn btn-primary" href="#" id="enrollBtn">Enroll</a>
+    </nav>
+  </header>
+
+  <div class="mast"><div class="wrap"><p class="small" style="margin:0">Follow the TOC on the left. Mark lessons done. Pass the quiz to complete.</p></div></div>
+
+  <main class="wrap viewer">
+    <aside class="toc" id="toc"></aside>
+    <section id="content"><!-- lessons injected --></section>
+  </main>
+</body>
+</html>

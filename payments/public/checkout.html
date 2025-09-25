@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Upgrade — MBCC Academy</title>
+  <link rel="stylesheet" href="../academy/lms.css"/>
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+</head>
+<body class="mbcc-plaid">
+  <header class="mbcc-topbar">
+    <div class="mbcc-brand"><span class="mbcc-mark">MB</span><strong>Upgrade Access</strong></div>
+    <nav class="mbcc-cta"><a class="btn" href="/academy/courses.html">Back to Courses</a></nav>
+  </header>
+  <main class="wrap">
+    <div class="card">
+      <h2>Select Plan</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+        <div class="card">
+          <h3>Pro — $29/m</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="#" onclick="stripeCheckout('pro')">Stripe — Pro</a>
+            <div id="paypal-pro"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Elite — $199/m</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary" href="#" onclick="stripeCheckout('elite')">Stripe — Elite</a>
+            <div id="paypal-elite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    async function stripeCheckout(plan){
+      const res = await fetch('/api/create-checkout-session', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({plan})});
+      const data = await res.json();
+      if(data.url) location.href = data.url; else alert('Stripe unavailable: ' + (data.error || ''));
+    }
+    function renderPayPal(btnId, plan){
+      paypal.Buttons({
+        createSubscription: function(data, actions) {
+          // You must set up subscription products/plans in PayPal and use plan_id below
+          const plan_id = plan === 'elite' ? 'P-ELITE_PLAN_ID' : 'P-PRO_PLAN_ID';
+          return actions.subscription.create({ plan_id });
+        },
+        onApprove: function(data, actions) {
+          // On success, set local tier and bounce back to courses
+          const url = new URL('/academy/courses.html', location.origin);
+          url.searchParams.set('tier', plan);
+          location.href = url.toString();
+        }
+      }).render('#' + btnId);
+    }
+    renderPayPal('paypal-pro','pro');
+    renderPayPal('paypal-elite','elite');
+  </script>
+</body>
+</html>

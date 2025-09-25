@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Playbook Viewer — Imported Text</title>
+  <link rel="stylesheet" href="mbcc-infra.css"/>
+  <script defer src="gate.js"></script>
+  <script defer src="toc.js"></script>
+</head>
+<body>
+  <header class="mbcc-topbar">
+    <div class="mbcc-brand">
+      <span class="mbcc-mark">MB</span>
+      <div>
+        <div class="kicker">Playbook</div>
+        <strong>No‑Code Infrastructure — Imported</strong>
+      </div>
+    </div>
+    <nav class="mbcc-cta">
+      <a class="btn" href="index.html">Back</a>
+      <a class="btn btn-primary" href="index.html#tiers">Upgrade</a>
+    </nav>
+  </header>
+
+  <div class="mbcc-wrap">
+    <aside class="mbcc-sidebar">
+      <div class="nav-group">
+        <div class="nav-title">Modules</div>
+        <nav class="nav-list">
+          <a href="#overview" aria-current="true">Overview</a>
+          <a href="#zero-trust">Zero Trust</a>
+          <a href="#eks-gitops">EKS & GitOps</a>
+          <a href="#cicd">CI/CD & Serverless</a>
+          <a href="#observability">Observability & DR</a>
+          <a href="#finops">FinOps</a>
+          <a href="#compliance">Compliance</a>
+          <a href="#monetization">Monetization</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="mbcc-content" id="content">
+      <h1 id="overview">Overview</h1>
+      <div class="card"><p>Landing Zones, EKS + GitOps, CI/CD & Serverless, Observability, DR & FinOps — delivered with zero-code playbooks or full implementation.</p></div>
+      <div class="card">
+        <h3>What’s Included</h3>
+        <ul>
+          <li>Zero Trust foundations</li>
+          <li>EKS with GitOps & policy guardrails</li>
+          <li>API GW + Lambda blueprints</li>
+          <li>RDS/DynamoDB patterns</li>
+          <li>CloudFront + WAF, S3 static hosting</li>
+          <li>Prometheus/Grafana/Otel observability</li>
+        </ul>
+      </div>
+
+      <section id="zero-trust">
+        <h2>Zero Trust Starter</h2>
+        <div class="card"><p>Identity-first access, least privilege, secrets rotation templates.</p></div>
+        <div class="card" data-gate="pro"><h3>Policies <span class="badge">Pro</span></h3><p>IAM SSO, Secrets/KMS rotation, least privilege matrices.</p></div>
+      </section>
+
+      <section id="eks-gitops">
+        <h2>EKS & GitOps</h2>
+        <div class="card"><p>EKS & GitOps — Argo CD, OPA/Gatekeeper, supply chain.</p></div>
+        <div class="card" data-gate="pro"><h3>Guardrails <span class="badge">Pro</span></h3><p>OPA/Gatekeeper policies, supply chain and ArgoCD patterns.</p></div>
+      </section>
+
+      <section id="cicd">
+        <h2>CI/CD & Serverless</h2>
+        <div class="card"><p>CI/CD & Serverless — Actions, blue/green, Lambda, EventBridge.</p></div>
+        <div class="card" data-gate="pro"><h3>Blueprints <span class="badge">Pro</span></h3><p>Actions flows, blue/green, Lambda + EventBridge recipes.</p></div>
+      </section>
+
+      <section id="observability">
+        <h2>Observability & DR</h2>
+        <div class="card"><p>OpenTelemetry, SLOs, Velero backup/restore.</p></div>
+        <div class="card" data-gate="pro"><h3>Dashboards <span class="badge">Pro</span></h3><p>Prometheus/Grafana starter boards and golden signals.</p></div>
+      </section>
+
+      <section id="finops">
+        <h2>FinOps Guardrail</h2>
+        <div class="card"><p>Find anomalies, rightsizing and budgets to cut cloud spend 15–30%.</p></div>
+        <div class="card" data-gate="pro"><h3>Calculators <span class="badge">Pro</span></h3><p>Rightsizing and anomaly detection worksheets.</p></div>
+      </section>
+
+      <section id="compliance">
+        <h2>Compliance Readiness</h2>
+        <div class="card"><p>Self-assess SOC2/ISO readiness and export your action plan.</p></div>
+        <div class="card" data-gate="pro"><h3>Action Plan <span class="badge">Pro</span></h3><p>Self‑assessment forms and export to PDF/CSV.</p></div>
+      </section>
+
+      <section id="monetization">
+        <h2>Monetization Services</h2>
+        <div class="card"><p>Ad Monetization Services — Done-for-you, policy-safe templates to speed approvals.</p>
+          <ul>
+            <li>AdSense-ready scaffolding (policy-compliant)</li>
+            <li>Performance + CLS guardrails</li>
+            <li>Reporting + A/B hooks</li>
+          </ul>
+          <p class="small">Baseline audit → policy-friendly templates → approval & rollout</p>
+        </div>
+      </section>
+
+      <p class="small">Imported from moecommunitycloud.com pages and organized into the MBCC playbook shell.</p>
+    </main>
+  </div>
+</body>
+</html>

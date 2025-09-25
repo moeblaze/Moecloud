@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MBCC Certificate</title>
+  <link rel="stylesheet" href="lms.css"/>
+  <style>
+    body{background:#0b0b0b;display:grid;place-items:center;min-height:100vh}
+    .cert{width:min(900px,94vw);background:#faf7ee;color:#1a1200;border:12px solid #d4af37;border-radius:20px;box-shadow:0 20px 80px rgba(0,0,0,.5);padding:28px}
+    .cert h1{margin:0 0 6px;font-size:40px;letter-spacing:.02em}
+    .cert h2{margin:0 0 16px}
+    .cert .seal{display:inline-grid;place-items:center;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff7d6, #ffd54a 60%, #b7891a);border:4px solid #a8831e;font-weight:800;margin-left:10px}
+    .row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .muted{opacity:.8}
+    @media print{body{background:#fff}.cert{box-shadow:none}}
+  </style>
+</head>
+<body class="mbcc-plaid">
+  <div class="cert">
+    <div class="row"><h1>Certificate of Completion</h1><div class="seal">MB</div></div>
+    <p class="muted">This certifies that</p>
+    <h2 id="studentName">Student Name</h2>
+    <p class="muted">has successfully completed</p>
+    <h3 id="courseName">Course Title</h3>
+    <div class="row" style="margin-top:20px">
+      <div>Issue Date: <span id="issueDate"></span></div>
+      <div>ID: <span id="certId"></span></div>
+    </div>
+    <div class="row" style="margin-top:20px">
+      <div>Instructor: MBCC Academy</div>
+      <div>Signature: ____________________</div>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    document.getElementById('studentName').textContent = params.get('name')||'Student';
+    document.getElementById('courseName').textContent = params.get('course')||'MBCC Course';
+    document.getElementById('issueDate').textContent = new Date().toLocaleDateString();
+    document.getElementById('certId').textContent = Math.random().toString(36).slice(2,10).toUpperCase();
+  </script>
+</body>
+</html>

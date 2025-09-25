@@ -1,0 +1,49 @@
+/* MBCC Infra CSS (copy) */
+:root{
+  --mbcc-red:#c1121f; --mbcc-black:#0b0b0b; --mbcc-gold:#d4af37; --mbcc-gold-dark:#a8831e; --mbcc-offwhite:#f7f3e9;
+  --bg:#0e0e10; --bg-elev:#141417; --ink:#eae9e6; --muted:#bdbab5; --link:#ffd86a; --link-hover:#ffea9c;
+  --radius:14px; --radius-sm:10px; --shadow:0 12px 32px rgba(0,0,0,0.35); --border:1px solid rgba(255,255,255,0.08);
+  --font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --content-max: 1120px; --sidebar-w: 300px;
+}
+html,body{margin:0;padding:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--font)}
+a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline;color:var(--link-hover)}
+img{max-width:100%; border-radius: var(--radius-sm)}
+.kicker{color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.mbcc-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;justify-content:space-between;
+  padding:10px 16px;background:rgba(10,10,12,0.85);backdrop-filter:blur(8px);border-bottom:var(--border)}
+.mbcc-brand{display:flex;align-items:center;gap:10px}
+.mbcc-mark{display:inline-grid;place-items:center;width:40px;height:40px;background:radial-gradient(circle at 30% 30%, #fff7d6, #ffd54a 60%, #b7891a);
+  color:#2b1900;border-radius:50%;border:2px solid var(--mbcc-gold-dark);font-weight:800}
+.hero{max-width:var(--content-max);margin:0 auto;padding:20px 16px}
+.status{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:var(--border);background:rgba(255,255,255,0.04)}
+.dot{width:10px;height:10px;border-radius:50%}.dot-green{background:#38d995}.dot-amber{background:#ffc04d}.dot-red{background:#ff6b6b}
+.wrap{max-width:var(--content-max);margin:0 auto;padding:18px}
+.grid{display:grid;gap:16px}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:980px){.cols-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cols-3{grid-template-columns:1fr}}
+.card{background:var(--bg-elev);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:var(--border);background:rgba(255,255,255,0.04);font-size:12px}
+.btn{display:inline-block;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.16);
+ background:linear-gradient(180deg,#2a2a2e,#161619);color:var(--ink);font-weight:800;text-decoration:none}
+.btn-primary{border-color:var(--mbcc-gold-dark);background:linear-gradient(180deg,var(--mbcc-gold),var(--mbcc-gold-dark));color:#1b1000}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.16)}
+.table{width:100%;border-collapse:collapse;border:var(--border);border-radius:12px;overflow:hidden}
+.table th,.table td{border-bottom:var(--border);padding:10px;text-align:left}
+.table th{background:rgba(255,255,255,0.05)}
+.small{font-size:12px;color:var(--muted)}
+.lead{color:var(--muted)}
+.mbcc-wrap{display:flex;}
+.mbcc-sidebar{width:var(--sidebar-w);min-height:calc(100vh - 58px);position:sticky;top:58px;padding:14px;border-right:var(--border);background:linear-gradient(180deg,#0f0f12,#0b0b0d)}
+.mbcc-content{flex:1;min-width:0;padding:22px;max-width:var(--content-max);margin:0 auto}
+@media(max-width:1024px){.mbcc-sidebar{display:none}.mbcc-content{padding:18px}}
+.nav-group{margin-bottom:16px}
+.nav-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:8px 0}
+.nav-list{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.nav-list a{display:block;padding:8px 10px;border-radius:10px;color:var(--ink)}
+.nav-list a[aria-current="true"], .nav-list a:hover{background:rgba(255,255,255,0.06);text-decoration:none}
+.divider{height:1px;background:rgba(255,255,255,0.08);margin:16px 0}
+pre{background:#0b0b0d;border:var(--border);border-radius:12px;padding:12px;overflow:auto;font-family:var(--mono);font-size:13px}
+.lock-card{ background:#121214; border:1px solid rgba(255,255,255,0.12); padding:12px; border-radius:12px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.35) }

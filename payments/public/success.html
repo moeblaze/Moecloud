@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Success</title>
+<link rel="stylesheet" href="../academy/lms.css"/></head>
+<body class="mbcc-plaid">
+  <main class="wrap">
+    <div class="card"><h2>Payment Successful</h2><p>Finalizing your access…</p></div>
+  </main>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const tier = p.get('tier') || 'pro';
+    localStorage.setItem('mbcc_tier', tier);
+    location.href = '/academy/courses.html?tier=' + tier;
+  </script>
+</body></html>

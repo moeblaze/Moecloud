@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MBCC Academy — Courses</title>
+  <link rel="stylesheet" href="lms.css"/>
+  <script defer src="lms.js"></script>
+</head>
+<body class="mbcc-plaid">
+  <header class="mbcc-topbar">
+    <div class="mbcc-brand">
+      <span class="mbcc-mark">MB</span>
+      <div>
+        <div class="kicker" style="color:#ffd86a">LMS</div>
+        <strong>MBCC Academy</strong>
+      </div>
+    </div>
+    <nav class="mbcc-cta">
+      <a class="btn" href="courses.html">Courses</a>
+      <a class="btn btn-primary" href="#" id="loginBtn">Sign In</a>
+    </nav>
+  </header>
+
+  <div class="mast">
+    <div class="wrap">
+      <h1 style="margin:0">Courses</h1>
+      <p class="small">Train & certify implementers on MBCC Playbooks.</p>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="grid cols-3" id="courseGrid"><!-- filled by JS --></div>
+  </main>
+
+  <script>
+    (function(){
+      const p=new URLSearchParams(location.search);
+      const tier=p.get('tier');
+      if(tier && ['free','pro','elite'].includes(tier)){
+        localStorage.setItem('mbcc_tier', tier);
+        const url=new URL(location.href); url.searchParams.delete('tier'); history.replaceState({},'',url);
+        alert('Access upgraded to ' + tier.toUpperCase());
+      }
+    })();
+  </script>
+
+</body>
+</html>
