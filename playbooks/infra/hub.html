@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Hub & Spoke — No‑Code Infrastructure Playbook</title>
+  <link rel="stylesheet" href="/playbooks/infra/hub.css"/>
+  <script defer src="/config.js"></script>
+  <script defer src="/impl.js"></script>
+  <script defer src="/playbooks/infra/hub.js"></script>
+</head>
+<body class="mbcc-plaid">
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">MB</span>
+      <div><div class="badge">Playbooks</div><strong>Hub & Spoke — Monetization</strong></div>
+    </div>
+    <nav style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" href="/index.html">Home</a>
+      <a class="btn" href="/academy/courses.html">Academy</a>
+      <a class="btn" href="/playbooks/infra/">Playbook</a>
+      <a class="btn" href="/roi.html">ROI</a>
+      <a class="btn btn-primary" href="/payments/checkout.html">Upgrade</a>
+    </nav>
+  </header>
+
+  <main class="wrap grid cols-2">
+    <section class="card">
+      <h2 style="margin-top:0">MBCC Hub → Spokes</h2>
+      <svg viewBox="0 0 900 600" role="img" aria-label="Hub and Spoke diagram">
+        <defs>
+          <radialGradient id="goldGrad" cx="30%" cy="30%">
+            <stop offset="0%" stop-color="#fff7d6"/>
+            <stop offset="60%" stop-color="#ffd54a"/>
+            <stop offset="100%" stop-color="#b7891a"/>
+          </radialGradient>
+        </defs>
+        <!-- Center Hub -->
+        <circle class="center node" cx="450" cy="300" r="90" data-link="/playbooks/infra/" />
+        <text x="450" y="300" text-anchor="middle" dominant-baseline="middle" style="fill:#1b1000;font-weight:900">MBCC Hub</text>
+        <text x="450" y="325" text-anchor="middle" style="fill:#1b1000;font-size:12px">Playbook + Academy</text>
+
+        <!-- Spoke Links -->
+        <!-- Lines -->
+        <line class="link-line" x1="450" y1="300" x2="200" y2="130"/>
+        <line class="link-line" x1="450" y1="300" x2="720" y2="140"/>
+        <line class="link-line" x1="450" y1="300" x2="720" y2="460"/>
+        <line class="link-line" x1="450" y1="300" x2="200" y2="470"/>
+        <line class="link-line" x1="450" y1="300" x2="120" y2="300"/>
+        <line class="link-line" x1="450" y1="300" x2="780" y2="300"/>
+
+        <!-- Nodes -->
+        <g class="node" transform="translate(140,100)" data-link="/academy/courses.html">
+          <rect class="spoke" x="0" y="0" rx="14" width="120" height="60"/>
+          <text x="60" y="35" text-anchor="middle">Training</text>
+        </g>
+        <g class="node" transform="translate(660,110)" data-link="/partners.html">
+          <rect class="spoke" x="0" y="0" rx="14" width="140" height="60"/>
+          <text x="70" y="35" text-anchor="middle">Partner Models</text>
+        </g>
+        <g class="node" transform="translate(660,420)" data-link="/roi.html">
+          <rect class="spoke" x="0" y="0" rx="14" width="140" height="60"/>
+          <text x="70" y="35" text-anchor="middle">ROI Calculator</text>
+        </g>
+        <g class="node" transform="translate(140,440)" data-link="/cheatsheets/">
+          <rect class="spoke" x="0" y="0" rx="14" width="140" height="60"/>
+          <text x="70" y="35" text-anchor="middle">Cheat Sheets</text>
+        </g>
+        <g class="node" transform="translate(60,270)" data-link="/playbooks/infra/viewer.html">
+          <rect class="spoke" x="0" y="0" rx="14" width="160" height="60"/>
+          <text x="80" y="35" text-anchor="middle">Playbook Viewer</text>
+        </g>
+        <g class="node" transform="translate(760,270)" data-link="/payments/checkout.html">
+          <rect class="spoke" x="0" y="0" rx="14" width="120" height="60"/>
+          <text x="60" y="35" text-anchor="middle">Upgrade</text>
+        </g>
+      </svg>
+      <p class="small">Click any node to jump. Hub = MBCC Playbook + Academy; Spokes = monetization paths.</p>
+
+      <div class="legend">
+        <div class="row"><span class="dot dot-gold"></span><span>Hub: Platform + Training</span></div>
+        <div class="row"><span class="dot dot-red"></span><span>Spokes: Revenue Drivers</span></div>
+        <div class="row"><span class="dot dot-ink"></span><span>Viewer/Upgrade: Delivery & Access</span></div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h3 style="margin-top:0">Training → Monetizable Outcomes</h3>
+      <ul class="list">
+        <li><strong>Foundations</strong> → <em>Foundation Platform Build</em> (fixed-fee setup, security guardrails)</li>
+        <li><strong>EKS & GitOps</strong> → <em>Managed GitOps Platform</em> (monthly retainer)</li>
+        <li><strong>CI/CD & Serverless</strong> → <em>Release Acceleration Package</em> (blue/green, signed artifacts)</li>
+        <li><strong>Observability/DR/FinOps</strong> → <em>Managed SRE/FinOps</em> (SLOs, backups, budgets)</li>
+      </ul>
+      <p class="small">Each outcome links to ROI proof points and partner plays for scale.</p>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+        <a class="btn" href="/training/index.html">View Training</a>
+        <a class="btn" href="/partners.html">Partner Plays</a>
+        <a class="btn" href="/roi.html">Quantify ROI</a>
+        <a class="btn btn-primary" href="/payments/checkout.html">Unlock Pro/Elite</a>
+      </div>
+    </aside>
+
+    <section class="card" style="grid-column:1/-1">
+      <h3 style="margin-top:0">Sales Shortcuts & Assets</h3>
+      <ul class="list">
+        <li><strong>Executive One‑Pager</strong> — gate behind newsletter (lead capture)</li>
+        <li><strong>Partner One‑Pager</strong> — referral/co‑sell/white‑label terms</li>
+        <li><strong>Template SOW</strong> — scope for Foundation Build + optional SRE</li>
+        <li><strong>ROI CSV</strong> — export and attach to proposal</li>
+      </ul>
+      <p class="small">Use your existing gating in <code>impl.js</code> to require newsletter for downloads under <code>/docs/*</code>.</p>
+    </section>
+  </main>
+</body>
+</html>
