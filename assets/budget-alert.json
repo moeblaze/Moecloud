@@ -1,0 +1,12 @@
+{
+  "BudgetName": "MBCC-Monthly",
+  "BudgetLimit": {
+    "Amount": 5000,
+    "Unit": "USD"
+  },
+  "TimeUnit": "MONTHLY",
+  "CostTypes": {
+    "IncludeTax": true,
+    "UseAmortized": true
+  }
+}

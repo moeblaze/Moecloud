@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Foundations — MBCC Training</title>
+  <link rel="stylesheet" href="/mbcc-home.css"/>
+  <script defer src="/config.js"></script>
+  <script defer src="/impl.js"></script>
+  <style>
+    .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    .grid{display:grid;gap:16px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:980px){.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.cols-3{grid-template-columns:1fr}}
+    .card{background:#141417;border:1px solid rgba(212,175,55,0.35);border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.35);padding:16px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);
+      background:linear-gradient(180deg,#2a2a2e,#161619);color:#f7f3e9;font-weight:800;text-decoration:none}
+    .btn-primary{border-color:#a8831e;background:linear-gradient(180deg,#d4af37,#a8831e);color:#1b1000}
+    .progress{height:10px;border-radius:999px;background:#1a1a1d;overflow:hidden;margin:6px 0 10px}
+    .progress>span{display:block;height:100%;background:linear-gradient(90deg,#c1121f,#d4af37)}
+    .toc a{display:block;padding:8px 10px;border-radius:10px;color:#eae9e6}
+    .toc a[aria-current="true"], .toc a:hover{background: rgba(193,18,31,0.25); box-shadow: inset 0 0 0 1px rgba(212,175,55,0.25); text-decoration:none}
+    .quiz q{display:block;font-weight:700;margin:10px 0 6px}
+    .kicker{color:#bdbab5;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .small{color:#bdbab5;font-size:12px}
+    .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:10px 16px;background:rgba(10,10,12,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);box-shadow: inset 0 -2px 0 rgba(212,175,55,0.25)}
+    .mark{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff7d6, #ffd54a 60%, #b7891a);border:3px solid #a8831e;color:#2b1900;font-weight:800}
+  </style>
+</head>
+<body class="mbcc-plaid">
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="mark">MB</span>
+      <div><div class="kicker">MBCC Training</div><strong>Foundations (Expanded)</strong></div>
+    </div>
+    <nav style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" href="/training/index.html">All Courses</a>
+      <a class="btn" href="/playbooks/infra/hub.html">Hub &amp; Spoke</a>
+      <a class="btn" href="/playbooks/infra/">Playbook</a>
+      <a class="btn btn-primary" href="/academy/courses.html">Academy</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="grid" style="grid-template-columns:320px 1fr;gap:16px">
+      <aside class="card toc" id="toc">
+        <h3 style="margin-top:0">Curriculum</h3>
+        <a href="#m1">1. Landing Zone</a>
+        <a href="#m2">2. Identity &amp; Access</a>
+        <a href="#m3">3. Network &amp; Security</a>
+        <a href="#m4">4. Data Foundations</a>
+        <a href="#m5">5. Compliance &amp; Audit</a>
+        <a href="#m6">6. Cost (FinOps)</a>
+        <a href="#m7">7. Ops (Runbooks)</a>
+        <a href="#capstone">Capstone + Exam</a>
+      </aside>
+
+      <section class="grid" style="gap:16px">
+        <article id="m1" class="card">
+          <h3>1) Landing Zone</h3>
+          <div class="progress"><span style="width:8%"></span></div>
+          <p>Org structure, multi-account strategy, SCP guardrails, baseline audit (CloudTrail, Config), KMS keys.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary" download href="/training/assets/landing-zone.tf">Download Starter (Terraform)</a>
+            <a class="btn" href="/docs/foundation-onepager.pdf">Exec One‑Pager (gated)</a>
+          </div>
+          <details style="margin-top:8px"><summary><strong>Lab: Bootstrap Org</strong></summary>
+            <ol>
+              <li>Create Organization, accounts (Security, SharedServices, Dev/Prod).</li>
+              <li>Enable CloudTrail + Config globally.</li>
+              <li>Apply SCP: deny non-approved regions; enforce MFA.</li>
+              <li>Provision KMS keys and document key policy.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article id="m2" class="card">
+          <h3>2) Identity &amp; Access</h3>
+          <p>SSO integration, short‑lived creds, role-based access, break-glass controls.</p>
+          <div class="grid cols-3">
+            <div class="card"><div class="kicker">Template</div><a class="btn btn-primary" download href="/training/assets/iam-baseline.json">IAM Baseline JSON</a></div>
+            <div class="card"><div class="kicker">Checklist</div><ul>
+              <li>Enforce MFA</li><li>SSO groups mapped to roles</li><li>Session duration ≤ 1h</li><li>Break-glass vault</li>
+            </ul></div>
+            <div class="card quiz">
+              <q>Which control reduces long-term key exposure?</q>
+              <label><input type="radio" name="q1"> Static access keys</label>
+              <label><input type="radio" name="q1" value="1"> Short‑lived roles (STS)</label>
+              <button class="btn btn-primary" onclick="grade('q1',1)">Submit</button>
+            </div>
+          </div>
+        </article>
+
+        <article id="m3" class="card">
+          <h3>3) Network &amp; Security</h3>
+          <p>VPC design, private subnets, ingress/egress controls, WAF/Shield, GuardDuty, Security Hub.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-primary" download href="/training/assets/vpc.yaml">VPC Notes (YAML)</a>
+            <a class="btn" download href="/training/assets/guardduty-enable.sh">Enable GuardDuty (script)</a>
+          </div>
+          <details style="margin-top:8px"><summary><strong>Lab: Zero‑Trust VPC</strong></summary>
+            <ol>
+              <li>Create VPC with separate routing for private/public tiers.</li>
+              <li>Private endpoints for S3/Dynamo/SSM.</li>
+              <li>WAF rules for common exploits; Shield Advanced optional.</li>
+              <li>GuardDuty + Security Hub enabled across accounts.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article id="m4" class="card">
+          <h3>4) Data Foundations</h3>
+          <p>Encryption at rest/in transit, secrets lifecycle, backups, retention policies.</p>
+          <div class="grid cols-3">
+            <div class="card"><div class="kicker">Policy</div><p>All data stores must use KMS CMKs, TLS 1.2+, and backup rotation ≥ 7/30/365.</p></div>
+            <div class="card"><div class="kicker">Checklist</div><ul><li>KMS CMK per system</li><li>Secret rotation ≤ 90d</li><li>Backups immutable</li></ul></div>
+            <div class="card quiz">
+              <q>Minimum rotation cadence for secrets?</q>
+              <label><input type="radio" name="q2"> 365 days</label>
+              <label><input type="radio" name="q2" value="1"> 90 days</label>
+              <button class="btn btn-primary" onclick="grade('q2',1)">Submit</button>
+            </div>
+          </div>
+        </article>
+
+        <article id="m5" class="card">
+          <h3>5) Compliance &amp; Audit</h3>
+          <p>Continuous controls: CIS/SOC2/ISO mappings, evidence collection, exception workflow.</p>
+          <div class="card small">Tip: map controls to the modules above; export evidence monthly.</div>
+        </article>
+
+        <article id="m6" class="card">
+          <h3>6) Cost (FinOps)</h3>
+          <p>Budgets, anomaly alerts, right‑sizing, S3 lifecycle rules, savings plans.</p>
+          <a class="btn btn-primary" download href="/training/assets/budget-alert.json">Budget Alert (JSON)</a>
+          <p class="small">Run the <a href="/roi.html">ROI Calculator</a> after this module and attach CSV to proposals.</p>
+        </article>
+
+        <article id="m7" class="card">
+          <h3>7) Operations &amp; Runbooks</h3>
+          <p>Pager policy, SEV classification, DR drills. Use our <a href="/cheatsheets/incidents.html">Incident Helper</a>.</p>
+        </article>
+
+        <article id="capstone" class="card">
+          <h3>Capstone Project + Exam</h3>
+          <p>Deliver a working Landing Zone with identity, VPC, audit, and cost guardrails. Provide:</p>
+          <ul>
+            <li>Architecture diagram</li>
+            <li>Repo with Terraform and README</li>
+            <li>Controls mapping (CIS/SOC2)</li>
+            <li>Budget alerts + GuardDuty enabled</li>
+          </ul>
+          <div class="grid cols-3">
+            <div class="card quiz">
+              <q>Exam Check 1: Which service detects anomalous activity?</q>
+              <label><input type="radio" name="q3"> Macie</label>
+              <label><input type="radio" name="q3" value="1"> GuardDuty</label>
+              <button class="btn btn-primary" onclick="grade('q3',1)">Submit</button>
+            </div>
+            <div class="card quiz">
+              <q>Exam Check 2: What denies region drift?</q>
+              <label><input type="radio" name="q4" value="1"> Service Control Policies (SCP)</label>
+              <label><input type="radio" name="q4"> Security Groups</label>
+              <button class="btn btn-primary" onclick="grade('q4',1)">Submit</button>
+            </div>
+            <div class="card">
+              <div class="kicker">Outcome → Monetization</div>
+              <p>Passing this course qualifies you to deliver the <strong>Foundation Platform Build</strong> package (fixed-fee), and to bundle <strong>Managed SRE</strong> for ongoing revenue.</p>
+              <a class="btn" href="/playbooks/infra/hub.html">See Hub &amp; Spoke Mapping</a>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+  <script>
+    function grade(name, correct){
+      const sel = document.querySelector('input[name='+name+']:checked');
+      if(!sel){ alert('Choose an option.'); return; }
+      const ok = String(sel.value||'') === String(correct);
+      alert(ok ? 'Correct!' : 'Try again.');
+      // Fire GA event if impl.js defines a tracker
+      if(window.mbccTrack){ mbccTrack('quiz_answer', {question: name, correct: ok}); }
+    }
+    // TOC highlight
+    const links = Array.from(document.querySelectorAll('#toc a'));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const id = e.target.getAttribute('id');
+        const a = links.find(l => l.getAttribute('href') === '#'+id);
+        if(a){ a.setAttribute('aria-current', e.isIntersecting ? 'true' : 'false'); }
+      });
+    }, {rootMargin: '-40% 0px -55% 0px', threshold: 0.01});
+    document.querySelectorAll('article[id]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
