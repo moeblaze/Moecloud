@@ -1,58 +1,128 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CI/CD & Serverless Automations — MOE Learning</title>
-<link rel="stylesheet" href="../assets/css/styles.css">
-<script defer src="../assets/js/main.js"></script>
 
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/impl.js"></script>
-<link rel="stylesheet" href="/mbcc-home.css"/>
-<script defer src="/config.js"></script>
-<script defer src="/impl.js"></script>
-</head><body class="mbcc-plaid">
-<header class="topbar" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 16px;background:rgba(10,10,12,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);box-shadow: inset 0 -2px 0 rgba(212,175,55,0.25)">
-  <div style="display:flex;align-items:center;gap:10px">
-    <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff7d6, #ffd54a 60%, #b7891a);border:3px solid #a8831e;color:#2b1900;font-weight:800">MB</span>
-    <div><div style="color:#bdbab5;font-weight:700;letter-spacing:.08em;text-transform:uppercase">MBCC Training</div><strong>Courses</strong></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CI/CD & Serverless — MBCC Training</title>
+  <link rel="stylesheet" href="/mbcc-home.css"/>
+  <script defer src="/config.js"></script>
+  <script defer src="/impl.js"></script>
+  <style>
+    .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    .grid{display:grid;gap:16px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:980px){.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.cols-3{grid-template-columns:1fr}}
+    .card{background:#141417;border:1px solid rgba(212,175,55,0.35);border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.35);padding:16px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);
+      background:linear-gradient(180deg,#2a2a2e,#161619);color:#f7f3e9;font-weight:800;text-decoration:none}
+    .btn-primary{border-color:#a8831e;background:linear-gradient(180deg,#d4af37,#a8831e);color:#1b1000}
+    .kicker{color:#bdbab5;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .small{color:#bdbab5;font-size:12px}
+    .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:10px 16px;background:rgba(10,10,12,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);box-shadow: inset 0 -2px 0 rgba(212,175,55,0.25)}
+    .mark{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff7d6, #ffd54a 60%, #b7891a);border:3px solid #a8831e;color:#2b1900;font-weight:800}
+    .progress{height:10px;border-radius:999px;background:#1a1a1d;overflow:hidden;margin:6px 0 10px}
+    .progress>span{display:block;height:100%;background:linear-gradient(90deg,#c1121f,#d4af37)}
+    .toc a{display:block;padding:8px 10px;border-radius:10px;color:#eae9e6}
+    .toc a[aria-current="true"], .toc a:hover{background: rgba(193,18,31,0.25); box-shadow: inset 0 0 0 1px rgba(212,175,55,0.25); text-decoration:none}
+    .quiz q{display:block;font-weight:700;margin:10px 0 6px}
+    pre{background:#0b0b0d;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px;overflow:auto}
+  </style>
+</head>
+<body class="mbcc-plaid">
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="mark">MB</span>
+      <div><div class="kicker">MBCC Training</div><strong>CI/CD & Serverless (Expanded)</strong></div>
+    </div>
+    <nav style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" href="/training/index.html">All Courses</a>
+      <a class="btn" href="/playbooks/infra/hub.html">Hub &amp; Spoke</a>
+      <a class="btn" href="/playbooks/infra/">Playbook</a>
+      <a class="btn btn-primary" href="/academy/courses.html">Academy</a>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="grid" style="grid-template-columns:320px 1fr;gap:16px">
+      <aside class="card toc" id="toc">
+        <h3 style="margin-top:0">Curriculum</h3>
+        <a href="#m1">1. Pipeline Foundations</a>
+<a href="#m2">2. Blue/Green Delivery</a>
+<a href="#m3">3. Serverless Apps</a>
+<a href="#m4">4. Artifact Security</a>
+<a href="#m5">5. Performance & Cost</a>
+        <a href="#capstone">Capstone + Exam</a>
+      </aside>
+      <section class="grid" style="gap:16px">
+        <article id="m1" class="card"><h3>1) Pipeline Foundations</h3>
+  <div class="progress"><span style="width:10%"></span></div>
+  <p>GitHub Actions workflows, runners, caching, and secrets.</p>
+  <details><summary><strong>Lab</strong>: Bootstrap pipeline</summary>
+    <ol><li>Create CI workflow for lint/test/build.</li><li>Cache deps.</li><li>Store OIDC creds for cloud deploys.</li></ol>
+  </details>
+  </article>
+<article id="m2" class="card"><h3>2) Blue/Green Delivery</h3>
+  <p>Deploy with parallel stacks, verify, and cutover with zero downtime.</p>
+  </article>
+<article id="m3" class="card"><h3>3) Serverless Apps</h3>
+  <p>Lambda patterns with EventBridge, SQS, and API Gateway. Least-privilege IAM and cold start mitigation.</p>
+  </article>
+<article id="m4" class="card"><h3>4) Artifact Security</h3>
+  <p>Provenance and signing with Sigstore; verify in deploy step.</p>
+  <div class="card quiz"><q>What proves artifact integrity?</q>
+    <label><input type="radio" name="q_c1"> Checksums only</label>
+    <label><input type="radio" name="q_c1" value="1"> Signed attestations</label>
+    <button class="btn btn-primary" onclick="grade('q_c1',1)">Submit</button>
   </div>
-  <nav style="display:flex;gap:8px;flex-wrap:wrap">
-    <a class="btn" href="/index.html" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#2a2a2e,#161619);color:#f7f3e9;text-decoration:none;font-weight:800">Home</a>
-    <a class="btn" href="/academy/courses.html" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#2a2a2e,#161619);color:#f7f3e9;text-decoration:none;font-weight:800">Academy</a>
-    <a class="btn" href="/playbooks/infra/" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#2a2a2e,#161619);color:#f7f3e9;text-decoration:none;font-weight:800">Playbook</a>
-  </nav>
-</header>
-<header class="site-header"><div class="wrap">
-  <div class="brand"><div class="logo"></div><div class="brand-text">
-    <strong>Moe Community Cloud</strong><span>Platform • Training • Partners</span></div></div>
-  <nav class="nav"><a href="../index.html">Home</a><a href="index.html">Training</a><a href="courses.html">Courses</a></nav>
-</div></header>
-
-<section class="wrap" style="padding:20px 0">
-  <div class="breadcrumbs"><a href="../index.html">Home</a> <span>›</span> <a href="index.html">Training</a> <span>›</span> <a href="courses.html">Courses</a> <span>›</span> <a href="#">CI/CD & Serverless Automations</a></div>
-</section>
-
-<section class="section"><div class="wrap grid two">
-  <div class="card">
-    <h3>CI/CD & Serverless Automations</h3>
-    <p class="micro">Complete the lessons then take the exam.</p>
-    <ul style="list-style:none;padding:0;display:grid;gap:10px">
-      <li><a class='btn ghost' href='#lesson-1'>Lesson 1</a></li>
-      <li><a class='btn ghost' href='#lesson-2'>Lesson 2</a></li>
-    </ul>
-    <div style="margin-top:10px"><a class="btn gold" href="roi.html">Run ROI</a></div>
-  </div>
-  <div class="card">
-    <h3>Includes</h3>
-    <ul><li>Hands-on labs</li><li>Templates & policies</li><li>Downloadable PDFs</li></ul>
-  </div>
-</div></section>
-
-<section class="section" id="lesson-1"><div class="wrap"><div class="card">
-  <h3>Lesson 1</h3><p class="micro">Overview and prerequisites.</p>
-</div></div></section>
-<section class="section" id="lesson-2"><div class="wrap"><div class="card">
-  <h3>Lesson 2</h3><p class="micro">Hands-on lab and assessment preparation.</p>
-</div></div></section>
-
-<footer class="site-footer"><div class="wrap">© Moe Community Cloud</div></footer>
-</body></html>
+  </article>
+<article id="m5" class="card"><h3>5) Performance & Cost</h3>
+  <p>Measure DORA metrics, tune concurrency, and control egress/storage costs.</p>
+  </article>
+        <article id="capstone" class="card">
+          <h3>Capstone Project + Exam</h3>
+          <p>This course enables the **Release Acceleration Package**: build hardened pipelines, blue/green rollouts, and signed artifacts for regulated workloads.</p>
+          <div class="grid cols-3">
+            <div class="card quiz">
+              <q>Exam Check 1</q>
+              <label><input type="radio" name="qX"> Option A</label>
+              <label><input type="radio" name="qX" value="1"> Correct</label>
+              <button class="btn btn-primary" onclick="grade('qX',1)">Submit</button>
+            </div>
+            <div class="card quiz">
+              <q>Exam Check 2</q>
+              <label><input type="radio" name="qY" value="1"> Correct</label>
+              <label><input type="radio" name="qY"> Option B</label>
+              <button class="btn btn-primary" onclick="grade('qY',1)">Submit</button>
+            </div>
+            <div class="card">
+              <div class="kicker">Outcome → Monetization</div>
+              <p>This course enables the **Release Acceleration Package**: build hardened pipelines, blue/green rollouts, and signed artifacts for regulated workloads.</p>
+              <a class="btn" href="/playbooks/infra/hub.html">See Hub &amp; Spoke Mapping</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+  <script>
+    function grade(name, correct){
+      const sel = document.querySelector('input[name='+name+']:checked');
+      if(!sel){ alert('Choose an option.'); return; }
+      const ok = String(sel.value||'') === String(correct);
+      alert(ok ? 'Correct!' : 'Try again.');
+      if(window.mbccTrack){ mbccTrack('quiz_answer', {question: name, correct: ok}); }
+    }
+    const links = Array.from(document.querySelectorAll('#toc a'));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const id = e.target.getAttribute('id');
+        const a = links.find(l => l.getAttribute('href') === '#'+id);
+        if(a){ a.setAttribute('aria-current', e.isIntersecting ? 'true' : 'false'); }
+      });
+    }, {rootMargin: '-40% 0px -55% 0px', threshold: 0.01});
+    document.querySelectorAll('article[id]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
