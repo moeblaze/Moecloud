@@ -1,53 +1,15 @@
 {
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": [
-      "/assets/*",
-      "/images/*",
-      "/docs/*",
-      "/playbooks/*",
-      "/training/*",
-      "/services/*"
-    ]
-  },
-  "globalHeaders": {
-    "content-security-policy": "default-src 'self' https://www.googletagmanager.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; connect-src 'self'",
-    "referrer-policy": "strict-origin-when-cross-origin",
-    "x-content-type-options": "nosniff",
-    "x-frame-options": "SAMEORIGIN"
-  },
-  "mimeTypes": {
-    ".webmanifest": "application/manifest+json"
-  },
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/404.html"
-    }
-  },
   "routes": [
     {
-      "route": "/sitemap.xml",
-      "headers": {
-        "cache-control": "public, max-age=3600"
-      }
+      "route": "/academy",
+      "redirect": "/academy/courses.html"
     },
     {
-      "route": "/sitemap_index.xml",
-      "headers": {
-        "cache-control": "public, max-age=3600"
-      }
-    },
-    {
-      "route": "/image-sitemap.xml",
-      "headers": {
-        "cache-control": "public, max-age=3600"
-      }
-    },
-    {
-      "route": "/feed.xml",
-      "headers": {
-        "cache-control": "public, max-age=3600"
-      }
+      "route": "/playbooks/infra",
+      "redirect": "/playbooks/infra/"
     }
-  ]
+  ],
+  "globalHeaders": {
+    "content-security-policy": "default-src 'self' https://js.stripe.com https://www.paypal.com; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.paypal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://js.stripe.com https://www.paypal.com"
+  }
 }
