@@ -1,9 +1,1 @@
-
-{
-  "Version": "2012-10-17",
-  "Statement": [{
-    "Effect": "Deny",
-    "Action": "s3:DeleteBucket",
-    "Resource": "*"
-  }]
-}
+{"Version":"2012-10-17","Statement":[{"Effect":"Deny","Action":"s3:DeleteBucket","Resource":"*"}]}

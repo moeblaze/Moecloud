@@ -1,397 +1,73 @@
-
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>MBCC No‑Code Infrastructure Playbook — Training</title>
-  <meta name="description" content="Enterprise cloud training: Landing Zones, Kubernetes + GitOps, CI/CD, Serverless, Observability, DR/FinOps, Zero‑Trust — with hands‑on labs and playbooks."/>
-  <link rel="stylesheet" href="assets/style.css"/>
-</head>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MBCC No-Code Infrastructure Playbook — Training</title>
+<meta name="description" content="Enterprise cloud training and labs with MBCC branding."/>
+<link rel="stylesheet" href="assets/style.css"/></head>
 <body>
-  <header class="header">
-    <div class="header-inner container">
-      <div class="logo"><span class="logo-mark"></span><span>MBCC • No‑Code Infra Playbook</span></div>
-      <nav>
-        <a class="btn" href="#modules">Open Playbook</a>
-        <a class="btn btn-primary" href="#enroll">Join</a>
-      </nav>
+<header class="header"><div class="header-inner container">
+<div class="logo"><span class="logo-mark"></span><span>MBCC • No-Code Infra Playbook</span></div>
+<nav><a class="btn" href="#modules">Open Playbook</a><a class="btn btn-primary" href="#enroll">Join</a></nav>
+</div></header>
+<section class="hero"><div class="container">
+<span class="badge">Enterprise Cloud • Zero-Code</span>
+<h1>Training & Implementation Tracks</h1>
+<p class="lede">Landing Zones, K8s + GitOps, CI/CD, Serverless, Observability, DR & FinOps, Zero-Trust. Learn it. Lab it. Ship it.</p>
+<div class="cta-row"><a class="btn btn-primary" href="#modules">Browse modules</a><a class="btn" href="#tiers">Pricing & tiers</a></div>
+</div></section>
+<main class="container" id="modules">
+<h2 style="margin:16px 0 8px">Tracks & Modules</h2>
+<div class='accordion-item'><div class='accordion-head'><strong>Landing Zones (AWS/GCP/Azure)</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Deploy org-ready landing zones</li><li>Identity, SSO, keys, logging</li><li>Guardrails & org policies</li></ul></div></div></div>
+<div class='accordion-item'><div class='accordion-head'><strong>Kubernetes: EKS/AKS/GKE + GitOps</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Prod clusters & add-ons</li><li>GitOps env promotion</li><li>Supply-chain security</li></ul></div></div></div>
+<div class='accordion-item'><div class='accordion-head'><strong>CI/CD & Supply Chain</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Reusable pipelines</li><li>SBOM & attestations</li><li>Blue/green & canary</li></ul></div></div></div>
+<div class='accordion-item'><div class='accordion-head'><strong>Serverless & Event-Driven</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Durable workflows</li><li>Auth, rate limits</li><li>Idempotency patterns</li></ul></div></div></div>
+<div class='accordion-item'><div class='accordion-head'><strong>Observability & SRE</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Golden signals & SLOs</li><li>Tracing/logging/metrics</li><li>Runbooks & budgets</li></ul></div></div></div>
+<div class='accordion-item'><div class='accordion-head'><strong>BC/DR & FinOps</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>RTO/RPO strategies</li><li>DR drills automation</li><li>Cost governance</li></ul></div></div></div>
+<div class='accordion-item'><div class='accordion-head'><strong>Zero-Trust & Compliance</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Policy-as-code</li><li>Evidence automation</li><li>Secret & key rotation</li></ul></div></div></div>
+<section id="downloads" style="margin-top:24px">
+  <div class="grid cols-2">
+    <div class="card">
+      <h3>Downloads</h3>
+      <table class="table">
+        <tr><td>Readiness Checklist</td><td><a href="downloads/mbcc-readiness-checklist.pdf">downloads/mbcc-readiness-checklist.pdf</a></td></tr>
+        <tr><td>Architecture Workbook</td><td><a href="downloads/mbcc-architecture-workbook.xlsx">downloads/mbcc-architecture-workbook.xlsx</a></td></tr>
+        <tr><td>Policy Starter Pack</td><td><a href="downloads/mbcc-policy-pack.zip">downloads/mbcc-policy-pack.zip</a></td></tr>
+        <tr><td>Training Deck</td><td><a href="downloads/mbcc-training-deck.pptx">downloads/mbcc-training-deck.pptx</a></td></tr>
+      </table>
+      <p class="note">These files are included in this bundle; upload this folder as-is to your site.</p>
     </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <span class="badge">Enterprise Cloud • Zero‑Code</span>
-      <h1>Training & Implementation Tracks</h1>
-      <p class="lede">Landing Zones, EKS/AKS/GKE + GitOps, CI/CD, Serverless, Observability, DR &amp; FinOps, Zero‑Trust &amp; Compliance. Learn it. Lab it. Ship it.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#modules">Browse modules</a>
-        <a class="btn" href="#tiers">Pricing & tiers</a>
-      </div>
-    </div>
-  </section>
-
-  <main class="container" id="modules">
-    <div class="grid cols-3" style="margin-top:16px">
-      <div class="card">
-        <h3>What you get</h3>
-        <ul>
-          <li>Step‑by‑step playbooks and reusable templates</li>
-          <li>Hands‑on labs with validation checklists</li>
-          <li>Architecture diagrams & reference repos</li>
-          <li>Office hours + 1:1 reviews (Elite)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Who it's for</h3>
-        <ul>
-          <li>Cloud engineers, SREs, platform & security teams</li>
-          <li>Leads who need repeatable delivery fast</li>
-          <li>Teams adopting zero‑trust and GitOps</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Outcomes</h3>
-        <ul>
-          <li>Deployable landing zones & clusters in days</li>
-          <li>Measurable SLOs and incident response readiness</li>
-          <li>Auditable compliance evidence on autopilot</li>
-        </ul>
+    <div class="card">
+      <h3>Implementation SLA (sample)</h3>
+      <div class="kv">
+        <div class="k">Kickoff</div><div>T+0 days</div>
+        <div class="k">Landing Zone</div><div>T+7–14 days</div>
+        <div class="k">Kubernetes + GitOps</div><div>T+14–28 days</div>
+        <div class="k">Observability</div><div>T+21–35 days</div>
+        <div class="k">BC/DR & FinOps</div><div>T+28–45 days</div>
       </div>
     </div>
-
-    <h2 style="margin:24px 0 8px">Tracks & Modules</h2>
-    
-    <div class="accordion-item" id="lz">
-      <div class="accordion-head">
-        <div><strong>Landing Zones (AWS/GCP/Azure)</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Deploy org-ready landing zones with guardrails</li><li>Account/project/VPC/VNet structure with network baselines</li><li>Identity, SSO, key management, logging, and baseline security</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Cloud account owner permissions</span><span class='tag'>DNS/domain access</span><span class='tag'>SAML/IdP admin or test tenant</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>LZ‑101</td><td>Reference architectures & control planes</td></tr><tr><td>LZ‑102</td><td>Networking: hub/spoke, Transit, PrivateLink/Endpoints</td></tr><tr><td>LZ‑103</td><td>Identity & policy baselines (IAM/ABAC/RBAC)</td></tr><tr><td>LZ‑104</td><td>Guardrails: SCPs/OrgPolicy/Blueprints/Bicep/Tf modules</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Spin up a sandbox org with baseline logging and audit trails</li><li>Create hub‑and‑spoke networks with private service endpoints</li><li>Configure SSO, MFA, and key management (KMS/CMK/Key Vault)</li><li>Validate controls with policy-as-code tests</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="accordion-item" id="eks">
-      <div class="accordion-head">
-        <div><strong>Kubernetes: EKS/AKS/GKE + GitOps</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Production-grade clusters with multi-env GitOps</li><li>Secure supply chain: image signing, SBOM, admission policies</li><li>Day‑2 ops: HPA/VPA, autoscaling, backups, upgrades</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Container registry access</span><span class='tag'>Git provider admin</span><span class='tag'>Ingress/DNS control</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>K8S‑201</td><td>Cluster blueprints & add‑ons (CNI, CSI, Ingress, Service Mesh)</td></tr><tr><td>K8S‑202</td><td>GitOps with Argo CD/Flux; env promotion & drift detection</td></tr><tr><td>K8S‑203</td><td>Security: OPA/Gatekeeper, Kyverno, Sigstore/Cosign</td></tr><tr><td>K8S‑204</td><td>Resilience: HPA/VPA, PodDisruptionBudgets, backups/restore</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Bootstrap a cluster and GitOps control repo</li><li>Deploy a sample app with canary releases via service mesh</li><li>Enforce policies with OPA or Kyverno and verify denials</li><li>Run a chaos test and validate auto-healing</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="accordion-item" id="cicd">
-      <div class="accordion-head">
-        <div><strong>CI/CD & Secure Supply Chain</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Reusable pipelines with environment gates</li><li>Artifact provenance and policy checks</li><li>Blue/green & canary strategies with automated rollbacks</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Pipeline runner/agents</span><span class='tag'>Secrets manager access</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>CI‑301</td><td>Pipelines: GitHub Actions, GitLab CI, Azure DevOps</td></tr><tr><td>CI‑302</td><td>Supply chain: SBOM, SAST/DAST, provenance attestations</td></tr><tr><td>CI‑303</td><td>Release strategies: blue/green, canary, feature flags</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Build & sign images; generate SBOM; enforce policy gates</li><li>Implement canary deploy with automatic rollback on SLO breach</li><li>Create reusable pipeline templates and org policies</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="accordion-item" id="srv">
-      <div class="accordion-head">
-        <div><strong>Serverless & Event‑Driven</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Design event-driven services with durable workflows</li><li>Observability baked in (tracing/logs/metrics)</li><li>Cost‑efficient, burst‑ready workloads</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Function service access (Lambda/Cloud Functions/Azure Functions)</span><span class='tag'>Queue/Bus permissions</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>SRV‑401</td><td>Patterns: fan‑out, saga, CQRS; retries & DLQs</td></tr><tr><td>SRV‑402</td><td>API gateways, auth, rate limiting, multi‑tenant isolation</td></tr><tr><td>SRV‑403</td><td>Idempotency & event versioning</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Build an ingest pipeline with retries & DLQ visualization</li><li>Implement idempotent handlers and contract tests</li><li>Expose APIs with auth and per‑tenant limits</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="accordion-item" id="obs">
-      <div class="accordion-head">
-        <div><strong>Observability & SRE</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Golden signals and SLOs for every service</li><li>Unified tracing/logging/metrics with dashboards</li><li>Runbooks and error budgets tied to releases</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Monitoring stack access</span><span class='tag'>Incident management tool</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>OBS‑501</td><td>SLO design, alerting, and error budgets</td></tr><tr><td>OBS‑502</td><td>Tracing (OTel), log pipelines, metrics cardinality control</td></tr><tr><td>OBS‑503</td><td>Incident response, runbooks, postmortems</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Define SLOs, alerts, and dashboards for a sample app</li><li>Instrument traces and correlate to logs/metrics</li><li>Run a gameday and produce a postmortem</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="accordion-item" id="dr">
-      <div class="accordion-head">
-        <div><strong>BC/DR & FinOps</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Tiered recovery strategies & RTO/RPO design</li><li>Cross‑region DR drills with automation</li><li>Cost governance with showback/chargeback</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Budget & billing access</span><span class='tag'>Replication permissions</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>DR‑601</td><td>Criticality tiers, backup/restore vs. active/active</td></tr><tr><td>DR‑602</td><td>Runbooks, simulations, and automation</td></tr><tr><td>DR‑603</td><td>FinOps KPIs, rightsizing, and waste hunting</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Model RTO/RPO for 3 services and select patterns</li><li>Automate DR drill with infra snapshots & cutover test</li><li>Build a FinOps dashboard and kill 10% of waste</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="accordion-item" id="sec">
-      <div class="accordion-head">
-        <div><strong>Zero‑Trust & Compliance</strong></div>
-        <div class="small">Click to expand</div>
-      </div>
-      <div class="accordion-body">
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h3>Learning Outcomes</h3>
-            <ul><li>Policy‑as‑code across clouds</li><li>Continuous compliance evidence</li><li>Secrets, keys, identities fully governed</li></ul>
-            <div style="margin-top:8px"><span class='tag'>Security admin role</span><span class='tag'>SIEM access</span></div>
-          </div>
-          <div class="card">
-            <h3>Curriculum</h3>
-            <table class="table">
-              <thead><tr><th>Code</th><th>Lesson</th></tr></thead>
-              <tbody><tr><td>SEC‑701</td><td>Zero‑trust architecture & identity foundations</td></tr><tr><td>SEC‑702</td><td>Compliance as code (CIS, NIST, ISO, SOC)</td></tr><tr><td>SEC‑703</td><td>Secret management & key rotation strategies</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h3>Hands‑On Labs</h3>
-          <ul><li>Author 5 controls as code & validate against sandbox</li><li>Rotate keys and prove least‑privilege with access reviews</li><li>Generate a continuous compliance report bundle</li></ul>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#enroll">Start this track</a>
-            <a class="btn" href="#downloads">Download checklist</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <section id="downloads" style="margin-top:24px">
-      <div class="grid cols-2">
-        <div class="card">
-          <h3>Downloads</h3>
-          <table class="table">
-            <tr><td>Readiness Checklist</td><td><a href="#">/downloads/mbcc-readiness-checklist.pdf</a></td></tr>
-            <tr><td>Architecture Workbook</td><td><a href="#">/downloads/mbcc-architecture-workbook.xlsx</a></td></tr>
-            <tr><td>Policy Starter Pack</td><td><a href="#">/downloads/mbcc-policy-pack.zip</a></td></tr>
-          </table>
-          <p class="note">Replace links with your hosted files. We can generate these on request.</p>
-        </div>
-        <div class="card">
-          <h3>Implementation SLA (sample)</h3>
-          <div class="kv">
-            <div class="k">Kickoff</div><div>T+0 days</div>
-            <div class="k">Landing Zone</div><div>T+7–14 days</div>
-            <div class="k">Kubernetes + GitOps</div><div>T+14–28 days</div>
-            <div class="k">Observability</div><div>T+21–35 days</div>
-            <div class="k">BC/DR & FinOps</div><div>T+28–45 days</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tiers" style="margin-top:24px">
-      <h2>Pricing & Tiers</h2>
-      <div class="grid cols-3">
-        <div class="tier">
-          <div class="small">Starter</div>
-          <div class="price">Free</div>
-          <ul>
-            <li>Module overviews</li>
-            <li>Basic cost calculator</li>
-            <li>Compliance tracker (sample)</li>
-          </ul>
-          <a class="btn" href="#enroll">Get Started</a>
-        </div>
-        <div class="tier">
-          <div class="small">Builder</div>
-          <div class="price">Pro</div>
-          <ul>
-            <li>All modules & updates</li>
-            <li>Policy generator</li>
-            <li>CI/CD blueprints</li>
-          </ul>
-          <a class="btn btn-primary" href="#enroll">Join Pro</a>
-        </div>
-        <div class="tier">
-          <div class="small">Operator</div>
-          <div class="price">Elite</div>
-          <ul>
-            <li>Elite templates</li>
-            <li>1:1 strategy reviews</li>
-            <li>Priority SLAs</li>
-          </ul>
-          <a class="btn" href="#enroll">Apply for Elite</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" style="margin-top:24px">
-      <h2>FAQ</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <h3>Is this truly no‑code?</h3>
-          <p>We ship curated templates and scripts so teams click‑through setup and only edit values specific to their environment.</p>
-        </div>
-        <div class="card">
-          <h3>Do you provide code repositories?</h3>
-          <p>Yes—reference repos for pipelines, IaC modules, and GitOps setups are included with Pro/Elite tiers.</p>
-        </div>
-        <div class="card">
-          <h3>How do labs get validated?</h3>
-          <p>Each lab includes an automated checklist plus command snippets to verify outcomes.</p>
-        </div>
-        <div class="card">
-          <h3>Can you customize to our stack?</h3>
-          <p>Elite tier includes private IP templates and architecture reviews tailored to your environment.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="enroll" style="margin-top:24px">
-      <div class="card">
-        <h3>Enroll your team</h3>
-        <p>Tell us your cloud/provider(s), compliance needs, and timelines. We'll tailor the track map and kick things off.</p>
-        <form action="#" method="post" onsubmit="alert('Submitted!'); return false;">
-          <div class="grid cols-2">
-            <div><label>Full name<br/><input required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-            <div><label>Work email<br/><input type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-            <div><label>Cloud(s)<br/><input placeholder="AWS, Azure, GCP" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-            <div><label>Target start date<br/><input type="date" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-            <div style="grid-column:1/-1"><label>Goals / notes<br/><textarea rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></textarea></label></div>
-          </div>
-          <div class="cta-row">
-            <button class="btn btn-primary" type="submit">Submit</button>
-            <a class="btn" href="#modules">Back to modules</a>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    © 2025 MBCC • No‑Code Infra Playbook
-  </footer>
-  <script src="assets/app.js"></script>
-</body>
-</html>
+  </div>
+</section>
+<section id="tiers" style="margin-top:24px">
+<h2>Pricing & Tiers</h2>
+<div class="grid cols-3">
+<div class="tier"><div class="small">Starter</div><div class="price">Free</div><ul><li>Module overviews</li><li>Cost calculator</li><li>Compliance tracker (sample)</li></ul><a class="btn" href="#enroll">Get Started</a></div>
+<div class="tier"><div class="small">Builder</div><div class="price">Pro</div><ul><li>All modules & updates</li><li>Policy generator</li><li>CI/CD blueprints</li></ul><a class="btn btn-primary" href="#enroll">Join Pro</a></div>
+<div class="tier"><div class="small">Operator</div><div class="price">Elite</div><ul><li>Elite templates</li><li>1:1 strategy reviews</li><li>Priority SLAs</li></ul><a class="btn" href="#enroll">Apply for Elite</a></div>
+</div>
+</section>
+<section id="enroll" style="margin-top:24px"><div class="card">
+<h3>Enroll your team</h3>
+<form onsubmit="alert('Submitted!');return false;">
+<div class="grid cols-2">
+<div><label>Full name<br/><input required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
+<div><label>Work email<br/><input type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
+<div><label>Cloud(s)<br/><input placeholder="AWS, Azure, GCP" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
+<div><label>Target start date<br/><input type="date" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
+<div style="grid-column:1/-1"><label>Goals / notes<br/><textarea rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></textarea></label></div>
+</div>
+<div class="cta-row"><button class="btn btn-primary" type="submit">Submit</button><a class="btn" href="#modules">Back to modules</a></div>
+</form></div></section>
+</main>
+<footer class="container footer">© 2025 MBCC • No-Code Infra Playbook</footer>
+<script src="assets/app.js"></script>
+</body></html>
