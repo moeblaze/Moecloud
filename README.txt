@@ -1,14 +1,21 @@
-MCC Retail Playbook Pages
----------------------------------
-Upload all files in this folder to: /training/retail/ in your repo.
+Hazel AI — Standalone App (MCC)
+--------------------------------
+Upload `hazel.html` to your repo root and place `assets/js/hazel.js` under /assets/js/ (keep your existing CSS).
 
-Add these routes to staticwebapp.config.json (inside "routes") for clean URLs:
-{ "route": "/training/retail/ai-personalization", "rewrite": "/training/retail/ai-personalization.html" },
-{ "route": "/training/retail/loyalty-on-algorand", "rewrite": "/training/retail/loyalty-on-algorand.html" },
-{ "route": "/training/retail/returns-automation", "rewrite": "/training/retail/returns-automation.html" },
-{ "route": "/training/retail/fraud-detection", "rewrite": "/training/retail/fraud-detection.html" },
-{ "route": "/training/retail/omnichannel-promotions", "rewrite": "/training/retail/omnichannel-promotions.html" },
-{ "route": "/training/retail/inventory-forecasting", "rewrite": "/training/retail/inventory-forecasting.html" },
-{ "route": "/training/retail/poc-algorand", "rewrite": "/training/retail/poc-algorand.html" }
+Add these routes to staticwebapp.config.json:
+  { "route": "/hazel", "rewrite": "/hazel.html" },
+  { "route": "/hazel/", "rewrite": "/hazel.html" }
 
-Also update links in /training/index.html and /playbooks.html to point to the new routes.
+Add an 'ad link' to open Hazel on a new page (for example, in index.html):
+  <a class="btn btn-primary" href="/hazel" target="_blank" rel="noopener">Try Hazel AI</a>
+
+Or a banner anywhere:
+  <a href="/hazel" target="_blank" rel="noopener">
+    <div class="card" style="display:flex;align-items:center;gap:12px">
+      <div class="logo">MCC</div>
+      <div><strong>Hazel AI</strong><br><span class="micro">Ask about MCC training, integrations & ROI →</span></div>
+    </div>
+  </a>
+
+To wire up a real backend later:
+  - Replace the placeholder logic in assets/js/hazel.js with a fetch() to your API endpoint.
