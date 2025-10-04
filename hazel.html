@@ -19,21 +19,19 @@
     <div class="logo">MCC</div>
     <div class="brand-text">
       <h1 class="site-title">Hazel AI <span class="badge">Standalone App</span></h1>
-      <p class="site-subtitle">Your AI assistant for MCC training, integrations & ROI</p>
+      <p class="site-subtitle">Assistant for MCC training, integrations & ROI</p>
     </div>
   </div>
   <nav class="nav"><a href="/">Home</a><a href="/playbooks">Playbooks</a><a href="/training">Training</a><a href="/roi">ROI</a></nav>
 </div></header>
-
 <main class="wrap hazel">
   <div class="card" style="margin-bottom:16px">
     <h3>What Hazel AI can do</h3>
-    <ul class="outcomes">
-      <li>Answer questions about MCC Playbooks (Executive, Integration, Retail)</li>
+    <ul class="grid-3">
+      <li>Answer questions about MCC Playbooks</li>
       <li>Help estimate ROI with your inputs</li>
       <li>Guide integrations using the MCC Checklist</li>
     </ul>
-    <p class="micro">Note: This is a front‑end app shell. Hook the <code>hazel.js</code> fetch() to your API when ready.</p>
   </div>
 
   <div class="chat">
@@ -41,11 +39,10 @@
       <div class="msg bot">Hi! I’m Hazel. Ask me about MCC training, integrations, or ROI.</div>
     </div>
     <div class="inputbar">
-      <input id="prompt" type="text" placeholder="Ask Hazel… (e.g., 'How do I pilot loyalty on Algorand?')" />
-      <button class="btn btn-primary" onclick="window.Hazel.send()">Send</button>
+      <input id="prompt" type="text" placeholder="Ask Hazel…" />
+      <button class="btn" onclick="window.Hazel.send()">Send</button>
     </div>
   </div>
 </main>
-
 <script defer src="/assets/js/hazel.js"></script>
 </body></html>
