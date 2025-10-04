@@ -1,15 +1,34 @@
 {
   "routes": [
     {
-      "route": "/academy",
-      "redirect": "/academy/courses.html"
+      "route": "/playbooks",
+      "rewrite": "/playbooks.html"
     },
     {
-      "route": "/playbooks/infra",
-      "redirect": "/playbooks/infra/"
+      "route": "/roi",
+      "rewrite": "/roi.html"
+    },
+    {
+      "route": "/training/case-studies",
+      "rewrite": "/training/case-studies.html"
+    },
+    {
+      "route": "/playbooks/",
+      "rewrite": "/playbooks.html"
+    },
+    {
+      "route": "/roi/",
+      "rewrite": "/roi.html"
+    },
+    {
+      "route": "/training/case-studies/",
+      "rewrite": "/training/case-studies.html"
     }
   ],
-  "globalHeaders": {
-    "content-security-policy": "default-src 'self' https://js.stripe.com https://www.paypal.com; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.paypal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://js.stripe.com https://www.paypal.com"
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
   }
 }
