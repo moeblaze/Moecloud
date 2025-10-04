@@ -23,6 +23,22 @@
     {
       "route": "/training/case-studies/",
       "rewrite": "/training/case-studies.html"
+    },
+    {
+      "route": "/sow",
+      "rewrite": "/assets/docs/MCC_SOW_Template.pdf"
+    },
+    {
+      "route": "/sow.docx",
+      "rewrite": "/assets/docs/MCC_SOW_Template_With_Cover.docx"
+    },
+    {
+      "route": "/checklist",
+      "rewrite": "/assets/docs/MCC_Integration_Checklist.pdf"
+    },
+    {
+      "route": "/roi-xlsx",
+      "rewrite": "/assets/docs/MBCC_Retail_ROI_Calculator.xlsx"
     }
   ],
   "responseOverrides": {
