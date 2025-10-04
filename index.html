@@ -1,73 +1,197 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MBCC No-Code Infrastructure Playbook — Training</title>
-<meta name="description" content="Enterprise cloud training and labs with MBCC branding."/>
-<link rel="stylesheet" href="assets/style.css"/></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MBCC Million-Dollar Playbooks — Moe Community Cloud</title>
+  <meta name="description" content="Enterprise cloud playbooks for Landing Zones, K8s + GitOps, CI/CD, Serverless, Observability, DR/FinOps, and Zero-Trust. Train. Lab. Ship.">
+  <link rel="canonical" href="https://www.moecommunitycloud.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
+</head>
 <body>
-<header class="header"><div class="header-inner container">
-<div class="logo"><span class="logo-mark"></span><span>MBCC • No-Code Infra Playbook</span></div>
-<nav><a class="btn" href="#modules">Open Playbook</a><a class="btn btn-primary" href="#enroll">Join</a></nav>
-</div></header>
-<section class="hero"><div class="container">
-<span class="badge">Enterprise Cloud • Zero-Code</span>
-<h1>Training & Implementation Tracks</h1>
-<p class="lede">Landing Zones, K8s + GitOps, CI/CD, Serverless, Observability, DR & FinOps, Zero-Trust. Learn it. Lab it. Ship it.</p>
-<div class="cta-row"><a class="btn btn-primary" href="#modules">Browse modules</a><a class="btn" href="#tiers">Pricing & tiers</a></div>
-</div></section>
-<main class="container" id="modules">
-<h2 style="margin:16px 0 8px">Tracks & Modules</h2>
-<div class='accordion-item'><div class='accordion-head'><strong>Landing Zones (AWS/GCP/Azure)</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Deploy org-ready landing zones</li><li>Identity, SSO, keys, logging</li><li>Guardrails & org policies</li></ul></div></div></div>
-<div class='accordion-item'><div class='accordion-head'><strong>Kubernetes: EKS/AKS/GKE + GitOps</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Prod clusters & add-ons</li><li>GitOps env promotion</li><li>Supply-chain security</li></ul></div></div></div>
-<div class='accordion-item'><div class='accordion-head'><strong>CI/CD & Supply Chain</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Reusable pipelines</li><li>SBOM & attestations</li><li>Blue/green & canary</li></ul></div></div></div>
-<div class='accordion-item'><div class='accordion-head'><strong>Serverless & Event-Driven</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Durable workflows</li><li>Auth, rate limits</li><li>Idempotency patterns</li></ul></div></div></div>
-<div class='accordion-item'><div class='accordion-head'><strong>Observability & SRE</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Golden signals & SLOs</li><li>Tracing/logging/metrics</li><li>Runbooks & budgets</li></ul></div></div></div>
-<div class='accordion-item'><div class='accordion-head'><strong>BC/DR & FinOps</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>RTO/RPO strategies</li><li>DR drills automation</li><li>Cost governance</li></ul></div></div></div>
-<div class='accordion-item'><div class='accordion-head'><strong>Zero-Trust & Compliance</strong><span class='small'>Click to expand</span></div><div class='accordion-body'><div class='card'><ul><li>Policy-as-code</li><li>Evidence automation</li><li>Secret & key rotation</li></ul></div></div></div>
-<section id="downloads" style="margin-top:24px">
-  <div class="grid cols-2">
-    <div class="card">
-      <h3>Downloads</h3>
-      <table class="table">
-        <tr><td>Readiness Checklist</td><td><a href="downloads/mbcc-readiness-checklist.pdf">downloads/mbcc-readiness-checklist.pdf</a></td></tr>
-        <tr><td>Architecture Workbook</td><td><a href="downloads/mbcc-architecture-workbook.xlsx">downloads/mbcc-architecture-workbook.xlsx</a></td></tr>
-        <tr><td>Policy Starter Pack</td><td><a href="downloads/mbcc-policy-pack.zip">downloads/mbcc-policy-pack.zip</a></td></tr>
-        <tr><td>Training Deck</td><td><a href="downloads/mbcc-training-deck.pptx">downloads/mbcc-training-deck.pptx</a></td></tr>
-      </table>
-      <p class="note">These files are included in this bundle; upload this folder as-is to your site.</p>
-    </div>
-    <div class="card">
-      <h3>Implementation SLA (sample)</h3>
-      <div class="kv">
-        <div class="k">Kickoff</div><div>T+0 days</div>
-        <div class="k">Landing Zone</div><div>T+7–14 days</div>
-        <div class="k">Kubernetes + GitOps</div><div>T+14–28 days</div>
-        <div class="k">Observability</div><div>T+21–35 days</div>
-        <div class="k">BC/DR & FinOps</div><div>T+28–45 days</div>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">MBCC</div>
+        <div class="brand-text">
+          <h1 class="site-title">MBCC Million-Dollar Playbooks</h1>
+          <p class="site-subtitle">Train. Lab. Ship.</p>
+        </div>
       </div>
+      <nav class="nav">
+        <a href="#starter">Starter Pack</a>
+        <a href="#modules">Modules</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
     </div>
-  </div>
-</section>
-<section id="tiers" style="margin-top:24px">
-<h2>Pricing & Tiers</h2>
-<div class="grid cols-3">
-<div class="tier"><div class="small">Starter</div><div class="price">Free</div><ul><li>Module overviews</li><li>Cost calculator</li><li>Compliance tracker (sample)</li></ul><a class="btn" href="#enroll">Get Started</a></div>
-<div class="tier"><div class="small">Builder</div><div class="price">Pro</div><ul><li>All modules & updates</li><li>Policy generator</li><li>CI/CD blueprints</li></ul><a class="btn btn-primary" href="#enroll">Join Pro</a></div>
-<div class="tier"><div class="small">Operator</div><div class="price">Elite</div><ul><li>Elite templates</li><li>1:1 strategy reviews</li><li>Priority SLAs</li></ul><a class="btn" href="#enroll">Apply for Elite</a></div>
-</div>
-</section>
-<section id="enroll" style="margin-top:24px"><div class="card">
-<h3>Enroll your team</h3>
-<form onsubmit="alert('Submitted!');return false;">
-<div class="grid cols-2">
-<div><label>Full name<br/><input required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-<div><label>Work email<br/><input type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-<div><label>Cloud(s)<br/><input placeholder="AWS, Azure, GCP" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-<div><label>Target start date<br/><input type="date" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></label></div>
-<div style="grid-column:1/-1"><label>Goals / notes<br/><textarea rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff"></textarea></label></div>
-</div>
-<div class="cta-row"><button class="btn btn-primary" type="submit">Submit</button><a class="btn" href="#modules">Back to modules</a></div>
-</form></div></section>
-</main>
-<footer class="container footer">© 2025 MBCC • No-Code Infra Playbook</footer>
-<script src="assets/app.js"></script>
-</body></html>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <h2>Enterprise cloud outcomes without the rework.</h2>
+        <p class="lead">
+          Landing Zones, K8s + GitOps, CI/CD, Serverless, Observability, DR/FinOps, and Zero-Trust — packaged as ready-to-ship playbooks.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#modules">Open Playbook</a>
+          <a class="btn btn-ghost" href="#starter">Download the Starter Pack</a>
+        </div>
+        <ul class="outcomes">
+          <li><strong>Implement faster:</strong> Org-ready landing zones, GitOps promotion, policy-as-code — delivered with hands-on labs.</li>
+          <li><strong>Operate with confidence:</strong> Golden signals, SLOs, runbooks, DR drills, and cost guardrails.</li>
+          <li><strong>Stay compliant by design:</strong> Evidence automation, secret rotation, supply-chain security.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Starter Pack -->
+    <section id="starter" class="starter">
+      <div class="wrap">
+        <h3>Starter Pack (Free Download)</h3>
+        <div class="cards">
+          <div class="card">
+            <h4>Readiness Checklist</h4>
+            <p>Prove you’re ready for Landing Zones and production rollout.</p>
+            <a class="btn btn-small" href="#" aria-disabled="true">Download</a>
+          </div>
+          <div class="card">
+            <h4>Architecture Workbook</h4>
+            <p>Cross-cloud workbook tabs for AWS • GCP • Azure.</p>
+            <a class="btn btn-small" href="#" aria-disabled="true">Download</a>
+          </div>
+          <div class="card">
+            <h4>Policy Starter Pack</h4>
+            <p>Baseline guardrails to customize with policy-as-code.</p>
+            <a class="btn btn-small" href="#" aria-disabled="true">Download</a>
+          </div>
+          <div class="card">
+            <h4>Training Deck</h4>
+            <p>Share the vision with your stakeholders and teams.</p>
+            <a class="btn btn-small" href="#" aria-disabled="true">Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modules -->
+    <section id="modules" class="modules">
+      <div class="wrap">
+        <h3>Playbook Modules</h3>
+        <div class="grid-3">
+          <div class="mod">
+            <h4>Landing Zones</h4>
+            <ul>
+              <li>Identity & SSO</li>
+              <li>Org logging & guardrails</li>
+              <li>Network baselines</li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h4>Kubernetes + GitOps</h4>
+            <ul>
+              <li>Prod-ready clusters</li>
+              <li>Env promotion</li>
+              <li>Supply-chain security</li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h4>CI/CD</h4>
+            <ul>
+              <li>Reusable pipelines</li>
+              <li>SBOM & attestations</li>
+              <li>Blue/Green & Canary</li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h4>Serverless</h4>
+            <ul>
+              <li>Durable workflows</li>
+              <li>Auth & rate-limits</li>
+              <li>Idempotency patterns</li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h4>Observability</h4>
+            <ul>
+              <li>Tracing • Logging • Metrics</li>
+              <li>SLOs & alerting</li>
+              <li>Runbooks</li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h4>BC/DR & FinOps</h4>
+            <ul>
+              <li>RTO/RPO strategies</li>
+              <li>Automated DR drills</li>
+              <li>Cost governance</li>
+            </ul>
+          </div>
+          <div class="mod">
+            <h4>Zero-Trust & Compliance</h4>
+            <ul>
+              <li>Policy-as-code</li>
+              <li>Evidence automation</li>
+              <li>Key/secret rotation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+      <div class="wrap">
+        <h3>Pricing</h3>
+        <div class="grid-3">
+          <div class="price-card">
+            <div class="label">Starter</div>
+            <div class="price">Free</div>
+            <ul>
+              <li>Module overviews</li>
+              <li>Cost calculator</li>
+              <li>Sample compliance tracker</li>
+              <li>Starter Pack downloads</li>
+            </ul>
+            <a class="btn btn-primary btn-small" href="#">Get Starter</a>
+          </div>
+          <div class="price-card featured">
+            <div class="label">Pro</div>
+            <div class="price">$49/mo</div>
+            <ul>
+              <li>Full modules + updates</li>
+              <li>Policy generator</li>
+              <li>CI/CD blueprints</li>
+              <li>Community & support</li>
+            </ul>
+            <a class="btn btn-primary btn-small" href="#">Go Pro</a>
+          </div>
+          <div class="price-card">
+            <div class="label">Elite</div>
+            <div class="price">Custom</div>
+            <ul>
+              <li>All templates & labs</li>
+              <li>1:1 strategy reviews</li>
+              <li>Priority SLAs</li>
+              <li>Enterprise licensing</li>
+            </ul>
+            <a class="btn btn-primary btn-small" href="#">Talk to Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2025 Moe Community Cloud — MBCC</p>
+      <p class="tiny">Built for zero-code friction. Deployed via Azure Static Web Apps.</p>
+    </div>
+  </footer>
+</body>
+</html>
