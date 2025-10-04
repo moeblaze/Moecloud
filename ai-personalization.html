@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Personalization — MCC Retail Playbook</title>
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<style>.panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:16px;margin-top:16px}</style>
+</head><body>
+<header class="site-header"><div class="wrap">
+  <div class="brand"><div class="logo">MCC</div><div class="brand-text"><h1 class="site-title">AI Personalization</h1><p class="site-subtitle">Retail Playbook</p></div></div>
+  <nav class="nav"><a href="/">Home</a><a href="/playbooks">Playbooks</a><a href="/training">Training</a></nav>
+</div></header>
+<main class="wrap" style="padding:24px 0 60px"><section class="panel" id="md"></section></main>
+<script>
+async function render(mdUrl){
+  const md = await (await fetch(mdUrl)).text();
+  const lines = md.split(/\r?\n/);
+  let html='', inCode=false, listOpen=false;
+  for (let ln of lines){
+    if (ln.trim().startsWith('```')){ html+= inCode?'</code></pre>':'<pre><code>'; inCode=!inCode; continue; }
+    if (inCode){ html+=ln.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'\n'; continue; }
+    if (/^\s*[-*]\s+/.test(ln)){ if(!listOpen){html+='<ul>';} listOpen=true; ln=ln.replace(/^\s*[-*]\s+/,''); html+=`<li>${ln}</li>`; continue; }
+    if (listOpen && ln.trim()===''){ html+='</ul>'; listOpen=false; continue; }
+    if (ln.startsWith('### ')) { html+=`<h3>${ln.slice(4)}</h3>`; continue; }
+    if (ln.startsWith('## '))  { html+=`<h2>${ln.slice(3)}</h2>`; continue; }
+    if (ln.startsWith('# '))   { html+=`<h1>${ln.slice(2)}</h1>`; continue; }
+    if (ln.trim()===''){ html+='<br>'; continue; }
+    ln = ln.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
+    html+=`<p>${ln}</p>`;
+  }
+  if(listOpen) html+='</ul>';
+  document.getElementById('md').innerHTML = html;
+}
+render('/assets/docs/01-ai-personalization.md');
+</script>
+</body></html>
