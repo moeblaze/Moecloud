@@ -1,0 +1,7 @@
+GET http://localhost:7071/v1/health
+
+###
+POST http://localhost:7071/v1/assets/upload-urls
+Content-Type: application/json
+
+{"files":[{"filename":"brand.zip","contentType":"application/zip"}]}
