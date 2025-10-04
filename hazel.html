@@ -7,13 +7,19 @@
 .grid{display:grid;grid-template-columns:1.4fr .9fr;gap:16px}
 .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:16px}
 label{display:block;margin:8px 0 4px}
-input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#0b0b0b;color:#f7f3e9}
+input[type="text"], input[type="url"], textarea, select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#0b0b0b;color:#f7f3e9}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .badge{display:inline-block;padding:6px 10px;border-radius:10px;border:1px solid var(--gold);font-size:12px;margin-left:8px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
 .kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px}
 .preview{height:320px;background:#000;border-radius:12px;border:1px dashed rgba(255,255,255,.25);display:grid;place-items:center;color:#aaa}
 .small{font-size:12px;color:#bbb}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.alert{padding:10px;border-radius:10px;margin-top:10px;border:1px solid rgba(255,255,255,.2)}
+.alert-error{border-color:#f44336;color:#ffcdd2;background:rgba(244,67,54,.1)}
+.alert-ok{border-color:#4caf50;color:#c8e6c9;background:rgba(76,175,80,.1)}
+.progress{height:8px;background:#222;border-radius:6px;overflow:hidden;margin-top:8px;border:1px solid rgba(255,255,255,.15)}
+.bar{height:100%;width:0%}
 </style>
 </head><body>
 <header class="site-header"><div class="wrap">
@@ -28,12 +34,11 @@ input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;
   <div class="grid">
     <section class="card">
       <h3>Project</h3>
-      <label>Title</label>
-      <input id="title" type="text" placeholder="Fall Promo — Omnichannel Personalization">
-      <label>Script</label>
-      <textarea id="script" rows="8" placeholder="Intro: show product grid... CTA: Shop now..."></textarea>
-
       <div class="controls">
+        <div style="flex:2">
+          <label>Title</label>
+          <input id="title" type="text" placeholder="Fall Promo — Omnichannel Personalization">
+        </div>
         <div style="flex:1">
           <label>Aspect Ratio</label>
           <select id="ratio">
@@ -60,20 +65,39 @@ input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;
         </div>
       </div>
 
+      <label>Script</label>
+      <textarea id="script" rows="8" placeholder="Intro: show product grid... CTA: Shop now..."></textarea>
+
       <div class="controls">
-        <button class="btn" onclick="HazelVideo.storyboard()">Generate Storyboard</button>
-        <button class="btn" onclick="HazelVideo.render()">Render Preview</button>
-        <a class="btn" href="/checklist" target="_blank" rel="noopener">Integration Checklist</a>
+        <button class="btn" id="btnSave" onclick="HazelVideo.saveProject()">Save Project</button>
+        <button class="btn" id="btnStoryboard" onclick="HazelVideo.storyboard()">Generate Storyboard</button>
+        <button class="btn" id="btnPreview" onclick="HazelVideo.renderPreview()">Render Preview</button>
+        <button class="btn" id="btnGenerate" onclick="HazelVideo.generateVideo()">Generate Video</button>
       </div>
+
+      <div id="status" class="small"></div>
 
       <div class="card" style="margin-top:12px">
         <h4>Storyboard</h4>
         <div id="storyboard" class="small">No storyboard yet. Click “Generate Storyboard”.</div>
       </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4>Video Output</h4>
+        <div id="renderInfo" class="small">No render yet.</div>
+        <div class="progress"><div id="progressBar" class="bar" style="background:var(--gold)"></div></div>
+        <div id="videoContainer" style="margin-top:12px"></div>
+      </div>
     </section>
 
     <aside class="card">
-      <h3>Assets</h3>
+      <h3>API Settings</h3>
+      <label>API Base URL</label>
+      <input id="apiBase" type="url" placeholder="https://api.moecommunitycloud.com">
+      <label>Bearer Token (optional for dev)</label>
+      <input id="apiToken" type="text" placeholder="eyJhbGciOi...">
+
+      <h3 style="margin-top:16px">Assets</h3>
       <label>Upload Brand Pack (zip)</label>
       <input id="brand" type="file" accept=".zip">
       <label>Upload Media (images/video)</label>
@@ -82,8 +106,8 @@ input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;
 
       <h3>About Hazel</h3>
       <p class="small">
-        Hazel is your <strong>AI video creation tool</strong> for MCC. It turns scripts + assets into
-        MCC-styled videos with voiceover options. Use it for <em>Retail Playbooks</em> (e.g., Omnichannel Promotions) or training assets.
+        Hazel is your <strong>AI video creation tool</strong> for MCC. Use <em>Generate Video</em> to call the backend
+        render endpoint (<code>POST /v1/renders</code>), then Hazel will poll for status and show the final download link or player.
       </p>
       <ul class="small">
         <li><a href="/training">Training Catalog</a></li>
@@ -91,25 +115,18 @@ input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;
         <li><a href="/sow" target="_blank" rel="noopener">SOW Template (PDF)</a></li>
       </ul>
 
-      <h3>KPIs (When Deployed)</h3>
-      <div class="kpis">
-        <div class="kpi"><strong>Render Time (P95)</strong><div id="kpiRender">—</div></div>
-        <div class="kpi"><strong>Success Rate</strong><div id="kpiSuccess">—</div></div>
-        <div class="kpi"><strong>Avg. Watch Time</strong><div id="kpiWatch">—</div></div>
-      </div>
+      <div id="alerts"></div>
     </aside>
   </div>
 
   <section class="card" style="margin-top:16px">
     <h3>Workflow & Compliance</h3>
     <ol class="small">
-      <li>Upload brand pack (logos, fonts, color tokens).</li>
-      <li>Paste or write your script; choose aspect ratio & style.</li>
-      <li>Attach product media (images/video) and optional voiceover.</li>
-      <li>Generate storyboard → review scenes & CTAs.</li>
-      <li>Render a preview (front‑end only here) or export via API when connected.</li>
+      <li>Save Project (title, style, voice, script).</li>
+      <li>Generate Storyboard (async job).</li>
+      <li><strong>Generate Video</strong> — kicks off render job and polls progress.</li>
+      <li>Download MP4 or copy URL when complete.</li>
     </ol>
-    <p class="small">Compliance: store assets securely, log consent for any PII. Keep <em>no PII</em> in video metadata.</p>
   </section>
 </main>
 
