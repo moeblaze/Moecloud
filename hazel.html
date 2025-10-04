@@ -1,48 +1,117 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hazel AI — Moe Community Cloud (MCC)</title>
+<title>Hazel — AI Video Creation (MCC)</title>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <style>
-.hazel{max-width:960px;margin:0 auto;padding:24px 0 60px}
-.chat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
-.messages{height:52vh;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-.msg{padding:12px 14px;border-radius:12px;max-width:80%}
-.user{align-self:flex-end;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.4)}
-.bot{align-self:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
-.inputbar{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.25)}
-.inputbar input{flex:1;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#0b0b0b;color:#f7f3e9;padding:12px}
+.hazel{max-width:1100px;margin:0 auto;padding:24px 0 60px}
+.grid{display:grid;grid-template-columns:1.4fr .9fr;gap:16px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:16px}
+label{display:block;margin:8px 0 4px}
+input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#0b0b0b;color:#f7f3e9}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .badge{display:inline-block;padding:6px 10px;border-radius:10px;border:1px solid var(--gold);font-size:12px;margin-left:8px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px}
+.preview{height:320px;background:#000;border-radius:12px;border:1px dashed rgba(255,255,255,.25);display:grid;place-items:center;color:#aaa}
+.small{font-size:12px;color:#bbb}
 </style>
 </head><body>
 <header class="site-header"><div class="wrap">
-  <div class="brand">
-    <div class="logo">MCC</div>
-    <div class="brand-text">
-      <h1 class="site-title">Hazel AI <span class="badge">Standalone App</span></h1>
-      <p class="site-subtitle">Assistant for MCC training, integrations & ROI</p>
-    </div>
+  <div class="brand"><div class="logo">MCC</div>
+    <div class="brand-text"><h1 class="site-title">Hazel <span class="badge">AI Video Creation</span></h1>
+    <p class="site-subtitle">Generate on-brand videos from script + assets</p></div>
   </div>
   <nav class="nav"><a href="/">Home</a><a href="/playbooks">Playbooks</a><a href="/training">Training</a><a href="/roi">ROI</a></nav>
 </div></header>
+
 <main class="wrap hazel">
-  <div class="card" style="margin-bottom:16px">
-    <h3>What Hazel AI can do</h3>
-    <ul class="grid-3">
-      <li>Answer questions about MCC Playbooks</li>
-      <li>Help estimate ROI with your inputs</li>
-      <li>Guide integrations using the MCC Checklist</li>
-    </ul>
+  <div class="grid">
+    <section class="card">
+      <h3>Project</h3>
+      <label>Title</label>
+      <input id="title" type="text" placeholder="Fall Promo — Omnichannel Personalization">
+      <label>Script</label>
+      <textarea id="script" rows="8" placeholder="Intro: show product grid... CTA: Shop now..."></textarea>
+
+      <div class="controls">
+        <div style="flex:1">
+          <label>Aspect Ratio</label>
+          <select id="ratio">
+            <option value="16:9">16:9 (YouTube/Web)</option>
+            <option value="9:16">9:16 (Stories/Reels)</option>
+            <option value="1:1">1:1 (Feed)</option>
+          </select>
+        </div>
+        <div style="flex:1">
+          <label>Style</label>
+          <select id="style">
+            <option value="clean">Clean / Corporate</option>
+            <option value="retail">Retail / Bold</option>
+            <option value="luxury">Luxury / Minimal</option>
+          </select>
+        </div>
+        <div style="flex:1">
+          <label>Voiceover</label>
+          <select id="voice">
+            <option value="female-a">Female A</option>
+            <option value="male-a">Male A</option>
+            <option value="none">None</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn" onclick="HazelVideo.storyboard()">Generate Storyboard</button>
+        <button class="btn" onclick="HazelVideo.render()">Render Preview</button>
+        <a class="btn" href="/checklist" target="_blank" rel="noopener">Integration Checklist</a>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h4>Storyboard</h4>
+        <div id="storyboard" class="small">No storyboard yet. Click “Generate Storyboard”.</div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h3>Assets</h3>
+      <label>Upload Brand Pack (zip)</label>
+      <input id="brand" type="file" accept=".zip">
+      <label>Upload Media (images/video)</label>
+      <input id="media" type="file" multiple accept="image/*,video/*">
+      <div class="preview" id="preview">Preview will appear here</div>
+
+      <h3>About Hazel</h3>
+      <p class="small">
+        Hazel is your <strong>AI video creation tool</strong> for MCC. It turns scripts + assets into
+        MCC-styled videos with voiceover options. Use it for <em>Retail Playbooks</em> (e.g., Omnichannel Promotions) or training assets.
+      </p>
+      <ul class="small">
+        <li><a href="/training">Training Catalog</a></li>
+        <li><a href="/playbooks">Playbooks Catalog</a></li>
+        <li><a href="/sow" target="_blank" rel="noopener">SOW Template (PDF)</a></li>
+      </ul>
+
+      <h3>KPIs (When Deployed)</h3>
+      <div class="kpis">
+        <div class="kpi"><strong>Render Time (P95)</strong><div id="kpiRender">—</div></div>
+        <div class="kpi"><strong>Success Rate</strong><div id="kpiSuccess">—</div></div>
+        <div class="kpi"><strong>Avg. Watch Time</strong><div id="kpiWatch">—</div></div>
+      </div>
+    </aside>
   </div>
 
-  <div class="chat">
-    <div id="messages" class="messages">
-      <div class="msg bot">Hi! I’m Hazel. Ask me about MCC training, integrations, or ROI.</div>
-    </div>
-    <div class="inputbar">
-      <input id="prompt" type="text" placeholder="Ask Hazel…" />
-      <button class="btn" onclick="window.Hazel.send()">Send</button>
-    </div>
-  </div>
+  <section class="card" style="margin-top:16px">
+    <h3>Workflow & Compliance</h3>
+    <ol class="small">
+      <li>Upload brand pack (logos, fonts, color tokens).</li>
+      <li>Paste or write your script; choose aspect ratio & style.</li>
+      <li>Attach product media (images/video) and optional voiceover.</li>
+      <li>Generate storyboard → review scenes & CTAs.</li>
+      <li>Render a preview (front‑end only here) or export via API when connected.</li>
+    </ol>
+    <p class="small">Compliance: store assets securely, log consent for any PII. Keep <em>no PII</em> in video metadata.</p>
+  </section>
 </main>
-<script defer src="/assets/js/hazel.js"></script>
+
+<script defer src="/assets/js/hazel-video.js"></script>
 </body></html>
