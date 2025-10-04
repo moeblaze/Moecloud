@@ -1,77 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail ROI Calculator — MCC</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script>
-  function calcROI(){
-    const traffic = parseFloat(document.getElementById('traffic').value||0);
-    const conv = parseFloat(document.getElementById('conv').value||0)/100.0;
-    const upliftConv = parseFloat(document.getElementById('upliftConv').value||0)/100.0;
-    const aov = parseFloat(document.getElementById('aov').value||0);
-    const upliftAov = parseFloat(document.getElementById('upliftAov').value||0)/100.0;
-    const margin = parseFloat(document.getElementById('margin').value||0)/100.0;
-    const cost = parseFloat(document.getElementById('cost').value||0);
-
-    const baseOrders = traffic * conv;
-    const newConv = conv * (1 + upliftConv);
-    const newAov = aov * (1 + upliftAov);
-    const newOrders = traffic * newConv;
-
-    const baseRev = baseOrders * aov;
-    const newRev = newOrders * newAov;
-    const incrRev = newRev - baseRev;
-    const grossProfit = incrRev * margin;
-    const roi = cost > 0 ? ((grossProfit - cost) / cost) * 100 : 0;
-    const breakEvenDays = grossProfit>0 ? (cost / (grossProfit/365)) : Infinity;
-
-    document.getElementById('outBase').textContent = baseRev.toFixed(0);
-    document.getElementById('outNew').textContent = newRev.toFixed(0);
-    document.getElementById('outIncr').textContent = incrRev.toFixed(0);
-    document.getElementById('outGP').textContent = grossProfit.toFixed(0);
-    document.getElementById('outROI').textContent = isFinite(roi)? roi.toFixed(1)+'%':'—';
-    document.getElementById('outBreak').textContent = isFinite(breakEvenDays)? breakEvenDays.toFixed(0)+' days':'—';
-  }
-  </script>
-</head>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retail ROI Calculator — MCC</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+function calcROI(){
+  const traffic=+document.getElementById('traffic').value||0;
+  const conv=(+document.getElementById('conv').value||0)/100;
+  const upliftConv=(+document.getElementById('upliftConv').value||0)/100;
+  const aov=+document.getElementById('aov').value||0;
+  const upliftAov=(+document.getElementById('upliftAov').value||0)/100;
+  const margin=(+document.getElementById('margin').value||0)/100;
+  const cost=+document.getElementById('cost').value||0;
+  const baseOrders=traffic*conv; const newConv=conv*(1+upliftConv); const newAov=aov*(1+upliftAov); const newOrders=traffic*newConv;
+  const baseRev=baseOrders*aov; const newRev=newOrders*newAov; const incrRev=newRev-baseRev; const gross=incrRev*margin;
+  const roi=cost>0?((gross-cost)/cost)*100:0; const breakDays=gross>0?(cost/(gross/365)):Infinity;
+  function fmt(n){return isFinite(n)?Math.round(n).toLocaleString():"—"}
+  document.getElementById('outBase').textContent="$"+fmt(baseRev);
+  document.getElementById('outNew').textContent="$"+fmt(newRev);
+  document.getElementById('outIncr').textContent="$"+fmt(incrRev);
+  document.getElementById('outGP').textContent="$"+fmt(gross);
+  document.getElementById('outROI').textContent=isFinite(roi)?roi.toFixed(1)+'%':'—';
+  document.getElementById('outBreak').textContent=isFinite(breakDays)?Math.round(breakDays)+' days':'—';
+}
+</script></head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <div class="brand"><div class="logo">MCC</div><div class="brand-text"><h1 class="site-title">Retail ROI Calculator</h1><p class="site-subtitle">Estimate upside from AI Personalization & Promotions</p></div></div>
-      <nav class="nav"><a href="/">Home</a><a href="/playbooks.html">Playbooks</a></nav>
-    </div>
-  </header>
-
-  <main class="wrap" style="padding:24px 0 60px">
-    <div class="card">
-      <h3>Inputs</h3>
-      <div class="grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-        <label>Monthly Sessions <input id="traffic" type="number" value="500000" oninput="calcROI()"></label>
-        <label>Conversion Rate (%) <input id="conv" type="number" step="0.1" value="2.0" oninput="calcROI()"></label>
-        <label>Conv. Uplift (%) <input id="upliftConv" type="number" step="0.1" value="5" oninput="calcROI()"></label>
-        <label>AOV ($) <input id="aov" type="number" step="1" value="80" oninput="calcROI()"></label>
-        <label>AOV Uplift (%) <input id="upliftAov" type="number" step="0.1" value="3" oninput="calcROI()"></label>
-        <label>Gross Margin (%) <input id="margin" type="number" step="1" value="35" oninput="calcROI()"></label>
-        <label>Program Cost ($) <input id="cost" type="number" step="1000" value="100000" oninput="calcROI()"></label>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:16px">
-      <h3>Results</h3>
-      <div class="grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-        <div><strong>Baseline Revenue</strong><div id="outBase">$0</div></div>
-        <div><strong>New Revenue</strong><div id="outNew">$0</div></div>
-        <div><strong>Incremental Revenue</strong><div id="outIncr">$0</div></div>
-        <div><strong>Gross Profit (margin)</strong><div id="outGP">$0</div></div>
-        <div><strong>ROI</strong><div id="outROI">0%</div></div>
-        <div><strong>Break-even</strong><div id="outBreak">—</div></div>
-      </div>
-      <p class="micro">Tip: Try uplift ranges from our playbooks (e.g., +3–7% conversion, +2–5% AOV).</p>
-      <a class="btn btn-ghost" href="assets/docs/MCC_Retail_ROI_Calculator.xlsx">Download Excel Version</a>
-    </div>
-  </main>
-  <script>calcROI();</script>
-</body>
-</html>
+<header class="site-header"><div class="wrap">
+<div class="brand"><div class="logo">MCC</div><div class="brand-text"><h1 class="site-title">Retail ROI Calculator</h1><p class="site-subtitle">Estimate upside from AI Personalization & Promotions</p></div></div>
+<nav class="nav"><a href="/">Home</a><a href="/playbooks">Playbooks</a><a href="/training">Training</a></nav>
+</div></header>
+<main class="wrap" style="padding:24px 0 60px">
+<div class="card"><h3>Inputs</h3>
+<div class="grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+<label>Monthly Sessions <input id="traffic" type="number" value="500000" oninput="calcROI()"></label>
+<label>Conversion Rate (%) <input id="conv" type="number" step="0.1" value="2.0" oninput="calcROI()"></label>
+<label>Conv. Uplift (%) <input id="upliftConv" type="number" step="0.1" value="5" oninput="calcROI()"></label>
+<label>AOV ($) <input id="aov" type="number" step="1" value="80" oninput="calcROI()"></label>
+<label>AOV Uplift (%) <input id="upliftAov" type="number" step="0.1" value="3" oninput="calcROI()"></label>
+<label>Gross Margin (%) <input id="margin" type="number" step="1" value="35" oninput="calcROI()"></label>
+<label>Program Cost ($) <input id="cost" type="number" step="1000" value="100000" oninput="calcROI()"></label>
+</div></div>
+<div class="card" style="margin-top:16px"><h3>Results</h3>
+<div class="grid-3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+  <div><strong>Baseline Revenue</strong><div id="outBase">$0</div></div>
+  <div><strong>New Revenue</strong><div id="outNew">$0</div></div>
+  <div><strong>Incremental Revenue</strong><div id="outIncr">$0</div></div>
+  <div><strong>Gross Profit (margin)</strong><div id="outGP">$0</div></div>
+  <div><strong>ROI</strong><div id="outROI">0%</div></div>
+  <div><strong>Break-even</strong><div id="outBreak">—</div></div>
+</div>
+<p class="micro">Tip: Try uplift ranges from our playbooks (e.g., +3–7% conversion, +2–5% AOV).</p>
+<a class="btn btn-ghost" href="assets/docs/MBCC_Retail_ROI_Calculator.xlsx">Download Excel Version</a>
+</div></main><script>calcROI();</script></body></html>

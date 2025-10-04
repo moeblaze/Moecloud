@@ -5,20 +5,28 @@
       "rewrite": "/playbooks.html"
     },
     {
-      "route": "/roi",
-      "rewrite": "/roi.html"
-    },
-    {
-      "route": "/training/case-studies",
-      "rewrite": "/training/case-studies.html"
-    },
-    {
       "route": "/playbooks/",
       "rewrite": "/playbooks.html"
     },
     {
+      "route": "/roi",
+      "rewrite": "/roi.html"
+    },
+    {
       "route": "/roi/",
       "rewrite": "/roi.html"
+    },
+    {
+      "route": "/training",
+      "rewrite": "/training/index.html"
+    },
+    {
+      "route": "/training/",
+      "rewrite": "/training/index.html"
+    },
+    {
+      "route": "/training/case-studies",
+      "rewrite": "/training/case-studies.html"
     },
     {
       "route": "/training/case-studies/",
