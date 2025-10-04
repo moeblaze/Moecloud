@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Hazel API \u2014 AI Video Creation",
-    "_postman_id": "bd962d96-656b-4cf1-bbe2-3972a98d198d",
+    "name": "Hazel API \u2014 AI Video Creation (Extended)",
+    "_postman_id": "c39e634c-434e-4d7c-a5b9-f878482cf65c",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -22,7 +22,7 @@
       }
     },
     {
-      "name": "Create upload URLs",
+      "name": "Assets: Create upload URLs",
       "request": {
         "method": "POST",
         "header": [
@@ -33,7 +33,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"files\": [\n    {\n      \"filename\": \"brand.zip\",\n      \"contentType\": \"application/zip\"\n    }\n  ]\n}"
+          "raw": "{\n  \"files\": [\n    {\n      \"filename\": \"brand.zip\",\n      \"contentType\": \"application/zip\"\n    },\n    {\n      \"filename\": \"image1.jpg\",\n      \"contentType\": \"image/jpeg\"\n    }\n  ]\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/v1/assets/upload-urls",
@@ -49,7 +49,7 @@
       }
     },
     {
-      "name": "Create project",
+      "name": "Projects: Create",
       "request": {
         "method": "POST",
         "header": [
@@ -60,7 +60,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Fall Promo \\u2014 Omnichannel Personalization\"\n}"
+          "raw": "{\n  \"title\": \"Fall Promo \\u2014 Omnichannel\",\n  \"ratio\": \"16:9\",\n  \"style\": \"retail\",\n  \"voice\": \"female-a\",\n  \"script\": \"Hook... Value... CTA...\"\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/v1/projects",
@@ -73,12 +73,192 @@
           ]
         }
       }
+    },
+    {
+      "name": "Projects: List",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/v1/projects?page=1&limit=25",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "projects"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "25"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Storyboard: Generate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"scenesHint\": [\n    \"Hook\",\n    \"Value\",\n    \"CTA\"\n  ],\n  \"maxScenes\": 6\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/projects/{{projectId}}/storyboard",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "projects",
+            "{{projectId}}",
+            "storyboard"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Storyboard: Get",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/v1/storyboards/{{storyboardId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "storyboards",
+            "{{storyboardId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Render: Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectId\": \"{{projectId}}\",\n  \"storyboardId\": \"{{storyboardId}}\",\n  \"quality\": \"hd\",\n  \"codec\": \"h264\",\n  \"notifyWebhook\": \"https://example.com/webhook\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/renders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "renders"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Render: Get",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/v1/renders/{{renderId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "renders",
+            "{{renderId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Render: Cancel",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/v1/renders/{{renderId}}/cancel",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "renders",
+            "{{renderId}}",
+            "cancel"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Webhook: Register",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://example.com/hook\",\n  \"secret\": \"<generate-32-bytes>\",\n  \"events\": [\n    \"render.completed\",\n    \"render.failed\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/webhooks",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "webhooks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Webhook: List",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/v1/webhooks",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "webhooks"
+          ]
+        }
+      }
     }
   ],
   "variable": [
     {
       "key": "baseUrl",
       "value": "http://localhost:7071"
+    },
+    {
+      "key": "projectId",
+      "value": "<uuid>"
+    },
+    {
+      "key": "storyboardId",
+      "value": "<uuid>"
+    },
+    {
+      "key": "renderId",
+      "value": "<uuid>"
     }
   ]
 }

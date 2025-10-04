@@ -1,7 +1,47 @@
+### Health
 GET http://localhost:7071/v1/health
 
-###
+### Create upload URLs
 POST http://localhost:7071/v1/assets/upload-urls
+Idempotency-Key: {{guid}}
 Content-Type: application/json
 
-{"files":[{"filename":"brand.zip","contentType":"application/zip"}]}
+{"files":[{"filename":"brand.zip","contentType":"application/zip"},{"filename":"image1.jpg","contentType":"image/jpeg"}]}
+
+### Create project
+POST http://localhost:7071/v1/projects
+Idempotency-Key: {{guid}}
+Content-Type: application/json
+
+{"title":"Fall Promo — Omnichannel","ratio":"16:9","style":"retail","voice":"female-a","script":"Hook...Value...CTA..."}
+
+### Generate storyboard
+POST http://localhost:7071/v1/projects/{{projectId}}/storyboard
+Idempotency-Key: {{guid}}
+Content-Type: application/json
+
+{"scenesHint":["Hook","Value","CTA"],"maxScenes":6}
+
+### Get storyboard
+GET http://localhost:7071/v1/storyboards/{{storyboardId}}
+
+### Create render
+POST http://localhost:7071/v1/renders
+Idempotency-Key: {{guid}}
+Content-Type: application/json
+
+{"projectId":"{{projectId}}","storyboardId":"{{storyboardId}}","quality":"hd","codec":"h264","notifyWebhook":"https://example.com/webhook"}
+
+### Get render
+GET http://localhost:7071/v1/renders/{{renderId}}
+
+### Cancel render
+POST http://localhost:7071/v1/renders/{{renderId}}/cancel
+
+### Webhooks
+POST http://localhost:7071/v1/webhooks
+Content-Type: application/json
+
+{"url":"https://example.com/hook","secret":"<generate-32-bytes>","events":["render.completed","render.failed"]}
+
+GET http://localhost:7071/v1/webhooks

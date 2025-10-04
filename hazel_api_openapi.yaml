@@ -1,12 +1,14 @@
 openapi: 3.1.0
 info:
   title: Hazel API — AI Video Creation
-  version: "1.0.0"
+  version: "1.1.0"
   description: |
     Backend API for Hazel (MCC) to manage assets, projects, storyboards, and renders.
 servers:
   - url: https://api.moecommunitycloud.com
+    description: Production
   - url: http://localhost:7071
+    description: Local dev (Azure Functions)
 security:
   - bearerAuth: []
 paths:
@@ -25,6 +27,9 @@ paths:
     post:
       summary: Create pre-signed upload URLs for assets
       operationId: createUploadUrls
+      description: |
+        Returns pre-signed URLs (SAS/S3-style) for direct client uploads.
+        Use `PUT` with the returned URL to upload the bytes.
       parameters:
         - $ref: "#/components/parameters/IdempotencyKey"
       requestBody:
@@ -36,12 +41,33 @@ paths:
       responses:
         "200":
           description: Upload URLs created
+          headers:
+            X-RateLimit-Limit: { schema: { type: integer } }
+            X-RateLimit-Remaining: { schema: { type: integer } }
+            X-RateLimit-Reset: { schema: { type: integer } }
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/AssetUploadResponse"
         "400": { $ref: "#/components/responses/BadRequest" }
         "401": { $ref: "#/components/responses/Unauthorized" }
+  /v1/assets/{assetId}:
+    get:
+      summary: Get asset metadata
+      operationId: getAsset
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Asset metadata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Asset"
+        "404": { $ref: "#/components/responses/NotFound" }
   /v1/projects:
     post:
       summary: Create project
@@ -66,6 +92,10 @@ paths:
     get:
       summary: List projects
       operationId: listProjects
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Cursor"
       responses:
         "200":
           description: Project list
@@ -73,6 +103,183 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PaginatedProjects"
+  /v1/projects/{projectId}:
+    get:
+      summary: Get project
+      operationId: getProject
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404": { $ref: "#/components/responses/NotFound" }
+    patch:
+      summary: Update project
+      operationId: updateProject
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Project"
+        "404": { $ref: "#/components/responses/NotFound" }
+  /v1/projects/{projectId}/storyboard:
+    post:
+      summary: Generate storyboard (async)
+      operationId: generateStoryboard
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StoryboardRequest"
+      responses:
+        "202":
+          description: Accepted — storyboard job queued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StoryboardJob"
+        "404": { $ref: "#/components/responses/NotFound" }
+  /v1/storyboards/{storyboardId}:
+    get:
+      summary: Get storyboard
+      operationId: getStoryboard
+      parameters:
+        - name: storyboardId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Storyboard
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Storyboard"
+        "404": { $ref: "#/components/responses/NotFound" }
+  /v1/renders:
+    post:
+      summary: Create render (async)
+      operationId: createRender
+      parameters:
+        - $ref: "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RenderCreate"
+      responses:
+        "202":
+          description: Accepted — render queued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RenderJob"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    get:
+      summary: List renders
+      operationId: listRenders
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/Limit"
+        - $ref: "#/components/parameters/Cursor"
+      responses:
+        "200":
+          description: Render list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedRenders"
+  /v1/renders/{renderId}:
+    get:
+      summary: Get render status
+      operationId: getRender
+      parameters:
+        - name: renderId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Render
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Render"
+        "404": { $ref: "#/components/responses/NotFound" }
+  /v1/renders/{renderId}/cancel:
+    post:
+      summary: Cancel a render job
+      operationId: cancelRender
+      parameters:
+        - name: renderId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "202":
+          description: Cancellation requested
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RenderJob"
+        "404": { $ref: "#/components/responses/NotFound" }
+  /v1/webhooks:
+    post:
+      summary: Register a webhook
+      operationId: registerWebhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookCreate"
+      responses:
+        "201":
+          description: Registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Webhook"
+    get:
+      summary: List webhooks
+      operationId: listWebhooks
+      responses:
+        "200":
+          description: Webhooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Webhook" }
 components:
   securitySchemes:
     bearerAuth:
@@ -85,26 +292,62 @@ components:
       in: header
       required: false
       schema: { type: string }
+      description: Use a unique value per POST to make safe retries.
+    Page:
+      name: page
+      in: query
+      schema: { type: integer, minimum: 1, default: 1 }
+    Limit:
+      name: limit
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 200, default: 25 }
+    Cursor:
+      name: cursor
+      in: query
+      schema: { type: string }
   responses:
     BadRequest:
       description: Bad request
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
     Unauthorized:
       description: Unauthorized
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+    NotFound:
+      description: Not found
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
   schemas:
     Health:
       type: object
       properties:
-        status: { type: string }
+        status: { type: string, enum: [ok] }
+        uptimeSec: { type: integer }
+    Problem:
+      type: object
+      properties:
+        type: { type: string, format: uri }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        instance: { type: string }
     AssetUploadRequest:
       type: object
       properties:
         files:
           type: array
+          minItems: 1
           items:
             type: object
             properties:
               filename: { type: string }
               contentType: { type: string }
+              sizeBytes: { type: integer }
+            required: [filename, contentType]
       required: [files]
     AssetUploadResponse:
       type: object
@@ -114,13 +357,50 @@ components:
           items:
             type: object
             properties:
-              assetId: { type: string }
-              putUrl: { type: string }
-              headers: { type: object }
-              expiresAt: { type: string }
+              assetId: { type: string, format: uuid }
+              putUrl: { type: string, format: uri }
+              headers: { type: object, additionalProperties: { type: string } }
+              expiresAt: { type: string, format: date-time }
+      required: [uploads]
+    Asset:
+      type: object
+      properties:
+        assetId: { type: string, format: uuid }
+        filename: { type: string }
+        contentType: { type: string }
+        sizeBytes: { type: integer }
+        checksum: { type: string }
+        status: { type: string, enum: [pending, uploaded, processing, ready, failed] }
+        url: { type: string, format: uri, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
     ProjectCreate:
       type: object
       properties:
+        title: { type: string }
+        ratio: { type: string, enum: ["16:9", "9:16", "1:1"] }
+        style: { type: string, enum: [clean, retail, luxury] }
+        voice: { type: string, enum: [female-a, male-a, none] }
+        script: { type: string }
+        assetIds:
+          type: array
+          items: { type: string, format: uuid }
+      required: [title]
+    ProjectUpdate:
+      type: object
+      properties:
+        title: { type: string }
+        ratio: { type: string, enum: ["16:9", "9:16", "1:1"] }
+        style: { type: string, enum: [clean, retail, luxury] }
+        voice: { type: string, enum: [female-a, male-a, none] }
+        script: { type: string }
+        assetIds:
+          type: array
+          items: { type: string, format: uuid }
+    Project:
+      type: object
+      properties:
+        projectId: { type: string, format: uuid }
         title: { type: string }
         ratio: { type: string }
         style: { type: string }
@@ -128,16 +408,110 @@ components:
         script: { type: string }
         assetIds:
           type: array
-          items: { type: string }
-      required: [title]
-    Project:
-      type: object
-      properties:
-        projectId: { type: string }
-        title: { type: string }
+          items: { type: string, format: uuid }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
     PaginatedProjects:
       type: object
       properties:
         items:
           type: array
           items: { $ref: "#/components/schemas/Project" }
+        nextCursor: { type: string, nullable: true }
+    StoryboardRequest:
+      type: object
+      properties:
+        scenesHint:
+          type: array
+          items:
+            type: string
+        maxScenes: { type: integer, minimum: 1, maximum: 40, default: 8 }
+      additionalProperties: false
+    StoryboardJob:
+      type: object
+      properties:
+        storyboardId: { type: string, format: uuid }
+        status: { type: string, enum: [queued, running, completed, failed] }
+        estimatedSec: { type: integer }
+      required: [storyboardId, status]
+    Storyboard:
+      type: object
+      properties:
+        storyboardId: { type: string, format: uuid }
+        projectId: { type: string, format: uuid }
+        status: { type: string, enum: [queued, running, completed, failed] }
+        scenes:
+          type: array
+          items:
+            type: object
+            properties:
+              index: { type: integer }
+              text: { type: string }
+              durationSec: { type: integer }
+              voice: { type: string }
+              overlays:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type: { type: string, enum: [text, logo, image, video] }
+                    uri: { type: string }
+                    x: { type: number }
+                    y: { type: number }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    RenderCreate:
+      type: object
+      properties:
+        projectId: { type: string, format: uuid }
+        storyboardId: { type: string, format: uuid }
+        quality: { type: string, enum: [draft, hd, fhd, uhd], default: draft }
+        codec: { type: string, enum: [h264, h265], default: h264 }
+        watermark: { type: boolean, default: false }
+        notifyWebhook: { type: string, format: uri, nullable: true }
+      required: [projectId, storyboardId]
+    RenderJob:
+      type: object
+      properties:
+        renderId: { type: string, format: uuid }
+        status: { type: string, enum: [queued, encoding, completed, failed, cancelled] }
+        estimatedSec: { type: integer }
+      required: [renderId, status]
+    PaginatedRenders:
+      type: object
+      properties:
+        items:
+          type: array
+          items: { $ref: "#/components/schemas/Render" }
+        nextCursor: { type: string, nullable: true }
+    Render:
+      type: object
+      properties:
+        renderId: { type: string, format: uuid }
+        projectId: { type: string, format: uuid }
+        storyboardId: { type: string, format: uuid }
+        status: { type: string, enum: [queued, encoding, completed, failed, cancelled] }
+        percent: { type: number }
+        downloadUrl: { type: string, format: uri, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    WebhookCreate:
+      type: object
+      properties:
+        url: { type: string, format: uri }
+        secret: { type: string, minLength: 16 }
+        events:
+          type: array
+          items:
+            type: string
+            enum: [render.completed, render.failed, storyboard.completed, storyboard.failed]
+      required: [url, secret, events]
+    Webhook:
+      type: object
+      properties:
+        webhookId: { type: string, format: uuid }
+        url: { type: string, format: uri }
+        events:
+          type: array
+          items: { type: string }
+        createdAt: { type: string, format: date-time }
