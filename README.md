@@ -1,18 +1,38 @@
-# Hazel API — Extended Spec (v1.1.0)
+# Hazel API — Azure Functions (TypeScript) Starter
 
-**What’s included**
-- Full OpenAPI 3.1 spec with assets, projects, storyboard (async), renders (async), webhooks, health.
-- Postman collection to test all endpoints.
-- examples.http for VS Code REST Client.
+This project implements the endpoints from the **Hazel API (extended)** spec as Azure Functions v4 (Node 18, TypeScript).
 
-**Key conventions**
-- Auth: Bearer JWT (APIM or Easy Auth). Roles: `hazel:user`, `hazel:admin`.
-- Idempotency: `Idempotency-Key` on POST.
-- Errors: RFC7807 `application/problem+json`.
-- Uploads: Client PUT to SAS URLs. Virus scan & type allowlist.
-- Jobs: Use Service Bus/Queues + worker (Functions or Container Apps).
-- Webhooks: sign body with HMAC SHA-256 -> header `X-Hazel-Signature`.
+## Endpoints (HTTP Triggers)
+- GET  /v1/health
+- POST /v1/assets/upload-urls
+- POST /v1/projects
+- GET  /v1/projects
+- GET  /v1/projects/{projectId}
+- PATCH /v1/projects/{projectId}
+- POST /v1/projects/{projectId}/storyboard
+- GET  /v1/storyboards/{storyboardId}
+- POST /v1/renders
+- GET  /v1/renders
+- GET  /v1/renders/{renderId}
+- POST /v1/renders/{renderId}/cancel
+- POST /v1/webhooks
+- GET  /v1/webhooks
 
-**Next steps**
-- Generate server stubs from OpenAPI (e.g., `openapi-generator` for Node/TS).
-- Or I can ship an Azure Functions TypeScript starter wired to these routes.
+## Auth
+- `requireAuth()` currently **decodes** JWT only for local dev.
+- In production, replace with full verification (JWKS, iss, aud).
+
+## Storage & Jobs
+- Uses **in-memory** maps for demo. Swap with Cosmos DB or Table Storage.
+- `assets/upload-urls` returns placeholders; replace with Azure Blob SAS generation.
+- Storyboard/Render endpoints queue work (TODOs). Use Service Bus / Storage Queue and a worker (Functions or Container Apps).
+
+## Run locally
+1) Install Azure Functions Core Tools v4
+2) `npm i`
+3) `npm run dev`
+4) Test: `GET http://localhost:7071/v1/health`
+
+## Deploy
+- Use Azure Functions on Consumption/Premium, or Container Apps with Dapr if you need GPU encoders.
+- Front with API Management for auth, rate limiting, and JWT enforcement.

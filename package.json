@@ -1,7 +1,25 @@
 {
-  "name": "moecommunitycloud-static",
+  "name": "hazel-api-functions",
+  "version": "1.1.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "build": "echo \"No build: static HTML/CSS/JS\""
+    "build": "tsc -p .",
+    "start": "func start",
+    "dev": "npm run build && func start",
+    "lint": "echo 'add eslint if desired'"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.4.0",
+    "uuid": "^9.0.1",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.11.30"
   }
 }
