@@ -2,90 +2,34 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Freemium to Paid: Converting Readers to Customers</title>
-<meta name="description" content="Turn attention into revenue with ethical offers: memberships, affiliates, and sponsorships.">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head><body>
 <div class="plaid-bg" aria-hidden="true"></div>
 <div class="container">
 <header class="site">
   <div class="brand"><img class="logo" src="/assets/img/logo.svg" alt="MCC"/>
-    <div><h1>Moe<span>Community</span>Cloud</h1><div class="meta" style="opacity:.7">Growth</div></div></div>
+    <div><h1>Moe<span>Community</span>Cloud</h1><div class="meta" style="opacity:.7">Monetize</div></div></div>
   <nav aria-label="Primary"><a href="/">Home</a><a href="/blog/">Blog</a></nav>
 </header>
-
 <main class="section">
   <article class="hero-card gold-box">
-    <span class="badge">Growth</span>
+    <span class="badge">Monetize</span>
     <h2>Freemium to Paid: Converting Readers to Customers</h2>
-    <p class="meta">2025-10-14 • 8 min read</p>
-    <p class="excerpt">A lightweight system: educate with value, capture intent, and offer clear upgrades your audience actually wants.</p>
+    <p class="meta">2025-10-14 • teaser</p>
+    <p class="excerpt">Build funnels that feel good.</p>
   </article>
-
   <section class="section">
     <div class="card" style="padding:18px">
-      <h3 style="text-transform:none;color:#fff;margin:0 0 10px">Your Funnel (play with the numbers)</h3>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-        <label>Visitors/mo<input class="input" id="v" type="number" min="0" placeholder="5000"></label>
-        <label>Signup %<input class="input" id="s" type="number" min="0" max="100" placeholder="5"></label>
-        <label>Paid % of signups<input class="input" id="p" type="number" min="0" max="100" placeholder="3"></label>
-        <label>ARPU ($)<input class="input" id="a" type="number" min="0" placeholder="8"></label>
-      </div>
-      <div class="cta-row" style="margin-top:12px"><button class="submit" id="run">Run</button></div>
-      <svg id="chart" viewBox="0 0 400 200" style="width:100%;height:auto;border:1px solid rgba(255,255,255,.08);border-radius:12px"></svg>
-      <div id="out" class="meta" style="margin-top:8px">—</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="card" style="padding:18px">
-      <h3 style="text-transform:none;color:#fff;margin:0 0 10px">Offers that work</h3>
+      <p>Not all freemium models work, but good ones create trust.</p>
       <ul>
-        <li><strong>Membership</strong>: bonus posts, templates, early access.</li>
-        <li><strong>Affiliates</strong>: tools you actually use; add disclosures.</li>
-        <li><strong>Sponsorships</strong>: aligned partners; keep it tasteful.</li>
+        <li>Show value upfront</li><li>Offer optional upgrades</li>
       </ul>
+      <div class="cta-row">
+        <a class="btn gold" href="/#newsletter">Access full conversion guide →</a>
+      </div>
     </div>
   </section>
 </main>
-
 <footer><div style="opacity:.75">© 2025 MoeCommunityCloud.</div></footer>
 </div>
-
-<script>
-function drawFunnel(visitors, signups, paid) {{
-  const svg = document.getElementById('chart');
-  while (svg.firstChild) svg.removeChild(svg.firstChild);
-  const stages = [visitors, signups, paid];
-  const max = Math.max(...stages) || 1;
-  const heights = [50, 50, 50];
-  let y = 10;
-  stages.forEach((val, i)=>{{
-    const width = 360 * (val/max);
-    const x = (400 - width)/2;
-    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-    rect.setAttribute('x', x); rect.setAttribute('y', y);
-    rect.setAttribute('width', width); rect.setAttribute('height', heights[i]);
-    rect.setAttribute('rx', 8);
-    rect.setAttribute('fill', i===0 ? 'rgba(212,175,55,.35)' : (i===1 ? 'rgba(212,175,55,.55)' : 'rgba(212,175,55,.9)'));
-    svg.appendChild(rect);
-    const label = document.createElementNS('http://www.w3.org/2000/svg','text');
-    label.setAttribute('x', 200); label.setAttribute('y', y+30);
-    label.setAttribute('fill', '#fff'); label.setAttribute('font-size', '14'); label.setAttribute('text-anchor','middle');
-    label.textContent = (i===0?'Visitors':(i===1?'Signups':'Paid'));
-    svg.appendChild(label);
-    y += heights[i]+10;
-  }});
-}}
-document.getElementById('run').addEventListener('click', ()=>{{
-  const v = parseFloat(document.getElementById('v').value || 0);
-  const s = parseFloat(document.getElementById('s').value || 0)/100.0;
-  const p = parseFloat(document.getElementById('p').value || 0)/100.0;
-  const a = parseFloat(document.getElementById('a').value || 0);
-  const signups = Math.round(v * s);
-  const paid = Math.round(signups * p);
-  const mrr = (paid * a).toFixed(2);
-  drawFunnel(v, signups, paid);
-  document.getElementById('out').textContent = `Signups: ${signups} • Paid: ${paid} • Est. MRR: $${mrr}`;
-}});
-</script>
 </body></html>

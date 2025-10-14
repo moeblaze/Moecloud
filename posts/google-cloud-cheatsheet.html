@@ -2,7 +2,6 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Google Cloud for Builders: Costs, Gotchas, Wins</title>
-<meta name="description" content="Interactive cheat sheet comparing Pub/Sub, Eventarc, BigQuery, and Firebase for real-world builds.">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head><body>
 <div class="plaid-bg" aria-hidden="true"></div>
@@ -12,62 +11,25 @@
     <div><h1>Moe<span>Community</span>Cloud</h1><div class="meta" style="opacity:.7">Cheat Sheet</div></div></div>
   <nav aria-label="Primary"><a href="/">Home</a><a href="/blog/">Blog</a></nav>
 </header>
-
 <main class="section">
   <article class="hero-card gold-box">
     <span class="badge">Cheat Sheet</span>
     <h2>Google Cloud for Builders: Costs, Gotchas, Wins</h2>
-    <p class="meta">2025-10-14 • 9 min read</p>
-    <p class="excerpt">A quick builder‑friendly view of common services, where they shine, and pitfalls to avoid.</p>
+    <p class="meta">2025-10-14 • teaser</p>
+    <p class="excerpt">Avoid common mistakes before you ship.</p>
   </article>
-
   <section class="section">
     <div class="card" style="padding:18px">
-      <h3 style="text-transform:none;color:#fff;margin:0 0 10px">Compare at a glance</h3>
-      <table style="width:100%;border-collapse:separate;border-spacing:0 8px">
-        <thead class="meta" style="opacity:.8">
-          <tr><th align="left">Service</th><th align="left">Best Use</th><th align="left">Gotcha</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Pub/Sub</td><td>Decoupled messaging, fan‑out</td><td>At‑least‑once delivery; idempotency matters</td></tr>
-          <tr><td>Eventarc</td><td>Events from services → triggers</td><td>Hidden egress if targets cross regions</td></tr>
-          <tr><td>BigQuery</td><td>Analytics at scale</td><td>Cost spikes from unbounded scans</td></tr>
-          <tr><td>Firebase</td><td>Real‑time apps, auth, hosting</td><td>Lock‑in; structure data carefully</td></tr>
-        </tbody>
-      </table>
-      <p class="meta" style="margin-top:8px">Hover each row for a tip.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="card" style="padding:18px">
-      <h3 style="text-transform:none;color:#fff;margin:0 0 10px">Tiny Cost Estimator</h3>
-      <p class="excerpt">This is a rough, educational guide — not a bill. Enter sample numbers:</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-        <label>BigQuery TB scanned/mo <input class="input" id="bq" type="number" min="0" step="0.1" placeholder="1.0"></label>
-        <label>Pub/Sub messages/mo (M) <input class="input" id="ps" type="number" min="0" step="0.1" placeholder="5"></label>
-        <label>Firebase MAUs (K) <input class="input" id="fb" type="number" min="0" step="1" placeholder="10"></label>
+      <p>Google Cloud can save money—or burn it fast.</p>
+      <ul>
+        <li>BigQuery: amazing for analytics</li><li>Pub/Sub: reliable async backbone</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn gold" href="/#newsletter">Get the full cheat sheet in your inbox →</a>
       </div>
-      <div class="cta-row" style="margin-top:12px"><button class="submit" id="calc">Estimate</button></div>
-      <div id="out" class="meta" style="margin-top:8px">—</div>
     </div>
   </section>
 </main>
-
 <footer><div style="opacity:.75">© 2025 MoeCommunityCloud.</div></footer>
 </div>
-
-<script>
-document.querySelectorAll('tbody tr').forEach(tr => {
-  tr.addEventListener('mouseenter', ()=> tr.style.background = 'rgba(212,175,55,.08)');
-  tr.addEventListener('mouseleave', ()=> tr.style.background = 'transparent');
-});
-document.getElementById('calc').addEventListener('click', ()=>{
-  const bq = parseFloat(document.getElementById('bq').value || 0);
-  const ps = parseFloat(document.getElementById('ps').value || 0);
-  const fb = parseFloat(document.getElementById('fb').value || 0);
-  const cost = (bq*5) + (ps*0.40) + (fb*0.02);
-  document.getElementById('out').textContent = 'Est. monthly cost: ~$' + cost.toFixed(2) + ' (illustrative only)';
-});
-</script>
 </body></html>

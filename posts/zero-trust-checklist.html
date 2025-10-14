@@ -2,7 +2,6 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Zero Trust in 1 Day: A Practical Checklist</title>
-<meta name="description" content="Interactive Zero Trust checklist: JWT/OAuth2, RBAC, secrets, and quick wins you can deploy fast.">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head><body>
 <div class="plaid-bg" aria-hidden="true"></div>
@@ -12,63 +11,25 @@
     <div><h1>Moe<span>Community</span>Cloud</h1><div class="meta" style="opacity:.7">Playbook</div></div></div>
   <nav aria-label="Primary"><a href="/">Home</a><a href="/blog/">Blog</a></nav>
 </header>
-
 <main class="section">
   <article class="hero-card gold-box">
-    <span class="badge">Checklist</span>
+    <span class="badge">Playbook</span>
     <h2>Zero Trust in 1 Day: A Practical Checklist</h2>
-    <p class="meta">2025-10-14 • 7 min read</p>
-    <p class="excerpt">A compact, practical path to safer SaaS: identity, auth, access, and secrets. Check items off and export your plan.</p>
-    <div id="progress" style="margin-top:10px">
-      <div style="height:10px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden">
-        <div id="bar" style="height:10px;width:0;background:linear-gradient(90deg,#f3d572,#d4af37)"></div>
-      </div>
-      <div class="meta" id="pct" style="margin-top:6px">0% complete</div>
-    </div>
+    <p class="meta">2025-10-14 • teaser</p>
+    <p class="excerpt">A teaser on safer SaaS practices.</p>
   </article>
-
   <section class="section">
     <div class="card" style="padding:18px">
-      <h3 style="text-transform:none;color:#fff;margin:0 0 12px">Do these today</h3>
-      <ul id="tasks" style="list-style:none;padding:0;margin:0">
-        <li><label><input type="checkbox"> Enforce HTTPS everywhere (HSTS, TLS 1.2+)</label></li>
-        <li><label><input type="checkbox"> Centralize identity provider (OIDC/OAuth2)</label></li>
-        <li><label><input type="checkbox"> Short‑lived tokens (JWT) with rotation</label></li>
-        <li><label><input type="checkbox"> Role‑based access control (RBAC)</label></li>
-        <li><label><input type="checkbox"> Secrets in a vault (no env/plain text)</label></li>
-        <li><label><input type="checkbox"> Principle of least privilege (PoLP)</label></li>
-        <li><label><input type="checkbox"> Audit logs on auth and admin actions</label></li>
+      <p>Zero Trust is more than a buzzword—it’s survival.</p>
+      <ul>
+        <li>Use JWT/OAuth2 for every call</li><li>Lock roles with RBAC</li>
       </ul>
-      <div class="cta-row" style="margin-top:12px">
-        <button class="submit" id="exportBtn">Export as JSON</button>
+      <div class="cta-row">
+        <a class="btn gold" href="/#newsletter">Unlock full 10‑step playbook →</a>
       </div>
     </div>
   </section>
 </main>
-
 <footer><div style="opacity:.75">© 2025 MoeCommunityCloud.</div></footer>
 </div>
-
-<script>
-const tasks = Array.from(document.querySelectorAll('#tasks input[type=checkbox]'));
-const bar = document.getElementById('bar');
-const pct = document.getElementById('pct');
-function update() {
-  const done = tasks.filter(t=>t.checked).length;
-  const total = tasks.length;
-  const p = Math.round((done/total)*100);
-  bar.style.width = p + '%';
-  pct.textContent = p + '% complete';
-}
-tasks.forEach(t=>t.addEventListener('change', update));
-update();
-document.getElementById('exportBtn').addEventListener('click', ()=>{
-  const data = tasks.map((t,i)=>({ item: i+1, text: t.parentElement.textContent.trim(), done: t.checked }));
-  const blob = new Blob([JSON.stringify({date: '2025-10-14', checklist: data}, null, 2)], {type: 'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'zero-trust-checklist.json';
-  a.click();
-});
-</script>
 </body></html>
