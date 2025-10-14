@@ -34,3 +34,13 @@ Note: This build removes all references to the MCC Sports AI Suite until it's re
 
 - Sports content removed. Hero now features Haz‑AL.
 - Added /category/haz-al.html and updated the sample post to a Haz‑AL Quickstart.
+
+
+## PR Summary
+- Removed sports content from nav and pages.
+- Added **staticwebapp.config.json** redirect: `/sports/*` → `/` (301).
+- Featured **Haz‑AL** site‑wide (hero + Apps page).
+- Added stubs: `apps.html`, `shorts-crafter.html`, `shop.html` (sports‑free).
+- Updated `sitemap.xml` with new pages and timestamps.
+
+_Deployed: 2025-10-14_

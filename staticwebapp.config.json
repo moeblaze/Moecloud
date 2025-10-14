@@ -1,74 +1,9 @@
 {
   "routes": [
     {
-      "route": "/playbooks",
-      "rewrite": "/playbooks.html"
-    },
-    {
-      "route": "/roi",
-      "rewrite": "/roi.html"
-    },
-    {
-      "route": "/training",
-      "rewrite": "/training/index.html"
-    },
-    {
-      "route": "/training/case-studies",
-      "rewrite": "/training/case-studies.html"
-    },
-    {
-      "route": "/training/retail/ai-personalization",
-      "rewrite": "/training/retail/ai-personalization.html"
-    },
-    {
-      "route": "/training/retail/loyalty-on-algorand",
-      "rewrite": "/training/retail/loyalty-on-algorand.html"
-    },
-    {
-      "route": "/training/retail/returns-automation",
-      "rewrite": "/training/retail/returns-automation.html"
-    },
-    {
-      "route": "/training/retail/fraud-detection",
-      "rewrite": "/training/retail/fraud-detection.html"
-    },
-    {
-      "route": "/training/retail/omnichannel-promotions",
-      "rewrite": "/training/retail/omnichannel-promotions.html"
-    },
-    {
-      "route": "/training/retail/inventory-forecasting",
-      "rewrite": "/training/retail/inventory-forecasting.html"
-    },
-    {
-      "route": "/training/retail/poc-algorand",
-      "rewrite": "/training/retail/poc-algorand.html"
-    },
-    {
-      "route": "/sow",
-      "rewrite": "/assets/docs/MCC_SOW_Template.pdf"
-    },
-    {
-      "route": "/sow.docx",
-      "rewrite": "/assets/docs/MCC_SOW_Template_With_Cover.docx"
-    },
-    {
-      "route": "/checklist",
-      "rewrite": "/assets/docs/MCC_Integration_Checklist.pdf"
-    },
-    {
-      "route": "/roi-xlsx",
-      "rewrite": "/assets/docs/MBCC_Retail_ROI_Calculator.xlsx"
-    },
-    {
-      "route": "/hazel",
-      "rewrite": "/hazel.html"
+      "route": "/sports/*",
+      "redirect": "/",
+      "statusCode": 301
     }
-  ],
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/404.html",
-      "statusCode": 404
-    }
-  }
+  ]
 }
