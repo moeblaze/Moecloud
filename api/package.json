@@ -1,9 +1,7 @@
 {
   "name": "mcc-email-mvp",
-  "version": "1.0.0",
   "private": true,
-  "description": "Azure Static Web Apps Functions for MCC email marketing MVP",
-  "license": "MIT",
+  "version": "1.0.0",
   "engines": {
     "node": ">=18"
   },

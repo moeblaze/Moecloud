@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCC Campaign Sender (Admin)</title><link rel="stylesheet" href="/assets/css/style.css">
+<style>.wrap{max-width:900px;margin:20px auto}.grid{display:grid;gap:14px}.notice{padding:10px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.05)}</style>
+</head><body><div class="plaid-bg" aria-hidden="true"></div><div class="container wrap">
+<header class="site"><div class="brand"><img class="logo" src="/assets/img/logo.svg" alt="MCC"/><div><h1>Moe<span>Community</span>Cloud</h1><div class="meta">Admin • Campaign Sender</div></div></div><nav><a href="/">Home</a></nav></header>
+<main class="section"><div class="card" style="padding:18px"><h2>Send a Campaign</h2>
+<p class="notice">Requires your <strong>Admin Secret</strong>. Sends to confirmed subscribers and appends Unsubscribe.</p>
+<div class="grid">
+  <label>Admin Secret<input class="input" id="secret" type="password" placeholder="ADMIN_SECRET"></label>
+  <label>Subject<input class="input" id="subject" type="text" placeholder="Haz‑AL Update + New Guides"></label>
+  <label>HTML Body<textarea class="input" id="html" style="min-height:220px"></textarea></label>
+  <div class="cta-row"><button id="preview" class="btn">Preview</button><button id="send" class="btn gold">Send</button></div>
+  <div id="status" class="meta">—</div>
+  <div id="previewWrap" style="display:none"><h3>Preview</h3><iframe id="frame" style="width:100%;height:260px;background:#fff;border-radius:12px"></iframe></div>
+</div></div></main>
+<footer><div>© 2025 MoeCommunityCloud.</div></footer>
+</div>
+<script>
+const statusEl=document.getElementById('status');const frame=document.getElementById('frame');const wrap=document.getElementById('previewWrap');
+document.getElementById('preview').addEventListener('click',()=>{const html=document.getElementById('html').value||'<p>(empty)</p>';frame.srcdoc=html;wrap.style.display='block';statusEl.textContent='Preview updated';});
+document.getElementById('send').addEventListener('click',async()=>{const secret=document.getElementById('secret').value.trim();const subject=document.getElementById('subject').value.trim();const html=document.getElementById('html').value;if(!secret){alert('Enter Admin Secret');return;}if(!subject){alert('Enter subject');return;}
+statusEl.textContent='Sending...';try{const res=await fetch('/api/send-campaign',{method:'POST',headers:{'Content-Type':'application/json','x-admin-secret':secret},body:JSON.stringify({subject,html})});const data=await res.json().catch(()=>({ok:false,error:'Bad JSON'}));statusEl.textContent=data.ok?('Sent to '+(data.sent??0)+' subscribers.'):('Error: '+(data.error||'Unknown'));}catch(e){statusEl.textContent='Request failed.';}});
+</script>
+</body></html>

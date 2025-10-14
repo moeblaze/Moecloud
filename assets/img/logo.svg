@@ -1,12 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <defs>
-    <radialGradient id="g" cx="30%" cy="30%">
-      <stop offset="0%" stop-color="#ff3344"/>
-      <stop offset="100%" stop-color="#b20014"/>
-    </radialGradient>
-  </defs>
-  <rect width="96" height="96" rx="16" fill="url(#g)" stroke="#d4af37" stroke-width="4"/>
-  <g fill="#fff" font-family="Montserrat, Arial, sans-serif" font-weight="900" font-size="22">
-    <text x="16" y="54">MCC</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#d4af37"/><stop offset="1" stop-color="#fff"/></linearGradient></defs>
+<rect width="64" height="64" rx="14" fill="#111319"/>
+<circle cx="32" cy="32" r="16" fill="url(#g)"/><text x="32" y="38" text-anchor="middle" font-size="14" fill="#111" font-weight="800">MCC</text>
 </svg>

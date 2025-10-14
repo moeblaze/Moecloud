@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.moecommunitycloud.com/</loc><lastmod>2025-10-14</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.moecommunitycloud.com/posts/sample-post.html</loc><lastmod>2025-10-14</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.moecommunitycloud.com/category/haz-al.html</loc><lastmod>2025-10-14</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.moecommunitycloud.com/apps.html</loc><lastmod>2025-10-14</lastmod></url>
-  <url><loc>https://www.moecommunitycloud.com/shorts-crafter.html</loc><lastmod>2025-10-14</lastmod></url>
-  <url><loc>https://www.moecommunitycloud.com/shop.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/</loc><lastmod>2025-10-14</lastmod></url>
   <url><loc>https://www.moecommunitycloud.com/blog/</loc><lastmod>2025-10-14</lastmod></url>
-  <url><loc>https://www.moecommunitycloud.com/posts/hazal-v1-update.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/category/haz-al.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/posts/sample-post.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/posts/zero-trust-checklist.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/posts/google-cloud-cheatsheet.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/posts/static-webapps-cicd.html</loc><lastmod>2025-10-14</lastmod></url>
+  <url><loc>https://www.moecommunitycloud.com/posts/freemium-to-paid.html</loc><lastmod>2025-10-14</lastmod></url>
 </urlset>
