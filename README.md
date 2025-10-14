@@ -26,3 +26,8 @@ _Last updated: 2025-10-14_
 
 
 Note: This build removes all references to the MCC Sports AI Suite until it's ready.
+
+
+## Live Links
+- Haz‑AL Video Creator: https://ambitious-sea-01e570d10.2.azurestaticapps.net/
+- Spreadshop: https://moe-bucks.myspreadshop.com/
