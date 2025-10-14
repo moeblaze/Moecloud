@@ -23,3 +23,6 @@ Azure SWA will auto-build and deploy using the provided workflow.
 - Update `sitemap.xml` as you add pages.
 
 _Last updated: 2025-10-14_
+
+
+Note: This build removes all references to the MCC Sports AI Suite until it's ready.
