@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "SUBSCRIBERS_TABLE_CONN": "<StorageAccountConnectionString>",
+    "STORAGE_TABLE_NAME": "Subscribers",
+    "ACS_CONNECTION_STRING": "<endpoint=https://<resource>.communication.azure.com/;accesskey=...>",
+    "ACS_SENDER": "no-reply@your-verified-domain.com",
+    "SITE_ORIGIN": "https://www.moecommunitycloud.com",
+    "ADMIN_SECRET": "<set-a-strong-random-string>"
+  }
+}

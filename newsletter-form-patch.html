@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>MCC Newsletter Form Patch</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<div class="container">
+  <h1>Newsletter form wiring</h1>
+  <p>This is a placeholder file; include the script below in your homepage to wire your existing form.</p>
+  <pre><code>&lt;script&gt;
+const form = document.querySelector('form');
+form?.addEventListener('submit', async (e) =&gt; {
+  e.preventDefault();
+  const email = form.querySelector('input[type=email]')?.value;
+  if(!email) return alert('Enter an email');
+  const res = await fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  const data = await res.json();
+  alert(data.message || 'Thanks!');
+});
+&lt;/script&gt;</code></pre>
+</div>
