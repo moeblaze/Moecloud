@@ -31,3 +31,6 @@ Note: This build removes all references to the MCC Sports AI Suite until it's re
 ## Live Links
 - Haz‑AL Video Creator: https://ambitious-sea-01e570d10.2.azurestaticapps.net/
 - Spreadshop: https://moe-bucks.myspreadshop.com/
+
+- Sports content removed. Hero now features Haz‑AL.
+- Added /category/haz-al.html and updated the sample post to a Haz‑AL Quickstart.
