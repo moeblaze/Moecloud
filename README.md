@@ -44,3 +44,10 @@ Note: This build removes all references to the MCC Sports AI Suite until it's re
 - Updated `sitemap.xml` with new pages and timestamps.
 
 _Deployed: 2025-10-14_
+
+
+## Blog Additions
+- Added **/blog/** index with latest posts grid
+- New post: **/posts/hazal-v1-update.html**
+- Wired **Blog** into top nav across pages
+- Updated sitemap entries
