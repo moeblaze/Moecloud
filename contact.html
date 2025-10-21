@@ -1,1 +1,73 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>contact.html</title><link rel='stylesheet' href='assets/styles.css'></head><body><div class='nav'><a href='index.html'>Home</a><a href='about.html'>About</a><a href='partnerships.html'>Partnerships</a><a href='merch.html'>Merch</a><a href='contact.html'>Contact</a></div><header><h1>Contact Page</h1></header><footer>© Moe Community Cloud</footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact • MBCC</title>
+<link rel="stylesheet" href="assets/styles.css" />
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+<!-- Calendly -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body>
+  <div class="plaid"></div>
+  <div class="wrap">
+    
+    <nav class="nav">
+      <div class="brand"><div class="logo">MB</div> MoeAI24 • MBCC</div>
+      <div class="cta-row"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partnerships.html" class="">Partnerships</a><a href="merch.html" class="">Merch & Affiliates</a><a href="contact.html" class="active">Contact</a></div>
+    </nav>
+    <header class="hero">
+      <h1>Work with Moe</h1>
+      <p class="muted">Tell us about your brand and goals. We'll reply quickly.</p>
+      <div class="cta-row">
+        <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min'}); return false;">Book on Calendly</a>
+        <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com">Email Direct</a>
+      </div>
+    </header>
+    <section class="grid cols-2">
+      <div class="card">
+        <h2>Inquiry Form</h2>
+        <form action="https://formspree.io/f/YOUR-FORMSPREE-ID" method="POST" data-netlify="true" name="mbcc-contact" netlify-honeypot="bot-field" onsubmit="document.getElementById('ok').style.display='block'">
+          <input type="hidden" name="form-name" value="mbcc-contact">
+          <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+          <label>Name<br/><input required name="name" placeholder="Your name"></label>
+          <label>Email<br/><input type="email" name="email" required placeholder="you@brand.com"></label>
+          <label>Budget<br/>
+            <select name="budget">
+              <option>Under $500</option><option>$500–$1,000</option><option>$1,000–$2,500</option><option>$2,500+</option>
+            </select>
+          </label>
+          <label>Message<br/>
+            <textarea rows="6" name="message" placeholder="Tell me about your brand & goals"></textarea>
+          </label>
+          <div class="cta-row">
+            <button class="btn" type="submit">Send Inquiry</button>
+            <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com">Email Direct</a>
+          </div>
+          <small id="ok" class="helper" style="display:none">Thanks! Your message was sent. We’ll be in touch.</small>
+        </form>
+      </div>
+      <div class="card">
+        <h2>Direct Contacts & Links</h2>
+        <ul>
+          <li>YouTube: <a href="https://www.youtube.com/@MoeAI24" target="_blank" rel="noopener">@MoeAI24</a></li>
+          <li>Website: <a href="https://www.moecommunitycloud.com/" target="_blank" rel="noopener">moecommunitycloud.com</a></li>
+          <li>Merch: <a href="https://www.moe-bucks.myspreadshop.com/" target="_blank" rel="noopener">Spreadshop</a></li>
+          <li>Store: <a href="https://moe-creative-t-shirts.printify.me/products" target="_blank" rel="noopener">Moe Community Store</a></li>
+          <li>Email: <a href="mailto:moeknowmoe24@gmail.com">moeknowmoe24@gmail.com</a></li>
+        </ul>
+        <p class="muted">Your data is never sold. Submissions are used only to respond to your inquiry.</p>
+      </div>
+    </section>
+    <footer class="footer foot">© Moe Community Cloud • Updated Oct 20, 2025</footer>
+  </div>
+</body>
+</html>

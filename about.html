@@ -1,59 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>About Moe Bucks • MBCC</title>
-<link rel="stylesheet" href="assets/styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About • MBCC</title>
+<link rel="stylesheet" href="assets/styles.css" />
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+<!-- Calendly -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Me</a>
-  <a href="partnerships.html">Partnerships</a>
-  <a href="merch.html">Merch</a>
-  <a href="contact.html">Contact</a>
-</div>
+  <div class="plaid"></div>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand"><div class="logo">MB</div> MoeAI24 • MBCC</div>
+      <div class="cta-row">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="partnerships.html">Partnerships</a>
+        <a href="merch.html">Merch & Affiliates</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
 
-<header>
-  <h1>About Morris "Moe Bucks" Stephens</h1>
-  <p>U.S. Army Veteran • Media Creator • Cloud Innovator • Sports Analyst • Motivational Voice</p>
-</header>
+    <header class="hero">
+      <h1>About Morris “Moe Bucks” Stephens</h1>
+      <p class="muted">U.S. Army Veteran • Media Creator • Cloud Innovator • Sports Analyst • Motivational Voice</p>
+      <div class="cta-row">
+        <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min'}); return false;">Book a Call</a>
+        <a class="btn ghost" href="partnerships.html">Partner</a>
+      </div>
+    </header>
 
-<section class="card">
-  <h2>🎖 Military Service</h2>
-  <p>As a proud U.S. Army veteran, I bring discipline, leadership, and resilience to every project. My service instilled teamwork, accountability, and the ability to thrive under pressure — qualities that carry over into media, business, and technology.</p>
-</section>
+    <section class="grid cols-2">
+      <div class="card">
+        <h2>🎖 Military Service</h2>
+        <p>U.S. Army veteran bringing discipline, leadership, and resilience to media, business, and technology. Comfortable leading under pressure and executing with precision.</p>
+      </div>
+      <div class="card">
+        <h2>🎥 Media & Content</h2>
+        <p>Creator of the MoeAI24/MBCC YouTube channel (1.5K+ uploads). Satire, comedy, commentary, sports breakdowns. Skilled in OBS automation, branded overlays, and multi‑platform publishing.</p>
+      </div>
+    </section>
 
-<section class="card">
-  <h2>🎥 Media & Content</h2>
-  <p>Creator of the MoeAI24/MBCC YouTube channel with over 47.9K subscribers and 1.5K+ uploads. My content blends satire, comedy, and cultural commentary with sports insights. Skilled in video production, OBS automation, branding, and digital media strategy.</p>
-</section>
+    <section class="grid cols-2">
+      <div class="card">
+        <h2>💻 Technology & Cloud</h2>
+        <p>Azure administrative skills; Google Cloud (Vertex, Firebase); AI/ML integration; React/Next.js; Tailwind; Python; APIs; CI/CD; Zero Trust security (RBAC, JWT/OAuth2).</p>
+      </div>
+      <div class="card">
+        <h2>📊 Business & Training</h2>
+        <p>Founder of MOE Learning; builds AI playbooks & corporate training. Monetization models (freemium, affiliate, subscriptions). Product and growth strategy for AI/media.</p>
+      </div>
+    </section>
 
-<section class="card">
-  <h2>💻 Technology & Cloud</h2>
-  <p>Hands-on experience with Azure, Google Cloud, Firebase, Vertex, Gemini, and AI/ML integration. I design secure, scalable solutions with Zero Trust, RBAC, and DevOps pipelines. Comfortable in React, Next.js, Tailwind, Python, and API integrations.</p>
-</section>
+    <section class="grid cols-2">
+      <div class="card">
+        <h2>🏀 Sports & Analytics</h2>
+        <p>MCC Sports AI Suite: projections, lineup optimizers, DFS tooling. On‑air sports commentary and data‑driven segments.</p>
+      </div>
+      <div class="card">
+        <h2>🌀 Creative & Metaphysics</h2>
+        <p>Translates Walter Russell’s 18 Dimensions and related philosophy into motivational stories and brand narratives.</p>
+      </div>
+    </section>
 
-<section class="card">
-  <h2>📊 Business & Training</h2>
-  <p>Founder of MOE Learning and creator of Million-Dollar Playbooks. I help businesses and individuals leverage AI for workforce intelligence, corporate training, and revenue growth. Skilled in monetization models — from freemium SaaS to affiliate and subscription ecosystems.</p>
-</section>
+    <section class="card">
+      <h2>📜 Certifications & Training</h2>
+      <ul>
+        <li><strong>Google Cloud Digital Leader</strong> — <em>Certified by Google</em></li>
+        <li><strong>Azure Fundamentals (AZ‑900)</strong> — Microsoft</li>
+        <li><strong>Azure Administrative Skills</strong> — hands-on experience with Azure administration (roles, policies, RBAC, automation)</li>
+      </ul>
+    </section>
 
-<section class="card">
-  <h2>🏀 Sports & Analytics</h2>
-  <p>Developer of the MCC Sports AI Suite with real-time fantasy tools, PrizePicks-style optimizers, and betting insights. Passionate about sports commentary, performance analytics, and fan engagement across NFL, NBA, MLB, and track & field.</p>
-</section>
+    <section class="card">
+      <h2>🎓 Education</h2>
+      <ul>
+        <li><strong>Associate’s Degree in Computer Science</strong> — Focus: Data Processing</li>
+      </ul>
+    </section>
 
-<section class="card">
-  <h2>🌀 Creative & Metaphysics</h2>
-  <p>I explore Walter Russell’s 18 Dimensions, Gnostic cosmology, and Quantum Spiral frameworks, translating deep philosophy into motivational storytelling. This creative lens powers unique brand storytelling and community inspiration.</p>
-</section>
+    <section class="card">
+      <h2>✅ Summary / Why Work With Me</h2>
+      <p>A rare hybrid: military discipline, creator instincts, cloud/AI engineering, sports analytics, and business training. I help brands and teams turn complex ideas into clear, entertaining content and measurable growth.</p>
+    </section>
 
-<section class="card">
-  <h2>✅ Summary</h2>
-  <p>With a rare blend of military discipline, creative media skills, cloud expertise, and business strategy, I stand at the intersection of tech, sports, and culture. I’m ready to collaborate with brands, enterprises, and communities seeking impact and innovation.</p>
-</section>
-
-<footer>© Moe Community Cloud • About Me</footer>
+    <footer class="footer foot">© Moe Community Cloud • Updated Oct 21, 2025</footer>
+  </div>
 </body>
 </html>
