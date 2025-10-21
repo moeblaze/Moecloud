@@ -29,3 +29,5 @@ a{color:var(--gold);text-decoration:none}
 .footer{margin-top:24px;padding-top:16px;border-top:1px solid rgba(212,175,55,.2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 small.helper{color:#cfc9bd;display:block;margin-top:6px}
 footer a{color:#e5dece;text-decoration:underline}
+blockquote{margin:0;padding:10px 12px;border-left:3px solid rgba(212,175,55,.45);background:#121212;border-radius:8px}
+details summary{cursor:pointer}

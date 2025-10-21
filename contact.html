@@ -4,17 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contact • MBCC</title>
-<meta name="description" content="Satire, sports, and sharp commentary — partner with Moe Bucks." />
+<meta name="description" content="Satire and sharp commentary — partner with Moe Bucks for brand‑safe, high‑engagement campaigns." />
 <link rel="preconnect" href="https://www.youtube.com">
 <link rel="preconnect" href="https://i.ytimg.com">
 <link rel="stylesheet" href="assets/styles.css" />
-<meta property="og:title" content="MoeAI24 • MBCC Media Kit">
-<meta property="og:description" content="Satire, sports, and sharp commentary — partner with Moe Bucks.">
+<meta property="og:title" content="Contact • MBCC">
+<meta property="og:description" content="Satire and sharp commentary — partner with Moe Bucks.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.moecommunitycloud.com/media-kit/">
 <meta property="og:image" content="https://www.moecommunitycloud.com/media-kit/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -22,7 +21,6 @@
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXX');
 </script>
-<!-- Calendly -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
@@ -32,7 +30,7 @@
 
     <nav class="nav">
       <div class="brand"><div class="logo">MB</div> MoeAI24 • MBCC</div>
-      <div class="cta-row"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="partnerships.html" class="">Partnerships</a><a href="merch.html" class="">Merch & Affiliates</a><a href="contact.html" class="active">Contact</a></div>
+      <div class="cta-row"><a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="training.html" class="">Training</a><a href="apps.html" class="">Apps & AI Tools</a><a href="partnerships.html" class="">Partnerships</a><a href="merch.html" class="">Merch & Affiliates</a><a href="contact.html" class="active">Contact</a></div>
     </nav>
 <header class="hero">
   <h1>Work with Moe</h1>
@@ -46,45 +44,36 @@
   <div class="card">
     <h2>Inquiry Form</h2>
     <form action="https://formspree.io/f/mqayoqvd" method="POST" onsubmit="document.getElementById('ok').style.display='block'; gtag('event','form_submit',{form:'contact'});">
-<!-- Hidden helpers -->
-  <input type="hidden" name="_subject" value="MBCC Website Inquiry">
-  <input type="hidden" name="_redirect" value="thanks.html">
+      <input type="hidden" name="_subject" value="MBCC Website Inquiry">
+      <input type="hidden" name="_redirect" value="thanks.html">
 
-  <label>Name<br>
-    <input type="text" name="name" placeholder="Your name" required>
-  </label>
+      <label for="name">Name</label>
+      <input id="name" required name="name" placeholder="Your name">
 
-  <label>Email<br>
-    <input type="email" name="email" placeholder="you@brand.com" required>
-  </label>
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required placeholder="you@brand.com">
 
-  <label>Budget<br>
-    <select name="budget">
-      <option>Under $500</option>
-      <option>$500–$1,000</option>
-      <option>$1,000–$2,500</option>
-      <option>$2,500+</option>
-    </select>
-  </label>
+      <label for="budget">Budget</label>
+      <select id="budget" name="budget">
+        <option>Under $500</option><option>$500–$1,000</option><option>$1,000–$2,500</option><option>$2,500+</option>
+      </select>
 
-  <label>Message<br>
-    <textarea name="message" rows="6" placeholder="Tell me about your brand &amp; goals" required></textarea>
-  </label>
+      <label for="message">Message</label>
+      <textarea id="message" rows="6" name="message" placeholder="Tell me about your brand &amp; goals" required></textarea>
 
-  <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
-    <input type="checkbox" name="consent" required>
-    I agree to be contacted and I’ve read the <a href="contact.html#privacy">Privacy</a> &amp; <a href="contact.html#ftc">FTC</a> notes.
-  </label>
+      <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+        <input type="checkbox" name="consent" required>
+        I agree to be contacted and I’ve read the <a href="contact.html#privacy">Privacy</a> &amp; <a href="contact.html#ftc">FTC</a> notes.
+      </label>
 
-  <div class="cta-row">
-    <button class="btn" type="submit">Send Inquiry</button>
-    <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com">Email Direct</a>
-  </div>
+      <div class="cta-row" style="margin-top:10px">
+        <button class="btn" type="submit">Send Inquiry</button>
+        <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com" onclick="gtag('event','email_click',{location:'contact_form'});">Email Direct</a>
+      </div>
 
-  <small id="ok" class="helper" style="display:none">Thanks! Your message was sent. We’ll be in touch.</small>
-
-  <input type="text" name="_gotcha" style="display:none">
-</form>
+      <small id="ok" class="helper" style="display:none">Thanks! Your message was sent. We’ll be in touch.</small>
+      <input type="text" name="_gotcha" style="display:none">
+    </form>
   </div>
   <div class="card" id="privacy">
     <h2>Privacy</h2>
@@ -106,5 +95,7 @@
   <span><a href="#privacy">Privacy</a> • <a href="#ftc">FTC Disclosure</a></span>
 </footer>
 </div>
+<button id="backToTop" aria-label="Back to top" style="position:fixed;right:16px;bottom:16px;border-radius:999px;padding:10px 14px;border:1px solid rgba(212,175,55,.35);background:#111;color:#d4af37;cursor:pointer;display:none;">↑</button>
+<script>const b=document.getElementById("backToTop");window.addEventListener("scroll",()=>{b.style.display=window.scrollY>600?"block":"none"});b.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});</script>
 </body>
 </html>
