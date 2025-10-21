@@ -45,26 +45,46 @@
 <section class="grid cols-2">
   <div class="card">
     <h2>Inquiry Form</h2>
-    <form <input type="hidden" name="_subject" value="MBCC Website Inquiry">
-      <input type="hidden" name="_redirect" value="thanks.html">
-            <!-- Optional CC: change or remove this line if you don\'t want duplicate copies -->
-      <input type="hidden" name="_cc" value="moeknowmoe24@gmail.com">
-<input type="hidden" name="_subject" value="MBCC Website Inquiry">action="https://formspree.io/f/mqayoqvd" method="POST" data-netlify="true" name="mbcc-contact" netlify-honeypot="bot-field" onsubmit="document.getElementById('ok').style.display='block'; gtag('event','form_submit',{form:'contact'});">
-      <input type="hidden" name="form-name" value="mbcc-contact">
-      <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
-      <label>Name<br/><input required name="name" placeholder="Your name"></label>
-      <label>Email<br/><input type="email" name="email" required placeholder="you@brand.com">
-      <input type="hidden" name="_replyto" value="">{{!-- reply-to mirrors the submitted email --}}</label>
-      <label>Budget<br/>
-        <select name="budget"><option>Under $500</option><option>$500–$1,000</option><option>$1,000–$2,500</option><option>$2,500+</option></select>
-      </label>
-      <label>Message<br/><textarea rows="6" name="message" placeholder="Tell me about your brand & goals"></textarea></label>
-      <div class="cta-row">
-        <button class="btn" type="submit">Send Inquiry</button>
-        <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com" onclick="gtag('event','email_click',{location:'contact_form'});">Email Direct</a>
-      </div>
-      <small id="ok" class="helper" style="display:none">Thanks! Your message was sent. We’ll be in touch.</small>
-    </form>
+    <form action="https://formspree.io/f/mqayoqvd" method="POST" onsubmit="document.getElementById('ok').style.display='block'; gtag('event','form_submit',{form:'contact'});">
+<!-- Hidden helpers -->
+  <input type="hidden" name="_subject" value="MBCC Website Inquiry">
+  <input type="hidden" name="_redirect" value="thanks.html">
+
+  <label>Name<br>
+    <input type="text" name="name" placeholder="Your name" required>
+  </label>
+
+  <label>Email<br>
+    <input type="email" name="email" placeholder="you@brand.com" required>
+  </label>
+
+  <label>Budget<br>
+    <select name="budget">
+      <option>Under $500</option>
+      <option>$500–$1,000</option>
+      <option>$1,000–$2,500</option>
+      <option>$2,500+</option>
+    </select>
+  </label>
+
+  <label>Message<br>
+    <textarea name="message" rows="6" placeholder="Tell me about your brand &amp; goals" required></textarea>
+  </label>
+
+  <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+    <input type="checkbox" name="consent" required>
+    I agree to be contacted and I’ve read the <a href="contact.html#privacy">Privacy</a> &amp; <a href="contact.html#ftc">FTC</a> notes.
+  </label>
+
+  <div class="cta-row">
+    <button class="btn" type="submit">Send Inquiry</button>
+    <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com">Email Direct</a>
+  </div>
+
+  <small id="ok" class="helper" style="display:none">Thanks! Your message was sent. We’ll be in touch.</small>
+
+  <input type="text" name="_gotcha" style="display:none">
+</form>
   </div>
   <div class="card" id="privacy">
     <h2>Privacy</h2>
