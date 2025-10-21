@@ -1,8 +1,19 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8" />
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Partnerships • MBCC</title>
+<meta name="description" content="Satire, sports, and sharp commentary — partner with Moe Bucks." />
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com">
 <link rel="stylesheet" href="assets/styles.css" />
+<meta property="og:title" content="MoeAI24 • MBCC Media Kit">
+<meta property="og:description" content="Satire, sports, and sharp commentary — partner with Moe Bucks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.moecommunitycloud.com/media-kit/">
+<meta property="og:image" content="https://www.moecommunitycloud.com/media-kit/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
@@ -14,7 +25,9 @@
 <!-- Calendly -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-</head><body>
+
+</head>
+<body>
 <div class="plaid"></div><div class="wrap">
 
     <nav class="nav">
@@ -25,14 +38,19 @@
   <h1>Partnerships & Ad Packages</h1>
   <p class="muted">Your brand + MBCC satire = audience attention. Choose a package or request a custom plan.</p>
   <div class="cta-row">
-    <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min'}); return false;">Book a 15‑min Intro</a>
-    <a class="btn ghost" href="contact.html">Contact Form</a>
+    <a class="btn" href="#" onclick="gtag('event','book_call_click',{location:'partnerships_hero'}); Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min?utm_source=media-kit&utm_medium=website&utm_campaign=partnerships'}); return false;">Book a 15‑min Intro</a>
+    <a class="btn ghost" href="contact.html" onclick="gtag('event','open_contact',{location:'partnerships_hero'});">Contact Form</a>
   </div>
 </header>
 <section class="grid cols-3">
-  <div class="card"><h2>Shoutout</h2><p><strong>$250</strong></p><ul><li>15–30s mid-roll or pre-roll read</li><li>1 YouTube long video</li><li>Link in description + pinned comment</li></ul><a class="btn" href="contact.html">Book</a></div>
-  <div class="card" style="border-width:2px;border-color:var(--gold)"><h2>Integrated Segment</h2><p><strong>$500</strong></p><ul><li>60–90s brand‑integrated satire</li><li>1 long video + 2 shorts</li><li>Logo watermark for segment</li></ul><a class="btn" href="contact.html">Book</a></div>
-  <div class="card"><h2>Branded Package</h2><p><strong>$1,000+</strong></p><ul><li>Dedicated long video</li><li>3–5 shorts + community posts</li><li>Cross‑promote merch / affiliate</li></ul><a class="btn" href="contact.html">Book</a></div>
+  <div class="card"><h2>Shoutout</h2><p><strong>$250</strong></p><ul><li>15–30s mid-roll or pre-roll read</li><li>1 YouTube long video</li><li>Link in description + pinned comment</li></ul><a class="btn" href="contact.html" onclick="gtag('event','plan_click',{plan:'shoutout'});">Book</a></div>
+  <div class="card" style="border-width:2px;border-color:var(--gold)"><h2>Integrated Segment</h2><p><strong>$500</strong></p><ul><li>60–90s brand‑integrated satire</li><li>1 long video + 2 shorts</li><li>Logo watermark for segment</li></ul><a class="btn" href="contact.html" onclick="gtag('event','plan_click',{plan:'integrated'});">Book</a></div>
+  <div class="card"><h2>Branded Package</h2><p><strong>$1,000+</strong></p><ul><li>Dedicated long video</li><li>3–5 shorts + community posts</li><li>Cross‑promote merch / affiliate</li></ul><a class="btn" href="contact.html" onclick="gtag('event','plan_click',{plan:'branded'});">Book</a></div>
 </section>
-<footer class="footer foot">© Moe Community Cloud • Updated Oct 21, 2025</footer>
-</div></body></html>
+<footer class="footer foot">
+  <span>© Moe Community Cloud • Updated Oct 21, 2025</span>
+  <span><a href="contact.html#privacy">Privacy</a> • <a href="contact.html#ftc">FTC Disclosure</a></span>
+</footer>
+</div>
+</body>
+</html>

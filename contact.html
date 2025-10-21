@@ -1,8 +1,19 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8" />
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Contact • MBCC</title>
+<meta name="description" content="Satire, sports, and sharp commentary — partner with Moe Bucks." />
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com">
 <link rel="stylesheet" href="assets/styles.css" />
+<meta property="og:title" content="MoeAI24 • MBCC Media Kit">
+<meta property="og:description" content="Satire, sports, and sharp commentary — partner with Moe Bucks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.moecommunitycloud.com/media-kit/">
+<meta property="og:image" content="https://www.moecommunitycloud.com/media-kit/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
@@ -14,7 +25,9 @@
 <!-- Calendly -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-</head><body>
+
+</head>
+<body>
 <div class="plaid"></div><div class="wrap">
 
     <nav class="nav">
@@ -23,16 +36,17 @@
     </nav>
 <header class="hero">
   <h1>Work with Moe</h1>
-  <p class="muted">Tell us about your brand and goals. We'll reply quickly.</p>
+  <p class="muted">Tell us about your brand and goals. We'll reply within <strong>24 hours</strong>.</p>
   <div class="cta-row">
-    <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min'}); return false;">Book on Calendly</a>
-    <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com">Email Direct</a>
+    <a class="btn" href="#" onclick="gtag('event','book_call_click',{location:'contact_hero'}); Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min?utm_source=media-kit&utm_medium=website&utm_campaign=contact'}); return false;">Book on Calendly</a>
+    <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com" onclick="gtag('event','email_click',{location:'contact_hero'});">Email Direct</a>
   </div>
 </header>
 <section class="grid cols-2">
   <div class="card">
     <h2>Inquiry Form</h2>
-    <form action="https://formspree.io/f/YOUR-FORMSPREE-ID" method="POST" data-netlify="true" name="mbcc-contact" netlify-honeypot="bot-field" onsubmit="document.getElementById('ok').style.display='block'">
+    <form <input type="hidden" name="_subject" value="MBCC Website Inquiry">
+      <input type="hidden" name="_subject" value="MBCC Website Inquiry">action="https://formspree.io/f/mqayoqvd" method="POST" data-netlify="true" name="mbcc-contact" netlify-honeypot="bot-field" onsubmit="document.getElementById('ok').style.display='block'; gtag('event','form_submit',{form:'contact'});">
       <input type="hidden" name="form-name" value="mbcc-contact">
       <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
       <label>Name<br/><input required name="name" placeholder="Your name"></label>
@@ -43,22 +57,30 @@
       <label>Message<br/><textarea rows="6" name="message" placeholder="Tell me about your brand & goals"></textarea></label>
       <div class="cta-row">
         <button class="btn" type="submit">Send Inquiry</button>
-        <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com">Email Direct</a>
+        <a class="btn ghost" href="mailto:moeknowmoe24@gmail.com" onclick="gtag('event','email_click',{location:'contact_form'});">Email Direct</a>
       </div>
       <small id="ok" class="helper" style="display:none">Thanks! Your message was sent. We’ll be in touch.</small>
     </form>
   </div>
-  <div class="card">
-    <h2>Direct Contacts & Links</h2>
+  <div class="card" id="privacy">
+    <h2>Privacy</h2>
+    <p class="muted">We use submission info only to respond to your inquiry. We do not sell personal data. External links may use UTM parameters for simple analytics.</p>
+    <h3 id="ftc" style="color:#d4af37;margin-top:10px">FTC Disclosure</h3>
+    <p class="muted">Some content may include paid partnerships or affiliate links. We disclose these relationships on‑screen and in descriptions to remain transparent and brand‑safe.</p>
+    <h3 style="color:#d4af37;margin-top:10px">Direct Contacts & Links</h3>
     <ul>
-      <li>YouTube: <a href="https://www.youtube.com/@MoeAI24" target="_blank" rel="noopener">@MoeAI24</a></li>
+      <li>YouTube: <a href="https://www.youtube.com/@MoeAI24?utm_source=media-kit&utm_medium=website&utm_campaign=contact" target="_blank" rel="noopener" onclick="gtag('event','click_youtube',{location:'contact_links'});">@MoeAI24</a></li>
       <li>Website: <a href="https://www.moecommunitycloud.com/" target="_blank" rel="noopener">moecommunitycloud.com</a></li>
-      <li>Merch: <a href="https://moe-bucks.myspreadshop.com/" target="_blank" rel="noopener">Spreadshop</a></li>
-      <li>Store: <a href="https://moe-creative-t-shirts.printify.me/products" target="_blank" rel="noopener">Moe Community Store</a></li>
+      <li>Merch: <a href="https://moe-bucks.myspreadshop.com/?utm_source=media-kit&utm_medium=website&utm_campaign=contact" target="_blank" rel="noopener" onclick="gtag('event','open_spreadshop',{location:'contact_links'});">Spreadshop</a></li>
+      <li>Store: <a href="https://moe-creative-t-shirts.printify.me/products?utm_source=media-kit&utm_medium=website&utm_campaign=contact" target="_blank" rel="noopener" onclick="gtag('event','open_store',{location:'contact_links'});">Moe Community Store</a></li>
       <li>Email: <a href="mailto:moeknowmoe24@gmail.com">moeknowmoe24@gmail.com</a></li>
     </ul>
-    <p class="muted">Your data is never sold. Submissions are used only to respond to your inquiry.</p>
   </div>
 </section>
-<footer class="footer foot">© Moe Community Cloud • Updated Oct 21, 2025</footer>
-</div></body></html>
+<footer class="footer foot">
+  <span>© Moe Community Cloud • Updated Oct 21, 2025</span>
+  <span><a href="#privacy">Privacy</a> • <a href="#ftc">FTC Disclosure</a></span>
+</footer>
+</div>
+</body>
+</html>

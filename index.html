@@ -1,8 +1,19 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8" />
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MoeAI24 • MBCC Media Kit</title>
+<meta name="description" content="Satire, sports, and sharp commentary — partner with Moe Bucks." />
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://i.ytimg.com">
 <link rel="stylesheet" href="assets/styles.css" />
+<meta property="og:title" content="MoeAI24 • MBCC Media Kit">
+<meta property="og:description" content="Satire, sports, and sharp commentary — partner with Moe Bucks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.moecommunitycloud.com/media-kit/">
+<meta property="og:image" content="https://www.moecommunitycloud.com/media-kit/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
@@ -14,7 +25,24 @@
 <!-- Calendly -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-</head><body>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"MoeAI24 (MBCC)",
+  "url":"https://www.moecommunitycloud.com/media-kit/",
+  "logo":"https://www.moecommunitycloud.com/media-kit/assets/logo.png",
+  "sameAs":[
+    "https://www.youtube.com/@MoeAI24",
+    "https://moe-bucks.myspreadshop.com/"
+  ]
+}
+</script>
+
+</head>
+<body>
 <div class="plaid"></div><div class="wrap">
 
     <nav class="nav">
@@ -26,16 +54,16 @@
   <h1>Truth with a Twist — The MoeAI24 Media Kit</h1>
   <p class="muted">U.S. Army veteran entertaining and informing through satire, sports, and smart commentary. Politically spicy, culturally fluent, and brand-safe with a comedic edge.</p>
   <div class="cta-row">
-    <a class="btn" href="https://www.youtube.com/@MoeAI24" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn ghost" href="partnerships.html">Partner with Moe</a>
-    <a class="btn" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min'}); return false;">Book a Call</a>
+    <a class="btn" href="https://www.youtube.com/@MoeAI24?utm_source=media-kit&utm_medium=website&utm_campaign=partner" target="_blank" rel="noopener" onclick="gtag('event','click_youtube',{location:'hero'});">Watch on YouTube</a>
+    <a class="btn ghost" href="partnerships.html" onclick="gtag('event','view_partnerships',{location:'hero'});">Partner with Moe</a>
+    <a class="btn" href="#" onclick="gtag('event','book_call_click',{location:'hero'}); Calendly.initPopupWidget({url: 'https://calendly.com/YOUR-CALENDLY-USERNAME/15min?utm_source=media-kit&utm_medium=website&utm_campaign=partner'}); return false;">Book a Call</a>
   </div>
 </header>
 <section class="section split" id="showcase" style="margin-top:16px">
   <div class="card">
     <h2>Highlight Reel</h2>
     <div class="yt">
-      <iframe src="https://www.youtube.com/embed/t4RWltId2J8" title="Highlight (8k+ Views)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe loading="lazy" src="https://www.youtube.com/embed/t4RWltId2J8" title="Highlight (8k+ Views)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <p class="muted">Newest standout performance. Swap this embed for your most recent hit at any time.</p>
   </div>
@@ -46,15 +74,56 @@
     <span class="badge">Brand-Safe Satire</span>
   </div>
 </section>
+
 <section class="section" id="videos" style="margin-top:16px">
   <div class="card">
     <h2>Featured Videos</h2>
     <div class="grid cols-3">
-      <div class="yt"><iframe src="https://www.youtube.com/embed/Nsx9fNPqBfI" title="Featured Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <div class="yt"><iframe src="https://www.youtube.com/embed/E6oXE1Oftpk" title="Featured Video 2 (Sports)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-      <div class="yt"><iframe src="https://www.youtube.com/embed/6kwAjRgUVcs" title="Featured Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="yt"><iframe loading="lazy" src="https://www.youtube.com/embed/Nsx9fNPqBfI" title="Featured Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="yt"><iframe loading="lazy" src="https://www.youtube.com/embed/E6oXE1Oftpk" title="Featured Video 2 (Sports)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="yt"><iframe loading="lazy" src="https://www.youtube.com/embed/6kwAjRgUVcs" title="Featured Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     </div>
+    <!-- VideoObject JSON-LD for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"VideoObject",
+      "name":"Featured Video 1",
+      "description":"Satirical commentary by Moe Bucks.",
+      "thumbnailUrl":"https://i.ytimg.com/vi/Nsx9fNPqBfI/maxresdefault.jpg",
+      "uploadDate":"2025-01-01",
+      "embedUrl":"https://www.youtube.com/embed/Nsx9fNPqBfI"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"VideoObject",
+      "name":"Featured Video 2",
+      "description":"Sports satire and analysis by Moe Bucks.",
+      "thumbnailUrl":"https://i.ytimg.com/vi/E6oXE1Oftpk/maxresdefault.jpg",
+      "uploadDate":"2025-01-01",
+      "embedUrl":"https://www.youtube.com/embed/E6oXE1Oftpk"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"VideoObject",
+      "name":"Featured Video 3",
+      "description":"Comedy and cultural commentary by Moe Bucks.",
+      "thumbnailUrl":"https://i.ytimg.com/vi/6kwAjRgUVcs/maxresdefault.jpg",
+      "uploadDate":"2025-01-01",
+      "embedUrl":"https://www.youtube.com/embed/6kwAjRgUVcs"
+    }
+    </script>
   </div>
 </section>
-<footer class="footer foot">© Moe Community Cloud • Updated Oct 21, 2025</footer>
-</div></body></html>
+
+<footer class="footer foot">
+  <span>© Moe Community Cloud • Updated Oct 21, 2025</span>
+  <span><a href="contact.html#privacy">Privacy</a> • <a href="contact.html#ftc">FTC Disclosure</a></span>
+</footer>
+</div>
+</body>
+</html>
